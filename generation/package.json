@@ -1,0 +1,14 @@
+{
+	"dependencies": {
+		"@bufbuild/protoplugin": "^2.2.2",
+		"@connectrpc/connect": "^1.6.0",
+		"@connectrpc/connect-node": "^1.6.0",
+		"@olvid/bot-node": "0.0.15-alpha",
+		"@types/node": "^22.10.2"
+	},
+	"devDependencies": {
+		"@bufbuild/protoc-gen-es": "^1.10.0",
+		"@connectrpc/protoc-gen-connect-es": "^1.6.1",
+		"tsx": "^4.19.2"
+	}
+}

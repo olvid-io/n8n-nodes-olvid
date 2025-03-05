@@ -36,6 +36,7 @@ module.exports = {
 			rules: {
 				'n8n-nodes-base/cred-class-field-documentation-url-missing': 'off',
 				'n8n-nodes-base/cred-class-field-documentation-url-miscased': 'off',
+				'n8n-nodes-base/cred-class-field-type-options-password-missing': 'off'
 			},
 		},
 		{
@@ -46,6 +47,14 @@ module.exports = {
 				'n8n-nodes-base/node-execute-block-missing-continue-on-fail': 'off',
 				'n8n-nodes-base/node-resource-description-filename-against-convention': 'off',
 				'n8n-nodes-base/node-param-fixed-collection-type-unsorted-items': 'off',
+				'n8n-nodes-base/node-class-description-outputs-wrong': 'off',
+				'n8n-nodes-base/node-param-display-name-miscased': 'off',
+				'n8n-nodes-base/node-dirname-against-convention': 'off',
+				'n8n-nodes-base/node-param-description-boolean-without-whether': 'off',
+				'n8n-nodes-base/node-param-resource-with-plural-option': 'off',
+				'n8n-nodes-base/node-filename-against-convention': 'off',
+				'n8n-nodes-base/node-param-default-missing': 'off',
+				'n8n-nodes-base/node-class-description-missing-subtitle': 'off',
 			},
 		},
 	],

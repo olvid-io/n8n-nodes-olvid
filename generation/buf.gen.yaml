@@ -1,0 +1,12 @@
+version: v2
+clean: true
+
+inputs:
+  - directory: ../protobuf
+plugins:
+  - local: ["tsx", "./src/protoc-gen-advanced-es.ts"]
+    opt: target=ts
+    out: ../nodes/Olvid/Advanced/v1/generated
+  - local: ["tsx", "./src/protoc-gen-advanced-admin-es.ts"]
+    opt: target=ts
+    out: ../nodes/Olvid/AdvancedAdmin/v1/generated

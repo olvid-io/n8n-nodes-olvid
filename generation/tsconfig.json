@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"useDefineForClassFields": true,
+		"lib": ["ES2020", "DOM", "ESNext.BigInt"],
+		"allowJs": false,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "ESNext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"noEmit": true,
+		"verbatimModuleSyntax": true,
+		"baseUrl": "./",
+		"experimentalDecorators": true,
+		"paths": {
+			"*": ["*"]
+		}
+	}
+}
