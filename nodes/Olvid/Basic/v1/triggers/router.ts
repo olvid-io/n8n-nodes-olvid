@@ -1,4 +1,4 @@
-import {ITriggerResponse, NodeOperationError, type ITriggerFunctions, CloseFunction} from 'n8n-workflow';
+import { ITriggerResponse, NodeOperationError, type ITriggerFunctions, CloseFunction } from 'n8n-workflow';
 
 import * as message from './message';
 import * as attachment from './attachment';
@@ -31,12 +31,14 @@ export async function router(this: ITriggerFunctions): Promise<ITriggerResponse>
         }
     }
 
-	let closeFunction: CloseFunction;
+    let closeListener: Function | undefined;
     if (this.getMode() !== 'manual') {
-        closeFunction = async () => { initializeListener(); };
-    } else {
-		closeFunction = async () => {};
-	}
+        closeListener = initializeListener();
+    }
+
+    const closeFunction = async () => {
+        closeListener?.();
+    };
 
     const manualTriggerFunction = async () => {
         let manualCloseListener: Function = () => { };

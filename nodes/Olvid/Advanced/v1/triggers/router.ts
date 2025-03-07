@@ -26,10 +26,13 @@ export async function router(this: ITriggerFunctions): Promise<ITriggerResponse>
     };
 
     // Initialize listeners for active workflows
-    const closeListener = initializeListener();
+    let closeListener: Function | undefined;
+    if (this.getMode() !== 'manual') {
+        closeListener = initializeListener();
+    }
 
     const closeFunction = async () => {
-        closeListener();
+        closeListener?.();
     };
 
     const useMockData = this.getNodeParameter('mockData') as boolean;
