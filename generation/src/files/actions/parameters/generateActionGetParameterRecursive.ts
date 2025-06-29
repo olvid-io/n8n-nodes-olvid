@@ -1,5 +1,5 @@
 import { capitalize, getTsType } from "src/tools/tools";
-import type { DescField } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import type { GeneratedFile } from "@bufbuild/protoplugin"
 import { getDefaultGetParameter } from "./getDefaultGetParameter";
 import { getNodeParameter } from "src/tools/getNodeParameter";

@@ -1,4 +1,4 @@
-import { datatypes } from "@olvid/bot-node";
+import * as datatypes from "../../../../protobuf/olvid/daemon/datatypes/v1/datatypes";
 import { IDataObject, IExecuteFunctions, INodeProperties } from "n8n-workflow";
 
 export const messageId: INodeProperties = {

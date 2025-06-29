@@ -2,7 +2,7 @@ import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'n8n-wor
 
 import * as message_operations from './message';
 import * as attachment_operations from './attachment';
-import { OlvidClient } from '@olvid/bot-node';
+import { OlvidClient } from '../../../client/OlvidClient';
 import type { AllEntities } from 'n8n-workflow';
 
 type OlvidMap = AllEntities<{
@@ -17,10 +17,10 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 
     for (let i = 0; i < items.length; i++) {
         const credentials = await this.getCredentials('olvidApi') as { clientKey: string, daemonEndpoint: string };
-        const client = new OlvidClient({
-            serverUrl: credentials.daemonEndpoint,
-            clientKey: credentials.clientKey,
-        });
+        const client = new OlvidClient(
+            credentials.daemonEndpoint,
+            credentials.clientKey,
+				);
 
         const resource = this.getNodeParameter<OlvidMap>('resource', i);
         let operation = this.getNodeParameter('operation', i);

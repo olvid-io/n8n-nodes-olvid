@@ -1,6 +1,7 @@
 import { type IExecuteFunctions, type IDataObject, type INodeExecutionData, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
-import { datatypes, OlvidClient } from '@olvid/bot-node';
+import { OlvidClient } from "../../../../client/OlvidClient";
+import * as datatypes from '../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 import { discussionId, getDiscussionIdRequired } from '../properties/discussionId';
 import { propNames } from '../properties/propertiesNames';
 import { createDurationPropertyOptions, getDurationInSeconds } from '../properties/duration';
@@ -232,9 +233,9 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
                 precision: messageSent?.messageLocation?.precision,
                 address: messageSent?.messageLocation?.address
             },
-            reactions: messageSent?.reactions.map(e => ({ contactId: Number(e.contactId), reaction: e.reaction, timestamp: Number(e.timestamp) }))
+            reactions: messageSent?.reactions.map((e: datatypes.MessageReaction) => ({ contactId: Number(e.contactId), reaction: e.reaction, timestamp: Number(e.timestamp) }))
         },
-        attachments: attachmentsSent ? attachmentsSent.map((attachment) => ({
+        attachments: attachmentsSent ? attachmentsSent.map((attachment: datatypes.Attachment) => ({
             id: attachment.id,
             filename: attachment.fileName,
             mimeType: attachment.mimeType,

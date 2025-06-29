@@ -4,6 +4,18 @@ clean: true
 inputs:
   - directory: ../protobuf
 plugins:
+  - local: protoc-gen-es
+    opt: target=ts
+    out: ../nodes/Olvid/protobuf
+  - local: protoc-gen-connect-es
+    opt: target=ts
+    out: ../nodes/Olvid/protobuf
+  - local: [ "tsx", "./src/protoc-gen-barrels.ts" ]
+    opt: target=ts
+    out: ../nodes/Olvid/protobuf
+  - local: [ "tsx", "./src/protoc-gen-olvid-client.ts" ]
+    opt: target=ts
+    out: ../nodes/Olvid/client
   - local: ["tsx", "./src/protoc-gen-advanced-es.ts"]
     opt: target=ts
     out: ../nodes/Olvid/Advanced/v1/generated

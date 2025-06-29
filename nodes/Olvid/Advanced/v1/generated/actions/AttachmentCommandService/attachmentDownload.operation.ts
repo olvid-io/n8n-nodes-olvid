@@ -1,7 +1,10 @@
 // Copied from: overrides/attachmentDownload.operation.ts
 import { type IBinaryData, type IExecuteFunctions, type INodeExecutionData, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
-import { datatypes, OlvidClient } from '@olvid/bot-node';
+// @ts-ignore
+import { OlvidClient } from '../../../../../client/OlvidClient';
+// @ts-ignore
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 // @ts-ignore
 import { formatFileSize } from '../../../../../GenericFunctions';
 

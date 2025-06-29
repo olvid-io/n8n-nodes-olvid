@@ -1,5 +1,5 @@
 import type { Schema } from "@bufbuild/protoplugin"
-import type { DescMethod } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import {generateFunctionReturnObjectFromProtobufMessage} from "../../tools/generateProtobuf";
 
 export function generateTrigger(schema: Schema, method: DescMethod, useAdminClient: boolean = false): void {
@@ -12,7 +12,12 @@ export function generateTrigger(schema: Schema, method: DescMethod, useAdminClie
 	/*
 	** imports
 	 */
-    destinationFile.print`import { ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}, notifications, datatypes } from '@olvid/bot-node';
+    destinationFile.print`import { ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'} } from '../../../../../client/${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}';
+// noinspection ES6UnusedImports
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+// noinspection ES6UnusedImports
+import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
+// noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';`
 
 	/*

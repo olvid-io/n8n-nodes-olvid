@@ -5,7 +5,10 @@ import * as ClientKeyAdminService from './ClientKeyAdminService';
 import * as IdentityAdminService from './IdentityAdminService';
 
 import type { Olvid } from './generatedInterfaces';
-import { OlvidAdminClient } from '@olvid/bot-node';
+// noinspection ES6UnusedImports
+import { OlvidAdminClient } from '../../../../client/OlvidAdminClient';
+// noinspection ES6UnusedImports
+import * as datatypes from "../../../../protobuf/olvid/daemon/datatypes/v1/datatypes";
 
 export async function callOperation(this: IExecuteFunctions, i: number, client: OlvidAdminClient, olvid: Olvid): Promise<IDataObject | IDataObject[]> {
     switch (olvid.resource) {

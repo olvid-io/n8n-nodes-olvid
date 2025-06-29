@@ -1,4 +1,4 @@
-import type { DescField, DescMessage } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescField, DescMessage } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import {ScalarType} from "@bufbuild/protobuf";
 
 /*

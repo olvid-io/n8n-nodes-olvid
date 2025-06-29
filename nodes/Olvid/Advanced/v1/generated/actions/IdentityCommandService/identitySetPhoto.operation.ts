@@ -1,6 +1,9 @@
 // Copied from: overrides/identitySetPhoto.operation.ts
 import { type IExecuteFunctions, type INodeExecutionData, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
-import { commands, OlvidClient } from '@olvid/bot-node';
+// @ts-ignore
+import { OlvidClient } from '../../../../../client/OlvidClient';
+// @ts-ignore
+import * as commands from '../../../../../protobuf/olvid/daemon/command/v1/command';
 
 const properties: INodeProperties[] = [
 	{
@@ -55,7 +58,7 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
 		}
 	}
 
-	const reponse: commands.IdentitySetPhotoResponse = await client.stubs.identityCommandStub.identitySetPhoto(requestStream());
+	await client.stubs.identityCommandStub.identitySetPhoto(requestStream());
 	return this.helpers.returnJsonArray([]);
 }
 

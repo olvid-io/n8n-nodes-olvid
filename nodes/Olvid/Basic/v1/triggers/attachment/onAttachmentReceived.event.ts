@@ -1,4 +1,5 @@
-import { datatypes, OlvidClient } from "@olvid/bot-node";
+import { OlvidClient } from "../../../../client/OlvidClient";
+import * as datatypes from '../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 import { IBinaryData, ITriggerFunctions } from "n8n-workflow";
 import { formatFileSize } from "../../../../GenericFunctions";
 

@@ -1,4 +1,4 @@
-import type { DescField } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { ScalarProto_TypeJson } from "src/tools/types";
 
 export function getDefaultType(field: DescField): string {

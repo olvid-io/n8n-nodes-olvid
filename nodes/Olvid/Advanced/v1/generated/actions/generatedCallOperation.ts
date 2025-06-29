@@ -13,7 +13,10 @@ import * as StorageCommandService from './StorageCommandService';
 import * as DiscussionStorageCommandService from './DiscussionStorageCommandService';
 
 import type { Olvid } from './generatedInterfaces';
-import { OlvidClient } from '@olvid/bot-node';
+// noinspection ES6UnusedImports
+import { OlvidClient } from '../../../../client/OlvidClient';
+// noinspection ES6UnusedImports
+import * as datatypes from "../../../../protobuf/olvid/daemon/datatypes/v1/datatypes";
 
 export async function callOperation(this: IExecuteFunctions, i: number, client: OlvidClient, olvid: Olvid): Promise<IDataObject | IDataObject[]> {
     switch (olvid.resource) {

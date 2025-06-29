@@ -23,7 +23,7 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "generate": "cd generation && npx `type -p buf` generate --debug --verbose && echo Generated nodes",
+    "generate": "(cd generation && npm run generate) && echo Generated nodes",
     "build": "npx tsc && gulp build:icons",
     "dev": "npx nodemon -w nodes -w credentials --ext ts --exec \"npm run build && n8n\"",
     "format": "prettier nodes credentials --write",
@@ -50,7 +50,10 @@
     ]
   },
   "devDependencies": {
-    "@olvid/bot-node": "0.0.15-alpha",
+    "@bufbuild/protobuf": "^2.5.1",
+    "@connectrpc/connect": "^1.6.1",
+    "@connectrpc/connect-node": "^1.6.1",
+    "@types/node": "^22.9.0",
     "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.56.0",
     "eslint-plugin-n8n-nodes-base": "^1.16.1",

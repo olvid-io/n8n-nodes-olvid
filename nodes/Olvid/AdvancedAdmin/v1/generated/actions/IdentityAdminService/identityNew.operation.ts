@@ -2,10 +2,19 @@
 // @generated from file olvid/daemon/services/v1/admin_service.proto (package olvid.daemon.services.v1, syntax proto3)
 /* eslint-disable */
 
+
+// noinspection ES6UnusedImports
 import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
 // noinspection ES6UnusedImports
-import { datatypes, OlvidAdminClient, admin } from '@olvid/bot-node';
+import { OlvidAdminClient } from '../../../../../client/OlvidAdminClient';
+// noinspection ES6UnusedImports
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+// noinspection ES6UnusedImports
+
+// noinspection ES6UnusedImports
+import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";
+
 
 const properties: INodeProperties[] = [
   {

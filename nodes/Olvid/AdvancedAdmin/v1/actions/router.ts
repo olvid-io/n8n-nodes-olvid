@@ -2,7 +2,7 @@ import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'n8n-wor
 
 import { callOperation } from '../generated/actions/generatedCallOperation';
 import type { Olvid } from '../generated/actions/generatedInterfaces';
-import { OlvidAdminClient } from '@olvid/bot-node';
+import { OlvidAdminClient } from '../../../client/OlvidAdminClient';
 
 export async function router(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
     const items = this.getInputData();
@@ -11,10 +11,10 @@ export async function router(this: IExecuteFunctions): Promise<INodeExecutionDat
 
     for (let i = 0; i < items.length; i++) {
         const credentials = await this.getCredentials('olvidAdminApi') as { adminClientKey: string, daemonEndpoint: string };
-        const client = new OlvidAdminClient({
-            serverUrl: credentials.daemonEndpoint,
-            clientKey: credentials.adminClientKey,
-        });
+        const client = new OlvidAdminClient(
+					credentials.daemonEndpoint,
+					credentials.adminClientKey
+				);
 
         const resource = this.getNodeParameter('resource', i);
         let operation = this.getNodeParameter('operation', i);

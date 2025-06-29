@@ -1,5 +1,5 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin";
-import type { DescMethod } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { generateActionGetParameterRecursive } from "./parameters/generateActionGetParameterRecursive";
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
 import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
@@ -53,7 +53,14 @@ ${addMessageElementToContainer.trimEnd()}
 	** unary
 	 */
 	else if (method.methodKind === "unary") {
-		destinationFile.print`    const response: ${useAdminClient ? 'admin' : 'commands'}.${(method.output.name)} = await client.${useAdminClient ? 'adminStubs' : 'stubs'}.${stubName}.${method.localName}({${parameters}});
+		let responseField: string;
+		if (method.output.fields.length > 0) {
+				responseField = `const response: ${useAdminClient ? 'admin' : 'commands'}.${(method.output.name)} = `;
+		}
+		else {
+			responseField = "";
+		}
+		destinationFile.print`    ${responseField}await client.${useAdminClient ? 'adminStubs' : 'stubs'}.${stubName}.${method.localName}({${parameters}});
     return this.helpers.returnJsonArray(${generateFunctionReturnObjectFromProtobufMessage(method.output, "response?.")});
 }`;
 	}

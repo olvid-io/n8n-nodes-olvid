@@ -1,7 +1,11 @@
 // Copied from: overrides/messageSendWithAttachments.operation.ts
+/* eslint-disable n8n-nodes-base/node-param-required-false */
 import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
-import { datatypes, OlvidClient } from '@olvid/bot-node';
+// @ts-ignore
+import { OlvidClient } from '../../../../../client/OlvidClient';
+// @ts-ignore
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 
 const properties: INodeProperties[] = [
     // Generated code taken from MessageSend.operation.ts 31/01/2025
@@ -16,6 +20,7 @@ const properties: INodeProperties[] = [
         displayName: 'Body',
         name: 'body',
         type: 'string',
+        required: false,
         default: '',
     },
     {
@@ -227,8 +232,8 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
         ephemerality,
         disableLinkPreview
     });
-    return this.helpers.returnJsonArray([{ message: { id: { type: datatypes.MessageId_Type[response?.message?.id?.type ?? 0], id: Number(response?.message?.id?.id) }, discussionId: Number(response?.message?.discussionId), senderId: Number(response?.message?.senderId), body: response?.message?.body, sortIndex: response?.message?.sortIndex, timestamp: Number(response?.message?.timestamp), attachmentsCount: Number(response?.message?.attachmentsCount), repliedMessageId: { type: datatypes.MessageId_Type[response?.message?.repliedMessageId?.type ?? 0], id: Number(response?.message?.repliedMessageId?.id) }, messageLocation: { type: datatypes.MessageLocation_LocationType[response?.message?.messageLocation?.type ?? 0], timestamp: Number(response?.message?.messageLocation?.timestamp), latitude: response?.message?.messageLocation?.latitude, longitude: response?.message?.messageLocation?.longitude, altitude: response?.message?.messageLocation?.altitude, precision: response?.message?.messageLocation?.precision, address: response?.message?.messageLocation?.address }, reactions: response?.message?.reactions.map(e => ({ contactId: Number(e.contactId), reaction: e.reaction, timestamp: Number(e.timestamp) })), forwarded: response?.message?.forwarded, editedBody: response?.message?.editedBody } }, {
-        attachments: response?.attachments.map(e => ({ id: { type: datatypes.AttachmentId_Type[e.id?.type ?? 0], id: Number(e.id?.id) }, discussionId: Number(e.discussionId), messageId: { type: datatypes.MessageId_Type[e.messageId?.type ?? 0], id: Number(e.messageId?.id) }, fileName: e.fileName, mimeType: e.mimeType, size: Number(e.size) }))
+    return this.helpers.returnJsonArray([{ message: { id: { type: datatypes.MessageId_Type[response?.message?.id?.type ?? 0], id: Number(response?.message?.id?.id) }, discussionId: Number(response?.message?.discussionId), senderId: Number(response?.message?.senderId), body: response?.message?.body, sortIndex: response?.message?.sortIndex, timestamp: Number(response?.message?.timestamp), attachmentsCount: Number(response?.message?.attachmentsCount), repliedMessageId: { type: datatypes.MessageId_Type[response?.message?.repliedMessageId?.type ?? 0], id: Number(response?.message?.repliedMessageId?.id) }, messageLocation: { type: datatypes.MessageLocation_LocationType[response?.message?.messageLocation?.type ?? 0], timestamp: Number(response?.message?.messageLocation?.timestamp), latitude: response?.message?.messageLocation?.latitude, longitude: response?.message?.messageLocation?.longitude, altitude: response?.message?.messageLocation?.altitude, precision: response?.message?.messageLocation?.precision, address: response?.message?.messageLocation?.address }, reactions: response?.message?.reactions.map((e: datatypes.MessageReaction) => ({ contactId: Number(e.contactId), reaction: e.reaction, timestamp: Number(e.timestamp) })), forwarded: response?.message?.forwarded, editedBody: response?.message?.editedBody } }, {
+        attachments: response?.attachments.map((e: datatypes.Attachment) => ({ id: { type: datatypes.AttachmentId_Type[e.id?.type ?? 0], id: Number(e.id?.id) }, discussionId: Number(e.discussionId), messageId: { type: datatypes.MessageId_Type[e.messageId?.type ?? 0], id: Number(e.messageId?.id) }, fileName: e.fileName, mimeType: e.mimeType, size: Number(e.size) }))
     }]);
 }
 

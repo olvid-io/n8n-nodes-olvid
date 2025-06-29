@@ -78,7 +78,8 @@ Before you begin, ensure you have the following:
 			type INodeExecutionData,
 			updateDisplayOptions,
 		} from 'n8n-workflow';
-		import { datatypes, OlvidClient } from '@olvid/bot-node';
+    import { OlvidClient } from '../../../../../client/OlvidClient';
+    import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 		import { getMessageId, messageId, messageIdType } from '../properties/messageId';
 
 		const properties: INodeProperties[] = [
@@ -253,7 +254,8 @@ Before you begin, ensure you have the following:
    - Add the logic to execute the trigger:
 
      ```typescript
-     import { datatypes, OlvidClient } from "@olvid/bot-node";
+     import { OlvidClient } from '../../../../../client/OlvidClient';
+     import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
      import { ITriggerFunctions } from "n8n-workflow";
 
      export function discussionNew(

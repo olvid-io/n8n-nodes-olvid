@@ -1,6 +1,6 @@
 import type { Schema } from "@bufbuild/protoplugin"
 
-import type { DescMethod } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { generateActionPropertiesJson } from "../properties/generateActionPropertiesJson";
 import { decapitalize } from "src/tools/tools";
 import { generateActionExecuteFunction } from "./generateActionExecute";
@@ -17,10 +17,19 @@ export function generateAction(schema: Schema, method: DescMethod, useAdminClien
 	** imports
 	*/
 	destinationFile.preamble(method.parent.file);
-	destinationFile.print`import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
+	destinationFile.print`
+// noinspection ES6UnusedImports
+import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
 // noinspection ES6UnusedImports
-import { datatypes, Olvid${useAdminClient ? 'Admin' : ''}Client, ${useAdminClient ? 'admin' : 'commands'} } from '@olvid/bot-node';`
+import { Olvid${useAdminClient ? 'Admin' : ''}Client } from '../../../../../client/Olvid${useAdminClient ? 'Admin' : ''}Client';
+// noinspection ES6UnusedImports
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+// noinspection ES6UnusedImports
+${!useAdminClient ? 'import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";' : ''}
+// noinspection ES6UnusedImports
+${useAdminClient ? 'import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";' : ''}
+`
 
 	/*
 	** properties

@@ -8,7 +8,10 @@ export function generateRouterCallOperation(f: GeneratedFile, resourceOperationL
     }
     f.print`
 import type { Olvid } from './generatedInterfaces';
-import { Olvid${useAdminClient ? 'Admin' : ''}Client } from '@olvid/bot-node';
+// noinspection ES6UnusedImports
+import { Olvid${useAdminClient ? 'Admin' : ''}Client } from '../../../../client/Olvid${useAdminClient ? 'Admin' : ''}Client';
+// noinspection ES6UnusedImports
+import * as datatypes from "../../../../protobuf/olvid/daemon/datatypes/v1/datatypes";
 
 export async function callOperation(this: IExecuteFunctions, i: number, client: Olvid${useAdminClient ? 'Admin' : ''}Client, olvid: Olvid): Promise<IDataObject | IDataObject[]> {
     switch (olvid.resource) {`;

@@ -2,10 +2,19 @@
 // @generated from file olvid/daemon/services/v1/admin_service.proto (package olvid.daemon.services.v1, syntax proto3)
 /* eslint-disable */
 
+
+// noinspection ES6UnusedImports
 import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
 // noinspection ES6UnusedImports
-import { datatypes, OlvidAdminClient, admin } from '@olvid/bot-node';
+import { OlvidAdminClient } from '../../../../../client/OlvidAdminClient';
+// noinspection ES6UnusedImports
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+// noinspection ES6UnusedImports
+
+// noinspection ES6UnusedImports
+import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";
+
 
 const properties: INodeProperties[] = [
   {
@@ -29,6 +38,6 @@ export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number, client: OlvidAdminClient): Promise<INodeExecutionData[]> {
     const clientKey: string = this.getNodeParameter('clientKey', index) as string;
-    const response: admin.ClientKeyDeleteResponse = await client.adminStubs.clientKeyAdminStub.clientKeyDelete({clientKey});
+    await client.adminStubs.clientKeyAdminStub.clientKeyDelete({clientKey});
     return this.helpers.returnJsonArray({});
 }

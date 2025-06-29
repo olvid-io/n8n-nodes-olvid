@@ -1,15 +1,15 @@
 import { ITriggerResponse, NodeOperationError, type ITriggerFunctions } from 'n8n-workflow';
 
-import { OlvidClient } from '@olvid/bot-node';
+import { OlvidClient } from '../../../client/OlvidClient';
 import { listenerMap, ListenerType } from '../generated/triggers/generatedInterfaces';
 import { defaultTriggerWaitTime } from '../../../constants';
 
 export async function router(this: ITriggerFunctions): Promise<ITriggerResponse> {
     const credentials = await this.getCredentials('olvidApi') as { clientKey: string, daemonEndpoint: string };
-    const client = new OlvidClient({
-        clientKey: credentials.clientKey,
-        serverUrl: credentials.daemonEndpoint,
-    });
+    const client = new OlvidClient(
+        credentials.daemonEndpoint,
+        credentials.clientKey
+    );
 
     const listener = this.getNodeParameter('updates') as ListenerType;
 

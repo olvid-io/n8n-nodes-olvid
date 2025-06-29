@@ -1,8 +1,7 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin"
-import type { DescMethod } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod, DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { getDefaultPropertyJson, getDefaultType } from "./getDefaultPropertyJson";
 import { capitalize } from "src/tools/tools";
-import type { DescField } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
 
 function generateMessageCollection(f: GeneratedFile, field: DescField, indentation: number, parents: string = ''): void {
     const idt = '  '.repeat(indentation);

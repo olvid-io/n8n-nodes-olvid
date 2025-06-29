@@ -2,10 +2,19 @@
 // @generated from file olvid/daemon/services/v1/command_service.proto (package olvid.daemon.services.v1, syntax proto3)
 /* eslint-disable */
 
+
+// noinspection ES6UnusedImports
 import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
 // noinspection ES6UnusedImports
-import { datatypes, OlvidClient, commands } from '@olvid/bot-node';
+import { OlvidClient } from '../../../../../client/OlvidClient';
+// noinspection ES6UnusedImports
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+// noinspection ES6UnusedImports
+import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
+// noinspection ES6UnusedImports
+
+
 
 const properties: INodeProperties[] = [
   {
@@ -29,6 +38,6 @@ export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const keycloakId: string = this.getNodeParameter('keycloakId', index) as string;
-    const response: commands.KeycloakAddUserAsContactResponse = await client.stubs.keycloakCommandStub.keycloakAddUserAsContact({keycloakId});
+    await client.stubs.keycloakCommandStub.keycloakAddUserAsContact({keycloakId});
     return this.helpers.returnJsonArray({});
 }

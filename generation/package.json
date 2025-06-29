@@ -1,14 +1,16 @@
 {
-	"dependencies": {
-		"@bufbuild/protoplugin": "^2.2.2",
-		"@connectrpc/connect": "^1.6.0",
-		"@connectrpc/connect-node": "^1.6.0",
-		"@olvid/bot-node": "0.0.15-alpha",
-		"@types/node": "^22.10.2"
-	},
-	"devDependencies": {
-		"@bufbuild/protoc-gen-es": "^1.10.0",
-		"@connectrpc/protoc-gen-connect-es": "^1.6.1",
-		"tsx": "^4.19.2"
-	}
+  "scripts": {
+    "generate": "npx buf generate --debug --verbose"
+  },
+  "devDependencies": {
+    "@bufbuild/buf": "^1.55.1",
+    "@bufbuild/protobuf": "^2.5.1",
+    "@bufbuild/protoplugin": "^2.4.0",
+    "@connectrpc/connect": "^1.6.0",
+    "@connectrpc/connect-node": "^1.6.0",
+    "@bufbuild/protoc-gen-es": "^2.6.0",
+    "@connectrpc/protoc-gen-connect-es": "^1.6.1",
+    "@types/node": "^22.15.29",
+    "tsx": "^4.19.2"
+  }
 }

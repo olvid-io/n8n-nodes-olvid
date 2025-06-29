@@ -2,7 +2,12 @@
 // @generated from file olvid/daemon/services/v1/notification_service.proto (package olvid.daemon.services.v1, syntax proto3)
 /* eslint-disable */
 
-import { OlvidClient, notifications, datatypes } from '@olvid/bot-node';
+import { OlvidClient } from '../../../../../client/OlvidClient';
+// noinspection ES6UnusedImports
+import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+// noinspection ES6UnusedImports
+import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
+// noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
 
 export function groupMemberJoined(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
