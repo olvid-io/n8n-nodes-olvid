@@ -1,3 +1,4 @@
+//@ts-ignore
 import type { DescField, DescMessage } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import {ScalarType} from "@bufbuild/protobuf";
 
@@ -41,7 +42,7 @@ function recursivelyGenerateCodeForField(field: DescField, accessFieldPrefix: st
 	else if (field.fieldKind == "list") {
 		// repeated message
 		if (field.message !== undefined) {
-			return indentString + addFieldName + accessFieldPrefix + field.jsonName + ".map(e => ({" + field.message.fields.map(f => recursivelyGenerateCodeForField(f, "e.", -1)).join(", ") + "}))" + suffix;
+			return indentString + addFieldName + accessFieldPrefix + field.jsonName + ".map(e => ({" + field.message.fields.map((f: DescField) => recursivelyGenerateCodeForField(f, "e.", -1)).join(", ") + "}))" + suffix;
 		}
 		else {
 			throw new Error(`#--# GENERATION ERROR: generateField: unsupported repeated field kind: ${field.fieldKind}, you must extend generation code\n${field.parent}"`);
@@ -57,7 +58,7 @@ function recursivelyGenerateCodeForField(field: DescField, accessFieldPrefix: st
 	}
 	// message
 	else if (field.message !== undefined) {
-		return indentString + addFieldName + "{" + field.message.fields.map(f => recursivelyGenerateCodeForField(f, accessFieldPrefix + field.jsonName + "?.", indentCount + 1).trimEnd()).join(", ") + indentString + "}";
+		return indentString + addFieldName + "{" + field.message.fields.map((f: DescField) => recursivelyGenerateCodeForField(f, accessFieldPrefix + field.jsonName + "?.", indentCount + 1).trimEnd()).join(", ") + indentString + "}";
 	}
 	else {
 		// @ts-ignore

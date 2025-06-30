@@ -1,8 +1,10 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin";
+//@ts-ignore
 import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { generateActionGetParameterRecursive } from "./parameters/generateActionGetParameterRecursive";
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
 import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
+import type { DescField } from '@bufbuild/protobuf';
 
 export function generateActionExecuteFunction(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
 	const stubName = method.parent.name.charAt(0).toLowerCase() + method.parent.name.slice(1).replace("Service", "Stub");
@@ -14,7 +16,7 @@ export async function execute(this: IExecuteFunctions, index: number, client: ${
 		generateActionGetParameterRecursive(destinationFile, subField, 0);
 		destinationFile.print`    ${getDefaultGetParameter({ field: subField })}`;
 	}
-	const parameters = method.input.fields.map((subField) => `${subField.jsonName}`).join(', ');
+	const parameters = method.input.fields.map((subField: DescField) => `${subField.jsonName}`).join(', ');
 
 	/*
 	** server streaming

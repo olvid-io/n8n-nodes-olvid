@@ -1,11 +1,13 @@
-import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { ScalarProto_TypeJson } from "src/tools/types";
+import type { DescEnumValue, DescField } from '@bufbuild/protobuf';
 
 export function getDefaultType(field: DescField): string {
   if (field.scalar) {
-    if (ScalarProto_TypeJson[field.scalar] == 'boolean')
+    // @ts-ignore
+		if (ScalarProto_TypeJson[field.scalar] === 'boolean')
       return 'false';
-    if (ScalarProto_TypeJson[field.scalar] == 'number')
+		// @ts-ignore
+    if (ScalarProto_TypeJson[field.scalar] === 'number')
       return '0';
   }
   else if (field.enum) {
@@ -22,7 +24,7 @@ ${idt}    name: '${field.jsonName}',
 ${idt}    type: '${field.scalar ? ScalarProto_TypeJson[field.scalar] : field.enum ? 'options' : 'string'}',
 ${indentation == 0 ? `${idt}    required: ${field.proto.proto3Optional ? 'false' : 'true'},` : ''}
 ${field.enum ? `${idt}    options: [
-${field.enum.values.map((value) => `${idt}      { name: '${value.name}', value: '${value.name}' },`).join('\n')}
+${field.enum.values.map((value: DescEnumValue) => `${idt}      { name: '${value.name}', value: '${value.name}' },`).join('\n')}
 ${idt}    ],` : ''}
 ${idt}    default: ${getDefaultType(field)},
 ${idt}  },`;

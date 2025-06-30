@@ -1,4 +1,5 @@
 import { capitalize, getTsType } from "src/tools/tools";
+// @ts-ignore
 import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import type { GeneratedFile } from "@bufbuild/protoplugin"
 import { getDefaultGetParameter } from "./getDefaultGetParameter";
@@ -36,7 +37,7 @@ ${idt}    }`;
         // f.print`// ONEOF`;
         destinationFile.print`${idt}    type ${field.oneof.localName}Type =
 ${idt}        { value?: undefined, case: undefined } |
-${field.oneof.fields.map((f) => `${idt}        { value: ${getTsType(f)}, case: "${f.jsonName}" }`).join(' |\n')};
+${field.oneof.fields.map((f: DescField) => `${idt}        { value: ${getTsType(f)}, case: "${f.jsonName}" }`).join(' |\n')};
 ${idt}    function get${capitalize(field.oneof.localName)}(this: IExecuteFunctions, ${item}): ${field.oneof.localName}Type {
 ${idt}        const selectedCase: string | undefined = ${getNodeParameter(field.oneof.localName + 'Select', indented, field.parent.name)} as string | undefined;
 ${idt}        if (selectedCase === undefined) {
@@ -45,7 +46,7 @@ ${idt}        }`;
         for (const oneofField of field.oneof.fields) {
             generateActionGetParameterRecursive(destinationFile, oneofField, iteration + 1, true, false);
         }
-        destinationFile.print`${field.oneof.fields.map((oneofField) => `
+        destinationFile.print`${field.oneof.fields.map((oneofField: DescField) => `
 ${idt}        if (selectedCase === "${oneofField.jsonName}") {
 ${idt}            ${getDefaultGetParameter({ field: oneofField, itemName: `item${capitalize(field.parent.name)}`, isOneofField: true, indented: true })}
 ${idt}            return { value: ${oneofField.jsonName}, case: "${oneofField.jsonName}" };

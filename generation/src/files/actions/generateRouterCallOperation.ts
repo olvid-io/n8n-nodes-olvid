@@ -2,7 +2,9 @@ import type { GeneratedFile } from "node_modules/@bufbuild/protoplugin/dist/cjs"
 import type { ResourceOperationListType } from "../../tools/types";
 
 export function generateRouterCallOperation(f: GeneratedFile, resourceOperationList: ResourceOperationListType, useAdminClient: boolean = false): void {
-    f.print`import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'n8n-workflow';\n`;
+    f.print`// noinspection ES6UnusedImports
+
+import type { IExecuteFunctions, IDataObject, INodeExecutionData } from 'n8n-workflow';\n`;
     for (const resource in resourceOperationList) {
         f.print`import * as ${resource} from './${resource}';`;
     }

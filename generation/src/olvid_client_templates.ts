@@ -113,7 +113,7 @@ export class OlvidClient {
         this.callbacksAbort.abort();
     }
 
-		/*
+    /*
     ** Manually implemented client side streaming methods
     */
     public async messageSendWithAttachments(request: { discussionId: bigint, attachments: {filename: string, payload: Uint8Array}[], body?: string, replyId?: datatypes.MessageId, ephemerality?: datatypes.MessageEphemerality, disableLinkPreview?: boolean}) {
@@ -145,7 +145,7 @@ export class OlvidClient {
                 yield new command.MessageSendWithAttachmentsRequest({request: {case: "fileDelimiter", value: true},});
             }
         }
-        const response = await this.stubs.messageCommandStub.messageSendWithAttachments(requestStream());
+        const response: command.MessageSendWithAttachmentsResponse = await this.stubs.messageCommandStub.messageSendWithAttachments(requestStream());
         return {message: response.message!, attachments: response.attachments!};
     }
 
@@ -173,7 +173,7 @@ class EmptyWorker {
 }`
 
 export const olvidAdminClientTemplate = `import {
-    Client, createClient, type Transport,
+    Client, createClient,
 } from "@connectrpc/connect";
 import * as services from "../protobuf/olvid/daemon/services/v1/services";
 import * as datatypes from "../protobuf/olvid/daemon/datatypes/v1/datatypes";

@@ -1,5 +1,5 @@
 import {
-    Client, createClient, type Transport,
+    Client, createClient,
 } from "@connectrpc/connect";
 import * as services from "../protobuf/olvid/daemon/services/v1/services";
 import * as datatypes from "../protobuf/olvid/daemon/datatypes/v1/datatypes";

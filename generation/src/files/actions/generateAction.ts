@@ -1,5 +1,6 @@
 import type { Schema } from "@bufbuild/protoplugin"
 
+//@ts-ignore
 import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { generateActionPropertiesJson } from "../properties/generateActionPropertiesJson";
 import { decapitalize } from "src/tools/tools";

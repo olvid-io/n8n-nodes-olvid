@@ -1,4 +1,5 @@
-import type { DescField } from "@bufbuild/protoplugin/node_modules/@bufbuild/protobuf/dist/cjs/descriptors"
+// @ts-ignore
+import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 
 export type TypeListType = { [key: string]: DescField[] };
 

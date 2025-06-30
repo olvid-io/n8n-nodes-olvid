@@ -1,4 +1,4 @@
-import { ITriggerResponse, NodeOperationError, type ITriggerFunctions, CloseFunction } from 'n8n-workflow';
+import { ITriggerResponse, NodeOperationError, type ITriggerFunctions } from 'n8n-workflow';
 
 import * as message from './message';
 import * as attachment from './attachment';

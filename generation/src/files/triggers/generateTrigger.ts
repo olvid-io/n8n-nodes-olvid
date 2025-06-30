@@ -1,5 +1,6 @@
 import type { Schema } from "@bufbuild/protoplugin"
-import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
+//@ts-ignore
+import type { DescMethod, DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import {generateFunctionReturnObjectFromProtobufMessage} from "../../tools/generateProtobuf";
 
 export function generateTrigger(schema: Schema, method: DescMethod, useAdminClient: boolean = false): void {
@@ -27,7 +28,7 @@ import type { ITriggerFunctions } from 'n8n-workflow';`
 export function ${method.localName}(this: ITriggerFunctions, client: ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
         this.emit([this.helpers.returnJsonArray([{
-${method.output.fields.map((subField) => `// ${subField.jsonName}.mockData`).join(',\n')}
+${method.output.fields.map((subField: DescField) => `// ${subField.jsonName}.mockData`).join(',\n')}
         }])]);
         onCallback?.();
         return () => {};

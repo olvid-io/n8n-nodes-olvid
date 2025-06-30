@@ -1,4 +1,5 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin"
+//@ts-ignore
 import type { DescMethod, DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { getDefaultPropertyJson, getDefaultType } from "./getDefaultPropertyJson";
 import { capitalize } from "src/tools/tools";
@@ -13,10 +14,10 @@ ${idt}    type: 'collection',
 ${idt}    default: {
 ${(field.proto.proto3Optional ? [] : [
             field.message?.oneofs?.length
-                ? field.message.oneofs.map((oneof) => `${idt}      ${oneof.localName}Select: 'undefined',\n`).join('')
+                ? field.message.oneofs.map((oneof: DescField) => `${idt}      ${oneof.localName}Select: 'undefined',\n`).join('')
                 : '',
             field.message?.fields
-                .map((subField) => subField.proto.proto3Optional ? '' : `${idt}      ${subField.jsonName}: ${getDefaultType(subField)},\n`)
+                .map((subField: DescField) => subField.proto.proto3Optional ? '' : `${idt}      ${subField.jsonName}: ${getDefaultType(subField)},\n`)
                 .join('')
         ]).filter(Boolean).join('')}${idt}    },
 ${idt}    options: [`;
@@ -53,7 +54,7 @@ ${idt}    name: '${field.oneof.localName}Select',
 ${idt}    type: 'options',
 ${idt}    options: [
 ${idt}      { name: 'Select', value: 'undefined' },
-${field.oneof.fields.map((value) => `${idt}      { name: '${value.jsonName}', value: '${value.jsonName}' },`).join('\n')}
+${field.oneof.fields.map((value: DescField) => `${idt}      { name: '${value.jsonName}', value: '${value.jsonName}' },`).join('\n')}
 ${idt}    ],
 ${idt}    default: 'undefined',
 ${idt}  },`;
