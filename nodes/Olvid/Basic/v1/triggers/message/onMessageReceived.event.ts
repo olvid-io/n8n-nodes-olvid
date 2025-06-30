@@ -4,7 +4,8 @@ import { IBinaryData, ITriggerFunctions } from "n8n-workflow";
 import { downloadAttachment } from "../attachment/onAttachmentReceived.event";
 
 export function messageReceived(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: Boolean = false): Function {
-    const downloadAttachments = this.getNodeParameter('downloadAttachments') as boolean ?? false;
+		const downloadAttachments = this.getNodeParameter('downloadAttachments') as boolean ?? false;
+		const bodySearchRegexp: string = this.getNodeParameter('bodyRegexpFilter') as string ?? "";
     if (returnMockData) {
         this.emit([this.helpers.returnJsonArray([{
             "body": "Welcome to Olvid!",
@@ -42,6 +43,7 @@ export function messageReceived(this: ITriggerFunctions, client: OlvidClient, on
         },
         endCallback: () => {
             onCallback?.();
-        }
+        },
+				filter: new datatypes.MessageFilter({bodySearch: bodySearchRegexp})
     });
 }

@@ -76,5 +76,18 @@ export const versionDescription: INodeTypeDescription = {
       default: false,
       description: 'Use mock data for [🧪 Test step] button (located at the top right of the drawer of this modal) to test the workflow without connecting to Olvid daemon',
     },
+		{
+			displayName: 'Body Regexp Filter',
+			name: 'bodyRegexpFilter',
+			type: 'string',
+			default: "",
+			hint: "An optional parameter to filter trigger messages",
+			description: 'Filter messages for this trigger using a regexp',
+			displayOptions: {
+				show: {
+					updates: ['messageReceived'],
+				},
+			},
+		},
   ],
 };
