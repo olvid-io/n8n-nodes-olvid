@@ -9,14 +9,14 @@ importers:
   .:
     devDependencies:
       '@bufbuild/protobuf':
-        specifier: ^2.5.1
-        version: 2.6.0
+        specifier: ^1.10.1
+        version: 1.10.1
       '@connectrpc/connect':
         specifier: ^1.6.1
-        version: 1.6.1(@bufbuild/protobuf@2.6.0)
+        version: 1.6.1(@bufbuild/protobuf@1.10.1)
       '@connectrpc/connect-node':
         specifier: ^1.6.1
-        version: 1.6.1(@bufbuild/protobuf@2.6.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.6.0))
+        version: 1.6.1(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.1))
       '@types/node':
         specifier: ^22.9.0
         version: 22.15.34
@@ -47,8 +47,8 @@ importers:
 
 packages:
 
-  '@bufbuild/protobuf@2.6.0':
-    resolution: {integrity: sha512-6cuonJVNOIL7lTj5zgo/Rc2bKAo4/GvN+rKCrUj7GdEHRzCk8zKOfFwUsL9nAVk5rSIsRmlgcpLzTRysopEeeg==}
+  '@bufbuild/protobuf@1.10.1':
+    resolution: {integrity: sha512-wJ8ReQbHxsAfXhrf9ixl0aYbZorRuOWpBNzm8pL8ftmSxQx/wnJD5Eg861NwJU/czy2VXFIebCeZnZrI9rktIQ==}
 
   '@connectrpc/connect-node@1.6.1':
     resolution: {integrity: sha512-DxcD1wsF/aX9GegjAtl7VbpiZNjVJozy87VbaFoN6AF0Ln1Q757r5dgV59Gz0wmlk5f17txUsrEr1f2inlnnAg==}
@@ -2149,17 +2149,17 @@ packages:
 
 snapshots:
 
-  '@bufbuild/protobuf@2.6.0': {}
+  '@bufbuild/protobuf@1.10.1': {}
 
-  '@connectrpc/connect-node@1.6.1(@bufbuild/protobuf@2.6.0)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.6.0))':
+  '@connectrpc/connect-node@1.6.1(@bufbuild/protobuf@1.10.1)(@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.1))':
     dependencies:
-      '@bufbuild/protobuf': 2.6.0
-      '@connectrpc/connect': 1.6.1(@bufbuild/protobuf@2.6.0)
+      '@bufbuild/protobuf': 1.10.1
+      '@connectrpc/connect': 1.6.1(@bufbuild/protobuf@1.10.1)
       undici: 5.29.0
 
-  '@connectrpc/connect@1.6.1(@bufbuild/protobuf@2.6.0)':
+  '@connectrpc/connect@1.6.1(@bufbuild/protobuf@1.10.1)':
     dependencies:
-      '@bufbuild/protobuf': 2.6.0
+      '@bufbuild/protobuf': 1.10.1
 
   '@eslint-community/eslint-utils@4.7.0(eslint@8.57.1)':
     dependencies:
