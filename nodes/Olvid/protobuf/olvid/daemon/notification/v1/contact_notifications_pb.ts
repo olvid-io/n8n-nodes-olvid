@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { Contact } from "../../datatypes/v1/contact_pb.js";
+import { Contact, ContactFilter } from "../../datatypes/v1/contact_pb.js";
 import { IdentityDetails } from "../../datatypes/v1/identity_pb.js";
 
 /**
@@ -15,6 +15,16 @@ import { IdentityDetails } from "../../datatypes/v1/identity_pb.js";
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactNewNotification
  */
 export class SubscribeToContactNewNotification extends Message<SubscribeToContactNewNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
+   */
+  filter?: ContactFilter;
+
   constructor(data?: PartialMessage<SubscribeToContactNewNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -23,6 +33,8 @@ export class SubscribeToContactNewNotification extends Message<SubscribeToContac
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToContactNewNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: ContactFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToContactNewNotification {
@@ -86,6 +98,21 @@ export class ContactNewNotification extends Message<ContactNewNotification> {
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactDeletedNotification
  */
 export class SubscribeToContactDeletedNotification extends Message<SubscribeToContactDeletedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
+   */
+  filter?: ContactFilter;
+
+  /**
+   * @generated from field: repeated uint64 contact_ids = 3;
+   */
+  contactIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToContactDeletedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -94,6 +121,9 @@ export class SubscribeToContactDeletedNotification extends Message<SubscribeToCo
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToContactDeletedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: ContactFilter, opt: true },
+    { no: 3, name: "contact_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToContactDeletedNotification {
@@ -157,6 +187,21 @@ export class ContactDeletedNotification extends Message<ContactDeletedNotificati
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactDetailsUpdatedNotification
  */
 export class SubscribeToContactDetailsUpdatedNotification extends Message<SubscribeToContactDetailsUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
+   */
+  filter?: ContactFilter;
+
+  /**
+   * @generated from field: repeated uint64 contact_ids = 3;
+   */
+  contactIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToContactDetailsUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -165,6 +210,9 @@ export class SubscribeToContactDetailsUpdatedNotification extends Message<Subscr
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToContactDetailsUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: ContactFilter, opt: true },
+    { no: 3, name: "contact_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToContactDetailsUpdatedNotification {
@@ -234,6 +282,21 @@ export class ContactDetailsUpdatedNotification extends Message<ContactDetailsUpd
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactPhotoUpdatedNotification
  */
 export class SubscribeToContactPhotoUpdatedNotification extends Message<SubscribeToContactPhotoUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
+   */
+  filter?: ContactFilter;
+
+  /**
+   * @generated from field: repeated uint64 contact_ids = 3;
+   */
+  contactIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToContactPhotoUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -242,6 +305,9 @@ export class SubscribeToContactPhotoUpdatedNotification extends Message<Subscrib
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToContactPhotoUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: ContactFilter, opt: true },
+    { no: 3, name: "contact_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToContactPhotoUpdatedNotification {

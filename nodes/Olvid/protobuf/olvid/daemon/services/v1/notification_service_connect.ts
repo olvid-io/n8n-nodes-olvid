@@ -10,6 +10,7 @@ import { GroupDeletedNotification, GroupDescriptionUpdatedNotification, GroupMem
 import { DiscussionLockedNotification, DiscussionNewNotification, DiscussionSettingsUpdatedNotification, DiscussionTitleUpdatedNotification, SubscribeToDiscussionLockedNotification, SubscribeToDiscussionNewNotification, SubscribeToDiscussionSettingsUpdatedNotification, SubscribeToDiscussionTitleUpdatedNotification } from "../../notification/v1/discussion_notifications_pb.js";
 import { MessageBodyUpdatedNotification, MessageDeletedNotification, MessageDeliveredNotification, MessageLocationReceivedNotification, MessageLocationSentNotification, MessageLocationSharingEndNotification, MessageLocationSharingStartNotification, MessageLocationSharingUpdateNotification, MessageReactionAddedNotification, MessageReactionRemovedNotification, MessageReactionUpdatedNotification, MessageReadNotification, MessageReceivedNotification, MessageSentNotification, MessageUploadedNotification, SubscribeToMessageBodyUpdatedNotification, SubscribeToMessageDeletedNotification, SubscribeToMessageDeliveredNotification, SubscribeToMessageLocationReceivedNotification, SubscribeToMessageLocationSentNotification, SubscribeToMessageLocationSharingEndNotification, SubscribeToMessageLocationSharingStartNotification, SubscribeToMessageLocationSharingUpdateNotification, SubscribeToMessageReactionAddedNotification, SubscribeToMessageReactionRemovedNotification, SubscribeToMessageReactionUpdatedNotification, SubscribeToMessageReadNotification, SubscribeToMessageReceivedNotification, SubscribeToMessageSentNotification, SubscribeToMessageUploadedNotification } from "../../notification/v1/message_notifications_pb.js";
 import { AttachmentReceivedNotification, AttachmentUploadedNotification, SubscribeToAttachmentReceivedNotification, SubscribeToAttachmentUploadedNotification } from "../../notification/v1/attachment_notifications_pb.js";
+import { CallAcceptedNotification, CallBusyNotification, CallDeclinedNotification, CallEndedNotification, CallIncomingCallNotification, CallRingingNotification, SubscribeToCallAcceptedNotification, SubscribeToCallBusyNotification, SubscribeToCallDeclinedNotification, SubscribeToCallEndedNotification, SubscribeToCallIncomingCallNotification, SubscribeToCallRingingNotification } from "../../notification/v1/call_notifications_pb.js";
 
 /**
  * Invitation
@@ -456,6 +457,71 @@ export const AttachmentNotificationService = {
       name: "AttachmentUploaded",
       I: SubscribeToAttachmentUploadedNotification,
       O: AttachmentUploadedNotification,
+      kind: MethodKind.ServerStreaming,
+    },
+  }
+} as const;
+
+/**
+ * Call
+ *
+ * @generated from service olvid.daemon.services.v1.CallNotificationService
+ */
+export const CallNotificationService = {
+  typeName: "olvid.daemon.services.v1.CallNotificationService",
+  methods: {
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallNotificationService.CallIncomingCall
+     */
+    callIncomingCall: {
+      name: "CallIncomingCall",
+      I: SubscribeToCallIncomingCallNotification,
+      O: CallIncomingCallNotification,
+      kind: MethodKind.ServerStreaming,
+    },
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallNotificationService.CallRinging
+     */
+    callRinging: {
+      name: "CallRinging",
+      I: SubscribeToCallRingingNotification,
+      O: CallRingingNotification,
+      kind: MethodKind.ServerStreaming,
+    },
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallNotificationService.CallAccepted
+     */
+    callAccepted: {
+      name: "CallAccepted",
+      I: SubscribeToCallAcceptedNotification,
+      O: CallAcceptedNotification,
+      kind: MethodKind.ServerStreaming,
+    },
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallNotificationService.CallDeclined
+     */
+    callDeclined: {
+      name: "CallDeclined",
+      I: SubscribeToCallDeclinedNotification,
+      O: CallDeclinedNotification,
+      kind: MethodKind.ServerStreaming,
+    },
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallNotificationService.CallBusy
+     */
+    callBusy: {
+      name: "CallBusy",
+      I: SubscribeToCallBusyNotification,
+      O: CallBusyNotification,
+      kind: MethodKind.ServerStreaming,
+    },
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallNotificationService.CallEnded
+     */
+    callEnded: {
+      name: "CallEnded",
+      I: SubscribeToCallEndedNotification,
+      O: CallEndedNotification,
       kind: MethodKind.ServerStreaming,
     },
   }

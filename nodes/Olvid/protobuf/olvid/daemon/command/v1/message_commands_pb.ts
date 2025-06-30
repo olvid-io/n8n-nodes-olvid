@@ -1193,6 +1193,7 @@ export class MessageUpdateBodyResponse extends Message<MessageUpdateBodyResponse
 /**
  *
  * * MessageSendVoip
+ * * ⚠️ deprecated: use CallCommandService instead ⚠️
  *
  * @generated from message olvid.daemon.command.v1.MessageSendVoipRequest
  */

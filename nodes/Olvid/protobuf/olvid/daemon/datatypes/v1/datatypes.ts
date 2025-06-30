@@ -1,5 +1,6 @@
 export * from "./message_pb";
 export * from "./attachment_pb";
+export * from "./call_pb";
 export * from "./client_key_pb";
 export * from "./identity_pb";
 export * from "./contact_pb";

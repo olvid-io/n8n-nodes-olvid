@@ -46,5 +46,11 @@ export const generatedDescriptions: INodePropertyOptions[] = [
   { name: 'MessageReactionRemoved', value: LISTENER_TYPES.MESSAGEREACTIONREMOVED },
   { name: 'AttachmentReceived', value: LISTENER_TYPES.ATTACHMENTRECEIVED },
   { name: 'AttachmentUploaded', value: LISTENER_TYPES.ATTACHMENTUPLOADED },
+  { name: 'CallIncomingCall', value: LISTENER_TYPES.CALLINCOMINGCALL },
+  { name: 'CallRinging', value: LISTENER_TYPES.CALLRINGING },
+  { name: 'CallAccepted', value: LISTENER_TYPES.CALLACCEPTED },
+  { name: 'CallDeclined', value: LISTENER_TYPES.CALLDECLINED },
+  { name: 'CallBusy', value: LISTENER_TYPES.CALLBUSY },
+  { name: 'CallEnded', value: LISTENER_TYPES.CALLENDED },
 
 ];

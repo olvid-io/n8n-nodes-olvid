@@ -12,6 +12,7 @@ import * as MessageCommandService from './MessageCommandService';
 import * as AttachmentCommandService from './AttachmentCommandService';
 import * as StorageCommandService from './StorageCommandService';
 import * as DiscussionStorageCommandService from './DiscussionStorageCommandService';
+import * as CallCommandService from './CallCommandService';
 
 export const resourceOptionsList: INodePropertyOptions[] = [
   {name: 'IdentityCommandService', value: 'IdentityCommandService'},
@@ -24,6 +25,7 @@ export const resourceOptionsList: INodePropertyOptions[] = [
   {name: 'AttachmentCommandService', value: 'AttachmentCommandService'},
   {name: 'StorageCommandService', value: 'StorageCommandService'},
   {name: 'DiscussionStorageCommandService', value: 'DiscussionStorageCommandService'},
+  {name: 'CallCommandService', value: 'CallCommandService'},
 ];
 
 export const resourceDescriptions: INodeProperties[] = [
@@ -37,4 +39,5 @@ export const resourceDescriptions: INodeProperties[] = [
   ...AttachmentCommandService.descriptions,
   ...StorageCommandService.descriptions,
   ...DiscussionStorageCommandService.descriptions,
+  ...CallCommandService.descriptions,
 ];

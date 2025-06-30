@@ -13,6 +13,7 @@ import type { ITriggerFunctions } from 'n8n-workflow';
 export function discussionSettingsUpdated(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
         this.emit([this.helpers.returnJsonArray([{
+// discussion.mockData,
 // newSettings.mockData,
 // previousSettings.mockData
         }])]);
@@ -21,7 +22,7 @@ export function discussionSettingsUpdated(this: ITriggerFunctions, client: Olvid
     }
 
 	const callback = (notification: notifications.DiscussionSettingsUpdatedNotification) => {
-		this.emit([this.helpers.returnJsonArray([{newSettings: {discussionId: Number(notification?.newSettings?.discussionId), readOnce: notification?.newSettings?.readOnce, existenceDuration: Number(notification?.newSettings?.existenceDuration), visibilityDuration: Number(notification?.newSettings?.visibilityDuration)}},{previousSettings: {discussionId: Number(notification?.previousSettings?.discussionId), readOnce: notification?.previousSettings?.readOnce, existenceDuration: Number(notification?.previousSettings?.existenceDuration), visibilityDuration: Number(notification?.previousSettings?.visibilityDuration)}}])]);
+		this.emit([this.helpers.returnJsonArray([{discussion: {id: Number(notification?.discussion?.id), title: notification?.discussion?.title, contactId: notification?.discussion?.identifier.case === 'contactId' ? Number(notification?.discussion?.identifier.value) : undefined, groupId: notification?.discussion?.identifier.case === 'groupId' ? Number(notification?.discussion?.identifier.value) : undefined}},{newSettings: {discussionId: Number(notification?.newSettings?.discussionId), readOnce: notification?.newSettings?.readOnce, existenceDuration: Number(notification?.newSettings?.existenceDuration), visibilityDuration: Number(notification?.newSettings?.visibilityDuration)}},{previousSettings: {discussionId: Number(notification?.previousSettings?.discussionId), readOnce: notification?.previousSettings?.readOnce, existenceDuration: Number(notification?.previousSettings?.existenceDuration), visibilityDuration: Number(notification?.previousSettings?.visibilityDuration)}}])]);
 		onCallback?.();
 	}
 

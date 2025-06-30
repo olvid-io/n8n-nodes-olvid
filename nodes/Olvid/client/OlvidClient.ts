@@ -47,12 +47,14 @@ export class OlvidClient {
         attachmentCommandStub: Client<typeof services.AttachmentCommandService>;
         storageCommandStub: Client<typeof services.StorageCommandService>;
         discussionStorageCommandStub: Client<typeof services.DiscussionStorageCommandService>;
+        callCommandStub: Client<typeof services.CallCommandService>;
         invitationNotificationStub: CallbackClient<typeof services.InvitationNotificationService>;
         contactNotificationStub: CallbackClient<typeof services.ContactNotificationService>;
         groupNotificationStub: CallbackClient<typeof services.GroupNotificationService>;
         discussionNotificationStub: CallbackClient<typeof services.DiscussionNotificationService>;
         messageNotificationStub: CallbackClient<typeof services.MessageNotificationService>;
         attachmentNotificationStub: CallbackClient<typeof services.AttachmentNotificationService>;
+        callNotificationStub: CallbackClient<typeof services.CallNotificationService>;
 
     };
 
@@ -81,12 +83,14 @@ export class OlvidClient {
             attachmentCommandStub: createClient(services.AttachmentCommandService, this.transport),
             storageCommandStub: createClient(services.StorageCommandService, this.transport),
             discussionStorageCommandStub: createClient(services.DiscussionStorageCommandService, this.transport),
+            callCommandStub: createClient(services.CallCommandService, this.transport),
             invitationNotificationStub: createCallbackClient(services.InvitationNotificationService, this.transport),
             contactNotificationStub: createCallbackClient(services.ContactNotificationService, this.transport),
             groupNotificationStub: createCallbackClient(services.GroupNotificationService, this.transport),
             discussionNotificationStub: createCallbackClient(services.DiscussionNotificationService, this.transport),
             messageNotificationStub: createCallbackClient(services.MessageNotificationService, this.transport),
             attachmentNotificationStub: createCallbackClient(services.AttachmentNotificationService, this.transport),
+            callNotificationStub: createCallbackClient(services.CallNotificationService, this.transport),
 
         };
 
@@ -634,9 +638,22 @@ export class OlvidClient {
     }
 
     /*
+    ** CallCommandService
+    */
+   async callStartDiscussionCall(request: {discussionId: bigint}): Promise<string> {
+        let response: command.CallStartDiscussionCallResponse = await this.stubs.callCommandStub.callStartDiscussionCall(request)
+        return response.callIdentifier!
+    }
+
+   async callStartCustomCall(request: {contactIds?: bigint[], discussionId?: bigint}): Promise<string> {
+        let response: command.CallStartCustomCallResponse = await this.stubs.callCommandStub.callStartCustomCall(request)
+        return response.callIdentifier!
+    }
+
+    /*
     ** InvitationNotificationService
     */
-    public onInvitationReceived(args: {callback: (invitation: datatypes.Invitation) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onInvitationReceived(args: {callback: (invitation: datatypes.Invitation) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.InvitationFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -658,11 +675,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.invitationNotificationStub.invitationReceived({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.invitationNotificationStub.invitationReceived({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onInvitationSent(args: {callback: (invitation: datatypes.Invitation) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onInvitationSent(args: {callback: (invitation: datatypes.Invitation) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.InvitationFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -684,11 +701,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.invitationNotificationStub.invitationSent({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.invitationNotificationStub.invitationSent({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onInvitationDeleted(args: {callback: (invitation: datatypes.Invitation) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onInvitationDeleted(args: {callback: (invitation: datatypes.Invitation) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.InvitationFilter, invitationIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -710,11 +727,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.invitationNotificationStub.invitationDeleted({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.invitationNotificationStub.invitationDeleted({count: args.count, filter: args.filter, invitationIds: args.invitationIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onInvitationUpdated(args: {callback: (invitation: datatypes.Invitation, previousInvitationStatus: datatypes.Invitation_Status) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onInvitationUpdated(args: {callback: (invitation: datatypes.Invitation, previousInvitationStatus: datatypes.Invitation_Status) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.InvitationFilter, invitationIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -736,14 +753,14 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.invitationNotificationStub.invitationUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.invitationNotificationStub.invitationUpdated({count: args.count, filter: args.filter, invitationIds: args.invitationIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
     /*
     ** ContactNotificationService
     */
-    public onContactNew(args: {callback: (contact: datatypes.Contact) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onContactNew(args: {callback: (contact: datatypes.Contact) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.ContactFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -765,11 +782,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.contactNotificationStub.contactNew({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.contactNotificationStub.contactNew({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onContactDeleted(args: {callback: (contact: datatypes.Contact) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onContactDeleted(args: {callback: (contact: datatypes.Contact) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.ContactFilter, contactIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -791,11 +808,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.contactNotificationStub.contactDeleted({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.contactNotificationStub.contactDeleted({count: args.count, filter: args.filter, contactIds: args.contactIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onContactDetailsUpdated(args: {callback: (contact: datatypes.Contact, previousDetails: datatypes.IdentityDetails) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onContactDetailsUpdated(args: {callback: (contact: datatypes.Contact, previousDetails: datatypes.IdentityDetails) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.ContactFilter, contactIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -817,11 +834,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.contactNotificationStub.contactDetailsUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.contactNotificationStub.contactDetailsUpdated({count: args.count, filter: args.filter, contactIds: args.contactIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onContactPhotoUpdated(args: {callback: (contact: datatypes.Contact) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onContactPhotoUpdated(args: {callback: (contact: datatypes.Contact) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.ContactFilter, contactIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -843,14 +860,14 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.contactNotificationStub.contactPhotoUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.contactNotificationStub.contactPhotoUpdated({count: args.count, filter: args.filter, contactIds: args.contactIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
     /*
     ** GroupNotificationService
     */
-    public onGroupNew(args: {callback: (group: datatypes.Group) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupNew(args: {callback: (group: datatypes.Group) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupFilter?: datatypes.GroupFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -872,11 +889,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupNew({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupNew({count: args.count, groupFilter: args.groupFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupDeleted(args: {callback: (group: datatypes.Group) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupDeleted(args: {callback: (group: datatypes.Group) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -898,11 +915,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupDeleted({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupDeleted({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupNameUpdated(args: {callback: (group: datatypes.Group, previousName: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupNameUpdated(args: {callback: (group: datatypes.Group, previousName: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, previousNameSearch?: string}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -924,11 +941,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupNameUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupNameUpdated({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, previousNameSearch: args.previousNameSearch}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupPhotoUpdated(args: {callback: (group: datatypes.Group) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupPhotoUpdated(args: {callback: (group: datatypes.Group) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -950,11 +967,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupPhotoUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupPhotoUpdated({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupDescriptionUpdated(args: {callback: (group: datatypes.Group, previousDescription: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupDescriptionUpdated(args: {callback: (group: datatypes.Group, previousDescription: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, previousDescriptionSearch?: string}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -976,11 +993,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupDescriptionUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupDescriptionUpdated({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, previousDescriptionSearch: args.previousDescriptionSearch}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupPendingMemberAdded(args: {callback: (group: datatypes.Group, pendingMember: datatypes.PendingGroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupPendingMemberAdded(args: {callback: (group: datatypes.Group, pendingMember: datatypes.PendingGroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, pendingMemberFilter?: datatypes.PendingGroupMemberFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1002,11 +1019,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupPendingMemberAdded({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupPendingMemberAdded({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, pendingMemberFilter: args.pendingMemberFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupPendingMemberRemoved(args: {callback: (group: datatypes.Group, pendingMember: datatypes.PendingGroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupPendingMemberRemoved(args: {callback: (group: datatypes.Group, pendingMember: datatypes.PendingGroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, pendingMemberFilter?: datatypes.PendingGroupMemberFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1028,11 +1045,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupPendingMemberRemoved({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupPendingMemberRemoved({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, pendingMemberFilter: args.pendingMemberFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupMemberJoined(args: {callback: (group: datatypes.Group, member: datatypes.GroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupMemberJoined(args: {callback: (group: datatypes.Group, member: datatypes.GroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, memberFilter?: datatypes.GroupMemberFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1054,11 +1071,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupMemberJoined({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupMemberJoined({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, memberFilter: args.memberFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupMemberLeft(args: {callback: (group: datatypes.Group, member: datatypes.GroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupMemberLeft(args: {callback: (group: datatypes.Group, member: datatypes.GroupMember) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, memberFilter?: datatypes.GroupMemberFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1080,11 +1097,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupMemberLeft({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupMemberLeft({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, memberFilter: args.memberFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupOwnPermissionsUpdated(args: {callback: (group: datatypes.Group, permissions: datatypes.GroupMemberPermissions, previousPermissions: datatypes.GroupMemberPermissions) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupOwnPermissionsUpdated(args: {callback: (group: datatypes.Group, permissions: datatypes.GroupMemberPermissions, previousPermissions: datatypes.GroupMemberPermissions) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, permissionsFilter?: datatypes.GroupPermissionFilter, previousPermissionsFilter?: datatypes.GroupPermissionFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1106,11 +1123,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupOwnPermissionsUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupOwnPermissionsUpdated({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, permissionsFilter: args.permissionsFilter, previousPermissionsFilter: args.previousPermissionsFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupMemberPermissionsUpdated(args: {callback: (group: datatypes.Group, member: datatypes.GroupMember, previousPermissions: datatypes.GroupMemberPermissions) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupMemberPermissionsUpdated(args: {callback: (group: datatypes.Group, member: datatypes.GroupMember, previousPermissions: datatypes.GroupMemberPermissions) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[], groupFilter?: datatypes.GroupFilter, memberFilter?: datatypes.GroupMemberFilter, previousPermissionFilter?: datatypes.GroupMemberFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1132,11 +1149,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupMemberPermissionsUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupMemberPermissionsUpdated({count: args.count, groupIds: args.groupIds, groupFilter: args.groupFilter, memberFilter: args.memberFilter, previousPermissionFilter: args.previousPermissionFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupUpdateInProgress(args: {callback: (groupId: bigint) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupUpdateInProgress(args: {callback: (groupId: bigint) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1158,11 +1175,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupUpdateInProgress({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupUpdateInProgress({count: args.count, groupIds: args.groupIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onGroupUpdateFinished(args: {callback: (groupId: bigint) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onGroupUpdateFinished(args: {callback: (groupId: bigint) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, groupIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1184,14 +1201,14 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.groupNotificationStub.groupUpdateFinished({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.groupNotificationStub.groupUpdateFinished({count: args.count, groupIds: args.groupIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
     /*
     ** DiscussionNotificationService
     */
-    public onDiscussionNew(args: {callback: (discussion: datatypes.Discussion) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onDiscussionNew(args: {callback: (discussion: datatypes.Discussion) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.DiscussionFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1213,11 +1230,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.discussionNotificationStub.discussionNew({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.discussionNotificationStub.discussionNew({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onDiscussionLocked(args: {callback: (discussion: datatypes.Discussion) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onDiscussionLocked(args: {callback: (discussion: datatypes.Discussion) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.DiscussionFilter, discussionIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1239,11 +1256,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.discussionNotificationStub.discussionLocked({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.discussionNotificationStub.discussionLocked({count: args.count, filter: args.filter, discussionIds: args.discussionIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onDiscussionTitleUpdated(args: {callback: (discussion: datatypes.Discussion, previousTitle: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onDiscussionTitleUpdated(args: {callback: (discussion: datatypes.Discussion, previousTitle: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.DiscussionFilter, discussionIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1265,18 +1282,18 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.discussionNotificationStub.discussionTitleUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.discussionNotificationStub.discussionTitleUpdated({count: args.count, filter: args.filter, discussionIds: args.discussionIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onDiscussionSettingsUpdated(args: {callback: (newSettings: datatypes.DiscussionSettings, previousSettings: datatypes.DiscussionSettings) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onDiscussionSettingsUpdated(args: {callback: (discussion: datatypes.Discussion, newSettings: datatypes.DiscussionSettings, previousSettings: datatypes.DiscussionSettings) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.DiscussionFilter, discussionIds?: bigint[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
 
         let wrappedCallback = (notification: notification.DiscussionSettingsUpdatedNotification) => {
             Promise.resolve()
-                .then(() => args.callback.call(this, notification.newSettings!, notification.previousSettings!))
+                .then(() => args.callback.call(this, notification.discussion!, notification.newSettings!, notification.previousSettings!))
                 .catch(e => {
                     console.error("onDiscussionSettingsUpdated", e);
                 });
@@ -1291,14 +1308,14 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.discussionNotificationStub.discussionSettingsUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.discussionNotificationStub.discussionSettingsUpdated({count: args.count, filter: args.filter, discussionIds: args.discussionIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
     /*
     ** MessageNotificationService
     */
-    public onMessageReceived(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageReceived(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1320,11 +1337,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageReceived({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageReceived({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageSent(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageSent(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1346,11 +1363,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageSent({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageSent({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageDeleted(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageDeleted(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1372,11 +1389,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageDeleted({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageDeleted({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageBodyUpdated(args: {callback: (message: datatypes.Message, previousBody: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageBodyUpdated(args: {callback: (message: datatypes.Message, previousBody: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1398,11 +1415,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageBodyUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageBodyUpdated({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageUploaded(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageUploaded(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1424,11 +1441,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageUploaded({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageUploaded({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageDelivered(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageDelivered(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1450,11 +1467,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageDelivered({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageDelivered({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageRead(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageRead(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1476,11 +1493,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageRead({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageRead({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageLocationReceived(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageLocationReceived(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1502,11 +1519,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageLocationReceived({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageLocationReceived({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageLocationSent(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageLocationSent(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1528,11 +1545,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageLocationSent({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageLocationSent({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageLocationSharingStart(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageLocationSharingStart(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1554,11 +1571,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageLocationSharingStart({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageLocationSharingStart({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageLocationSharingUpdate(args: {callback: (message: datatypes.Message, previousLocation: datatypes.MessageLocation) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageLocationSharingUpdate(args: {callback: (message: datatypes.Message, previousLocation: datatypes.MessageLocation) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1580,11 +1597,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageLocationSharingUpdate({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageLocationSharingUpdate({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageLocationSharingEnd(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageLocationSharingEnd(args: {callback: (message: datatypes.Message) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1606,11 +1623,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageLocationSharingEnd({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageLocationSharingEnd({count: args.count, messageIds: args.messageIds, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageReactionAdded(args: {callback: (message: datatypes.Message, reaction: datatypes.MessageReaction) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageReactionAdded(args: {callback: (message: datatypes.Message, reaction: datatypes.MessageReaction) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter, reactionFilter?: datatypes.ReactionFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1632,11 +1649,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageReactionAdded({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageReactionAdded({count: args.count, messageIds: args.messageIds, filter: args.filter, reactionFilter: args.reactionFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageReactionUpdated(args: {callback: (message: datatypes.Message, reaction: datatypes.MessageReaction, previousReaction: datatypes.MessageReaction) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageReactionUpdated(args: {callback: (message: datatypes.Message, reaction: datatypes.MessageReaction, previousReaction: datatypes.MessageReaction) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], messageFilter?: datatypes.MessageFilter, reactionFilter?: datatypes.ReactionFilter, previousReactionFilter?: datatypes.ReactionFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1658,11 +1675,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageReactionUpdated({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageReactionUpdated({count: args.count, messageIds: args.messageIds, messageFilter: args.messageFilter, reactionFilter: args.reactionFilter, previousReactionFilter: args.previousReactionFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onMessageReactionRemoved(args: {callback: (message: datatypes.Message, reaction: datatypes.MessageReaction) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onMessageReactionRemoved(args: {callback: (message: datatypes.Message, reaction: datatypes.MessageReaction) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, messageIds?: datatypes.MessageId[], filter?: datatypes.MessageFilter, reactionFilter?: datatypes.ReactionFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1684,14 +1701,14 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.messageNotificationStub.messageReactionRemoved({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.messageNotificationStub.messageReactionRemoved({count: args.count, messageIds: args.messageIds, filter: args.filter, reactionFilter: args.reactionFilter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
     /*
     ** AttachmentNotificationService
     */
-    public onAttachmentReceived(args: {callback: (attachment: datatypes.Attachment) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onAttachmentReceived(args: {callback: (attachment: datatypes.Attachment) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.AttachmentFilter}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1713,11 +1730,11 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.attachmentNotificationStub.attachmentReceived({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.attachmentNotificationStub.attachmentReceived({count: args.count, filter: args.filter}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 
-    public onAttachmentUploaded(args: {callback: (attachment: datatypes.Attachment) => Promise<void> | void, endCallback?: (error ?: Error) => void, }): Function {
+    public onAttachmentUploaded(args: {callback: (attachment: datatypes.Attachment) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint, filter?: datatypes.AttachmentFilter, messageIds?: datatypes.MessageId[], attachmentIds?: datatypes.AttachmentId[]}): Function {
         let cancelFn: Function;
         const callbackId = crypto.randomUUID();
         this.activeCallbacks.add(callbackId);
@@ -1739,7 +1756,166 @@ export class OlvidClient {
             this.callbackUpdate.emit("removed");
         }
 
-        cancelFn = this.stubs.attachmentNotificationStub.attachmentUploaded({}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        cancelFn = this.stubs.attachmentNotificationStub.attachmentUploaded({count: args.count, filter: args.filter, messageIds: args.messageIds, attachmentIds: args.attachmentIds}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        return cancelFn;
+    }
+
+    /*
+    ** CallNotificationService
+    */
+    public onCallIncomingCall(args: {callback: (callIdentifier: string, discussionId: bigint, participantId: datatypes.CallParticipantId, callerDisplayName: string, participantCount: number) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint}): Function {
+        let cancelFn: Function;
+        const callbackId = crypto.randomUUID();
+        this.activeCallbacks.add(callbackId);
+
+        let wrappedCallback = (notification: notification.CallIncomingCallNotification) => {
+            Promise.resolve()
+                .then(() => args.callback.call(this, notification.callIdentifier!, notification.discussionId!, notification.participantId!, notification.callerDisplayName!, notification.participantCount!))
+                .catch(e => {
+                    console.error("onCallIncomingCall", e);
+                });
+        };
+
+        let wrappedEndCallback = (error ?: Error) => {
+            if (error) {
+                console.error("onCallIncomingCall: unexpected error", error);
+            }
+            args.endCallback ? args.endCallback(error) : undefined;
+            this.activeCallbacks.delete(callbackId);
+            this.callbackUpdate.emit("removed");
+        }
+
+        cancelFn = this.stubs.callNotificationStub.callIncomingCall({count: args.count}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        return cancelFn;
+    }
+
+    public onCallRinging(args: {callback: (callIdentifier: string, participantId: datatypes.CallParticipantId) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint}): Function {
+        let cancelFn: Function;
+        const callbackId = crypto.randomUUID();
+        this.activeCallbacks.add(callbackId);
+
+        let wrappedCallback = (notification: notification.CallRingingNotification) => {
+            Promise.resolve()
+                .then(() => args.callback.call(this, notification.callIdentifier!, notification.participantId!))
+                .catch(e => {
+                    console.error("onCallRinging", e);
+                });
+        };
+
+        let wrappedEndCallback = (error ?: Error) => {
+            if (error) {
+                console.error("onCallRinging: unexpected error", error);
+            }
+            args.endCallback ? args.endCallback(error) : undefined;
+            this.activeCallbacks.delete(callbackId);
+            this.callbackUpdate.emit("removed");
+        }
+
+        cancelFn = this.stubs.callNotificationStub.callRinging({count: args.count}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        return cancelFn;
+    }
+
+    public onCallAccepted(args: {callback: (callIdentifier: string, participantId: datatypes.CallParticipantId) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint}): Function {
+        let cancelFn: Function;
+        const callbackId = crypto.randomUUID();
+        this.activeCallbacks.add(callbackId);
+
+        let wrappedCallback = (notification: notification.CallAcceptedNotification) => {
+            Promise.resolve()
+                .then(() => args.callback.call(this, notification.callIdentifier!, notification.participantId!))
+                .catch(e => {
+                    console.error("onCallAccepted", e);
+                });
+        };
+
+        let wrappedEndCallback = (error ?: Error) => {
+            if (error) {
+                console.error("onCallAccepted: unexpected error", error);
+            }
+            args.endCallback ? args.endCallback(error) : undefined;
+            this.activeCallbacks.delete(callbackId);
+            this.callbackUpdate.emit("removed");
+        }
+
+        cancelFn = this.stubs.callNotificationStub.callAccepted({count: args.count}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        return cancelFn;
+    }
+
+    public onCallDeclined(args: {callback: (callIdentifier: string, participantId: datatypes.CallParticipantId) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint}): Function {
+        let cancelFn: Function;
+        const callbackId = crypto.randomUUID();
+        this.activeCallbacks.add(callbackId);
+
+        let wrappedCallback = (notification: notification.CallDeclinedNotification) => {
+            Promise.resolve()
+                .then(() => args.callback.call(this, notification.callIdentifier!, notification.participantId!))
+                .catch(e => {
+                    console.error("onCallDeclined", e);
+                });
+        };
+
+        let wrappedEndCallback = (error ?: Error) => {
+            if (error) {
+                console.error("onCallDeclined: unexpected error", error);
+            }
+            args.endCallback ? args.endCallback(error) : undefined;
+            this.activeCallbacks.delete(callbackId);
+            this.callbackUpdate.emit("removed");
+        }
+
+        cancelFn = this.stubs.callNotificationStub.callDeclined({count: args.count}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        return cancelFn;
+    }
+
+    public onCallBusy(args: {callback: (callIdentifier: string, participantId: datatypes.CallParticipantId) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint}): Function {
+        let cancelFn: Function;
+        const callbackId = crypto.randomUUID();
+        this.activeCallbacks.add(callbackId);
+
+        let wrappedCallback = (notification: notification.CallBusyNotification) => {
+            Promise.resolve()
+                .then(() => args.callback.call(this, notification.callIdentifier!, notification.participantId!))
+                .catch(e => {
+                    console.error("onCallBusy", e);
+                });
+        };
+
+        let wrappedEndCallback = (error ?: Error) => {
+            if (error) {
+                console.error("onCallBusy: unexpected error", error);
+            }
+            args.endCallback ? args.endCallback(error) : undefined;
+            this.activeCallbacks.delete(callbackId);
+            this.callbackUpdate.emit("removed");
+        }
+
+        cancelFn = this.stubs.callNotificationStub.callBusy({count: args.count}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
+        return cancelFn;
+    }
+
+    public onCallEnded(args: {callback: (callIdentifier: string) => Promise<void> | void, endCallback?: (error ?: Error) => void, count?: bigint}): Function {
+        let cancelFn: Function;
+        const callbackId = crypto.randomUUID();
+        this.activeCallbacks.add(callbackId);
+
+        let wrappedCallback = (notification: notification.CallEndedNotification) => {
+            Promise.resolve()
+                .then(() => args.callback.call(this, notification.callIdentifier!))
+                .catch(e => {
+                    console.error("onCallEnded", e);
+                });
+        };
+
+        let wrappedEndCallback = (error ?: Error) => {
+            if (error) {
+                console.error("onCallEnded: unexpected error", error);
+            }
+            args.endCallback ? args.endCallback(error) : undefined;
+            this.activeCallbacks.delete(callbackId);
+            this.callbackUpdate.emit("removed");
+        }
+
+        cancelFn = this.stubs.callNotificationStub.callEnded({count: args.count}, wrappedCallback, wrappedEndCallback, {signal: this.callbacksAbort.signal});
         return cancelFn;
     }
 

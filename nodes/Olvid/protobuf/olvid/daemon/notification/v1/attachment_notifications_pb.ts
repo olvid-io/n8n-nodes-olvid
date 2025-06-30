@@ -5,7 +5,8 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { Attachment } from "../../datatypes/v1/attachment_pb.js";
+import { Attachment, AttachmentFilter, AttachmentId } from "../../datatypes/v1/attachment_pb.js";
+import { MessageId } from "../../datatypes/v1/message_pb.js";
 
 /**
  *
@@ -14,6 +15,16 @@ import { Attachment } from "../../datatypes/v1/attachment_pb.js";
  * @generated from message olvid.daemon.notification.v1.SubscribeToAttachmentReceivedNotification
  */
 export class SubscribeToAttachmentReceivedNotification extends Message<SubscribeToAttachmentReceivedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.AttachmentFilter filter = 2;
+   */
+  filter?: AttachmentFilter;
+
   constructor(data?: PartialMessage<SubscribeToAttachmentReceivedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -22,6 +33,8 @@ export class SubscribeToAttachmentReceivedNotification extends Message<Subscribe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToAttachmentReceivedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: AttachmentFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToAttachmentReceivedNotification {
@@ -85,6 +98,26 @@ export class AttachmentReceivedNotification extends Message<AttachmentReceivedNo
  * @generated from message olvid.daemon.notification.v1.SubscribeToAttachmentUploadedNotification
  */
 export class SubscribeToAttachmentUploadedNotification extends Message<SubscribeToAttachmentUploadedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.AttachmentFilter filter = 2;
+   */
+  filter?: AttachmentFilter;
+
+  /**
+   * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 3;
+   */
+  messageIds: MessageId[] = [];
+
+  /**
+   * @generated from field: repeated olvid.daemon.datatypes.v1.AttachmentId attachment_ids = 4;
+   */
+  attachmentIds: AttachmentId[] = [];
+
   constructor(data?: PartialMessage<SubscribeToAttachmentUploadedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +126,10 @@ export class SubscribeToAttachmentUploadedNotification extends Message<Subscribe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToAttachmentUploadedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: AttachmentFilter, opt: true },
+    { no: 3, name: "message_ids", kind: "message", T: MessageId, repeated: true },
+    { no: 4, name: "attachment_ids", kind: "message", T: AttachmentId, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToAttachmentUploadedNotification {

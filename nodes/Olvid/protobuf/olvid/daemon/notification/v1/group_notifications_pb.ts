@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, protoInt64 } from "@bufbuild/protobuf";
-import { Group, GroupMember, GroupMemberPermissions, PendingGroupMember } from "../../datatypes/v1/group_pb.js";
+import { Group, GroupFilter, GroupMember, GroupMemberFilter, GroupMemberPermissions, GroupPermissionFilter, PendingGroupMember, PendingGroupMemberFilter } from "../../datatypes/v1/group_pb.js";
 
 /**
  *
@@ -14,6 +14,16 @@ import { Group, GroupMember, GroupMemberPermissions, PendingGroupMember } from "
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupNewNotification
  */
 export class SubscribeToGroupNewNotification extends Message<SubscribeToGroupNewNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 2;
+   */
+  groupFilter?: GroupFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupNewNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -22,6 +32,8 @@ export class SubscribeToGroupNewNotification extends Message<SubscribeToGroupNew
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupNewNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupNewNotification {
@@ -85,6 +97,21 @@ export class GroupNewNotification extends Message<GroupNewNotification> {
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupDeletedNotification
  */
 export class SubscribeToGroupDeletedNotification extends Message<SubscribeToGroupDeletedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupDeletedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +120,9 @@ export class SubscribeToGroupDeletedNotification extends Message<SubscribeToGrou
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupDeletedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupDeletedNotification {
@@ -156,6 +186,26 @@ export class GroupDeletedNotification extends Message<GroupDeletedNotification> 
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupNameUpdatedNotification
  */
 export class SubscribeToGroupNameUpdatedNotification extends Message<SubscribeToGroupNameUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional string previous_name_search = 4;
+   */
+  previousNameSearch?: string;
+
   constructor(data?: PartialMessage<SubscribeToGroupNameUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -164,6 +214,10 @@ export class SubscribeToGroupNameUpdatedNotification extends Message<SubscribeTo
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupNameUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "previous_name_search", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupNameUpdatedNotification {
@@ -233,6 +287,21 @@ export class GroupNameUpdatedNotification extends Message<GroupNameUpdatedNotifi
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupPhotoUpdatedNotification
  */
 export class SubscribeToGroupPhotoUpdatedNotification extends Message<SubscribeToGroupPhotoUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupPhotoUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -241,6 +310,9 @@ export class SubscribeToGroupPhotoUpdatedNotification extends Message<SubscribeT
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupPhotoUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupPhotoUpdatedNotification {
@@ -304,6 +376,26 @@ export class GroupPhotoUpdatedNotification extends Message<GroupPhotoUpdatedNoti
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupDescriptionUpdatedNotification
  */
 export class SubscribeToGroupDescriptionUpdatedNotification extends Message<SubscribeToGroupDescriptionUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional string previous_description_search = 4;
+   */
+  previousDescriptionSearch?: string;
+
   constructor(data?: PartialMessage<SubscribeToGroupDescriptionUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -312,6 +404,10 @@ export class SubscribeToGroupDescriptionUpdatedNotification extends Message<Subs
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupDescriptionUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "previous_description_search", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupDescriptionUpdatedNotification {
@@ -381,6 +477,26 @@ export class GroupDescriptionUpdatedNotification extends Message<GroupDescriptio
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupPendingMemberAddedNotification
  */
 export class SubscribeToGroupPendingMemberAddedNotification extends Message<SubscribeToGroupPendingMemberAddedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.PendingGroupMemberFilter pending_member_filter = 4;
+   */
+  pendingMemberFilter?: PendingGroupMemberFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupPendingMemberAddedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -389,6 +505,10 @@ export class SubscribeToGroupPendingMemberAddedNotification extends Message<Subs
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupPendingMemberAddedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "pending_member_filter", kind: "message", T: PendingGroupMemberFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupPendingMemberAddedNotification {
@@ -458,6 +578,26 @@ export class GroupPendingMemberAddedNotification extends Message<GroupPendingMem
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupPendingMemberRemovedNotification
  */
 export class SubscribeToGroupPendingMemberRemovedNotification extends Message<SubscribeToGroupPendingMemberRemovedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.PendingGroupMemberFilter pending_member_filter = 4;
+   */
+  pendingMemberFilter?: PendingGroupMemberFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupPendingMemberRemovedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -466,6 +606,10 @@ export class SubscribeToGroupPendingMemberRemovedNotification extends Message<Su
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupPendingMemberRemovedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "pending_member_filter", kind: "message", T: PendingGroupMemberFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupPendingMemberRemovedNotification {
@@ -535,6 +679,26 @@ export class GroupPendingMemberRemovedNotification extends Message<GroupPendingM
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupMemberJoinedNotification
  */
 export class SubscribeToGroupMemberJoinedNotification extends Message<SubscribeToGroupMemberJoinedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter member_filter = 4;
+   */
+  memberFilter?: GroupMemberFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupMemberJoinedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -543,6 +707,10 @@ export class SubscribeToGroupMemberJoinedNotification extends Message<SubscribeT
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupMemberJoinedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "member_filter", kind: "message", T: GroupMemberFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupMemberJoinedNotification {
@@ -612,6 +780,26 @@ export class GroupMemberJoinedNotification extends Message<GroupMemberJoinedNoti
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupMemberLeftNotification
  */
 export class SubscribeToGroupMemberLeftNotification extends Message<SubscribeToGroupMemberLeftNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter member_filter = 4;
+   */
+  memberFilter?: GroupMemberFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupMemberLeftNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -620,6 +808,10 @@ export class SubscribeToGroupMemberLeftNotification extends Message<SubscribeToG
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupMemberLeftNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "member_filter", kind: "message", T: GroupMemberFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupMemberLeftNotification {
@@ -684,12 +876,37 @@ export class GroupMemberLeftNotification extends Message<GroupMemberLeftNotifica
 
 /**
  *
- * * GroupPermissionsUpdated
+ * * GroupOwnPermissionsUpdated
  * * triggered when your permissions are updated
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupOwnPermissionsUpdatedNotification
  */
 export class SubscribeToGroupOwnPermissionsUpdatedNotification extends Message<SubscribeToGroupOwnPermissionsUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter permissions_filter = 4;
+   */
+  permissionsFilter?: GroupPermissionFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter previous_permissions_filter = 5;
+   */
+  previousPermissionsFilter?: GroupPermissionFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupOwnPermissionsUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -698,6 +915,11 @@ export class SubscribeToGroupOwnPermissionsUpdatedNotification extends Message<S
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupOwnPermissionsUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "permissions_filter", kind: "message", T: GroupPermissionFilter, opt: true },
+    { no: 5, name: "previous_permissions_filter", kind: "message", T: GroupPermissionFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupOwnPermissionsUpdatedNotification {
@@ -774,6 +996,31 @@ export class GroupOwnPermissionsUpdatedNotification extends Message<GroupOwnPerm
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupMemberPermissionsUpdatedNotification
  */
 export class SubscribeToGroupMemberPermissionsUpdatedNotification extends Message<SubscribeToGroupMemberPermissionsUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 2;
+   */
+  groupIds: bigint[] = [];
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
+   */
+  groupFilter?: GroupFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter member_filter = 4;
+   */
+  memberFilter?: GroupMemberFilter;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter previous_permission_filter = 5;
+   */
+  previousPermissionFilter?: GroupMemberFilter;
+
   constructor(data?: PartialMessage<SubscribeToGroupMemberPermissionsUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -782,6 +1029,11 @@ export class SubscribeToGroupMemberPermissionsUpdatedNotification extends Messag
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupMemberPermissionsUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
+    { no: 3, name: "group_filter", kind: "message", T: GroupFilter, opt: true },
+    { no: 4, name: "member_filter", kind: "message", T: GroupMemberFilter, opt: true },
+    { no: 5, name: "previous_permission_filter", kind: "message", T: GroupMemberFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupMemberPermissionsUpdatedNotification {
@@ -811,8 +1063,6 @@ export class GroupMemberPermissionsUpdatedNotification extends Message<GroupMemb
   group?: Group;
 
   /**
-   * not set if your permissions were updated
-   *
    * @generated from field: olvid.daemon.datatypes.v1.GroupMember member = 2;
    */
   member?: GroupMember;
@@ -858,6 +1108,16 @@ export class GroupMemberPermissionsUpdatedNotification extends Message<GroupMemb
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupUpdateInProgressNotification
  */
 export class SubscribeToGroupUpdateInProgressNotification extends Message<SubscribeToGroupUpdateInProgressNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 3;
+   */
+  groupIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToGroupUpdateInProgressNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -866,6 +1126,8 @@ export class SubscribeToGroupUpdateInProgressNotification extends Message<Subscr
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupUpdateInProgressNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 3, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupUpdateInProgressNotification {
@@ -928,6 +1190,16 @@ export class GroupUpdateInProgressNotification extends Message<GroupUpdateInProg
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupUpdateFinishedNotification
  */
 export class SubscribeToGroupUpdateFinishedNotification extends Message<SubscribeToGroupUpdateFinishedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: repeated uint64 group_ids = 3;
+   */
+  groupIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToGroupUpdateFinishedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -936,6 +1208,8 @@ export class SubscribeToGroupUpdateFinishedNotification extends Message<Subscrib
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToGroupUpdateFinishedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 3, name: "group_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToGroupUpdateFinishedNotification {

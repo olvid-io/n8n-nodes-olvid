@@ -13,6 +13,7 @@ import * as MessageCommandService from './MessageCommandService';
 import * as AttachmentCommandService from './AttachmentCommandService';
 import * as StorageCommandService from './StorageCommandService';
 import * as DiscussionStorageCommandService from './DiscussionStorageCommandService';
+import * as CallCommandService from './CallCommandService';
 
 import type { Olvid } from './generatedInterfaces';
 // noinspection ES6UnusedImports
@@ -51,6 +52,9 @@ export async function callOperation(this: IExecuteFunctions, i: number, client: 
         }
         case 'DiscussionStorageCommandService': {
             return await DiscussionStorageCommandService[olvid.operation].execute.call(this, i, client);
+        }
+        case 'CallCommandService': {
+            return await CallCommandService[olvid.operation].execute.call(this, i, client);
         }
         default: throw new Error(`The resource is not known!`);
     }

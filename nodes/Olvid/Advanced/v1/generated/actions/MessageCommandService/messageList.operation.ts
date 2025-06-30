@@ -104,8 +104,8 @@ const properties: INodeProperties[] = [
         default: 0,
       },
       {
-        displayName: 'Filter | Reaction',
-        name: 'reaction',
+        displayName: 'Filter | HasReaction',
+        name: 'hasReaction',
         type: 'options',
 
         options: [
@@ -321,8 +321,8 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
         const location: datatypes.MessageFilter_Location | undefined = getLocation.call(this, itemFilter);
         const minTimestamp: bigint | undefined = itemFilter['minTimestamp'] ? BigInt(itemFilter['minTimestamp'] as number) : undefined;
         const maxTimestamp: bigint | undefined = itemFilter['maxTimestamp'] ? BigInt(itemFilter['maxTimestamp'] as number) : undefined;
-        function getReaction(this: IExecuteFunctions, itemMessageFilter: IDataObject): datatypes.MessageFilter_Reaction | undefined {
-            const value: string | number | undefined = itemMessageFilter['reaction'] as string | number | undefined;
+        function getHasReaction(this: IExecuteFunctions, itemMessageFilter: IDataObject): datatypes.MessageFilter_Reaction | undefined {
+            const value: string | number | undefined = itemMessageFilter['hasReaction'] as string | number | undefined;
             if (value === undefined) {
                 return undefined;
             }
@@ -333,11 +333,11 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
                 return value as datatypes.MessageFilter_Reaction;
             }
             else {
-                const enumKey = value.replace("REACTION_", "");
+                const enumKey = value.replace("HASREACTION_", "");
                 return datatypes.MessageFilter_Reaction [enumKey as keyof typeof datatypes.MessageFilter_Reaction];
             }
         }
-        const reaction: datatypes.MessageFilter_Reaction | undefined = getReaction.call(this, itemFilter);
+        const hasReaction: datatypes.MessageFilter_Reaction | undefined = getHasReaction.call(this, itemFilter);
         function getReactionsFilter(this: IExecuteFunctions, itemMessageFilter: IDataObject): datatypes.ReactionFilter[] | undefined {
             function getReactionsFilter(this: IExecuteFunctions, itemMessageFilter: IDataObject): datatypes.ReactionFilter {
                 const itemReactionsFilter = itemMessageFilter['reactionsFilter'] as IDataObject;
@@ -442,7 +442,7 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
             location,
             minTimestamp,
             maxTimestamp,
-            reaction,
+            hasReaction,
             reactionsFilter,
             reply,
         });

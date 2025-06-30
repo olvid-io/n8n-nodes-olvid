@@ -440,9 +440,9 @@ export class MessageFilter extends Message$1<MessageFilter> {
   /**
    * reactions
    *
-   * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter.Reaction reaction = 10;
+   * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter.Reaction has_reaction = 10;
    */
-  reaction?: MessageFilter_Reaction;
+  hasReaction?: MessageFilter_Reaction;
 
   /**
    * @generated from field: repeated olvid.daemon.datatypes.v1.ReactionFilter reactions_filter = 11;
@@ -490,7 +490,7 @@ export class MessageFilter extends Message$1<MessageFilter> {
     { no: 7, name: "location", kind: "enum", T: proto3.getEnumType(MessageFilter_Location), opt: true },
     { no: 8, name: "min_timestamp", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
     { no: 9, name: "max_timestamp", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
-    { no: 10, name: "reaction", kind: "enum", T: proto3.getEnumType(MessageFilter_Reaction), opt: true },
+    { no: 10, name: "has_reaction", kind: "enum", T: proto3.getEnumType(MessageFilter_Reaction), opt: true },
     { no: 11, name: "reactions_filter", kind: "message", T: ReactionFilter, repeated: true },
     { no: 13, name: "reply_to_a_message", kind: "scalar", T: 8 /* ScalarType.BOOL */, oneof: "reply" },
     { no: 14, name: "do_not_reply_to_a_message", kind: "scalar", T: 8 /* ScalarType.BOOL */, oneof: "reply" },

@@ -13,6 +13,7 @@ import { DiscussionEmptyRequest, DiscussionEmptyResponse, DiscussionGetByContact
 import { MessageDeleteRequest, MessageDeleteResponse, MessageEndLocationSharingRequest, MessageEndLocationSharingResponse, MessageGetRequest, MessageGetResponse, MessageListRequest, MessageListResponse, MessageReactRequest, MessageReactResponse, MessageRefreshRequest, MessageRefreshResponse, MessageSendLocationRequest, MessageSendLocationResponse, MessageSendRequest, MessageSendResponse, MessageSendVoipRequest, MessageSendVoipResponse, MessageSendWithAttachmentsRequest, MessageSendWithAttachmentsResponse, MessageStartLocationSharingRequest, MessageStartLocationSharingResponse, MessageUpdateBodyRequest, MessageUpdateBodyResponse, MessageUpdateLocationSharingRequest, MessageUpdateLocationSharingResponse } from "../../command/v1/message_commands_pb.js";
 import { AttachmentDeleteRequest, AttachmentDeleteResponse, AttachmentDownloadRequest, AttachmentDownloadResponse, AttachmentGetRequest, AttachmentGetResponse, AttachmentListRequest, AttachmentListResponse } from "../../command/v1/attachment_commands_pb.js";
 import { DiscussionStorageGetRequest, DiscussionStorageGetResponse, DiscussionStorageListRequest, DiscussionStorageListResponse, DiscussionStorageSetRequest, DiscussionStorageSetResponse, DiscussionStorageUnsetRequest, DiscussionStorageUnsetResponse, StorageGetRequest, StorageGetResponse, StorageListRequest, StorageListResponse, StorageSetRequest, StorageSetResponse, StorageUnsetRequest, StorageUnsetResponse } from "../../command/v1/storage_commands_pb.js";
+import { CallStartCustomCallRequest, CallStartCustomCallResponse, CallStartDiscussionCallRequest, CallStartDiscussionCallResponse } from "../../command/v1/call_commands_pb.js";
 
 /**
  * Identity
@@ -678,6 +679,8 @@ export const MessageCommandService = {
       kind: MethodKind.Unary,
     },
     /**
+     * ⚠️ deprecated: use CallCommandService instead ⚠️
+     *
      * @generated from rpc olvid.daemon.services.v1.MessageCommandService.MessageSendVoip
      */
     messageSendVoip: {
@@ -825,6 +828,35 @@ export const DiscussionStorageCommandService = {
       name: "DiscussionStorageUnset",
       I: DiscussionStorageUnsetRequest,
       O: DiscussionStorageUnsetResponse,
+      kind: MethodKind.Unary,
+    },
+  }
+} as const;
+
+/**
+ * Call
+ *
+ * @generated from service olvid.daemon.services.v1.CallCommandService
+ */
+export const CallCommandService = {
+  typeName: "olvid.daemon.services.v1.CallCommandService",
+  methods: {
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallCommandService.CallStartDiscussionCall
+     */
+    callStartDiscussionCall: {
+      name: "CallStartDiscussionCall",
+      I: CallStartDiscussionCallRequest,
+      O: CallStartDiscussionCallResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc olvid.daemon.services.v1.CallCommandService.CallStartCustomCall
+     */
+    callStartCustomCall: {
+      name: "CallStartCustomCall",
+      I: CallStartCustomCallRequest,
+      O: CallStartCustomCallResponse,
       kind: MethodKind.Unary,
     },
   }

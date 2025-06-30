@@ -14,6 +14,11 @@ import { Identity, IdentityDetails } from "../../datatypes/v1/identity_pb.js";
  * @generated from message olvid.daemon.notification.v1.SubscribeToIdentityCreatedNotification
  */
 export class SubscribeToIdentityCreatedNotification extends Message<SubscribeToIdentityCreatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
   constructor(data?: PartialMessage<SubscribeToIdentityCreatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -22,6 +27,7 @@ export class SubscribeToIdentityCreatedNotification extends Message<SubscribeToI
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToIdentityCreatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToIdentityCreatedNotification {
@@ -85,6 +91,11 @@ export class IdentityCreatedNotification extends Message<IdentityCreatedNotifica
  * @generated from message olvid.daemon.notification.v1.SubscribeToIdentityDeletedNotification
  */
 export class SubscribeToIdentityDeletedNotification extends Message<SubscribeToIdentityDeletedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
   constructor(data?: PartialMessage<SubscribeToIdentityDeletedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +104,7 @@ export class SubscribeToIdentityDeletedNotification extends Message<SubscribeToI
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToIdentityDeletedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToIdentityDeletedNotification {
@@ -156,6 +168,11 @@ export class IdentityDeletedNotification extends Message<IdentityDeletedNotifica
  * @generated from message olvid.daemon.notification.v1.SubscribeToIdentityUpdatedNotification
  */
 export class SubscribeToIdentityUpdatedNotification extends Message<SubscribeToIdentityUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
   constructor(data?: PartialMessage<SubscribeToIdentityUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -164,6 +181,7 @@ export class SubscribeToIdentityUpdatedNotification extends Message<SubscribeToI
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToIdentityUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToIdentityUpdatedNotification {

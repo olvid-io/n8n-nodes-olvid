@@ -41,6 +41,12 @@ import { messageReactionUpdated } from "./MessageNotificationService/onMessageRe
 import { messageReactionRemoved } from "./MessageNotificationService/onMessageReactionRemoved.event";
 import { attachmentReceived } from "./AttachmentNotificationService/onAttachmentReceived.event";
 import { attachmentUploaded } from "./AttachmentNotificationService/onAttachmentUploaded.event";
+import { callIncomingCall } from "./CallNotificationService/onCallIncomingCall.event";
+import { callRinging } from "./CallNotificationService/onCallRinging.event";
+import { callAccepted } from "./CallNotificationService/onCallAccepted.event";
+import { callDeclined } from "./CallNotificationService/onCallDeclined.event";
+import { callBusy } from "./CallNotificationService/onCallBusy.event";
+import { callEnded } from "./CallNotificationService/onCallEnded.event";
 
 export const LISTENER_TYPES = {
     INVITATIONRECEIVED: 'invitationReceived',
@@ -85,6 +91,12 @@ export const LISTENER_TYPES = {
     MESSAGEREACTIONREMOVED: 'messageReactionRemoved',
     ATTACHMENTRECEIVED: 'attachmentReceived',
     ATTACHMENTUPLOADED: 'attachmentUploaded',
+    CALLINCOMINGCALL: 'callIncomingCall',
+    CALLRINGING: 'callRinging',
+    CALLACCEPTED: 'callAccepted',
+    CALLDECLINED: 'callDeclined',
+    CALLBUSY: 'callBusy',
+    CALLENDED: 'callEnded',
 } as const;
 
 export const listenerMap = {
@@ -130,6 +142,12 @@ export const listenerMap = {
     [LISTENER_TYPES.MESSAGEREACTIONREMOVED]: messageReactionRemoved,
     [LISTENER_TYPES.ATTACHMENTRECEIVED]: attachmentReceived,
     [LISTENER_TYPES.ATTACHMENTUPLOADED]: attachmentUploaded,
+    [LISTENER_TYPES.CALLINCOMINGCALL]: callIncomingCall,
+    [LISTENER_TYPES.CALLRINGING]: callRinging,
+    [LISTENER_TYPES.CALLACCEPTED]: callAccepted,
+    [LISTENER_TYPES.CALLDECLINED]: callDeclined,
+    [LISTENER_TYPES.CALLBUSY]: callBusy,
+    [LISTENER_TYPES.CALLENDED]: callEnded,
 };
 
 export type ListenerType = typeof LISTENER_TYPES[keyof typeof LISTENER_TYPES]

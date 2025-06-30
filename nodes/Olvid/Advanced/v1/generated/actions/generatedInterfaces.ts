@@ -13,6 +13,7 @@ type OlvidMap = {
     AttachmentCommandService: 'AttachmentList' | 'AttachmentGet' | 'AttachmentDelete' | 'AttachmentDownload';
     StorageCommandService: 'StorageList' | 'StorageGet' | 'StorageSet' | 'StorageUnset';
     DiscussionStorageCommandService: 'DiscussionStorageList' | 'DiscussionStorageGet' | 'DiscussionStorageSet' | 'DiscussionStorageUnset';
+    CallCommandService: 'CallStartDiscussionCall' | 'CallStartCustomCall';
 };
 
 export type Olvid = AllEntities<OlvidMap>;
@@ -27,6 +28,7 @@ export type OlvidMessageCommandService = Entity<OlvidMap, 'MessageCommandService
 export type OlvidAttachmentCommandService = Entity<OlvidMap, 'AttachmentCommandService'>;
 export type OlvidStorageCommandService = Entity<OlvidMap, 'StorageCommandService'>;
 export type OlvidDiscussionStorageCommandService = Entity<OlvidMap, 'DiscussionStorageCommandService'>;
+export type OlvidCallCommandService = Entity<OlvidMap, 'CallCommandService'>;
 
 export type IdentityCommandServiceProperties = PropertiesOf<OlvidIdentityCommandService>;
 export type InvitationCommandServiceProperties = PropertiesOf<OlvidInvitationCommandService>;
@@ -38,3 +40,4 @@ export type MessageCommandServiceProperties = PropertiesOf<OlvidMessageCommandSe
 export type AttachmentCommandServiceProperties = PropertiesOf<OlvidAttachmentCommandService>;
 export type StorageCommandServiceProperties = PropertiesOf<OlvidStorageCommandService>;
 export type DiscussionStorageCommandServiceProperties = PropertiesOf<OlvidDiscussionStorageCommandService>;
+export type CallCommandServiceProperties = PropertiesOf<OlvidCallCommandService>;

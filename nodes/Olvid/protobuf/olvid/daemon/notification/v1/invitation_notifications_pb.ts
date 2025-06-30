@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { Invitation, Invitation_Status } from "../../datatypes/v1/invitation_pb.js";
+import { Invitation, Invitation_Status, InvitationFilter } from "../../datatypes/v1/invitation_pb.js";
 
 /**
  *
@@ -14,6 +14,16 @@ import { Invitation, Invitation_Status } from "../../datatypes/v1/invitation_pb.
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationReceivedNotification
  */
 export class SubscribeToInvitationReceivedNotification extends Message<SubscribeToInvitationReceivedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
+   */
+  filter?: InvitationFilter;
+
   constructor(data?: PartialMessage<SubscribeToInvitationReceivedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -22,6 +32,8 @@ export class SubscribeToInvitationReceivedNotification extends Message<Subscribe
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToInvitationReceivedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: InvitationFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToInvitationReceivedNotification {
@@ -85,6 +97,16 @@ export class InvitationReceivedNotification extends Message<InvitationReceivedNo
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationSentNotification
  */
 export class SubscribeToInvitationSentNotification extends Message<SubscribeToInvitationSentNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
+   */
+  filter?: InvitationFilter;
+
   constructor(data?: PartialMessage<SubscribeToInvitationSentNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +115,8 @@ export class SubscribeToInvitationSentNotification extends Message<SubscribeToIn
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToInvitationSentNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: InvitationFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToInvitationSentNotification {
@@ -156,6 +180,21 @@ export class InvitationSentNotification extends Message<InvitationSentNotificati
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationDeletedNotification
  */
 export class SubscribeToInvitationDeletedNotification extends Message<SubscribeToInvitationDeletedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
+   */
+  filter?: InvitationFilter;
+
+  /**
+   * @generated from field: repeated uint64 invitation_ids = 3;
+   */
+  invitationIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToInvitationDeletedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -164,6 +203,9 @@ export class SubscribeToInvitationDeletedNotification extends Message<SubscribeT
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToInvitationDeletedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: InvitationFilter, opt: true },
+    { no: 3, name: "invitation_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToInvitationDeletedNotification {
@@ -227,6 +269,21 @@ export class InvitationDeletedNotification extends Message<InvitationDeletedNoti
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationUpdatedNotification
  */
 export class SubscribeToInvitationUpdatedNotification extends Message<SubscribeToInvitationUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
+   */
+  filter?: InvitationFilter;
+
+  /**
+   * @generated from field: repeated uint64 invitation_ids = 3;
+   */
+  invitationIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToInvitationUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -235,6 +292,9 @@ export class SubscribeToInvitationUpdatedNotification extends Message<SubscribeT
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToInvitationUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: InvitationFilter, opt: true },
+    { no: 3, name: "invitation_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToInvitationUpdatedNotification {

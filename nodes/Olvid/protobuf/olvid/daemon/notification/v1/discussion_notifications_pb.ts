@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3 } from "@bufbuild/protobuf";
-import { Discussion, DiscussionSettings } from "../../datatypes/v1/discussion_pb.js";
+import { Discussion, DiscussionFilter, DiscussionSettings } from "../../datatypes/v1/discussion_pb.js";
 
 /**
  *
@@ -14,6 +14,16 @@ import { Discussion, DiscussionSettings } from "../../datatypes/v1/discussion_pb
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionNewNotification
  */
 export class SubscribeToDiscussionNewNotification extends Message<SubscribeToDiscussionNewNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
+   */
+  filter?: DiscussionFilter;
+
   constructor(data?: PartialMessage<SubscribeToDiscussionNewNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -22,6 +32,8 @@ export class SubscribeToDiscussionNewNotification extends Message<SubscribeToDis
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToDiscussionNewNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: DiscussionFilter, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToDiscussionNewNotification {
@@ -85,6 +97,21 @@ export class DiscussionNewNotification extends Message<DiscussionNewNotification
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionLockedNotification
  */
 export class SubscribeToDiscussionLockedNotification extends Message<SubscribeToDiscussionLockedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
+   */
+  filter?: DiscussionFilter;
+
+  /**
+   * @generated from field: repeated uint64 discussion_ids = 3;
+   */
+  discussionIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToDiscussionLockedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +120,9 @@ export class SubscribeToDiscussionLockedNotification extends Message<SubscribeTo
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToDiscussionLockedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: DiscussionFilter, opt: true },
+    { no: 3, name: "discussion_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToDiscussionLockedNotification {
@@ -156,6 +186,21 @@ export class DiscussionLockedNotification extends Message<DiscussionLockedNotifi
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionTitleUpdatedNotification
  */
 export class SubscribeToDiscussionTitleUpdatedNotification extends Message<SubscribeToDiscussionTitleUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
+   */
+  filter?: DiscussionFilter;
+
+  /**
+   * @generated from field: repeated uint64 discussion_ids = 3;
+   */
+  discussionIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToDiscussionTitleUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -164,6 +209,9 @@ export class SubscribeToDiscussionTitleUpdatedNotification extends Message<Subsc
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToDiscussionTitleUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: DiscussionFilter, opt: true },
+    { no: 3, name: "discussion_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToDiscussionTitleUpdatedNotification {
@@ -233,6 +281,21 @@ export class DiscussionTitleUpdatedNotification extends Message<DiscussionTitleU
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionSettingsUpdatedNotification
  */
 export class SubscribeToDiscussionSettingsUpdatedNotification extends Message<SubscribeToDiscussionSettingsUpdatedNotification> {
+  /**
+   * @generated from field: optional uint64 count = 1;
+   */
+  count?: bigint;
+
+  /**
+   * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
+   */
+  filter?: DiscussionFilter;
+
+  /**
+   * @generated from field: repeated uint64 discussion_ids = 3;
+   */
+  discussionIds: bigint[] = [];
+
   constructor(data?: PartialMessage<SubscribeToDiscussionSettingsUpdatedNotification>) {
     super();
     proto3.util.initPartial(data, this);
@@ -241,6 +304,9 @@ export class SubscribeToDiscussionSettingsUpdatedNotification extends Message<Su
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.SubscribeToDiscussionSettingsUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "count", kind: "scalar", T: 4 /* ScalarType.UINT64 */, opt: true },
+    { no: 2, name: "filter", kind: "message", T: DiscussionFilter, opt: true },
+    { no: 3, name: "discussion_ids", kind: "scalar", T: 4 /* ScalarType.UINT64 */, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SubscribeToDiscussionSettingsUpdatedNotification {
@@ -265,12 +331,17 @@ export class SubscribeToDiscussionSettingsUpdatedNotification extends Message<Su
  */
 export class DiscussionSettingsUpdatedNotification extends Message<DiscussionSettingsUpdatedNotification> {
   /**
-   * @generated from field: olvid.daemon.datatypes.v1.DiscussionSettings new_settings = 1;
+   * @generated from field: olvid.daemon.datatypes.v1.Discussion discussion = 1;
+   */
+  discussion?: Discussion;
+
+  /**
+   * @generated from field: olvid.daemon.datatypes.v1.DiscussionSettings new_settings = 2;
    */
   newSettings?: DiscussionSettings;
 
   /**
-   * @generated from field: olvid.daemon.datatypes.v1.DiscussionSettings previous_settings = 2;
+   * @generated from field: olvid.daemon.datatypes.v1.DiscussionSettings previous_settings = 3;
    */
   previousSettings?: DiscussionSettings;
 
@@ -282,8 +353,9 @@ export class DiscussionSettingsUpdatedNotification extends Message<DiscussionSet
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "olvid.daemon.notification.v1.DiscussionSettingsUpdatedNotification";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "new_settings", kind: "message", T: DiscussionSettings },
-    { no: 2, name: "previous_settings", kind: "message", T: DiscussionSettings },
+    { no: 1, name: "discussion", kind: "message", T: Discussion },
+    { no: 2, name: "new_settings", kind: "message", T: DiscussionSettings },
+    { no: 3, name: "previous_settings", kind: "message", T: DiscussionSettings },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DiscussionSettingsUpdatedNotification {

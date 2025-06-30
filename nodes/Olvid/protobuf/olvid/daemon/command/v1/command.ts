@@ -1,4 +1,5 @@
 export * from "./attachment_commands_pb";
+export * from "./call_commands_pb";
 export * from "./contact_commands_pb";
 export * from "./discussion_commands_pb";
 export * from "./group_commands_pb";
