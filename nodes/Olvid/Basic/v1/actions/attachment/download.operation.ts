@@ -83,7 +83,7 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
 		// download attachment content
 		const buffer: Buffer = Buffer.alloc(Number(attachment.size));
 		let receivedBytes: number = 0;
-		for await (const chunk of await client.attachmentDownload({ attachmentId: attachment.id! })) {
+		for await (const chunk of client.attachmentDownload({ attachmentId: attachment.id! })) {
 			buffer.fill(chunk, receivedBytes);
 			receivedBytes += chunk.length;
 		}

@@ -65,7 +65,7 @@ export async function execute(this: IExecuteFunctions, index: number, client: Ol
 
     const chunks: Uint8Array[] = [];
     let totalLength = 0;
-    for await (const chunk of await client.attachmentDownload({ attachmentId })) {
+    for await (const chunk of client.attachmentDownload({ attachmentId })) {
         chunks.push(chunk);
         totalLength += chunk.length;
     }

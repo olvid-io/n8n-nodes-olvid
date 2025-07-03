@@ -26,16 +26,16 @@ export function messageReceived(this: ITriggerFunctions, client: OlvidClient, on
 
     return client.onMessageReceived({
         callback: async (message: datatypes.Message) => {
-            let attachments: IBinaryData[] = [];
-            if (downloadAttachments && message.attachmentsCount > 0) {
-                for await (const attachment of client.attachmentList({ filter: new datatypes.AttachmentFilter({ messageId: message.id }) })) {
-                    attachments.push(await downloadAttachment(client, attachment));
-                }
-            }
+            let attachmentsData: IBinaryData[] = [];
+						let attachments: datatypes.Attachment[] = [];
+						for await (const attachment of client.attachmentList({ filter: new datatypes.AttachmentFilter({ messageId: message.id }) })) {
+								attachments.push(attachment);
+								attachmentsData.push(await downloadAttachment(client, attachment));
+						}
             this.emit([[{
-                json: { "message": message }, ...(attachments.length > 0 ? {
+                json: { "message": message, "attachments": attachments }, ...(downloadAttachments && attachmentsData.length > 0 ? {
                     binary: Object.fromEntries(
-                        attachments.map((attachment, index) => [`data${index}`, attachment])
+                        attachmentsData.map((attachment, index) => [`data${index}`, attachment])
                     ),
                 } : null)
             }]]);

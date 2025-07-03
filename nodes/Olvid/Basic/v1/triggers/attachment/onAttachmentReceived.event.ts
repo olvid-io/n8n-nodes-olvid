@@ -9,7 +9,7 @@ export async function downloadAttachment(client: OlvidClient, attachment: dataty
     }
     const chunks: Uint8Array[] = [];
     let totalLength = 0;
-    for await (const chunk of await client.attachmentDownload({ attachmentId: attachment.id })) {
+    for await (const chunk of client.attachmentDownload({ attachmentId: attachment.id })) {
         chunks.push(chunk);
         totalLength += chunk.length;
     }
@@ -46,11 +46,11 @@ export function attachmentReceived(this: ITriggerFunctions, client: OlvidClient,
         return () => { };
     }
 
+		const downloadAttachments = this.getNodeParameter('downloadAttachments') as boolean ?? false;
     return client.onAttachmentReceived({
         callback: async (attachment: datatypes.Attachment) => {
             console.log('Attachment Received');
-            const binaryData = await downloadAttachment(client, attachment);
-            this.emit([[{ json: { attachment: attachment }, binary: { data: binaryData } }]]);
+						this.emit([[{ json: { attachment: attachment }, ...(downloadAttachments ? { binary: { data: await downloadAttachment(client, attachment) } } : null )}]]);
             onCallback?.(); // For Manual Testing
         },
         endCallback: () => { }
