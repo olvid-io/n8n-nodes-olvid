@@ -1,6 +1,6 @@
-[Install for development](#install)  
-[Add basic action](#Add a New Action to OlvidBasic)  
-[Add basic trigger](#Add a New Trigger to OlvidTrigger)  
+[Install for development](#install)
+[Add basic action](#Add a New Action to OlvidBasic)
+[Add basic trigger](#Add a New Trigger to OlvidTrigger)
 
 # Install
 1. Clone the repository:
@@ -20,9 +20,14 @@
 	 pnpm install n8n -g && n8n
 	 ```
 	 Exit n8n with `Ctrl+C` when you see `Editor is now accessible via: http://localhost:5678/`
+5. Generate node code:
+   ```
+	 cd generation && npm install
+	 cd .. && npm run generate
+	 ```
 5. Add your node to pnpm locally:
 	 ```
-	 npm run generate && pnpm run build && pnpm link --global
+	 pnpm run build && pnpm link --global
 	 ```
 6. Link your node with n8n (you only have to do it once):
 	 ```
