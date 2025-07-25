@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildInvitationFilter } from '../../../../../common-methods/filterHelpers';
 
 export function invitationSent(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -19,10 +21,14 @@ export function invitationSent(this: ITriggerFunctions, client: OlvidClient, onC
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const filter = buildInvitationFilter(this);
+
 	const callback = (notification: notifications.InvitationSentNotification) => {
 		this.emit([this.helpers.returnJsonArray({id: Number(notification?.invitation?.id), status: datatypes.Invitation_Status[notification?.invitation?.status ?? 0], displayName: notification?.invitation?.displayName, timestamp: Number(notification?.invitation?.timestamp), sas: notification?.invitation?.sas})]);
 		onCallback?.();
 	}
 
-	return client.stubs.invitationNotificationStub.invitationSent({}, callback, () => {});
+	return client.stubs.invitationNotificationStub.invitationSent({ filter }, callback, () => {});
+
 }

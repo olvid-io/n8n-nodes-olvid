@@ -26,4 +26,5 @@ export function groupUpdateInProgress(this: ITriggerFunctions, client: OlvidClie
 	}
 
 	return client.stubs.groupNotificationStub.groupUpdateInProgress({}, callback, () => {});
+
 }

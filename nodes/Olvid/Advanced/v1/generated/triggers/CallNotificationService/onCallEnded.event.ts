@@ -26,4 +26,5 @@ export function callEnded(this: ITriggerFunctions, client: OlvidClient, onCallba
 	}
 
 	return client.stubs.callNotificationStub.callEnded({}, callback, () => {});
+
 }

@@ -27,4 +27,5 @@ export function callAccepted(this: ITriggerFunctions, client: OlvidClient, onCal
 	}
 
 	return client.stubs.callNotificationStub.callAccepted({}, callback, () => {});
+
 }

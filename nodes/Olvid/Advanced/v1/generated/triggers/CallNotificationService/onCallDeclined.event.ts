@@ -27,4 +27,5 @@ export function callDeclined(this: ITriggerFunctions, client: OlvidClient, onCal
 	}
 
 	return client.stubs.callNotificationStub.callDeclined({}, callback, () => {});
+
 }

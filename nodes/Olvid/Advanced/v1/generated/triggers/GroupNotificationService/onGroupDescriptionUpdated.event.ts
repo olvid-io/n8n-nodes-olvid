@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildGroupFilter } from '../../../../../common-methods/filterHelpers';
 
 export function groupDescriptionUpdated(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -20,11 +22,15 @@ export function groupDescriptionUpdated(this: ITriggerFunctions, client: OlvidCl
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const groupFilter = buildGroupFilter(this);
+
 	const callback = (notification: notifications.GroupDescriptionUpdatedNotification) => {
 		this.emit([this.helpers.returnJsonArray([{group: {id: Number(notification?.group?.id), type: datatypes.Group_Type[notification?.group?.type ?? 0], advancedConfiguration: {readOnly: notification?.group?.advancedConfiguration?.readOnly, remoteDelete: datatypes.Group_AdvancedConfiguration_RemoteDelete[notification?.group?.advancedConfiguration?.remoteDelete ?? 0]}, ownPermissions: {admin: notification?.group?.ownPermissions?.admin, remoteDeleteAnything: notification?.group?.ownPermissions?.remoteDeleteAnything, editOrRemoteDeleteOwnMessages: notification?.group?.ownPermissions?.editOrRemoteDeleteOwnMessages, changeSettings: notification?.group?.ownPermissions?.changeSettings, sendMessage: notification?.group?.ownPermissions?.sendMessage}, members: notification?.group?.members.map(e => ({contactId: Number(e.contactId), permissions: {admin: e.permissions?.admin, remoteDeleteAnything: e.permissions?.remoteDeleteAnything, editOrRemoteDeleteOwnMessages: e.permissions?.editOrRemoteDeleteOwnMessages, changeSettings: e.permissions?.changeSettings, sendMessage: e.permissions?.sendMessage}})), pendingMembers: notification?.group?.pendingMembers.map(e => ({pendingMemberId: Number(e.pendingMemberId), contactId: Number(e.contactId), displayName: e.displayName, declined: e.declined, permissions: {admin: e.permissions?.admin, remoteDeleteAnything: e.permissions?.remoteDeleteAnything, editOrRemoteDeleteOwnMessages: e.permissions?.editOrRemoteDeleteOwnMessages, changeSettings: e.permissions?.changeSettings, sendMessage: e.permissions?.sendMessage}})), updateInProgress: notification?.group?.updateInProgress, keycloakManaged: notification?.group?.keycloakManaged, name: notification?.group?.name, description: notification?.group?.description, hasAPhoto: notification?.group?.hasAPhoto}},{previousDescription: notification?.previousDescription
 }])]);
 		onCallback?.();
 	}
 
-	return client.stubs.groupNotificationStub.groupDescriptionUpdated({}, callback, () => {});
+	return client.stubs.groupNotificationStub.groupDescriptionUpdated({ groupFilter }, callback, () => {});
+
 }

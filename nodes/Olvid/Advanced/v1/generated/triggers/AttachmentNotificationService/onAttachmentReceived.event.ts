@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildAttachmentFilter } from '../../../../../common-methods/filterHelpers';
 
 export function attachmentReceived(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -19,10 +21,14 @@ export function attachmentReceived(this: ITriggerFunctions, client: OlvidClient,
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const filter = buildAttachmentFilter(this);
+
 	const callback = (notification: notifications.AttachmentReceivedNotification) => {
 		this.emit([this.helpers.returnJsonArray({id: {type: datatypes.AttachmentId_Type[notification?.attachment?.id?.type ?? 0], id: Number(notification?.attachment?.id?.id)}, discussionId: Number(notification?.attachment?.discussionId), messageId: {type: datatypes.MessageId_Type[notification?.attachment?.messageId?.type ?? 0], id: Number(notification?.attachment?.messageId?.id)}, fileName: notification?.attachment?.fileName, mimeType: notification?.attachment?.mimeType, size: Number(notification?.attachment?.size)})]);
 		onCallback?.();
 	}
 
-	return client.stubs.attachmentNotificationStub.attachmentReceived({}, callback, () => {});
+	return client.stubs.attachmentNotificationStub.attachmentReceived({ filter }, callback, () => {});
+
 }

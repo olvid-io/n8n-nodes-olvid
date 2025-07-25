@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildContactFilter } from '../../../../../common-methods/filterHelpers';
 
 export function contactDetailsUpdated(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -20,10 +22,14 @@ export function contactDetailsUpdated(this: ITriggerFunctions, client: OlvidClie
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const filter = buildContactFilter(this);
+
 	const callback = (notification: notifications.ContactDetailsUpdatedNotification) => {
 		this.emit([this.helpers.returnJsonArray([{contact: {id: Number(notification?.contact?.id), displayName: notification?.contact?.displayName, details: {firstName: notification?.contact?.details?.firstName, lastName: notification?.contact?.details?.lastName, company: notification?.contact?.details?.company, position: notification?.contact?.details?.position}, establishedChannelCount: notification?.contact?.establishedChannelCount, deviceCount: notification?.contact?.deviceCount, hasOneToOneDiscussion: notification?.contact?.hasOneToOneDiscussion, hasAPhoto: notification?.contact?.hasAPhoto, keycloakManaged: notification?.contact?.keycloakManaged}},{previousDetails: {firstName: notification?.previousDetails?.firstName, lastName: notification?.previousDetails?.lastName, company: notification?.previousDetails?.company, position: notification?.previousDetails?.position}}])]);
 		onCallback?.();
 	}
 
-	return client.stubs.contactNotificationStub.contactDetailsUpdated({}, callback, () => {});
+	return client.stubs.contactNotificationStub.contactDetailsUpdated({ filter }, callback, () => {});
+
 }

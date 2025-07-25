@@ -27,4 +27,5 @@ export function callBusy(this: ITriggerFunctions, client: OlvidClient, onCallbac
 	}
 
 	return client.stubs.callNotificationStub.callBusy({}, callback, () => {});
+
 }

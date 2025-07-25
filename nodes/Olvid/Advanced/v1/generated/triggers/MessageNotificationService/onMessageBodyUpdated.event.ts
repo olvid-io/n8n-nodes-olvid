@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildMessageFilter } from '../../../../../common-methods/filterHelpers';
 
 export function messageBodyUpdated(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -20,11 +22,15 @@ export function messageBodyUpdated(this: ITriggerFunctions, client: OlvidClient,
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const filter = buildMessageFilter(this);
+
 	const callback = (notification: notifications.MessageBodyUpdatedNotification) => {
 		this.emit([this.helpers.returnJsonArray([{message: {id: {type: datatypes.MessageId_Type[notification?.message?.id?.type ?? 0], id: Number(notification?.message?.id?.id)}, discussionId: Number(notification?.message?.discussionId), senderId: Number(notification?.message?.senderId), body: notification?.message?.body, sortIndex: notification?.message?.sortIndex, timestamp: Number(notification?.message?.timestamp), attachmentsCount: Number(notification?.message?.attachmentsCount), repliedMessageId: {type: datatypes.MessageId_Type[notification?.message?.repliedMessageId?.type ?? 0], id: Number(notification?.message?.repliedMessageId?.id)}, messageLocation: {type: datatypes.MessageLocation_LocationType[notification?.message?.messageLocation?.type ?? 0], timestamp: Number(notification?.message?.messageLocation?.timestamp), latitude: notification?.message?.messageLocation?.latitude, longitude: notification?.message?.messageLocation?.longitude, altitude: notification?.message?.messageLocation?.altitude, precision: notification?.message?.messageLocation?.precision, address: notification?.message?.messageLocation?.address}, reactions: notification?.message?.reactions.map(e => ({contactId: Number(e.contactId), reaction: e.reaction, timestamp: Number(e.timestamp)})), forwarded: notification?.message?.forwarded, editedBody: notification?.message?.editedBody}},{previousBody: notification?.previousBody
 }])]);
 		onCallback?.();
 	}
 
-	return client.stubs.messageNotificationStub.messageBodyUpdated({}, callback, () => {});
+	return client.stubs.messageNotificationStub.messageBodyUpdated({ filter }, callback, () => {});
+
 }

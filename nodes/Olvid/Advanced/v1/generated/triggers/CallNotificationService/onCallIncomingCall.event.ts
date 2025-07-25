@@ -33,4 +33,5 @@ export function callIncomingCall(this: ITriggerFunctions, client: OlvidClient, o
 	}
 
 	return client.stubs.callNotificationStub.callIncomingCall({}, callback, () => {});
+
 }

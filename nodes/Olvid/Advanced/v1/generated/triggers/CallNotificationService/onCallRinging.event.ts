@@ -27,4 +27,5 @@ export function callRinging(this: ITriggerFunctions, client: OlvidClient, onCall
 	}
 
 	return client.stubs.callNotificationStub.callRinging({}, callback, () => {});
+
 }

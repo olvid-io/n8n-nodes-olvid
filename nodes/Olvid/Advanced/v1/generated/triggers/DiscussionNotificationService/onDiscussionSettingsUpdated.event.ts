@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildDiscussionFilter } from '../../../../../common-methods/filterHelpers';
 
 export function discussionSettingsUpdated(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -21,10 +23,14 @@ export function discussionSettingsUpdated(this: ITriggerFunctions, client: Olvid
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const filter = buildDiscussionFilter(this);
+
 	const callback = (notification: notifications.DiscussionSettingsUpdatedNotification) => {
 		this.emit([this.helpers.returnJsonArray([{discussion: {id: Number(notification?.discussion?.id), title: notification?.discussion?.title, contactId: notification?.discussion?.identifier.case === 'contactId' ? Number(notification?.discussion?.identifier.value) : undefined, groupId: notification?.discussion?.identifier.case === 'groupId' ? Number(notification?.discussion?.identifier.value) : undefined}},{newSettings: {discussionId: Number(notification?.newSettings?.discussionId), readOnce: notification?.newSettings?.readOnce, existenceDuration: Number(notification?.newSettings?.existenceDuration), visibilityDuration: Number(notification?.newSettings?.visibilityDuration)}},{previousSettings: {discussionId: Number(notification?.previousSettings?.discussionId), readOnce: notification?.previousSettings?.readOnce, existenceDuration: Number(notification?.previousSettings?.existenceDuration), visibilityDuration: Number(notification?.previousSettings?.visibilityDuration)}}])]);
 		onCallback?.();
 	}
 
-	return client.stubs.discussionNotificationStub.discussionSettingsUpdated({}, callback, () => {});
+	return client.stubs.discussionNotificationStub.discussionSettingsUpdated({ filter }, callback, () => {});
+
 }

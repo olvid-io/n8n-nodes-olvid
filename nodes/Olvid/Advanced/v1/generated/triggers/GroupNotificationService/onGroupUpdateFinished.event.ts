@@ -26,4 +26,5 @@ export function groupUpdateFinished(this: ITriggerFunctions, client: OlvidClient
 	}
 
 	return client.stubs.groupNotificationStub.groupUpdateFinished({}, callback, () => {});
+
 }

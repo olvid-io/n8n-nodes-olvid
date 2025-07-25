@@ -9,6 +9,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import type { ITriggerFunctions } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { buildDiscussionFilter } from '../../../../../common-methods/filterHelpers';
 
 export function discussionTitleUpdated(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: boolean = false): Function {
     if (returnMockData) {
@@ -20,11 +22,15 @@ export function discussionTitleUpdated(this: ITriggerFunctions, client: OlvidCli
         return () => {};
     }
 
+    // Build filter from trigger parameters
+    const filter = buildDiscussionFilter(this);
+
 	const callback = (notification: notifications.DiscussionTitleUpdatedNotification) => {
 		this.emit([this.helpers.returnJsonArray([{discussion: {id: Number(notification?.discussion?.id), title: notification?.discussion?.title, contactId: notification?.discussion?.identifier.case === 'contactId' ? Number(notification?.discussion?.identifier.value) : undefined, groupId: notification?.discussion?.identifier.case === 'groupId' ? Number(notification?.discussion?.identifier.value) : undefined}},{previousTitle: notification?.previousTitle
 }])]);
 		onCallback?.();
 	}
 
-	return client.stubs.discussionNotificationStub.discussionTitleUpdated({}, callback, () => {});
+	return client.stubs.discussionNotificationStub.discussionTitleUpdated({ filter }, callback, () => {});
+
 }
