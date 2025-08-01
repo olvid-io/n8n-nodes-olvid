@@ -285,7 +285,9 @@ export function getOlvidSendAndWaitProperties(): INodeProperties[] {
 // Send and wait configuration for Olvid
 export type OlvidSendAndWaitConfig = {
 	discussionId: number;
+	messageMode: 'sendMessage' | 'useMessageId' | 'noMessage';
 	message?: string;
+	messageId?: number;
 	responseType: 'messageApproval' | 'reactionApproval' | 'freeText' | 'both';
 	approvalType?: 'single' | 'double';
 	reactionType?: 'single' | 'double';
@@ -304,7 +306,10 @@ export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions):
 	config: OlvidSendAndWaitConfig;
 }> {
 	const discussionId = context.getNodeParameter('discussionId', 0) as number;
-	const message = context.getNodeParameter('message', 0, '') as string;
+	const messageMode = context.getNodeParameter('messageMode', 0, 'sendMessage') as
+		| 'sendMessage'
+		| 'useMessageId'
+		| 'noMessage';
 	const responseType = context.getNodeParameter('responseType', 0, 'messageApproval') as
 		| 'messageApproval'
 		| 'reactionApproval'
@@ -314,12 +319,21 @@ export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions):
 
 	const config: OlvidSendAndWaitConfig = {
 		discussionId,
-		message: message.trim() || undefined,
+		messageMode,
 		responseType,
 		specificContact: (options.specificContact as number) || 0,
 		onlyReplies: (options.onlyReplies as boolean) || false,
 		sendConfirmation: (options.sendConfirmation as boolean) || false,
 	};
+
+	// Handle different message modes
+	if (messageMode === 'sendMessage') {
+		const message = context.getNodeParameter('message', 0) as string;
+		config.message = message;
+	} else if (messageMode === 'useMessageId') {
+		const messageId = context.getNodeParameter('messageId', 0) as number;
+		config.messageId = messageId;
+	}
 
 	// Handle message-based responses
 	if (responseType === 'messageApproval' || responseType === 'both') {
@@ -402,13 +416,37 @@ export async function executeSendAndWait(
 
 	let sentMessageId: number | undefined;
 
-	// Send the message only if content is provided
-	if (messageContent) {
+	// Handle different message modes
+	if (config.messageMode === 'sendMessage') {
+		// Send a new message
+		if (!messageContent) {
+			throw new Error('Message content is required when using "Send Message" mode');
+		}
+
 		const messageResult = await client.messageSend({
 			discussionId: BigInt(config.discussionId),
 			body: messageContent,
 		});
+
 		sentMessageId = Number(messageResult.id?.id);
+	} else if (config.messageMode === 'useMessageId') {
+		// Use existing message ID
+		if (!config.messageId) {
+			throw new Error('Message ID is required when using "Use Message ID" mode');
+		}
+
+		sentMessageId = config.messageId;
+	}
+	// For 'noMessage' mode, sentMessageId remains undefined
+
+	// Validate reaction-based responses require a message ID
+	if (
+		(config.responseType === 'reactionApproval' || config.responseType === 'both') &&
+		!sentMessageId
+	) {
+		throw new Error(
+			'Message ID must be provided for reaction-based responses. Use "Send Message" or "Use Message ID" mode.',
+		);
 	}
 
 	// Create a promise that resolves when we get a valid response
@@ -442,6 +480,7 @@ export async function executeSendAndWait(
 									json: {
 										sentMessageId,
 										discussionId: config.discussionId,
+										messageMode: config.messageMode,
 										status: 'timeout',
 										timestamp: new Date().toISOString(),
 									},
@@ -463,7 +502,7 @@ export async function executeSendAndWait(
 			baseFilter.senderContactId = BigInt(config.specificContact);
 		}
 
-		// Add reply filter if specified
+		// Add reply filter if specified and we have a message to reply to
 		if (config.onlyReplies && sentMessageId) {
 			baseFilter.reply = {
 				case: 'repliedMessageId',
@@ -500,6 +539,7 @@ export async function executeSendAndWait(
 								json: {
 									sentMessageId,
 									discussionId: config.discussionId,
+									messageMode: config.messageMode,
 									status: 'resolved',
 									responseType: config.responseType,
 									approved: true,
@@ -539,6 +579,7 @@ export async function executeSendAndWait(
 									json: {
 										sentMessageId,
 										discussionId: config.discussionId,
+										messageMode: config.messageMode,
 										status: 'resolved',
 										responseType: config.responseType,
 										approved: false,
@@ -594,6 +635,7 @@ export async function executeSendAndWait(
 								json: {
 									sentMessageId,
 									discussionId: config.discussionId,
+									messageMode: config.messageMode,
 									status: 'resolved',
 									responseType: 'reactionApproval',
 									approved: true,
@@ -634,6 +676,7 @@ export async function executeSendAndWait(
 									json: {
 										sentMessageId,
 										discussionId: config.discussionId,
+										messageMode: config.messageMode,
 										status: 'resolved',
 										responseType: 'reactionApproval',
 										approved: false,

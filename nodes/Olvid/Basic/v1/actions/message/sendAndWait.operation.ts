@@ -17,10 +17,40 @@ export const description: INodeProperties[] = [
 		description: 'The ID of the discussion to send the message to',
 	},
 	{
+		displayName: 'Message Mode',
+		name: 'messageMode',
+		type: 'options',
+		default: 'sendMessage',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: [SEND_AND_WAIT_OPERATION],
+			},
+		},
+		options: [
+			{
+				name: 'Send Message',
+				value: 'sendMessage',
+				description: 'Send a new message and wait for responses',
+			},
+			{
+				name: 'Use Message ID',
+				value: 'useMessageId',
+				description: 'Reference an existing message by ID',
+			},
+			{
+				name: 'Do Not Send Message',
+				value: 'noMessage',
+				description: 'Wait for responses without sending a message',
+			},
+		],
+	},
+	{
 		displayName: 'Message',
 		name: 'message',
 		type: 'string',
 		default: '',
+		required: true,
 		typeOptions: {
 			rows: 4,
 		},
@@ -28,9 +58,25 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: ['message'],
 				operation: [SEND_AND_WAIT_OPERATION],
+				messageMode: ['sendMessage'],
 			},
 		},
-		description: 'The message content to send (optional - if empty, no message will be sent)',
+		description: 'The message content to send',
+	},
+	{
+		displayName: 'Message ID',
+		name: 'messageId',
+		type: 'number',
+		required: true,
+		default: 0,
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: [SEND_AND_WAIT_OPERATION],
+				messageMode: ['useMessageId'],
+			},
+		},
+		description: 'The ID of the existing message to reference',
 	},
 	{
 		displayName: 'Response Type',
@@ -41,6 +87,7 @@ export const description: INodeProperties[] = [
 			show: {
 				resource: ['message'],
 				operation: [SEND_AND_WAIT_OPERATION],
+				messageMode: ['sendMessage', 'useMessageId'],
 			},
 		},
 		options: [
@@ -63,6 +110,31 @@ export const description: INodeProperties[] = [
 				name: 'Both Message and Reaction',
 				value: 'both',
 				description: 'Accept both text messages and reactions',
+			},
+		],
+	},
+	{
+		displayName: 'Response Type',
+		name: 'responseType',
+		type: 'options',
+		default: 'messageApproval',
+		displayOptions: {
+			show: {
+				resource: ['message'],
+				operation: [SEND_AND_WAIT_OPERATION],
+				messageMode: ['noMessage'],
+			},
+		},
+		options: [
+			{
+				name: 'Message-based Approval',
+				value: 'messageApproval',
+				description: 'User responds with specific text messages (regex-based)',
+			},
+			{
+				name: 'Free Text Response',
+				value: 'freeText',
+				description: 'User can respond with any text',
 			},
 		],
 	},
