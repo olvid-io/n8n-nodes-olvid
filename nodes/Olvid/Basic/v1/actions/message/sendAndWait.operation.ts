@@ -21,7 +21,6 @@ export const description: INodeProperties[] = [
 		name: 'message',
 		type: 'string',
 		default: '',
-		required: true,
 		typeOptions: {
 			rows: 4,
 		},
@@ -31,7 +30,7 @@ export const description: INodeProperties[] = [
 				operation: [SEND_AND_WAIT_OPERATION],
 			},
 		},
-		description: 'The message content to send',
+		description: 'The message content to send (optional - if empty, no message will be sent)',
 	},
 	{
 		displayName: 'Response Type',
@@ -179,12 +178,12 @@ export const description: INodeProperties[] = [
 		},
 		description: 'Reaction emoji that counts as disapproval',
 	},
-	// Response filtering options
+	// Options (merged with response filters)
 	{
-		displayName: 'Response Filters',
-		name: 'responseFilters',
+		displayName: 'Options',
+		name: 'options',
 		type: 'collection',
-		placeholder: 'Add filter',
+		placeholder: 'Add option',
 		default: {},
 		displayOptions: {
 			show: {
@@ -200,22 +199,13 @@ export const description: INodeProperties[] = [
 				default: 0,
 				description: 'Only accept responses from this contact ID (0 = anyone)',
 			},
-		],
-	},
-	// Timing and confirmation options
-	{
-		displayName: 'Options',
-		name: 'options',
-		type: 'collection',
-		placeholder: 'Add option',
-		default: {},
-		displayOptions: {
-			show: {
-				resource: ['message'],
-				operation: [SEND_AND_WAIT_OPERATION],
+			{
+				displayName: 'Only Replying to Sent Message',
+				name: 'onlyReplies',
+				type: 'boolean',
+				default: false,
+				description: 'Only accept messages that are replies to the sent message',
 			},
-		},
-		options: [
 			{
 				displayName: 'Limit Wait Time',
 				name: 'limitWaitTime',

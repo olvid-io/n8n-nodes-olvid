@@ -3,33 +3,10 @@ import type {
 	INodeProperties,
 	IExecuteFunctions,
 	IDataObject,
-	IWebhookDescription,
 	INodeExecutionData,
 } from 'n8n-workflow';
 import { OlvidClient } from '../../../../client/OlvidClient';
 import * as datatypes from '../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
-
-// Webhook descriptions for Olvid send-and-wait
-export const olvidSendAndWaitWebhooksDescription: IWebhookDescription[] = [
-	{
-		name: 'default',
-		httpMethod: 'GET',
-		responseMode: 'onReceived',
-		responseData: '',
-		path: '={{ $nodeId }}',
-		restartWebhook: true,
-		isFullPath: true,
-	},
-	{
-		name: 'default',
-		httpMethod: 'POST',
-		responseMode: 'onReceived',
-		responseData: '',
-		path: '={{ $nodeId }}',
-		restartWebhook: true,
-		isFullPath: true,
-	},
-];
 
 // Properties for send-and-wait operations
 export function getOlvidSendAndWaitProperties(): INodeProperties[] {
@@ -47,11 +24,10 @@ export function getOlvidSendAndWaitProperties(): INodeProperties[] {
 			name: 'message',
 			type: 'string',
 			default: '',
-			required: true,
 			typeOptions: {
 				rows: 4,
 			},
-			description: 'The message content to send',
+			description: 'The message content to send (optional - if empty, no message will be sent)',
 		},
 		{
 			displayName: 'Response Type',
@@ -309,7 +285,7 @@ export function getOlvidSendAndWaitProperties(): INodeProperties[] {
 // Send and wait configuration for Olvid
 export type OlvidSendAndWaitConfig = {
 	discussionId: number;
-	message: string;
+	message?: string;
 	responseType: 'messageApproval' | 'reactionApproval' | 'freeText' | 'both';
 	approvalType?: 'single' | 'double';
 	reactionType?: 'single' | 'double';
@@ -317,34 +293,31 @@ export type OlvidSendAndWaitConfig = {
 	disapproveRegex?: string;
 	approveReaction?: string;
 	disapproveReaction?: string;
-	responseFilters?: {
-		specificContact?: number;
-	};
+	specificContact?: number;
+	onlyReplies: boolean;
 	sendConfirmation: boolean;
 };
 
 // Create Olvid message
 export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions): Promise<{
-	messageContent: string;
+	messageContent?: string;
 	config: OlvidSendAndWaitConfig;
 }> {
 	const discussionId = context.getNodeParameter('discussionId', 0) as number;
-	const message = context.getNodeParameter('message', 0) as string;
+	const message = context.getNodeParameter('message', 0, '') as string;
 	const responseType = context.getNodeParameter('responseType', 0, 'messageApproval') as
 		| 'messageApproval'
 		| 'reactionApproval'
 		| 'freeText'
 		| 'both';
 	const options = context.getNodeParameter('options', 0, {}) as IDataObject;
-	const responseFilters = context.getNodeParameter('responseFilters', 0, {}) as IDataObject;
 
 	const config: OlvidSendAndWaitConfig = {
 		discussionId,
-		message,
+		message: message.trim() || undefined,
 		responseType,
-		responseFilters: {
-			specificContact: (responseFilters.specificContact as number) || 0,
-		},
+		specificContact: (options.specificContact as number) || 0,
+		onlyReplies: (options.onlyReplies as boolean) || false,
 		sendConfirmation: (options.sendConfirmation as boolean) || false,
 	};
 
@@ -382,7 +355,7 @@ export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions):
 		}
 	}
 
-	return { messageContent: message, config };
+	return { messageContent: config.message, config };
 }
 
 // Configure wait time from parameters
@@ -427,13 +400,16 @@ export async function executeSendAndWait(
 	const { messageContent, config } = await createOlvidSendAndWaitMessage(this);
 	const waitTill = configureOlvidWaitTillDate(this);
 
-	// Send the message
-	const messageResult = await client.messageSend({
-		discussionId: BigInt(config.discussionId),
-		body: messageContent,
-	});
+	let sentMessageId: number | undefined;
 
-	const sentMessageId = Number(messageResult.id?.id);
+	// Send the message only if content is provided
+	if (messageContent) {
+		const messageResult = await client.messageSend({
+			discussionId: BigInt(config.discussionId),
+			body: messageContent,
+		});
+		sentMessageId = Number(messageResult.id?.id);
+	}
 
 	// Create a promise that resolves when we get a valid response
 	return new Promise((resolve, reject) => {
@@ -483,8 +459,16 @@ export async function executeSendAndWait(
 		});
 
 		// Add sender filter if specified
-		if (config.responseFilters?.specificContact) {
-			baseFilter.senderContactId = BigInt(config.responseFilters.specificContact);
+		if (config.specificContact) {
+			baseFilter.senderContactId = BigInt(config.specificContact);
+		}
+
+		// Add reply filter if specified
+		if (config.onlyReplies && sentMessageId) {
+			baseFilter.reply = {
+				case: 'repliedMessageId',
+				value: new datatypes.MessageId({ id: BigInt(sentMessageId) }),
+			};
 		}
 
 		// Setup message listener for text-based responses
@@ -575,9 +559,14 @@ export async function executeSendAndWait(
 
 		// Setup reaction listener for reaction-based responses
 		if (config.responseType === 'reactionApproval' || config.responseType === 'both') {
+			if (!sentMessageId) {
+				reject(new Error('Message ID must be provided for reaction-based responses'));
+				return;
+			}
+
 			const baseReactionFilter = new datatypes.ReactionFilter({
-				reactedBy: config.responseFilters?.specificContact
-					? { value: BigInt(config.responseFilters.specificContact), case: 'reactedByContactId' }
+				reactedBy: config.specificContact
+					? { value: BigInt(config.specificContact), case: 'reactedByContactId' }
 					: undefined,
 			});
 

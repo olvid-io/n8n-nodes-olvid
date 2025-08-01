@@ -2,7 +2,6 @@
 import { NodeConnectionType, type INodeTypeDescription } from 'n8n-workflow';
 import * as message_operations from './message';
 import * as attachment_operations from './attachment';
-import { olvidSendAndWaitWebhooksDescription } from './utils/sendAndWait';
 
 export const versionDescription: INodeTypeDescription = {
 	displayName: 'Olvid',
@@ -23,7 +22,6 @@ export const versionDescription: INodeTypeDescription = {
 			testedBy: 'testOlvidDaemon',
 		},
 	],
-	webhooks: olvidSendAndWaitWebhooksDescription,
 	properties: [
 		{
 			displayName: 'Resource',
