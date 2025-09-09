@@ -53,12 +53,13 @@ import { callDeclinedProperties } from "./CallNotificationService/onCallDeclined
 import { callBusyProperties } from "./CallNotificationService/onCallBusy.event"
 import { callEndedProperties } from "./CallNotificationService/onCallEnded.event"
 
-// in Node description we describe node resources and operations, each one is a INodeProperties with type resource or operation
-// resource represents services: ex MessageNotificationService
-// operation represents methods : ex onMessageReceived
 
+// list of properties (INodeProperties) representing different aspect of our node
+// - list all the possible triggers in property "updated"
+// - declare parameters common to every trigger
+// - include every trigger properties containing it's parameters (these parameters are generated in trigger file)
 export const generatedProperties: INodeProperties[] = [
-  // resources description (grpc services)
+  // trigger methods list (grpc methods)
   {
   	displayName: 'Trigger on',
   	name: 'updates',
@@ -114,10 +115,8 @@ export const generatedProperties: INodeProperties[] = [
       {name: 'CallBusy', value: 'CallBusy'},
       {name: 'CallEnded', value: 'CallEnded'}
   	],
-  	// Hardcoded in code generation
-  	default: 'MessageReceived'
+  	default: 'InvitationReceived'
 	},
-
 	// hardcoded property in code generation (common to every operation)
 	{
 		displayName: 'Dry Run for with example data [WARNING: WIP]',
@@ -128,7 +127,6 @@ export const generatedProperties: INodeProperties[] = [
 		description: 'Use mock data for "Test step" to test the workflow without connecting to Olvid daemon',
 	},
 
-	// include operations properties
   ...invitationReceivedProperties,
   ...invitationSentProperties,
   ...invitationDeletedProperties,

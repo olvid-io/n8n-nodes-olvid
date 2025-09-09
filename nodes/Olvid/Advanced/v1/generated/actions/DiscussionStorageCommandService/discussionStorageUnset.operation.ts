@@ -42,9 +42,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionStorageUnsetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionStorageUnset(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const discussionId: bigint = BigInt(this.getNodeParameter('discussionId', index) as number);
     const key: string = this.getNodeParameter('key', index) as string;
     const response: commands.DiscussionStorageUnsetResponse = await client.stubs.discussionStorageCommandStub.discussionStorageUnset({discussionId, key});

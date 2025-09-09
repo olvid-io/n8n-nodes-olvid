@@ -71,9 +71,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionSettingsSetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionSettingsSet(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getSettings(this: IExecuteFunctions, index: number): datatypes.DiscussionSettings {
         const itemSettings = this.getNodeParameter('settings', index) as IDataObject;
         const discussionId: bigint = BigInt(itemSettings['discussionId'] as number);

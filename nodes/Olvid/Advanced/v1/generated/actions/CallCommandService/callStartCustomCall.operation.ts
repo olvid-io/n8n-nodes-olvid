@@ -59,9 +59,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const callStartCustomCallProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function callStartCustomCall(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getContactIds(this: IExecuteFunctions, index: number): bigint[] {
         const contactIdsCollectionParent: IDataObject | undefined = this.getNodeParameter('contactIdsList', index) as IDataObject | undefined;
         if (contactIdsCollectionParent === undefined) {

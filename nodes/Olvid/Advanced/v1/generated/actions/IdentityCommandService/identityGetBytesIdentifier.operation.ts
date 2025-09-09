@@ -26,9 +26,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityGetBytesIdentifierProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityGetBytesIdentifier(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const response: commands.IdentityGetBytesIdentifierResponse = await client.stubs.identityCommandStub.identityGetBytesIdentifier({});
     return this.helpers.returnJsonArray({identifier: response?.identifier
 });

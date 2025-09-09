@@ -162,9 +162,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const groupNewAdvancedGroupProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function groupNewAdvancedGroup(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const name: string | undefined = this.getNodeParameter('name', index) ? this.getNodeParameter('name', index) as string : undefined;
     const description: string | undefined = this.getNodeParameter('description', index) ? this.getNodeParameter('description', index) as string : undefined;
     function getAdvancedConfiguration(this: IExecuteFunctions, index: number): datatypes.Group_AdvancedConfiguration | undefined {

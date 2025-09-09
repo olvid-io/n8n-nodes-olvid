@@ -26,9 +26,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityGetInvitationLinkProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityGetInvitationLink(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const response: commands.IdentityGetInvitationLinkResponse = await client.stubs.identityCommandStub.identityGetInvitationLink({});
     return this.helpers.returnJsonArray({invitationLink: response?.invitationLink
 });

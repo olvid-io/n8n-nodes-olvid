@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactRecreateChannelsProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactRecreateChannels(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     await client.stubs.contactCommandStub.contactRecreateChannels({contactId});
     return this.helpers.returnJsonArray({});

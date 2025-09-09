@@ -2,7 +2,7 @@ import type { Schema } from '@bufbuild/protoplugin';
 //@ts-ignore
 import type { DescMethod } from '@bufbuild/protobuf/dist/cjs/descriptors';
 import { generateTriggerPropertiesJson } from './generateTriggerMethodProperties';
-import { generateTriggerMethod } from './generateTriggerMethod';
+import { generateTriggerHandler } from './generateTriggerHandler';
 
 
 export function generateTrigger(
@@ -25,5 +25,5 @@ import { type ITriggerFunctions, type IDataObject, type INodeProperties, updateD
 
 	generateTriggerPropertiesJson(destinationFile, method);
 
-	generateTriggerMethod(destinationFile, method, useAdminClient);
+	generateTriggerHandler(destinationFile, method, useAdminClient);
 }

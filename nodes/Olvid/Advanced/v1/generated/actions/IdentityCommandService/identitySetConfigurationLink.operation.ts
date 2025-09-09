@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identitySetConfigurationLinkProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identitySetConfigurationLink(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const configurationLink: string = this.getNodeParameter('configurationLink', index) as string;
     const response: commands.IdentitySetConfigurationLinkResponse = await client.stubs.identityCommandStub.identitySetConfigurationLink({configurationLink});
     return this.helpers.returnJsonArray({permission: {call: response?.apiKey?.permission?.call, multiDevice: response?.apiKey?.permission?.multiDevice}, expirationTimestamp: Number(response?.apiKey?.expirationTimestamp)});

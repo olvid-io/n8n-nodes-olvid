@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const invitationNewProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function invitationNew(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const invitationUrl: string = this.getNodeParameter('invitationUrl', index) as string;
     const response: commands.InvitationNewResponse = await client.stubs.invitationCommandStub.invitationNew({invitationUrl});
     return this.helpers.returnJsonArray({id: Number(response?.invitation?.id), status: datatypes.Invitation_Status[response?.invitation?.status ?? 0], displayName: response?.invitation?.displayName, timestamp: Number(response?.invitation?.timestamp), sas: response?.invitation?.sas});

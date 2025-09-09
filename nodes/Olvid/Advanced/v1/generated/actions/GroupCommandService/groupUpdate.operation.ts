@@ -398,9 +398,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const groupUpdateProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function groupUpdate(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getGroup(this: IExecuteFunctions, index: number): datatypes.Group {
         const itemGroup = this.getNodeParameter('group', index) as IDataObject;
         const id: bigint = BigInt(itemGroup['id'] as number);

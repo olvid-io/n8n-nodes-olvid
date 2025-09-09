@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionSettingsGetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionSettingsGet(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const discussionId: bigint = BigInt(this.getNodeParameter('discussionId', index) as number);
     const response: commands.DiscussionSettingsGetResponse = await client.stubs.discussionCommandStub.discussionSettingsGet({discussionId});
     return this.helpers.returnJsonArray({discussionId: Number(response?.settings?.discussionId), readOnce: response?.settings?.readOnce, existenceDuration: Number(response?.settings?.existenceDuration), visibilityDuration: Number(response?.settings?.visibilityDuration)});

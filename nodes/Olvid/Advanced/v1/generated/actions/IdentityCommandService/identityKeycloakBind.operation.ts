@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityKeycloakBindProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityKeycloakBind(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const configurationLink: string = this.getNodeParameter('configurationLink', index) as string;
     await client.stubs.identityCommandStub.identityKeycloakBind({configurationLink});
     return this.helpers.returnJsonArray({});

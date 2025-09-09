@@ -59,9 +59,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionStorageListProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionStorageList(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const discussionId: bigint = BigInt(this.getNodeParameter('discussionId', index) as number);
     function getFilter(this: IExecuteFunctions, index: number): datatypes.StorageElementFilter | undefined {
         const itemFilter = this.getNodeParameter('filter', index) as IDataObject | undefined;

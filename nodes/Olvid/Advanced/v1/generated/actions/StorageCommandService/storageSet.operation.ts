@@ -42,9 +42,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const storageSetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function storageSet(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const key: string = this.getNodeParameter('key', index) as string;
     const value: string = this.getNodeParameter('value', index) as string;
     const response: commands.StorageSetResponse = await client.stubs.storageCommandStub.storageSet({key, value});

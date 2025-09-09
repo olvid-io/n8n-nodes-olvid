@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactGetInvitationLinkProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactGetInvitationLink(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     const response: commands.ContactGetInvitationLinkResponse = await client.stubs.contactCommandStub.contactGetInvitationLink({contactId});
     return this.helpers.returnJsonArray({invitationLink: response?.invitationLink

@@ -1,3 +1,4 @@
+// TODO replace with @bufbuild/protobuf
 import type { DescField, DescMessage } from '@bufbuild/protobuf/dist/esm/descriptors';
 
 // field: MessageId id = 1 => messageId: datatypes.MessageId

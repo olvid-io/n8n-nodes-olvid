@@ -32,11 +32,11 @@ const displayOptions = {
 	},
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const groupSetPhotoProperties = updateDisplayOptions(displayOptions, properties);
 
 const CHUNK_SIZE = 1_000_000;
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function groupSetPhoto(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
 	const groupId: bigint = BigInt(this.getNodeParameter('groupId', index) as number);
 	const binaryPropertyName: string = this.getNodeParameter('binaryPropertyName', index) as string;
 	const binaryData = this.helpers.assertBinaryData(index, binaryPropertyName);

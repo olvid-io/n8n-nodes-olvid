@@ -2,7 +2,12 @@ import type { GeneratedFile } from "@bufbuild/protoplugin"
 //@ts-ignore
 import type { DescMethod, DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { getDefaultPropertyJson, getDefaultType } from "./getDefaultPropertyJson";
-import { capitalize } from "src/tools/tools";
+import {
+	capitalize,
+	getActionOperationName,
+	getActionPropertiesName,
+	getActionResourceName,
+} from 'src/tools/tools';
 
 function generateMessageCollection(f: GeneratedFile, field: DescField, indentation: number, parents: string = ''): void {
     const idt = '  '.repeat(indentation);
@@ -95,10 +100,10 @@ const properties: INodeProperties[] = [`;
 
 const displayOptions = {
   show: {
-    resource: ['${method.parent.name}'],
-    operation: ['${method.name}'],
+    resource: ['${getActionResourceName(method.parent)}'],
+    operation: ['${getActionOperationName(method)}'],
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);`;
+export const ${getActionPropertiesName(method)} = updateDisplayOptions(displayOptions, properties);`;
 }

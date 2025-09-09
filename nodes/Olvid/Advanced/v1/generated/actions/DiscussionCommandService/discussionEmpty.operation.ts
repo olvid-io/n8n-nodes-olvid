@@ -42,9 +42,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionEmptyProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionEmpty(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const discussionId: bigint = BigInt(this.getNodeParameter('discussionId', index) as number);
     const deleteEverywhere: boolean | undefined = this.getNodeParameter('deleteEverywhere', index) ? this.getNodeParameter('deleteEverywhere', index) as boolean : undefined;
     await client.stubs.discussionCommandStub.discussionEmpty({discussionId, deleteEverywhere});

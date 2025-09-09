@@ -65,9 +65,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const attachmentDeleteProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function attachmentDelete(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getAttachmentId(this: IExecuteFunctions, index: number): datatypes.AttachmentId {
         const itemAttachmentId = this.getNodeParameter('attachmentId', index) as IDataObject;
         function getType(this: IExecuteFunctions, itemAttachmentId: IDataObject): datatypes.AttachmentId_Type {

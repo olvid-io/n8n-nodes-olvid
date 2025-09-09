@@ -67,9 +67,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityUpdateDetailsProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityUpdateDetails(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getNewDetails(this: IExecuteFunctions, index: number): datatypes.IdentityDetails {
         const itemNewDetails = this.getNodeParameter('newDetails', index) as IDataObject;
         const firstName: string | undefined = itemNewDetails['firstName'] ? itemNewDetails['firstName'] as string : undefined;

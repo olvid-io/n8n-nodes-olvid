@@ -42,9 +42,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const invitationSasProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function invitationSas(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const invitationId: bigint = BigInt(this.getNodeParameter('invitationId', index) as number);
     const sas: string = this.getNodeParameter('sas', index) as string;
     await client.stubs.invitationCommandStub.invitationSas({invitationId, sas});

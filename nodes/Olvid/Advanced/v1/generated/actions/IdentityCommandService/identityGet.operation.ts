@@ -26,9 +26,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityGetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityGet(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const response: commands.IdentityGetResponse = await client.stubs.identityCommandStub.identityGet({});
     return this.helpers.returnJsonArray({id: Number(response?.identity?.id), displayName: response?.identity?.displayName, details: {firstName: response?.identity?.details?.firstName, lastName: response?.identity?.details?.lastName, company: response?.identity?.details?.company, position: response?.identity?.details?.position}, invitationUrl: response?.identity?.invitationUrl, keycloakManaged: response?.identity?.keycloakManaged, hasAPhoto: response?.identity?.hasAPhoto, apiKey: {permission: {call: response?.identity?.apiKey?.permission?.call, multiDevice: response?.identity?.apiKey?.permission?.multiDevice}, expirationTimestamp: Number(response?.identity?.apiKey?.expirationTimestamp)}});
 }

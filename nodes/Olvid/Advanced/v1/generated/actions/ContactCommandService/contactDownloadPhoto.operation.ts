@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactDownloadPhotoProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactDownloadPhoto(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     const response: commands.ContactDownloadPhotoResponse = await client.stubs.contactCommandStub.contactDownloadPhoto({contactId});
     return this.helpers.returnJsonArray({photo: response?.photo

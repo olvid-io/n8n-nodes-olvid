@@ -26,9 +26,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityKeycloakUnbindProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityKeycloakUnbind(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     await client.stubs.identityCommandStub.identityKeycloakUnbind({});
     return this.helpers.returnJsonArray({});
 }

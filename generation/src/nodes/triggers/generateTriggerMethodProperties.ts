@@ -1,5 +1,5 @@
 import type { GeneratedFile } from '@bufbuild/protoplugin';
-import { capitalize, decapitalize } from '../../tools/tools';
+import { capitalize, getTriggerPropertiesName, getTriggerUpdateName } from '../../tools/tools';
 import { getDefaultPropertyJson, getDefaultType } from '../properties/getDefaultPropertyJson';
 //@ts-ignore
 // TODO change to '@bufbuild/protobuf' and try to update code ...
@@ -81,8 +81,6 @@ ${idt}  },`;
 	}
 }
 
-
-// TODO TODEL ? this generate properties with updateDisplayOptions call
 export function generateTriggerPropertiesJson(destinationFIle: GeneratedFile, method: DescMethod): void {
 	destinationFIle.print`
 const properties: INodeProperties[] = [`;
@@ -98,9 +96,9 @@ const properties: INodeProperties[] = [`;
 
 const displayOptions = {
   show: {
-    updates: ['${method.name}'],
+    updates: ['${getTriggerUpdateName(method)}'],
   },
 };
 
-export const ${decapitalize(method.name)}Properties = updateDisplayOptions(displayOptions, properties);`;
+export const ${getTriggerPropertiesName(method)} = updateDisplayOptions(displayOptions, properties);`;
 }

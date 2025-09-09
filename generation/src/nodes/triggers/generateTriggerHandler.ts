@@ -6,7 +6,7 @@ import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
 import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
 import type { DescField } from '@bufbuild/protobuf';
 
-export function generateTriggerMethod(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
+export function generateTriggerHandler(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
 	const stubName = method.parent.name.charAt(0).toLowerCase() + method.parent.name.slice(1).replace("Service", "Stub");
 
 	destinationFile.print`
@@ -16,7 +16,6 @@ export function ${method.localName}(this: ITriggerFunctions, client: ${useAdminC
 		generateTriggerGetParameterRecursive(destinationFile, subField, 0);
 		destinationFile.print`    ${getDefaultGetParameter({ field: subField })}`;
 	}
-	const parameters = method.input.fields.map((subField: DescField) => `${subField.jsonName}`).join(', ');
 
 	destinationFile.print`
     if (returnMockData) {

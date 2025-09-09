@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const invitationAcceptProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function invitationAccept(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const invitationId: bigint = BigInt(this.getNodeParameter('invitationId', index) as number);
     await client.stubs.invitationCommandStub.invitationAccept({invitationId});
     return this.helpers.returnJsonArray({});

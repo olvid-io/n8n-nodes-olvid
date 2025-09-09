@@ -5,12 +5,13 @@ import { generateActionGetParameterRecursive } from "./parameters/generateAction
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
 import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
 import type { DescField } from '@bufbuild/protobuf';
+import { getActionHandlerFunctionName } from '../../tools/tools';
 
-export function generateActionExecuteFunction(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
+export function generateActionHandler(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
 	const stubName = method.parent.name.charAt(0).toLowerCase() + method.parent.name.slice(1).replace("Service", "Stub");
 
 	destinationFile.print`
-export async function execute(this: IExecuteFunctions, index: number, client: ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}): Promise<INodeExecutionData[]> {`;
+export async function ${getActionHandlerFunctionName(method)}(this: IExecuteFunctions, index: number, client: ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}): Promise<INodeExecutionData[]> {`;
 
 	for (const subField of method.input.fields) {
 		generateActionGetParameterRecursive(destinationFile, subField, 0);

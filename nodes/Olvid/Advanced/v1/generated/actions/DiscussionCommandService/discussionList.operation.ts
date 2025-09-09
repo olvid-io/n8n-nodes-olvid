@@ -82,9 +82,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionListProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionList(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getFilter(this: IExecuteFunctions, index: number): datatypes.DiscussionFilter | undefined {
         const itemFilter = this.getNodeParameter('filter', index) as IDataObject | undefined;
         if (itemFilter === undefined) {

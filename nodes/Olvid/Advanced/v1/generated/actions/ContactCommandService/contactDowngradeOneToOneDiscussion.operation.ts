@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactDowngradeOneToOneDiscussionProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactDowngradeOneToOneDiscussion(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     await client.stubs.contactCommandStub.contactDowngradeOneToOneDiscussion({contactId});
     return this.helpers.returnJsonArray({});

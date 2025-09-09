@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactGetBytesIdentifierProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactGetBytesIdentifier(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     const response: commands.ContactGetBytesIdentifierResponse = await client.stubs.contactCommandStub.contactGetBytesIdentifier({contactId});
     return this.helpers.returnJsonArray({identifier: response?.identifier

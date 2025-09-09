@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionGetByGroupProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionGetByGroup(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const groupId: bigint = BigInt(this.getNodeParameter('groupId', index) as number);
     const response: commands.DiscussionGetByGroupResponse = await client.stubs.discussionCommandStub.discussionGetByGroup({groupId});
     return this.helpers.returnJsonArray({id: Number(response?.discussion?.id), title: response?.discussion?.title, contactId: response?.discussion?.identifier.case === 'contactId' ? Number(response?.discussion?.identifier.value) : undefined, groupId: response?.discussion?.identifier.case === 'groupId' ? Number(response?.discussion?.identifier.value) : undefined});

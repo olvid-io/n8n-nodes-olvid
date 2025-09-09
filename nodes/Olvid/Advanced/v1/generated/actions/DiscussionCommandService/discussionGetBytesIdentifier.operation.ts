@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const discussionGetBytesIdentifierProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function discussionGetBytesIdentifier(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const discussionId: bigint = BigInt(this.getNodeParameter('discussionId', index) as number);
     const response: commands.DiscussionGetBytesIdentifierResponse = await client.stubs.discussionCommandStub.discussionGetBytesIdentifier({discussionId});
     return this.helpers.returnJsonArray({identifier: response?.identifier

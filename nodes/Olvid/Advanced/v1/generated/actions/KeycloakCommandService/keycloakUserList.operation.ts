@@ -104,9 +104,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const keycloakUserListProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function keycloakUserList(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getFilter(this: IExecuteFunctions, index: number): datatypes.KeycloakUserFilter | undefined {
         const itemFilter = this.getNodeParameter('filter', index) as IDataObject | undefined;
         if (itemFilter === undefined) {

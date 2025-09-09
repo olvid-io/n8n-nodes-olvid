@@ -4,11 +4,11 @@ import type { Schema } from "@bufbuild/protoplugin"
 import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import { generateActionPropertiesJson } from "../properties/generateActionPropertiesJson";
 import { decapitalize } from "src/tools/tools";
-import { generateActionExecuteFunction } from "./generateActionExecute";
+import { generateActionHandler } from "./generateActionHandler";
 
 export function generateAction(schema: Schema, method: DescMethod, useAdminClient: boolean = false): void {
 	if (method.methodKind === 'client_streaming' || method.methodKind === "bidi_streaming") {
-		throw new Error(`#--# GENERATION ERROR: Client streaming and bidirectional streaming not supported and no overrided file was found at "generation/src/nodes/overrides/${method.name}.operation.ts" for service "${method.parent.name}"`);
+		throw new Error(`#--# GENERATION ERROR: Client streaming and bidirectional streaming not supported and no override file was found in overrides directory [method: ${method.name}, service "${method.parent.name}]"`);
 	}
 
 	const path = `actions/${method.parent.name}/${decapitalize(method.name)}`;
@@ -31,14 +31,7 @@ ${!useAdminClient ? 'import * as commands from "../../../../../protobuf/olvid/da
 // noinspection ES6UnusedImports
 ${useAdminClient ? 'import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";' : ''}
 `
-
-	/*
-	** properties
-	 */
 	generateActionPropertiesJson(destinationFile, method);
 
-	/*
-	** execute
-	 */
-	generateActionExecuteFunction(destinationFile, method, useAdminClient);
+	generateActionHandler(destinationFile, method, useAdminClient);
 }

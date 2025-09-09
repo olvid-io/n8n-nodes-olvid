@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const callStartDiscussionCallProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function callStartDiscussionCall(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const discussionId: bigint = BigInt(this.getNodeParameter('discussionId', index) as number);
     const response: commands.CallStartDiscussionCallResponse = await client.stubs.callCommandStub.callStartDiscussionCall({discussionId});
     return this.helpers.returnJsonArray({callIdentifier: response?.callIdentifier

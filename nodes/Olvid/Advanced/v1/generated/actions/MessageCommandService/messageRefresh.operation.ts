@@ -26,9 +26,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const messageRefreshProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function messageRefresh(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     await client.stubs.messageCommandStub.messageRefresh({});
     return this.helpers.returnJsonArray({});
 }

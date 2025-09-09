@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const storageUnsetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function storageUnset(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const key: string = this.getNodeParameter('key', index) as string;
     const response: commands.StorageUnsetResponse = await client.stubs.storageCommandStub.storageUnset({key});
     return this.helpers.returnJsonArray({previousValue: response?.previousValue

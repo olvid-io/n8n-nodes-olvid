@@ -42,9 +42,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactIntroductionProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactIntroduction(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const firstContactId: bigint = BigInt(this.getNodeParameter('firstContactId', index) as number);
     const secondContactId: bigint = BigInt(this.getNodeParameter('secondContactId', index) as number);
     await client.stubs.contactCommandStub.contactIntroduction({firstContactId, secondContactId});

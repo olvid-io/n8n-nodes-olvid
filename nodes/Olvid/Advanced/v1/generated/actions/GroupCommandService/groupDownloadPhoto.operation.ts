@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const groupDownloadPhotoProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function groupDownloadPhoto(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const groupId: bigint = BigInt(this.getNodeParameter('groupId', index) as number);
     const response: commands.GroupDownloadPhotoResponse = await client.stubs.groupCommandStub.groupDownloadPhoto({groupId});
     return this.helpers.returnJsonArray({photo: response?.photo

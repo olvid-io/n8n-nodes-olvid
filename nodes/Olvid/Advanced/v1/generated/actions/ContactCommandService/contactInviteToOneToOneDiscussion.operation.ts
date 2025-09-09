@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactInviteToOneToOneDiscussionProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactInviteToOneToOneDiscussion(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     const response: commands.ContactInviteToOneToOneDiscussionResponse = await client.stubs.contactCommandStub.contactInviteToOneToOneDiscussion({contactId});
     return this.helpers.returnJsonArray({id: Number(response?.invitation?.id), status: datatypes.Invitation_Status[response?.invitation?.status ?? 0], displayName: response?.invitation?.displayName, timestamp: Number(response?.invitation?.timestamp), sas: response?.invitation?.sas});

@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const contactGetProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function contactGet(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const contactId: bigint = BigInt(this.getNodeParameter('contactId', index) as number);
     const response: commands.ContactGetResponse = await client.stubs.contactCommandStub.contactGet({contactId});
     return this.helpers.returnJsonArray({id: Number(response?.contact?.id), displayName: response?.contact?.displayName, details: {firstName: response?.contact?.details?.firstName, lastName: response?.contact?.details?.lastName, company: response?.contact?.details?.company, position: response?.contact?.details?.position}, establishedChannelCount: response?.contact?.establishedChannelCount, deviceCount: response?.contact?.deviceCount, hasOneToOneDiscussion: response?.contact?.hasOneToOneDiscussion, hasAPhoto: response?.contact?.hasAPhoto, keycloakManaged: response?.contact?.keycloakManaged});

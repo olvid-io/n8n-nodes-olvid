@@ -57,9 +57,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const messageEndLocationSharingProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function messageEndLocationSharing(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getMessageId(this: IExecuteFunctions, index: number): datatypes.MessageId {
         const itemMessageId = this.getNodeParameter('messageId', index) as IDataObject;
         function getType(this: IExecuteFunctions, itemMessageId: IDataObject): datatypes.MessageId_Type {

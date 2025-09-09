@@ -37,9 +37,9 @@ const displayOptions = {
     },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const attachmentDownloadProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function attachmentDownload(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     function getAttachmentId(this: IExecuteFunctions, index: number): datatypes.AttachmentId {
         function getType(this: IExecuteFunctions, index: number): datatypes.AttachmentId_Type {
             const value: string | number = this.getNodeParameter('type', index) as string | number

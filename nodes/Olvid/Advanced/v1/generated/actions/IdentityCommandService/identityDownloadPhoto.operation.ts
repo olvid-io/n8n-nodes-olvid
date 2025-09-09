@@ -26,9 +26,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const identityDownloadPhotoProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function identityDownloadPhoto(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const response: commands.IdentityDownloadPhotoResponse = await client.stubs.identityCommandStub.identityDownloadPhoto({});
     return this.helpers.returnJsonArray({photo: response?.photo
 });

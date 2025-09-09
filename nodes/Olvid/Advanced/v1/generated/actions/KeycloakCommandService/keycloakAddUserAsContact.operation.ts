@@ -34,9 +34,9 @@ const displayOptions = {
   },
 };
 
-export const description = updateDisplayOptions(displayOptions, properties);
+export const keycloakAddUserAsContactProperties = updateDisplayOptions(displayOptions, properties);
 
-export async function execute(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
+export async function keycloakAddUserAsContact(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
     const keycloakId: string = this.getNodeParameter('keycloakId', index) as string;
     await client.stubs.keycloakCommandStub.keycloakAddUserAsContact({keycloakId});
     return this.helpers.returnJsonArray({});
