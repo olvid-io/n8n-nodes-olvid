@@ -1,7 +1,7 @@
 import { ITriggerResponse, NodeOperationError, type ITriggerFunctions } from 'n8n-workflow';
 
 import { OlvidClient } from '../../../client/OlvidClient';
-import { listenerMap, ListenerType } from '../generated/triggers/generatedInterfaces';
+import { triggersMap } from '../generated/triggers/triggerMap';
 import { defaultTriggerWaitTime } from '../../../constants';
 
 export async function router(this: ITriggerFunctions): Promise<ITriggerResponse> {
@@ -11,14 +11,15 @@ export async function router(this: ITriggerFunctions): Promise<ITriggerResponse>
         credentials.clientKey
     );
 
-    const listener = this.getNodeParameter('updates') as ListenerType;
+    const listenerName: string = this.getNodeParameter('updates') as string;
+		console.warn("listener")
 
     const initializeListener = (callback?: () => void, returnMockData: boolean = false): Function => {
-        const handler = listenerMap[listener];
+        const handler = triggersMap[listenerName];
         if (!handler) {
             throw new NodeOperationError(
                 this.getNode(),
-                `Invalid trigger update type: ${listener}`
+                `Invalid trigger update type: ${listenerName}`
             );
         }
         return handler.call(this, client, callback, returnMockData);

@@ -8,7 +8,7 @@ import { generateActionExecuteFunction } from "./generateActionExecute";
 
 export function generateAction(schema: Schema, method: DescMethod, useAdminClient: boolean = false): void {
 	if (method.methodKind === 'client_streaming' || method.methodKind === "bidi_streaming") {
-		throw new Error(`#--# GENERATION ERROR: Client streaming and bidirectional streaming not supported and no overrided file was found at "generation/src/overrides/${method.name}.operation.ts" for service "${method.parent.name}"`);
+		throw new Error(`#--# GENERATION ERROR: Client streaming and bidirectional streaming not supported and no overrided file was found at "generation/src/nodes/overrides/${method.name}.operation.ts" for service "${method.parent.name}"`);
 	}
 
 	const path = `actions/${method.parent.name}/${decapitalize(method.name)}`;

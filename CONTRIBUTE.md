@@ -22,8 +22,8 @@
 	 Exit n8n with `Ctrl+C` when you see `Editor is now accessible via: http://localhost:5678/`
 5. Generate node code:
    ```
-	 cd generation && npm install
-	 cd .. && npm run generate
+	  cd generation && npm install
+	  cd .. && npm run generate
 	 ```
 5. Add your node to pnpm locally:
 	 ```
@@ -37,13 +37,12 @@
 	 ```
 	 n8n
 	 ```
-	Note: You could also run with `nodemon` to react at file change with `npm run dev`
+   Or use `nodemon` to react at file changes with:
+   ```
+   pnpm run dev
+   ```
+
 8. Open your browser to `http://localhost:5678`.
-
-
-```
-pnpm run dev
-```
 
 # Add a New Action to OlvidBasic
 

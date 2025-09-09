@@ -13,7 +13,9 @@ type OlvidMap = {`;
 
 export type Olvid = AllEntities<OlvidMap>;
 
+// TODO TODEL ?
 ${Object.keys(resourceOperationList).map(resource => `export type Olvid${resource} = Entity<OlvidMap, '${resource}'>;`).join('\n')}
 
+// TODO TODEL ?
 ${Object.keys(resourceOperationList).map(resource => `export type ${resource}Properties = PropertiesOf<Olvid${resource}>;`).join('\n')}`;
 }

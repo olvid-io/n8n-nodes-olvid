@@ -1,7 +1,7 @@
 import {createEcmaScriptPlugin, runNodeJs, type Schema} from "@bufbuild/protoplugin";
 
 /*
-** barrels are simply files that import other files content to create "submodules"
+** barrels are simply nodes that import other nodes content to create "submodules"
 * for example we create a datatypes.ts file that will import everything next to it
 * and allows us to import datatypes module in olvid.ts root file
  */

@@ -28,7 +28,7 @@ function generateActionPropertiesJsonRecursive(destinationFile: GeneratedFile, f
 
     if (field.fieldKind === 'list' && !stopList) {
         destinationFile.print`${idt}  {
-${idt}    displayName: '${parents} - List',
+${idt}    displayName: '${parents}- List',
 ${idt}    name: '${field.jsonName}List',
 ${idt}    type: 'fixedCollection',
 ${idt}    typeOptions: {

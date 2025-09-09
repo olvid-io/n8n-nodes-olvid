@@ -9,8 +9,10 @@ type OlvidMap = {
 
 export type Olvid = AllEntities<OlvidMap>;
 
+// TODO TODEL ?
 export type OlvidClientKeyAdminService = Entity<OlvidMap, 'ClientKeyAdminService'>;
 export type OlvidIdentityAdminService = Entity<OlvidMap, 'IdentityAdminService'>;
 
+// TODO TODEL ?
 export type ClientKeyAdminServiceProperties = PropertiesOf<OlvidClientKeyAdminService>;
 export type IdentityAdminServiceProperties = PropertiesOf<OlvidIdentityAdminService>;

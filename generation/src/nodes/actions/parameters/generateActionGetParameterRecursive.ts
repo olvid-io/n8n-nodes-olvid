@@ -3,7 +3,7 @@ import { capitalize, getTsType } from "src/tools/tools";
 import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
 import type { GeneratedFile } from "@bufbuild/protoplugin"
 import { getDefaultGetParameter } from "./getDefaultGetParameter";
-import { getNodeParameter } from "src/tools/getNodeParameter";
+import { getActionNodeParameter } from "../../../tools/getNodeParameter";
 
 export function generateActionGetParameterRecursive(destinationFile: GeneratedFile, field: DescField, iteration: number, oneofField: boolean = false, isList: boolean = false, optional: string = ''): void {
 	const idt = '    '.repeat(iteration);
@@ -17,7 +17,7 @@ export function generateActionGetParameterRecursive(destinationFile: GeneratedFi
         // f.print`// LIST`;
         destinationFile.print`${idt}    function get${capitalize(field.localName)}(this: IExecuteFunctions, ${item}): ${getTsType(field)}[]${optional} {`;
         generateActionGetParameterRecursive(destinationFile, field, iteration + 1, oneofField, true);
-        destinationFile.print`${idt}        const ${field.jsonName}CollectionParent: IDataObject | undefined = ${getNodeParameter(field.jsonName + 'List', indented, field.parent.name)} as IDataObject | undefined;
+        destinationFile.print`${idt}        const ${field.jsonName}CollectionParent: IDataObject | undefined = ${getActionNodeParameter(field.jsonName + 'List', indented, field.parent.name)} as IDataObject | undefined;
 ${idt}        if (${field.jsonName}CollectionParent === undefined) {
 ${idt}            return [];
 ${idt}        }
@@ -39,7 +39,7 @@ ${idt}    }`;
 ${idt}        { value?: undefined, case: undefined } |
 ${field.oneof.fields.map((f: DescField) => `${idt}        { value: ${getTsType(f)}, case: "${f.jsonName}" }`).join(' |\n')};
 ${idt}    function get${capitalize(field.oneof.localName)}(this: IExecuteFunctions, ${item}): ${field.oneof.localName}Type {
-${idt}        const selectedCase: string | undefined = ${getNodeParameter(field.oneof.localName + 'Select', indented, field.parent.name)} as string | undefined;
+${idt}        const selectedCase: string | undefined = ${getActionNodeParameter(field.oneof.localName + 'Select', indented, field.parent.name)} as string | undefined;
 ${idt}        if (selectedCase === undefined) {
 ${idt}            return { case: undefined };
 ${idt}        }`;
@@ -57,7 +57,7 @@ ${idt}    }`;
     else if (field.enum) {
         // f.print`// ENUM`;
         destinationFile.print`${idt}    function get${capitalize(field.localName)}(this: IExecuteFunctions, ${item}): ${getTsType(field)}${optional} {
-${idt}        const value: string | number${optional} = ${getNodeParameter(field.jsonName, indented, field.parent.name)} as string | number${optional};
+${idt}        const value: string | number${optional} = ${getActionNodeParameter(field.jsonName, indented, field.parent.name)} as string | number${optional};
 ${optional ? `${idt}        if (value === undefined) {
 ${idt}            return undefined;
 ${idt}        }` : ''}
@@ -76,7 +76,7 @@ ${idt}    }`;
 	else if (field.message) {
         // f.print`// MESSAGE`;
         destinationFile.print`${idt}    function get${capitalize(field.localName)}(this: IExecuteFunctions, ${item}): ${getTsType(field)}${optional} {
-${idt}        const item${capitalize(field.localName)} = ${getNodeParameter(field.jsonName, indented, field.parent.name)} as IDataObject${optional};`;
+${idt}        const item${capitalize(field.localName)} = ${getActionNodeParameter(field.jsonName, indented, field.parent.name)} as IDataObject${optional};`;
         if (optional) {
             destinationFile.print`${idt}        if (item${capitalize(field.localName)} === undefined) {
 ${idt}            return undefined;
