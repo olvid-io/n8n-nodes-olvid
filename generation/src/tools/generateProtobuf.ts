@@ -1,5 +1,4 @@
-//@ts-ignore
-import type { DescField, DescMessage } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescField, DescMessage } from "@bufbuild/protobuf"
 import {ScalarType} from "@bufbuild/protobuf";
 
 /*

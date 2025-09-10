@@ -2,8 +2,7 @@ import type { Schema } from "node_modules/@bufbuild/protoplugin/dist/cjs";
 import { readFileSync, existsSync } from 'fs';
 import * as path from 'path';
 import { getTriggerFileName, getActionFileName, getActionFilePath, getTriggerFilePath } from '../tools/tools';
-//@ts-ignore
-import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf"
 
 export function overrideActionFile(schema: Schema, method: DescMethod): boolean {
 	const filename = getActionFileName(method);

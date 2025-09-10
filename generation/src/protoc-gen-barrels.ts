@@ -11,12 +11,7 @@ export default function generateBarrels(schema: Schema) {
     const barrelFile = schema.generateFile(barrelFilePath);
 
     for (const file of schema.files) {
-        if (file.services.length > 0) {
-            barrelFile.print(`export * from "./${file.name.split("/").slice(-1)}_connect";`);
-        }
-        if (file.messages.length > 0) {
-            barrelFile.print(`export * from "./${file.name.split("/").slice(-1)}_pb";`);
-        }
+			barrelFile.print(`export * from "./${file.name.split("/").slice(-1)}_pb";`);
     }
 
     console.error(`${moduleName}: Barrels are in the hold🏴‍☠️`)

@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -442,7 +444,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
                 }
             }
             const remoteDelete: datatypes.Group_AdvancedConfiguration_RemoteDelete | undefined = getRemoteDelete.call(this, itemAdvancedConfiguration);
-            return new datatypes.Group_AdvancedConfiguration({
+            return create(datatypes.Group_AdvancedConfigurationSchema, {
                 readOnly,
                 remoteDelete,
             });
@@ -455,7 +457,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
             const editOrRemoteDeleteOwnMessages: boolean = itemOwnPermissions['editOrRemoteDeleteOwnMessages'] as boolean;
             const changeSettings: boolean = itemOwnPermissions['changeSettings'] as boolean;
             const sendMessage: boolean = itemOwnPermissions['sendMessage'] as boolean;
-            return new datatypes.GroupMemberPermissions({
+            return create(datatypes.GroupMemberPermissionsSchema, {
                 admin,
                 remoteDeleteAnything,
                 editOrRemoteDeleteOwnMessages,
@@ -475,7 +477,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
                     const editOrRemoteDeleteOwnMessages: boolean = itemPermissions['editOrRemoteDeleteOwnMessages'] as boolean;
                     const changeSettings: boolean = itemPermissions['changeSettings'] as boolean;
                     const sendMessage: boolean = itemPermissions['sendMessage'] as boolean;
-                    return new datatypes.GroupMemberPermissions({
+                    return create(datatypes.GroupMemberPermissionsSchema, {
                         admin,
                         remoteDeleteAnything,
                         editOrRemoteDeleteOwnMessages,
@@ -484,7 +486,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
                     });
                 }
                 const permissions: datatypes.GroupMemberPermissions = getPermissions.call(this, itemMembers);
-                return new datatypes.GroupMember({
+                return create(datatypes.GroupMemberSchema, {
                     contactId,
                     permissions,
                 });
@@ -519,7 +521,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
                     const editOrRemoteDeleteOwnMessages: boolean = itemPermissions['editOrRemoteDeleteOwnMessages'] as boolean;
                     const changeSettings: boolean = itemPermissions['changeSettings'] as boolean;
                     const sendMessage: boolean = itemPermissions['sendMessage'] as boolean;
-                    return new datatypes.GroupMemberPermissions({
+                    return create(datatypes.GroupMemberPermissionsSchema, {
                         admin,
                         remoteDeleteAnything,
                         editOrRemoteDeleteOwnMessages,
@@ -528,7 +530,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
                     });
                 }
                 const permissions: datatypes.GroupMemberPermissions = getPermissions.call(this, itemPendingMembers);
-                return new datatypes.PendingGroupMember({
+                return create(datatypes.PendingGroupMemberSchema, {
                     pendingMemberId,
                     contactId,
                     displayName,
@@ -557,7 +559,7 @@ export async function groupUpdate(this: IExecuteFunctions, index: number, client
         const name: string = itemGroup['name'] as string;
         const description: string = itemGroup['description'] as string;
         const hasAPhoto: boolean = itemGroup['hasAPhoto'] as boolean;
-        return new datatypes.Group({
+        return create(datatypes.GroupSchema, {
             id,
             type,
             advancedConfiguration,

@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -198,7 +200,7 @@ export async function attachmentList(this: IExecuteFunctions, index: number, cli
             }
             const type: datatypes.MessageId_Type | undefined = getType.call(this, itemMessageId);
             const id: bigint | undefined = itemMessageId['id'] ? BigInt(itemMessageId['id'] as number) : undefined;
-            return new datatypes.MessageId({
+            return create(datatypes.MessageIdSchema, {
                 type,
                 id,
             });
@@ -208,7 +210,7 @@ export async function attachmentList(this: IExecuteFunctions, index: number, cli
         const mimeTypeSearch: string | undefined = itemFilter['mimeTypeSearch'] ? itemFilter['mimeTypeSearch'] as string : undefined;
         const minSize: bigint | undefined = itemFilter['minSize'] ? BigInt(itemFilter['minSize'] as number) : undefined;
         const maxSize: bigint | undefined = itemFilter['maxSize'] ? BigInt(itemFilter['maxSize'] as number) : undefined;
-        return new datatypes.AttachmentFilter({
+        return create(datatypes.AttachmentFilterSchema, {
             type,
             fileType,
             discussionId,
@@ -221,7 +223,7 @@ export async function attachmentList(this: IExecuteFunctions, index: number, cli
     }
     const filter: datatypes.AttachmentFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: commands.AttachmentListResponse = new commands.AttachmentListResponse();
+    const containerMessage: commands.AttachmentListResponse = create(commands.AttachmentListResponseSchema);
     for await (const message of client.stubs.attachmentCommandStub.attachmentList({filter})) {
         containerMessage.attachments.push(...message.attachments);
     }

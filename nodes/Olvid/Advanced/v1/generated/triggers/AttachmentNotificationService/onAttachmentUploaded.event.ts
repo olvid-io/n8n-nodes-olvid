@@ -6,6 +6,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import { type ITriggerFunctions, type IDataObject, type INodeProperties, updateDisplayOptions, replaceCircularReferences } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -294,7 +296,7 @@ export function attachmentUploaded(this: ITriggerFunctions, client: OlvidClient,
             }
             const type: datatypes.MessageId_Type | undefined = getType.call(this, itemMessageId);
             const id: bigint | undefined = itemMessageId['id'] ? BigInt(itemMessageId['id'] as number) : undefined;
-            return new datatypes.MessageId({
+            return create(datatypes.MessageIdSchema, {
                 type,
                 id,
             });
@@ -304,7 +306,7 @@ export function attachmentUploaded(this: ITriggerFunctions, client: OlvidClient,
         const mimeTypeSearch: string | undefined = itemFilter['mimeTypeSearch'] ? itemFilter['mimeTypeSearch'] as string : undefined;
         const minSize: bigint | undefined = itemFilter['minSize'] ? BigInt(itemFilter['minSize'] as number) : undefined;
         const maxSize: bigint | undefined = itemFilter['maxSize'] ? BigInt(itemFilter['maxSize'] as number) : undefined;
-        return new datatypes.AttachmentFilter({
+        return create(datatypes.AttachmentFilterSchema, {
             type,
             fileType,
             discussionId,
@@ -335,7 +337,7 @@ export function attachmentUploaded(this: ITriggerFunctions, client: OlvidClient,
             }
             const type: datatypes.MessageId_Type = getType.call(this, itemMessageIds);
             const id: bigint = BigInt(itemMessageIds['id'] as number);
-            return new datatypes.MessageId({
+            return create(datatypes.MessageIdSchema, {
                 type,
                 id,
             });
@@ -375,7 +377,7 @@ export function attachmentUploaded(this: ITriggerFunctions, client: OlvidClient,
             }
             const type: datatypes.AttachmentId_Type = getType.call(this, itemAttachmentIds);
             const id: bigint = BigInt(itemAttachmentIds['id'] as number);
-            return new datatypes.AttachmentId({
+            return create(datatypes.AttachmentIdSchema, {
                 type,
                 id,
             });

@@ -1,6 +1,5 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin";
-//@ts-ignore
-import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf"
 import { generateTriggerGetParameterRecursive } from "./parameters/generateTriggerGetParameterRecursive";
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
 import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";

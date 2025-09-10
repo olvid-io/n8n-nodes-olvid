@@ -6,6 +6,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import { type ITriggerFunctions, type IDataObject, type INodeProperties, updateDisplayOptions, replaceCircularReferences } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -355,7 +357,7 @@ export function messageLocationReceived(this: ITriggerFunctions, client: OlvidCl
                 }
                 const reactedBy: reactedByType = getReactedBy.call(this, itemReactionsFilter);
                 const reaction: string | undefined = itemReactionsFilter['reaction'] ? itemReactionsFilter['reaction'] as string : undefined;
-                return new datatypes.ReactionFilter({
+                return create(datatypes.ReactionFilterSchema, {
                     reaction,
                     reactedBy,
                 });
@@ -404,7 +406,7 @@ export function messageLocationReceived(this: ITriggerFunctions, client: OlvidCl
                 }
                 const type: datatypes.MessageId_Type = getType.call(this, itemRepliedMessageId);
                 const id: bigint = BigInt(itemRepliedMessageId['id'] as number);
-                return new datatypes.MessageId({
+                return create(datatypes.MessageIdSchema, {
                     type,
                     id,
                 });
@@ -425,7 +427,7 @@ export function messageLocationReceived(this: ITriggerFunctions, client: OlvidCl
             return { case: undefined };
         }
         const reply: replyType | undefined = getReply.call(this, itemFilter);
-        return new datatypes.MessageFilter({
+        return create(datatypes.MessageFilterSchema, {
             type,
             discussionId,
             senderContactId,

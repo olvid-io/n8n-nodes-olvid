@@ -6,6 +6,7 @@ import { OlvidClient } from '../../../../../client/OlvidClient';
 import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 // @ts-ignore
 import { formatFileSize } from '../../../../../GenericFunctions';
+import { create } from '@bufbuild/protobuf';
 
 const properties: INodeProperties[] = [
     {
@@ -55,7 +56,7 @@ export async function attachmentDownload(this: IExecuteFunctions, index: number,
         }
         const type: datatypes.AttachmentId_Type = getType.call(this, index);
         const id: bigint = BigInt(this.getNodeParameter('id', index) as number);
-        return new datatypes.AttachmentId({
+        return create(datatypes.AttachmentIdSchema, {
             type,
             id,
         });

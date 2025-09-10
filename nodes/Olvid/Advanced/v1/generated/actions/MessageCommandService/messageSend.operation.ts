@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -140,7 +142,7 @@ export async function messageSend(this: IExecuteFunctions, index: number, client
         }
         const type: datatypes.MessageId_Type | undefined = getType.call(this, itemReplyId);
         const id: bigint | undefined = itemReplyId['id'] ? BigInt(itemReplyId['id'] as number) : undefined;
-        return new datatypes.MessageId({
+        return create(datatypes.MessageIdSchema, {
             type,
             id,
         });
@@ -154,7 +156,7 @@ export async function messageSend(this: IExecuteFunctions, index: number, client
         const readOnce: boolean | undefined = itemEphemerality['readOnce'] ? itemEphemerality['readOnce'] as boolean : undefined;
         const existenceDuration: bigint | undefined = itemEphemerality['existenceDuration'] ? BigInt(itemEphemerality['existenceDuration'] as number) : undefined;
         const visibilityDuration: bigint | undefined = itemEphemerality['visibilityDuration'] ? BigInt(itemEphemerality['visibilityDuration'] as number) : undefined;
-        return new datatypes.MessageEphemerality({
+        return create(datatypes.MessageEphemeralitySchema, {
             readOnce,
             existenceDuration,
             visibilityDuration,

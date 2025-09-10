@@ -6,6 +6,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import { type ITriggerFunctions, type IDataObject, type INodeProperties, updateDisplayOptions, replaceCircularReferences } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -754,7 +756,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
                 }
             }
             const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemOwnPermissionsFilter);
-            return new datatypes.GroupPermissionFilter({
+            return create(datatypes.GroupPermissionFilterSchema, {
                 admin,
                 sendMessage,
                 remoteDeleteAnything,
@@ -859,7 +861,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
                         }
                     }
                     const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemPermissions);
-                    return new datatypes.GroupPermissionFilter({
+                    return create(datatypes.GroupPermissionFilterSchema, {
                         admin,
                         sendMessage,
                         remoteDeleteAnything,
@@ -868,7 +870,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
                     });
                 }
                 const permissions: datatypes.GroupPermissionFilter | undefined = getPermissions.call(this, itemMemberFilters);
-                return new datatypes.GroupMemberFilter({
+                return create(datatypes.GroupMemberFilterSchema, {
                     contactId,
                     permissions,
                 });
@@ -1018,7 +1020,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
                         }
                     }
                     const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemPermissions);
-                    return new datatypes.GroupPermissionFilter({
+                    return create(datatypes.GroupPermissionFilterSchema, {
                         admin,
                         sendMessage,
                         remoteDeleteAnything,
@@ -1027,7 +1029,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
                     });
                 }
                 const permissions: datatypes.GroupPermissionFilter | undefined = getPermissions.call(this, itemPendingMemberFilters);
-                return new datatypes.PendingGroupMemberFilter({
+                return create(datatypes.PendingGroupMemberFilterSchema, {
                     isContact,
                     hasDeclined,
                     contactId,
@@ -1051,7 +1053,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
             return pendingMemberFiltersList;
         }
         const pendingMemberFilters: datatypes.PendingGroupMemberFilter[] | undefined = getPendingMemberFilters.call(this, itemGroupFilter);
-        return new datatypes.GroupFilter({
+        return create(datatypes.GroupFilterSchema, {
             type,
             empty,
             photo,
@@ -1154,7 +1156,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
             }
         }
         const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemPermissionsFilter);
-        return new datatypes.GroupPermissionFilter({
+        return create(datatypes.GroupPermissionFilterSchema, {
             admin,
             sendMessage,
             remoteDeleteAnything,
@@ -1253,7 +1255,7 @@ export function groupOwnPermissionsUpdated(this: ITriggerFunctions, client: Olvi
             }
         }
         const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemPreviousPermissionsFilter);
-        return new datatypes.GroupPermissionFilter({
+        return create(datatypes.GroupPermissionFilterSchema, {
             admin,
             sendMessage,
             remoteDeleteAnything,

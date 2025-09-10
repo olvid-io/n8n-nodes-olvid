@@ -1,10 +1,12 @@
-// @ts-ignore
-import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors";
+import type { DescField } from "@bufbuild/protobuf";
 import { ScalarProto_Type } from "./types";
 import type { DescMethod, DescService } from '@bufbuild/protobuf';
 
 export function getTsType(field: DescField): string {
     return (!field.scalar ? "datatypes." : "") + getProtoType(field, true);
+}
+export function getTsTypeSchema(field: DescField): string {
+	return (!field.scalar ? "datatypes." : "") + getProtoType(field, true) + "Schema";
 }
 
 export function getProtoType(field: DescField, advanced: boolean = false): string {

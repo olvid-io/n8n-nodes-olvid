@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -189,7 +191,7 @@ export async function contactList(this: IExecuteFunctions, index: number, client
             const lastName: string | undefined = itemDetailsSearch['lastName'] ? itemDetailsSearch['lastName'] as string : undefined;
             const company: string | undefined = itemDetailsSearch['company'] ? itemDetailsSearch['company'] as string : undefined;
             const position: string | undefined = itemDetailsSearch['position'] ? itemDetailsSearch['position'] as string : undefined;
-            return new datatypes.IdentityDetails({
+            return create(datatypes.IdentityDetailsSchema, {
                 firstName,
                 lastName,
                 company,
@@ -197,7 +199,7 @@ export async function contactList(this: IExecuteFunctions, index: number, client
             });
         }
         const detailsSearch: datatypes.IdentityDetails | undefined = getDetailsSearch.call(this, itemFilter);
-        return new datatypes.ContactFilter({
+        return create(datatypes.ContactFilterSchema, {
             oneToOne,
             photo,
             keycloak,
@@ -207,7 +209,7 @@ export async function contactList(this: IExecuteFunctions, index: number, client
     }
     const filter: datatypes.ContactFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: commands.ContactListResponse = new commands.ContactListResponse();
+    const containerMessage: commands.ContactListResponse = create(commands.ContactListResponseSchema);
     for await (const message of client.stubs.contactCommandStub.contactList({filter})) {
         containerMessage.contacts.push(...message.contacts);
     }

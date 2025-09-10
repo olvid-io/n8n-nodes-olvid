@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 
 // noinspection ES6UnusedImports
 import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [

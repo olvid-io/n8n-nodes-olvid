@@ -1,10 +1,4 @@
-// @ts-ignore
-import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
-
-export type TypeListType = { [key: string]: DescField[] };
-
-export type ResourceOperationListType = { [key: string]: string[] };
-
+// TODO TODEL ? move ?
 export const ScalarProto_Type = {
     1: "number",      // DOUBLE
     2: "number",      // FLOAT

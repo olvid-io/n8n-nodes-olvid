@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -139,7 +141,7 @@ export async function invitationList(this: IExecuteFunctions, index: number, cli
         const displayNameSearch: string | undefined = itemFilter['displayNameSearch'] ? itemFilter['displayNameSearch'] as string : undefined;
         const minTimestamp: bigint | undefined = itemFilter['minTimestamp'] ? BigInt(itemFilter['minTimestamp'] as number) : undefined;
         const maxTimestamp: bigint | undefined = itemFilter['maxTimestamp'] ? BigInt(itemFilter['maxTimestamp'] as number) : undefined;
-        return new datatypes.InvitationFilter({
+        return create(datatypes.InvitationFilterSchema, {
             status,
             type,
             displayNameSearch,
@@ -149,7 +151,7 @@ export async function invitationList(this: IExecuteFunctions, index: number, cli
     }
     const filter: datatypes.InvitationFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: commands.InvitationListResponse = new commands.InvitationListResponse();
+    const containerMessage: commands.InvitationListResponse = create(commands.InvitationListResponseSchema);
     for await (const message of client.stubs.invitationCommandStub.invitationList({filter})) {
         containerMessage.invitations.push(...message.invitations);
     }

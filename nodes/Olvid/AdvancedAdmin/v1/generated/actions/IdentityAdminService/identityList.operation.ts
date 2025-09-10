@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 
 // noinspection ES6UnusedImports
 import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -189,7 +191,7 @@ export async function identityList(this: IExecuteFunctions, index: number, clien
             const lastName: string | undefined = itemDetailsSearch['lastName'] ? itemDetailsSearch['lastName'] as string : undefined;
             const company: string | undefined = itemDetailsSearch['company'] ? itemDetailsSearch['company'] as string : undefined;
             const position: string | undefined = itemDetailsSearch['position'] ? itemDetailsSearch['position'] as string : undefined;
-            return new datatypes.IdentityDetails({
+            return create(datatypes.IdentityDetailsSchema, {
                 firstName,
                 lastName,
                 company,
@@ -197,7 +199,7 @@ export async function identityList(this: IExecuteFunctions, index: number, clien
             });
         }
         const detailsSearch: datatypes.IdentityDetails | undefined = getDetailsSearch.call(this, itemFilter);
-        return new datatypes.IdentityFilter({
+        return create(datatypes.IdentityFilterSchema, {
             keycloak,
             photo,
             apiKey,
@@ -207,7 +209,7 @@ export async function identityList(this: IExecuteFunctions, index: number, clien
     }
     const filter: datatypes.IdentityFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: admin.IdentityListResponse = new admin.IdentityListResponse();
+    const containerMessage: admin.IdentityListResponse = create(admin.IdentityListResponseSchema);
     for await (const message of client.adminStubs.identityAdminStub.identityList({filter})) {
         containerMessage.identities.push(...message.identities);
     }

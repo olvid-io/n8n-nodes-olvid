@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -129,7 +131,7 @@ export async function discussionList(this: IExecuteFunctions, index: number, cli
         }
         const identifier: identifierType | undefined = getIdentifier.call(this, itemFilter);
         const titleSearch: string | undefined = itemFilter['titleSearch'] ? itemFilter['titleSearch'] as string : undefined;
-        return new datatypes.DiscussionFilter({
+        return create(datatypes.DiscussionFilterSchema, {
             type,
             titleSearch,
             identifier,
@@ -137,7 +139,7 @@ export async function discussionList(this: IExecuteFunctions, index: number, cli
     }
     const filter: datatypes.DiscussionFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: commands.DiscussionListResponse = new commands.DiscussionListResponse();
+    const containerMessage: commands.DiscussionListResponse = create(commands.DiscussionListResponseSchema);
     for await (const message of client.stubs.discussionCommandStub.discussionList({filter})) {
         containerMessage.discussions.push(...message.discussions);
     }

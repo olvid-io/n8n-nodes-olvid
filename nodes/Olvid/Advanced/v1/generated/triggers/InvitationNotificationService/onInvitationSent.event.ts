@@ -6,6 +6,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import { type ITriggerFunctions, type IDataObject, type INodeProperties, updateDisplayOptions, replaceCircularReferences } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -139,7 +141,7 @@ export function invitationSent(this: ITriggerFunctions, client: OlvidClient, onC
         const displayNameSearch: string | undefined = itemFilter['displayNameSearch'] ? itemFilter['displayNameSearch'] as string : undefined;
         const minTimestamp: bigint | undefined = itemFilter['minTimestamp'] ? BigInt(itemFilter['minTimestamp'] as number) : undefined;
         const maxTimestamp: bigint | undefined = itemFilter['maxTimestamp'] ? BigInt(itemFilter['maxTimestamp'] as number) : undefined;
-        return new datatypes.InvitationFilter({
+        return create(datatypes.InvitationFilterSchema, {
             status,
             type,
             displayNameSearch,

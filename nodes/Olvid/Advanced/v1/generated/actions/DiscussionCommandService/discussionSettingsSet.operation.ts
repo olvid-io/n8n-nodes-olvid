@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -80,7 +82,7 @@ export async function discussionSettingsSet(this: IExecuteFunctions, index: numb
         const readOnce: boolean = itemSettings['readOnce'] as boolean;
         const existenceDuration: bigint = BigInt(itemSettings['existenceDuration'] as number);
         const visibilityDuration: bigint = BigInt(itemSettings['visibilityDuration'] as number);
-        return new datatypes.DiscussionSettings({
+        return create(datatypes.DiscussionSettingsSchema, {
             discussionId,
             readOnce,
             existenceDuration,

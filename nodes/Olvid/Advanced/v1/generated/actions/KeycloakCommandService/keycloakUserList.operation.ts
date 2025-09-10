@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -139,7 +141,7 @@ export async function keycloakUserList(this: IExecuteFunctions, index: number, c
             const lastName: string | undefined = itemDetailsSearch['lastName'] ? itemDetailsSearch['lastName'] as string : undefined;
             const company: string | undefined = itemDetailsSearch['company'] ? itemDetailsSearch['company'] as string : undefined;
             const position: string | undefined = itemDetailsSearch['position'] ? itemDetailsSearch['position'] as string : undefined;
-            return new datatypes.IdentityDetails({
+            return create(datatypes.IdentityDetailsSchema, {
                 firstName,
                 lastName,
                 company,
@@ -147,7 +149,7 @@ export async function keycloakUserList(this: IExecuteFunctions, index: number, c
             });
         }
         const detailsSearch: datatypes.IdentityDetails | undefined = getDetailsSearch.call(this, itemFilter);
-        return new datatypes.KeycloakUserFilter({
+        return create(datatypes.KeycloakUserFilterSchema, {
             contact,
             displayNameSearch,
             detailsSearch,
@@ -156,7 +158,7 @@ export async function keycloakUserList(this: IExecuteFunctions, index: number, c
     const filter: datatypes.KeycloakUserFilter | undefined = getFilter.call(this, index);
     const lastListTimestamp: bigint | undefined = this.getNodeParameter('lastListTimestamp', index) ? BigInt(this.getNodeParameter('lastListTimestamp', index) as number) : undefined;
 
-    const containerMessage: commands.KeycloakUserListResponse = new commands.KeycloakUserListResponse();
+    const containerMessage: commands.KeycloakUserListResponse = create(commands.KeycloakUserListResponseSchema);
     for await (const message of client.stubs.keycloakCommandStub.keycloakUserList({filter, lastListTimestamp})) {
         containerMessage.users.push(...message.users);
         containerMessage.lastListTimestamp = message.lastListTimestamp

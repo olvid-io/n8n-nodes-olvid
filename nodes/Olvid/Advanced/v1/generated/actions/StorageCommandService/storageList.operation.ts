@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -61,14 +63,14 @@ export async function storageList(this: IExecuteFunctions, index: number, client
         }
         const keySearch: string | undefined = itemFilter['keySearch'] ? itemFilter['keySearch'] as string : undefined;
         const valueSearch: string | undefined = itemFilter['valueSearch'] ? itemFilter['valueSearch'] as string : undefined;
-        return new datatypes.StorageElementFilter({
+        return create(datatypes.StorageElementFilterSchema, {
             keySearch,
             valueSearch,
         });
     }
     const filter: datatypes.StorageElementFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: commands.StorageListResponse = new commands.StorageListResponse();
+    const containerMessage: commands.StorageListResponse = create(commands.StorageListResponseSchema);
     for await (const message of client.stubs.storageCommandStub.storageList({filter})) {
         containerMessage.elements.push(...message.elements);
     }

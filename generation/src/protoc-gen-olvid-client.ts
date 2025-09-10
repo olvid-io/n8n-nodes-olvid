@@ -1,9 +1,7 @@
 import {createEcmaScriptPlugin, runNodeJs, type Schema} from "@bufbuild/protoplugin";
 import { getFieldAsAParameter, getFieldTsType, getMessageTsType } from "./gentools";
 import {olvidClientTemplate, olvidAdminClientTemplate} from "./client/olvid_client_templates";
-// this import requires @bufbuild/protobuf: ^2.5.1
-// @ts-ignore
-import type { DescMethod, DescService, DescField } from "@bufbuild/protobuf/dist/esm/descriptors";
+import type { DescMethod, DescService, DescField } from "@bufbuild/protobuf";
 
 function dumpCommandMethod(service: DescService, method: DescMethod): string {
     // is list method (specific case)

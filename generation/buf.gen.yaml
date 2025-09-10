@@ -7,9 +7,6 @@ plugins:
   - local: protoc-gen-es
     opt: target=ts
     out: ../nodes/Olvid/protobuf
-  - local: protoc-gen-connect-es
-    opt: target=ts
-    out: ../nodes/Olvid/protobuf
   - local: [ "tsx", "./src/protoc-gen-barrels.ts" ]
     opt: target=ts
     out: ../nodes/Olvid/protobuf

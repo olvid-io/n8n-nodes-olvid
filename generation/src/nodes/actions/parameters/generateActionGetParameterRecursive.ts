@@ -1,6 +1,5 @@
-import { capitalize, getTsType } from "src/tools/tools";
-// @ts-ignore
-import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import { capitalize, getTsType, getTsTypeSchema } from 'src/tools/tools';
+import type { DescField } from "@bufbuild/protobuf"
 import type { GeneratedFile } from "@bufbuild/protoplugin"
 import { getDefaultGetParameter } from "./getDefaultGetParameter";
 import { getActionNodeParameter } from "../../../tools/getNodeParameter";
@@ -94,7 +93,7 @@ ${idt}        }`;
             destinationFile.print`${idt}        ${getDefaultGetParameter({ field: subField, itemName: `item${capitalize(field.localName)}`, indented: true, optional })}`;
         }
 
-        destinationFile.print`${idt}        return new ${getTsType(field)}({`;
+        destinationFile.print`${idt}        return create(${getTsTypeSchema(field)}, {`;
         for (const subField of field.message.fields) {
             if (subField.oneof === undefined) {
 				destinationFile.print`${idt}            ${subField.jsonName},`;

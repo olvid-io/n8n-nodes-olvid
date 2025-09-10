@@ -7,6 +7,7 @@ import { OlvidClient } from '../../../../../client/OlvidClient';
 import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 // @ts-ignore
 import * as commands from '../../../../../protobuf/olvid/daemon/command/v1/command';
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -45,9 +46,9 @@ export async function groupSetPhoto(this: IExecuteFunctions, index: number, clie
 
 	async function* requestStream(): AsyncIterable<commands.GroupSetPhotoRequest> {
 		// send metadata
-		yield new commands.GroupSetPhotoRequest({
+		yield create(commands.GroupSetPhotoRequestSchema, {
 			request: {
-				case: "metadata", value: new commands.GroupSetPhotoRequestMetadata({
+				case: "metadata", value: create(commands.GroupSetPhotoRequestMetadataSchema, {
 					groupId: groupId,
 					filename: binaryData.fileName,
 					fileSize: BigInt(payload.length)
@@ -63,9 +64,9 @@ export async function groupSetPhoto(this: IExecuteFunctions, index: number, clie
 			let start = chunkIndex * CHUNK_SIZE;
 			let end = (chunkIndex + 1) * CHUNK_SIZE;
 			if (end > payload.length) {
-				yield new commands.GroupSetPhotoRequest({ request: { case: "payload", value: payload.subarray(start) } });
+				yield create(commands.GroupSetPhotoRequestSchema, { request: { case: "payload", value: payload.subarray(start) } });
 			} else {
-				yield new commands.GroupSetPhotoRequest({ request: { case: "payload", value: payload.subarray(start, end) } });
+				yield create(commands.GroupSetPhotoRequestSchema, { request: { case: "payload", value: payload.subarray(start, end) } });
 			}
 			chunkIndex += 1;
 		}

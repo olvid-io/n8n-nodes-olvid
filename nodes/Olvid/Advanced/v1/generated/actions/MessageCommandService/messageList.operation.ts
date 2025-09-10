@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -363,7 +365,7 @@ export async function messageList(this: IExecuteFunctions, index: number, client
                 }
                 const reactedBy: reactedByType = getReactedBy.call(this, itemReactionsFilter);
                 const reaction: string | undefined = itemReactionsFilter['reaction'] ? itemReactionsFilter['reaction'] as string : undefined;
-                return new datatypes.ReactionFilter({
+                return create(datatypes.ReactionFilterSchema, {
                     reaction,
                     reactedBy,
                 });
@@ -412,7 +414,7 @@ export async function messageList(this: IExecuteFunctions, index: number, client
                 }
                 const type: datatypes.MessageId_Type = getType.call(this, itemRepliedMessageId);
                 const id: bigint = BigInt(itemRepliedMessageId['id'] as number);
-                return new datatypes.MessageId({
+                return create(datatypes.MessageIdSchema, {
                     type,
                     id,
                 });
@@ -433,7 +435,7 @@ export async function messageList(this: IExecuteFunctions, index: number, client
             return { case: undefined };
         }
         const reply: replyType | undefined = getReply.call(this, itemFilter);
-        return new datatypes.MessageFilter({
+        return create(datatypes.MessageFilterSchema, {
             type,
             discussionId,
             senderContactId,
@@ -450,7 +452,7 @@ export async function messageList(this: IExecuteFunctions, index: number, client
     const filter: datatypes.MessageFilter | undefined = getFilter.call(this, index);
     const unread: boolean | undefined = this.getNodeParameter('unread', index) ? this.getNodeParameter('unread', index) as boolean : undefined;
 
-    const containerMessage: commands.MessageListResponse = new commands.MessageListResponse();
+    const containerMessage: commands.MessageListResponse = create(commands.MessageListResponseSchema);
     for await (const message of client.stubs.messageCommandStub.messageList({filter, unread})) {
         containerMessage.messages.push(...message.messages);
     }

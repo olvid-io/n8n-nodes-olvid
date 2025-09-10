@@ -8,6 +8,7 @@ import {
     type Interceptor,
     Transport
 } from "@connectrpc/connect";
+import { create } from '@bufbuild/protobuf';
 import { createGrpcTransport, type GrpcTransportOptions } from "@connectrpc/connect-node";
 import * as datatypes from "../protobuf/olvid/daemon/datatypes/v1/datatypes";
 import * as services from "../protobuf/olvid/daemon/services/v1/services";
@@ -47,7 +48,6 @@ export class OlvidClient {
         let transportOptions: GrpcTransportOptions = {
             baseUrl: serverUrl,
             useBinaryFormat: true,
-            httpVersion: "2"
         }
 				transportOptions.interceptors ?
             transportOptions.interceptors.push(this.getAuthenticationInterceptor())
@@ -119,30 +119,30 @@ export class OlvidClient {
     public async messageSendWithAttachments(request: { discussionId: bigint, attachments: {filename: string, payload: Uint8Array}[], body?: string, replyId?: datatypes.MessageId, ephemerality?: datatypes.MessageEphemerality, disableLinkPreview?: boolean}) {
         async function* requestStream(): AsyncIterable<command.MessageSendWithAttachmentsRequest> {
             // send message and files metadata
-            const metadata =  new command.MessageSendWithAttachmentsRequestMetadata({
+            const metadata =  create(command.MessageSendWithAttachmentsRequestMetadataSchema, {
                 discussionId: request.discussionId,
                 body: request.body,
                 replyId: request.replyId,
                 ephemerality: request.ephemerality,
                 files: request.attachments.map((attachment) => {
-                    return new command.MessageSendWithAttachmentsRequestMetadata_File({
+                    return create(command.MessageSendWithAttachmentsRequestMetadata_FileSchema, {
                         filename: attachment.filename,
                         fileSize: BigInt(attachment.payload.byteLength)
                     });
                 }),
                 disableLinkPreview: request.disableLinkPreview,
             });
-            yield new command.MessageSendWithAttachmentsRequest({request: {case: "metadata", value: metadata}});
+            yield create(command.MessageSendWithAttachmentsRequestSchema, {request: {case: "metadata", value: metadata}});
 
             // send files
             for (let attachment of request.attachments) {
                 for (let chunk_index = 0; chunk_index < attachment.payload.byteLength; chunk_index += ATTACHMENT_CHUNK_SIZE) {
                     // send chunk
                     const chunk = new Uint8Array(attachment.payload.subarray(chunk_index, chunk_index + ATTACHMENT_CHUNK_SIZE));
-                    yield new command.MessageSendWithAttachmentsRequest({request: {case: "payload", value: chunk}});
+                    yield create(command.MessageSendWithAttachmentsRequestSchema, {request: {case: "payload", value: chunk}});
                 }
                 // send file delimiter
-                yield new command.MessageSendWithAttachmentsRequest({request: {case: "fileDelimiter", value: true},});
+                yield create(command.MessageSendWithAttachmentsRequestSchema, {request: {case: "fileDelimiter", value: true},});
             }
         }
         const response: command.MessageSendWithAttachmentsResponse = await this.stubs.messageCommandStub.messageSendWithAttachments(requestStream());

@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -574,7 +576,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
                 }
             }
             const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemOwnPermissionsFilter);
-            return new datatypes.GroupPermissionFilter({
+            return create(datatypes.GroupPermissionFilterSchema, {
                 admin,
                 sendMessage,
                 remoteDeleteAnything,
@@ -679,7 +681,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
                         }
                     }
                     const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemPermissions);
-                    return new datatypes.GroupPermissionFilter({
+                    return create(datatypes.GroupPermissionFilterSchema, {
                         admin,
                         sendMessage,
                         remoteDeleteAnything,
@@ -688,7 +690,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
                     });
                 }
                 const permissions: datatypes.GroupPermissionFilter | undefined = getPermissions.call(this, itemMemberFilters);
-                return new datatypes.GroupMemberFilter({
+                return create(datatypes.GroupMemberFilterSchema, {
                     contactId,
                     permissions,
                 });
@@ -838,7 +840,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
                         }
                     }
                     const changeSettings: datatypes.GroupPermissionFilter_ChangeSettings | undefined = getChangeSettings.call(this, itemPermissions);
-                    return new datatypes.GroupPermissionFilter({
+                    return create(datatypes.GroupPermissionFilterSchema, {
                         admin,
                         sendMessage,
                         remoteDeleteAnything,
@@ -847,7 +849,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
                     });
                 }
                 const permissions: datatypes.GroupPermissionFilter | undefined = getPermissions.call(this, itemPendingMemberFilters);
-                return new datatypes.PendingGroupMemberFilter({
+                return create(datatypes.PendingGroupMemberFilterSchema, {
                     isContact,
                     hasDeclined,
                     contactId,
@@ -871,7 +873,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
             return pendingMemberFiltersList;
         }
         const pendingMemberFilters: datatypes.PendingGroupMemberFilter[] | undefined = getPendingMemberFilters.call(this, itemFilter);
-        return new datatypes.GroupFilter({
+        return create(datatypes.GroupFilterSchema, {
             type,
             empty,
             photo,
@@ -885,7 +887,7 @@ export async function groupList(this: IExecuteFunctions, index: number, client: 
     }
     const filter: datatypes.GroupFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: commands.GroupListResponse = new commands.GroupListResponse();
+    const containerMessage: commands.GroupListResponse = create(commands.GroupListResponseSchema);
     for await (const message of client.stubs.groupCommandStub.groupList({filter})) {
         containerMessage.groups.push(...message.groups);
     }

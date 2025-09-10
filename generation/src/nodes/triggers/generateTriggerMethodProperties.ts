@@ -2,8 +2,7 @@ import type { GeneratedFile } from '@bufbuild/protoplugin';
 import { capitalize, getTriggerPropertiesName, getTriggerUpdateName } from '../../tools/tools';
 import { getDefaultPropertyJson, getDefaultType } from '../properties/getDefaultPropertyJson';
 //@ts-ignore
-// TODO change to '@bufbuild/protobuf' and try to update code ...
-import type { DescMethod, DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod, DescField, DescOneof } from '@bufbuild/protobuf';
 
 function generateMessageCollection(f: GeneratedFile, method: DescMethod, field: DescField, indentation: number, parents: string = ''): void {
 	const idt = '  '.repeat(indentation);
@@ -15,7 +14,7 @@ ${idt}    type: 'collection',
 ${idt}    default: {
 ${(field.proto.proto3Optional ? [] : [
 		field.message?.oneofs?.length
-			? field.message.oneofs.map((oneof: DescField) => `${idt}      ${oneof.localName}Select: 'undefined',\n`).join('')
+			? field.message.oneofs.map((oneof: DescOneof) => `${idt}      ${oneof.localName}Select: 'undefined',\n`).join('')
 			: '',
 		field.message?.fields
 			.map((subField: DescField) => subField.proto.proto3Optional ? '' : `${idt}      ${subField.jsonName}: ${getDefaultType(subField)},\n`)

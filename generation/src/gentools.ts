@@ -1,5 +1,4 @@
-// TODO replace with @bufbuild/protobuf
-import type { DescField, DescMessage } from '@bufbuild/protobuf/dist/esm/descriptors';
+import type { DescField, DescMessage } from '@bufbuild/protobuf';
 
 // field: MessageId id = 1 => messageId: datatypes.MessageId
 // field: uint64 id = 1 => id: BigInt

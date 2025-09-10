@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -30,7 +32,7 @@ export const discussionLockedListProperties = updateDisplayOptions(displayOption
 
 export async function discussionLockedList(this: IExecuteFunctions, index: number, client: OlvidClient): Promise<INodeExecutionData[]> {
 
-    const containerMessage: commands.DiscussionLockedListResponse = new commands.DiscussionLockedListResponse();
+    const containerMessage: commands.DiscussionLockedListResponse = create(commands.DiscussionLockedListResponseSchema);
     for await (const message of client.stubs.discussionCommandStub.discussionLockedList({})) {
         containerMessage.discussions.push(...message.discussions);
     }

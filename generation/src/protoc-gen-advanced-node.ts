@@ -11,8 +11,7 @@ import { generateActionProperties } from './nodes/actions/generateActionProperti
 import { generateTrigger } from './nodes/triggers/generateTrigger';
 import { generateTriggerProperties } from './nodes/triggers/generateTriggerProperties';
 import { generateTriggerMap } from './nodes/triggers/generateTriggerMap';
-// @ts-ignore
-import type { DescFile, DescService, DescMethod, } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescFile, DescService, DescMethod, } from "@bufbuild/protobuf"
 import { generateActionMap } from './nodes/actions/generateActionMap';
 
 // noinspection JSUnusedGlobalSymbols
@@ -54,7 +53,7 @@ const plugin = createEcmaScriptPlugin({
 				// generate action router map
 				const routerMapFile = schema.generateFile('actions/routerMap.ts');
 				routerMapFile.print(preamble);
-				generateActionMap(routerMapFile, actionServices);
+				generateActionMap(routerMapFile, actionServices, false);
 			}
 
 			/*
@@ -79,7 +78,7 @@ const plugin = createEcmaScriptPlugin({
 				// generate trigger router map
 				const routerMapFile = schema.generateFile('triggers/routerMap.ts');
 				routerMapFile.print(preamble);
-				generateTriggerMap(routerMapFile, triggerMethods);
+				generateTriggerMap(routerMapFile, triggerMethods, false);
 			}
 		}
 		catch (e) {

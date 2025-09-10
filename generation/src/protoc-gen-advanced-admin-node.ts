@@ -8,8 +8,7 @@ import {
 import { generateAction } from './nodes/actions/generateAction';
 import { overrideActionFile } from './nodes/overrideFile';
 import { generateActionProperties } from './nodes/actions/generateActionProperties';
-// @ts-ignore
-import type { DescFile, DescService, DescMethod, } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescFile, DescService, DescMethod, } from "@bufbuild/protobuf"
 import { generateActionMap } from './nodes/actions/generateActionMap';
 
 const plugin = createEcmaScriptPlugin({

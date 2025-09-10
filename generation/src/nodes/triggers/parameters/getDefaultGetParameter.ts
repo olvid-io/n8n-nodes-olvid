@@ -1,6 +1,5 @@
 import { capitalize, getTsType } from "src/tools/tools";
-//@ts-ignore
-import type { DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescField } from "@bufbuild/protobuf"
 
 export function getDefaultGetParameter({
     field,

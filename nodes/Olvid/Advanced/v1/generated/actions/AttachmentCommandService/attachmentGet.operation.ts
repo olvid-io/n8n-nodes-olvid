@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -78,7 +80,7 @@ export async function attachmentGet(this: IExecuteFunctions, index: number, clie
         }
         const type: datatypes.AttachmentId_Type = getType.call(this, itemAttachmentId);
         const id: bigint = BigInt(itemAttachmentId['id'] as number);
-        return new datatypes.AttachmentId({
+        return create(datatypes.AttachmentIdSchema, {
             type,
             id,
         });

@@ -6,6 +6,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as notifications from '../../../../../protobuf/olvid/daemon/notification/v1/notification';
 // noinspection ES6UnusedImports
 import { type ITriggerFunctions, type IDataObject, type INodeProperties, updateDisplayOptions, replaceCircularReferences } from 'n8n-workflow';
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -214,7 +216,7 @@ export function contactPhotoUpdated(this: ITriggerFunctions, client: OlvidClient
             const lastName: string | undefined = itemDetailsSearch['lastName'] ? itemDetailsSearch['lastName'] as string : undefined;
             const company: string | undefined = itemDetailsSearch['company'] ? itemDetailsSearch['company'] as string : undefined;
             const position: string | undefined = itemDetailsSearch['position'] ? itemDetailsSearch['position'] as string : undefined;
-            return new datatypes.IdentityDetails({
+            return create(datatypes.IdentityDetailsSchema, {
                 firstName,
                 lastName,
                 company,
@@ -222,7 +224,7 @@ export function contactPhotoUpdated(this: ITriggerFunctions, client: OlvidClient
             });
         }
         const detailsSearch: datatypes.IdentityDetails | undefined = getDetailsSearch.call(this, itemFilter);
-        return new datatypes.ContactFilter({
+        return create(datatypes.ContactFilterSchema, {
             oneToOne,
             photo,
             keycloak,

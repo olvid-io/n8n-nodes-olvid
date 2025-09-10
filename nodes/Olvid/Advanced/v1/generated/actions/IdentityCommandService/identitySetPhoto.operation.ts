@@ -4,6 +4,7 @@ import { type IExecuteFunctions, type INodeExecutionData, type INodeProperties, 
 import { OlvidClient } from '../../../../../client/OlvidClient';
 // @ts-ignore
 import * as commands from '../../../../../protobuf/olvid/daemon/command/v1/command';
+import { create } from '@bufbuild/protobuf';
 
 const properties: INodeProperties[] = [
 	{
@@ -33,9 +34,9 @@ export async function identitySetPhoto(this: IExecuteFunctions, index: number, c
 
 	async function* requestStream(): AsyncIterable<commands.IdentitySetPhotoRequest> {
 		// send metadata
-		yield new commands.IdentitySetPhotoRequest({
+		yield create(commands.IdentitySetPhotoRequestSchema, {
 			request: {
-				case: "metadata", value: new commands.IdentitySetPhotoRequestMetadata({
+				case: "metadata", value: create(commands.IdentitySetPhotoRequestMetadataSchema, {
 					filename: binaryData.fileName,
 					fileSize: BigInt(payload.length)
 				})
@@ -50,9 +51,9 @@ export async function identitySetPhoto(this: IExecuteFunctions, index: number, c
 			let start = chunkIndex * CHUNK_SIZE;
 			let end = (chunkIndex + 1) * CHUNK_SIZE;
 			if (end > payload.length) {
-				yield new commands.IdentitySetPhotoRequest({ request: { case: "payload", value: payload.subarray(start) } });
+				yield create(commands.IdentitySetPhotoRequestSchema, { request: { case: "payload", value: payload.subarray(start) } });
 			} else {
-				yield new commands.IdentitySetPhotoRequest({ request: { case: "payload", value: payload.subarray(start, end) } });
+				yield create(commands.IdentitySetPhotoRequestSchema, { request: { case: "payload", value: payload.subarray(start, end) } });
 			}
 			chunkIndex += 1;
 		}

@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -76,7 +78,7 @@ export async function identityUpdateDetails(this: IExecuteFunctions, index: numb
         const lastName: string | undefined = itemNewDetails['lastName'] ? itemNewDetails['lastName'] as string : undefined;
         const company: string | undefined = itemNewDetails['company'] ? itemNewDetails['company'] as string : undefined;
         const position: string | undefined = itemNewDetails['position'] ? itemNewDetails['position'] as string : undefined;
-        return new datatypes.IdentityDetails({
+        return create(datatypes.IdentityDetailsSchema, {
             firstName,
             lastName,
             company,

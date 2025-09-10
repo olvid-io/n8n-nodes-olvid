@@ -1,6 +1,5 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin"
-//@ts-ignore
-import type { DescMethod, DescField } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod, DescField, DescOneof } from '@bufbuild/protobuf';
 import { getDefaultPropertyJson, getDefaultType } from "./getDefaultPropertyJson";
 import {
 	capitalize,
@@ -19,7 +18,7 @@ ${idt}    type: 'collection',
 ${idt}    default: {
 ${(field.proto.proto3Optional ? [] : [
             field.message?.oneofs?.length
-                ? field.message.oneofs.map((oneof: DescField) => `${idt}      ${oneof.localName}Select: 'undefined',\n`).join('')
+                ? field.message.oneofs.map((oneof: DescOneof) => `${idt}      ${oneof.localName}Select: 'undefined',\n`).join('')
                 : '',
             field.message?.fields
                 .map((subField: DescField) => subField.proto.proto3Optional ? '' : `${idt}      ${subField.jsonName}: ${getDefaultType(subField)},\n`)

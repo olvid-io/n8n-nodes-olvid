@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 
 // noinspection ES6UnusedImports
 import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -109,7 +111,7 @@ export async function clientKeyList(this: IExecuteFunctions, index: number, clie
         const identity: identityType | undefined = getIdentity.call(this, itemFilter);
         const nameSearch: string | undefined = itemFilter['nameSearch'] ? itemFilter['nameSearch'] as string : undefined;
         const key: string | undefined = itemFilter['key'] ? itemFilter['key'] as string : undefined;
-        return new datatypes.ClientKeyFilter({
+        return create(datatypes.ClientKeyFilterSchema, {
             nameSearch,
             key,
             identity,
@@ -117,7 +119,7 @@ export async function clientKeyList(this: IExecuteFunctions, index: number, clie
     }
     const filter: datatypes.ClientKeyFilter | undefined = getFilter.call(this, index);
 
-    const containerMessage: admin.ClientKeyListResponse = new admin.ClientKeyListResponse();
+    const containerMessage: admin.ClientKeyListResponse = create(admin.ClientKeyListResponseSchema);
     for await (const message of client.adminStubs.clientKeyAdminStub.clientKeyList({filter})) {
         containerMessage.clientKeys.push(...message.clientKeys);
     }

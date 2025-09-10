@@ -14,6 +14,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";
 // noinspection ES6UnusedImports
 
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 
 
 const properties: INodeProperties[] = [
@@ -78,7 +80,7 @@ export async function messageGet(this: IExecuteFunctions, index: number, client:
         }
         const type: datatypes.MessageId_Type = getType.call(this, itemMessageId);
         const id: bigint = BigInt(itemMessageId['id'] as number);
-        return new datatypes.MessageId({
+        return create(datatypes.MessageIdSchema, {
             type,
             id,
         });

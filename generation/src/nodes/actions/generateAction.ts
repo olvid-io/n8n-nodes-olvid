@@ -1,7 +1,6 @@
 import type { Schema } from "@bufbuild/protoplugin"
 
-//@ts-ignore
-import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf"
 import { generateActionPropertiesJson } from "../properties/generateActionPropertiesJson";
 import { decapitalize } from "src/tools/tools";
 import { generateActionHandler } from "./generateActionHandler";
@@ -30,6 +29,8 @@ import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/da
 ${!useAdminClient ? 'import * as commands from "../../../../../protobuf/olvid/daemon/command/v1/command";' : ''}
 // noinspection ES6UnusedImports
 ${useAdminClient ? 'import * as admin from "../../../../../protobuf/olvid/daemon/admin/v1/admin";' : ''}
+// noinspection ES6UnusedImports
+import { create } from '@bufbuild/protobuf';
 `
 	generateActionPropertiesJson(destinationFile, method);
 

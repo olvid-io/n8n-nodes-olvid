@@ -6,6 +6,7 @@ import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type
 import { OlvidClient } from '../../../../../client/OlvidClient';
 // @ts-ignore
 import * as datatypes from '../../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+import { create } from '@bufbuild/protobuf';
 
 const properties: INodeProperties[] = [
     // Generated code taken from MessageSend.operation.ts 31/01/2025
@@ -177,7 +178,7 @@ export async function messageSendWithAttachments(this: IExecuteFunctions, index:
         }
         const type: datatypes.MessageId_Type | undefined = getType.call(this, itemMessageId);
         const id: bigint | undefined = itemMessageId['id'] ? BigInt(itemMessageId['id'] as number) : undefined;
-        return new datatypes.MessageId({
+        return create(datatypes.MessageIdSchema, {
             type,
             id,
         });
@@ -191,7 +192,7 @@ export async function messageSendWithAttachments(this: IExecuteFunctions, index:
         const readOnce: boolean | undefined = itemMessageEphemerality['readOnce'] ? itemMessageEphemerality['readOnce'] as boolean : undefined;
         const existenceDuration: bigint | undefined = itemMessageEphemerality['existenceDuration'] ? BigInt(itemMessageEphemerality['existenceDuration'] as number) : undefined;
         const visibilityDuration: bigint | undefined = itemMessageEphemerality['visibilityDuration'] ? BigInt(itemMessageEphemerality['visibilityDuration'] as number) : undefined;
-        return new datatypes.MessageEphemerality({
+        return create(datatypes.MessageEphemeralitySchema, {
             readOnce,
             existenceDuration,
             visibilityDuration,

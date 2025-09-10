@@ -1,6 +1,5 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin";
-//@ts-ignore
-import type { DescMethod } from "@bufbuild/protobuf/dist/cjs/descriptors"
+import type { DescMethod } from "@bufbuild/protobuf"
 import { generateActionGetParameterRecursive } from "./parameters/generateActionGetParameterRecursive";
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
 import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
@@ -42,7 +41,7 @@ export async function ${getActionHandlerFunctionName(method)}(this: IExecuteFunc
 			}
 
 			destinationFile.print`
-    const containerMessage: ${useAdminClient ? 'admin' : 'commands'}.${method.output.name} = new ${useAdminClient ? 'admin' : 'commands'}.${method.output.name}();
+    const containerMessage: ${useAdminClient ? 'admin' : 'commands'}.${method.output.name} = create(${useAdminClient ? 'admin' : 'commands'}.${method.output.name}Schema);
     for await (const message of client.${useAdminClient ? 'adminStubs' : 'stubs'}.${stubName}.${method.localName}({${parameters}})) {
 ${addMessageElementToContainer.trimEnd()}
     }
