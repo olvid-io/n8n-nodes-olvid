@@ -1,4 +1,4 @@
-import { capitalize, getTsType } from "src/tools/tools";
+import { capitalize, getTsType } from "../../tools/tools";
 import type { DescField } from "@bufbuild/protobuf"
 
 export function getDefaultGetParameter({

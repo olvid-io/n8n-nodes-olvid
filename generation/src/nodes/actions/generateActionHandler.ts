@@ -1,10 +1,10 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin";
 import type { DescMethod } from "@bufbuild/protobuf"
-import { generateActionGetParameterRecursive } from "./parameters/generateActionGetParameterRecursive";
+import { generateGetParameterRecursive } from "./parameters/generateGetParameterRecursive";
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
-import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
+import { generateFunctionReturnObjectFromProtobufMessage } from "../tools/generateProtobuf";
 import type { DescField } from '@bufbuild/protobuf';
-import { getActionHandlerFunctionName } from '../../tools/tools';
+import { getActionHandlerFunctionName } from '../tools/tools';
 
 export function generateActionHandler(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
 	const stubName = method.parent.name.charAt(0).toLowerCase() + method.parent.name.slice(1).replace("Service", "Stub");
@@ -13,7 +13,7 @@ export function generateActionHandler(destinationFile: GeneratedFile, method: De
 export async function ${getActionHandlerFunctionName(method)}(this: IExecuteFunctions, index: number, client: ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}): Promise<INodeExecutionData[]> {`;
 
 	for (const subField of method.input.fields) {
-		generateActionGetParameterRecursive(destinationFile, subField, 0);
+		generateGetParameterRecursive(destinationFile, subField, 0);
 		destinationFile.print`    ${getDefaultGetParameter({ field: subField })}`;
 	}
 	const parameters = method.input.fields.map((subField: DescField) => `${subField.jsonName}`).join(', ');

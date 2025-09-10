@@ -10,8 +10,6 @@ import {
 } from 'n8n-workflow';
 
 import { testOlvidDaemon } from '../../common-methods/testOlvidDaemon';
-import fs from 'node:fs';
-import util from 'node:util';
 
 import { generatedProperties } from './generated/triggers/generatedProperties';
 import { OlvidClient } from '../../client/OlvidClient';
@@ -47,11 +45,6 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 			// trigger parameters
 			properties: generatedProperties,
 		};
-		// TODO TODEL
-		fs.writeFileSync(
-			'/home/visago/Desktop/olvid/daemon/n8n/json/olvid-advanced-trigger.json',
-			util.inspect(this.description, { depth: null }),
-		);
 	}
 
 	methods = { credentialTest: { testOlvidDaemon } };

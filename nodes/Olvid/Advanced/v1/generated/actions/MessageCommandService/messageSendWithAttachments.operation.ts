@@ -1,4 +1,4 @@
-// Copied from: overrides/messageSendWithAttachments.operation.ts
+// Copied from: ../overrides/messageSendWithAttachments.operation.ts
 /* eslint-disable n8n-nodes-base/node-param-required-false */
 import { type IExecuteFunctions, type INodeExecutionData, type IDataObject, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 

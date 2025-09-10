@@ -1,4 +1,4 @@
-// Copied from: overrides/groupSetPhoto.operation.ts
+// Copied from: ../overrides/groupSetPhoto.operation.ts
 import { type IExecuteFunctions, type INodeExecutionData, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
 // @ts-ignore

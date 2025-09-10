@@ -1,6 +1,6 @@
 import type { GeneratedFile } from '@bufbuild/protoplugin';
-import { capitalize, getTriggerPropertiesName, getTriggerUpdateName } from '../../tools/tools';
-import { getDefaultPropertyJson, getDefaultType } from '../properties/getDefaultPropertyJson';
+import { capitalize, getTriggerPropertiesName, getTriggerUpdateName } from '../tools/tools';
+import { getDefaultPropertyJson, getDefaultType } from '../tools/getDefaultPropertyJson';
 //@ts-ignore
 import type { DescMethod, DescField, DescOneof } from '@bufbuild/protobuf';
 

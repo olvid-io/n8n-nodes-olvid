@@ -1,4 +1,4 @@
-import { ScalarProto_TypeJson } from "src/tools/types";
+import { ScalarProto_TypeJson } from "./types";
 import type { DescEnumValue, DescField } from '@bufbuild/protobuf';
 
 export function getDefaultType(field: DescField): string {

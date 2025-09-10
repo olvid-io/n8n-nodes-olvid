@@ -15,8 +15,6 @@ import {
 import { listSearch } from './methods';
 
 import { testOlvidDaemon } from '../../common-methods/testOlvidDaemon';
-import fs from 'node:fs';
-import util from 'node:util';
 import { generatedProperties } from './generated/actions/generatedProperties';
 import { OlvidClient } from '../../client/OlvidClient';
 import { actionMap } from './generated/actions/routerMap';
@@ -52,8 +50,6 @@ export class OlvidAdvancedV1 implements INodeType {
 					// actions parameters
 					properties: generatedProperties,
         };
-			// TODO TODEL
-			fs.writeFileSync("/home/visago/Desktop/olvid/daemon/n8n/json/olvid-advanced-action.json", util.inspect(this.description, {depth: null}));
 		}
 
     methods = { listSearch, credentialTest: { testOlvidDaemon } };

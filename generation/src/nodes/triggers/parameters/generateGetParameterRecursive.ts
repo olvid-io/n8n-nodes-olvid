@@ -1,10 +1,10 @@
-import { capitalize, getTsType, getTsTypeSchema } from 'src/tools/tools';
+import { capitalize, getTsType, getTsTypeSchema } from '../../tools/tools';
 import type { DescField } from "@bufbuild/protobuf"
 import type { GeneratedFile } from "@bufbuild/protoplugin"
 import { getDefaultGetParameter } from "./getDefaultGetParameter";
-import { getTriggerNodeParameter } from "../../../tools/getNodeParameter";
+import { getTriggerNodeParameter } from "../../tools/getNodeParameter";
 
-export function generateTriggerGetParameterRecursive(destinationFile: GeneratedFile, field: DescField, iteration: number, oneofField: boolean = false, isList: boolean = false, optional: string = ''): void {
+export function generateGetParameterRecursive(destinationFile: GeneratedFile, field: DescField, iteration: number, oneofField: boolean = false, isList: boolean = false, optional: string = ''): void {
 	const idt = '    '.repeat(iteration);
 	const indented = iteration !== 0;
 	const item = indented ? `item${field.parent.name}: IDataObject` : '';
@@ -15,7 +15,7 @@ export function generateTriggerGetParameterRecursive(destinationFile: GeneratedF
     if (field.fieldKind === 'list' && !isList) {
         // f.print`// LIST`;
         destinationFile.print`${idt}    function get${capitalize(field.localName)}(this: ITriggerFunctions, ${item}): ${getTsType(field)}[]${optional} {`;
-        generateTriggerGetParameterRecursive(destinationFile, field, iteration + 1, oneofField, true);
+        generateGetParameterRecursive(destinationFile, field, iteration + 1, oneofField, true);
         destinationFile.print`${idt}        const ${field.jsonName}CollectionParent: IDataObject | undefined = ${getTriggerNodeParameter(field.jsonName + 'List', indented, field.parent.name)} as IDataObject | undefined;
 ${idt}        if (${field.jsonName}CollectionParent === undefined) {
 ${idt}            return [];
@@ -43,7 +43,7 @@ ${idt}        if (selectedCase === undefined) {
 ${idt}            return { case: undefined };
 ${idt}        }`;
         for (const oneofField of field.oneof.fields) {
-            generateTriggerGetParameterRecursive(destinationFile, oneofField, iteration + 1, true, false);
+            generateGetParameterRecursive(destinationFile, oneofField, iteration + 1, true, false);
         }
         destinationFile.print`${field.oneof.fields.map((oneofField: DescField) => `
 ${idt}        if (selectedCase === "${oneofField.jsonName}") {
@@ -88,7 +88,7 @@ ${idt}        }`;
                 }
                 oneofNames.push(subField.oneof.localName);
             }
-            generateTriggerGetParameterRecursive(destinationFile, subField, iteration + 1, false, false, optional);
+            generateGetParameterRecursive(destinationFile, subField, iteration + 1, false, false, optional);
             destinationFile.print`${idt}        ${getDefaultGetParameter({ field: subField, itemName: `item${capitalize(field.localName)}`, indented: true, optional })}`;
         }
 

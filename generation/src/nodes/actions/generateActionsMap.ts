@@ -4,10 +4,10 @@ import {
 	getActionImportFilePath,
 	getActionOperationName,
 	getActionResourceName,
-} from 'src/tools/tools';
+} from '../tools/tools';
 import type { DescService } from '@bufbuild/protobuf';
 
-export function generateActionMap(f: GeneratedFile, actionServices: DescService[], useAdminClient: boolean): void {
+export function generateActionsMap(f: GeneratedFile, services: DescService[], useAdminClient: boolean): void {
 	// import every trigger main method that router will call
 	// ex: import { invitationReceived } from "./InvitationNotificationService/onInvitationReceived.event";
 
@@ -16,7 +16,7 @@ import { ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'} } from '../../..
 `)
 
 	f.print("// import every action handler function")
-	for (const method of actionServices.flatMap(s => s.methods)) {
+	for (const method of services.flatMap(s => s.methods)) {
 		f.print`import { ${getActionHandlerFunctionName(method)} } from "./${getActionImportFilePath(method)}";`;
 	}
 	f.print("")
@@ -24,7 +24,7 @@ import { ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'} } from '../../..
 
 	f.print`export const actionMap: {[resource: string]: {[operation: string]: (this: IExecuteFunctions, index: number, client: ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}) => Promise<INodeExecutionData[]>}} = {`
 
-	for (const s of actionServices) {
+	for (const s of services) {
 		f.print`  "${getActionResourceName(s)}": {
 ${s.methods.map((m) => `    "${getActionOperationName(m)}": ${getActionHandlerFunctionName(m)}`).join(',\n')}
   },`;

@@ -1,4 +1,4 @@
-// Copied from: overrides/identitySetPhoto.operation.ts
+// Copied from: ../overrides/identitySetPhoto.operation.ts
 import { type IExecuteFunctions, type INodeExecutionData, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 // @ts-ignore
 import { OlvidClient } from '../../../../../client/OlvidClient';

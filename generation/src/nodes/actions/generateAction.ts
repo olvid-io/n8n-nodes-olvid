@@ -1,8 +1,8 @@
 import type { Schema } from "@bufbuild/protoplugin"
 
 import type { DescMethod } from "@bufbuild/protobuf"
-import { generateActionPropertiesJson } from "../properties/generateActionPropertiesJson";
-import { decapitalize } from "src/tools/tools";
+import { generateActionParameterProperties } from "./generateActionParameterProperties";
+import { decapitalize } from "../tools/tools";
 import { generateActionHandler } from "./generateActionHandler";
 
 export function generateAction(schema: Schema, method: DescMethod, useAdminClient: boolean = false): void {
@@ -32,7 +32,7 @@ ${useAdminClient ? 'import * as admin from "../../../../../protobuf/olvid/daemon
 // noinspection ES6UnusedImports
 import { create } from '@bufbuild/protobuf';
 `
-	generateActionPropertiesJson(destinationFile, method);
+	generateActionParameterProperties(destinationFile, method);
 
 	generateActionHandler(destinationFile, method, useAdminClient);
 }

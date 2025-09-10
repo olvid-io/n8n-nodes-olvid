@@ -3,9 +3,9 @@ import type { DescMethod, DescService } from '@bufbuild/protobuf';
 import {
 	getTriggerImportFilePath,
 	getTriggerPropertiesName, getTriggerUpdateName,
-} from '../../tools/tools';
+} from '../tools/tools';
 
-export function generateTriggerProperties(f: GeneratedFile, triggerServices: DescService[]): void {
+export function generateTriggersCommonProperties(f: GeneratedFile, services: DescService[]): void {
 	// global import
 	f.print`
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
@@ -13,13 +13,12 @@ import type { INodeProperties } from 'n8n-workflow';\n`
 
 	// import each method properties: these properties contains method parameters description
 	f.print`// import operation properties
-${triggerServices.flatMap(s => s.methods).map(m => `import { ${getTriggerPropertiesName(m)} } from "./${getTriggerImportFilePath(m)}"`).join("\n")}\n`
+${services.flatMap(s => s.methods).map(m => `import { ${getTriggerPropertiesName(m)} } from "./${getTriggerImportFilePath(m)}"`).join("\n")}\n`
 
-	f.print`
-// list of properties (INodeProperties) representing different aspect of our node
+	f.print`// list of properties (INodeProperties) representing different aspect of our node
 // - list all the possible triggers in property "updated"
-// - declare parameters common to every trigger
-// - include every trigger properties containing it's parameters (these parameters are generated in trigger file)
+// - declare parameters common to every trigger (hardcoded)
+// - include every trigger properties containing their parameters (these parameters are generated in trigger file)
 export const generatedProperties: INodeProperties[] = [`
 	// resources descriptions: all services are mapped to resources in one resource node
 	f.print`  // trigger methods list (grpc methods)
@@ -29,9 +28,9 @@ export const generatedProperties: INodeProperties[] = [`
   	type: 'options',
   	required: true,
   	options: [
-${triggerServices.flatMap((s: DescService) => s.methods).map((m: DescMethod) => `      {name: '${getTriggerUpdateName(m)}', value: '${getTriggerUpdateName(m)}'}`).join(",\n")}
+${services.flatMap((s: DescService) => s.methods).map((m: DescMethod) => `      {name: '${getTriggerUpdateName(m)}', value: '${getTriggerUpdateName(m)}'}`).join(",\n")}
   	],
-  	default: '${getTriggerUpdateName(triggerServices.flatMap(s => s.methods)[0])}'
+  	default: '${getTriggerUpdateName(services.flatMap(s => s.methods)[0])}'
 	},`
 
 	// TODO rename / change
@@ -48,7 +47,7 @@ ${triggerServices.flatMap((s: DescService) => s.methods).map((m: DescMethod) => 
 
 	// include trigger properties (containing trigger parameters)
 	f.print`
-${triggerServices.flatMap(s => s.methods).map((m: DescMethod) => `  ...${getTriggerPropertiesName(m)}`).join(",\n")}`
+${services.flatMap(s => s.methods).map((m: DescMethod) => `  ...${getTriggerPropertiesName(m)}`).join(",\n")}`
 
 	// variable declaration end
 	f.print`]`

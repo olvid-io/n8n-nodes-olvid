@@ -145,7 +145,7 @@ function dumpNotificationMethod(service: DescService, method: DescMethod): strin
 }
 
 export function generateOlvidClient(schema: Schema) {
-    // generate fron service nodes only
+    // generateAction fron service nodes only
     if (schema.files.filter(f => f.name.includes("/services/")).length === 0) {
         return;
     }
@@ -201,7 +201,7 @@ export function generateOlvidClient(schema: Schema) {
 }
 
 export function generateOlvidAdminClient(schema: Schema) {
-    // generate fron service nodes only
+    // generateAction fron service nodes only
     if (schema.files.filter(f => f.name.includes("/services/")).length === 0) {
         return;
     }

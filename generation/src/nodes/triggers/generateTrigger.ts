@@ -1,6 +1,6 @@
 import type { Schema } from '@bufbuild/protoplugin';
 import type { DescMethod } from '@bufbuild/protobuf';
-import { generateTriggerPropertiesJson } from './generateTriggerMethodProperties';
+import { generateTriggerPropertiesJson } from './generateTriggerParameterProperties';
 import { generateTriggerHandler } from './generateTriggerHandler';
 
 

@@ -2,7 +2,7 @@ import type { DescField, DescMessage } from "@bufbuild/protobuf"
 import {ScalarType} from "@bufbuild/protobuf";
 
 /*
-* this function generate the code that will convert a protobuf message to a n8n compatible json.
+* this function generateAction the code that will convert a protobuf message to a n8n compatible json.
 * output code will depend on original message definition (number and type of its fields).
  */
 export function generateFunctionReturnObjectFromProtobufMessage(message: DescMessage, prefix: string): string {

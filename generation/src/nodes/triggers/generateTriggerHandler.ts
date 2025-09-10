@@ -1,8 +1,8 @@
 import type { GeneratedFile } from "@bufbuild/protoplugin";
 import type { DescMethod } from "@bufbuild/protobuf"
-import { generateTriggerGetParameterRecursive } from "./parameters/generateTriggerGetParameterRecursive";
+import { generateGetParameterRecursive } from "./parameters/generateGetParameterRecursive";
 import { getDefaultGetParameter } from "./parameters/getDefaultGetParameter";
-import { generateFunctionReturnObjectFromProtobufMessage } from "../../tools/generateProtobuf";
+import { generateFunctionReturnObjectFromProtobufMessage } from "../tools/generateProtobuf";
 import type { DescField } from '@bufbuild/protobuf';
 
 export function generateTriggerHandler(destinationFile: GeneratedFile, method: DescMethod, useAdminClient: boolean): void {
@@ -12,7 +12,7 @@ export function generateTriggerHandler(destinationFile: GeneratedFile, method: D
 export function ${method.localName}(this: ITriggerFunctions, client: ${useAdminClient ? 'OlvidAdminClient' : 'OlvidClient'}, onCallback?: Function, returnMockData: boolean = false): Function {`;
 
 	for (const subField of method.input.fields) {
-		generateTriggerGetParameterRecursive(destinationFile, subField, 0);
+		generateGetParameterRecursive(destinationFile, subField, 0);
 		destinationFile.print`    ${getDefaultGetParameter({ field: subField })}`;
 	}
 

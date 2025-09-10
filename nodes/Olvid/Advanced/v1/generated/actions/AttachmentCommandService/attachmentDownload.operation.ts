@@ -1,4 +1,4 @@
-// Copied from: overrides/attachmentDownload.operation.ts
+// Copied from: ../overrides/attachmentDownload.operation.ts
 import { type IBinaryData, type IExecuteFunctions, type INodeExecutionData, type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
 
 // @ts-ignore
