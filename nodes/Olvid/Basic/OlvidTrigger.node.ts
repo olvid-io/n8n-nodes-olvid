@@ -4,7 +4,7 @@ import { OlvidTriggerV1 } from './v1/OlvidTriggerV1.node';
 export class OlvidTrigger extends VersionedNodeType {
     constructor() {
         const baseDescription: INodeTypeBaseDescription = {
-            displayName: 'Olvid Trigger',
+            displayName: 'OlvidTrigger',
             name: 'olvidTrigger',
             icon: 'file:olvid.svg',
             group: ['trigger'],

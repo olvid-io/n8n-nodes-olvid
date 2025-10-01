@@ -1,6 +1,6 @@
-[Install for development](#install)  
-[Add basic action](#Add a New Action to OlvidBasic)  
-[Add basic trigger](#Add a New Trigger to OlvidTrigger)  
+[Install for development](#install)
+[Add basic action](#Add a New Action to OlvidBasic)
+[Add basic trigger](#Add a New Trigger to OlvidTrigger)
 
 # Install
 1. Clone the repository:
@@ -20,9 +20,14 @@
 	 pnpm install n8n -g && n8n
 	 ```
 	 Exit n8n with `Ctrl+C` when you see `Editor is now accessible via: http://localhost:5678/`
+5. Generate node code:
+   ```
+	  cd generation && npm install
+	  cd .. && npm run generate
+	 ```
 5. Add your node to pnpm locally:
 	 ```
-	 npm run generate && pnpm run build && pnpm link --global
+	 pnpm run build && pnpm link --global
 	 ```
 6. Link your node with n8n (you only have to do it once):
 	 ```
@@ -32,13 +37,12 @@
 	 ```
 	 n8n
 	 ```
-	Note: You could also run with `nodemon` to react at file change with `npm run dev`
+   Or use `nodemon` to react at file changes with:
+   ```
+   pnpm run dev
+   ```
+
 8. Open your browser to `http://localhost:5678`.
-
-
-```
-pnpm run dev
-```
 
 # Add a New Action to OlvidBasic
 
@@ -62,7 +66,7 @@ Before you begin, ensure you have the following:
 
 	- Our node is located in the `nodes/Olvid/Basic` directory. Since we're using v1 and wanting to add an action, let's go into the `nodes/Olvid/Basic/v1/actions` directory. Here you'll find:
 		- Folders for each service (resource in n8n terminology).
-		- `versionDescription.ts` file that contains the node's metadata.
+		- `properties.ts` file that contains the node's metadata.
 		- `router.ts` file that handles the execution of actions.
 
 3. **Create the Action's Metadata**:
@@ -181,7 +185,7 @@ Before you begin, ensure you have the following:
 		...get.description,
 		```
 
-	- Add the resource (service) in versionDescription.ts (if it is not already there)
+	- Add the resource (service) in properties.ts (if it is not already there)
 
 		```typescript
 		options: [
@@ -244,7 +248,7 @@ Before you begin, ensure you have the following:
 
    - Our node is located in the `nodes/Olvid/Basic` directory. Since we're using v1 and wanting to add an action, let's go into the `nodes/Olvid/Basic/v1/triggers` directory. Here you'll find:
      - Folders for each service (resource in n8n terminology).
-     - `versionDescription.ts` file that contains the node's metadata.
+     - `properties.ts` file that contains the node's metadata.
      - `router.ts` file that handles the execution of actions.
 
 3. **Create the Trigger's file**:
@@ -280,7 +284,7 @@ Before you begin, ensure you have the following:
    export { discussionNew };
    ```
 
-   - Add the trigger in `versionDescription.ts` (in the triggers folder)
+   - Add the trigger in `properties.ts` (in the triggers folder)
 
    ```typescript
    options: [

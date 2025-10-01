@@ -1,0 +1,53 @@
+// Copied from: ../overrides/attachmentDownload.operation.ts
+/* eslint-disable n8n-nodes-base/node-param-display-name-miscased-id,n8n-nodes-base/node-param-collection-type-unsorted-items,n8n-nodes-base/node-param-type-options-password-missing,n8n-nodes-base/node-param-required-false,n8n-nodes-base/node-param-options-type-unsorted-items */
+import { type INodeProperties, updateDisplayOptions } from 'n8n-workflow';
+
+const properties: INodeProperties[] = [
+	{
+		displayName: 'AttachmentId',
+		name: 'attachmentId',
+		type: 'collection',
+		default: {
+			type: 'TYPE_UNSPECIFIED',
+			id: 0
+		},
+		options: [
+			{
+				displayName: 'Type',
+				name: 'type',
+				type: 'options',
+				options: [
+					{
+						name: 'TYPE_UNSPECIFIED',
+						value: 0
+					},
+					{
+						name: 'TYPE_INBOUND',
+						value: 1
+					},
+					{
+						name: 'TYPE_OUTBOUND',
+						value: 2
+					}
+				],
+				default: 0
+			},
+			{
+				displayName: 'Id',
+				name: 'id',
+				type: 'number',
+				default: 0
+			}
+		],
+		required: true,
+	}
+];
+
+const displayOptions = {
+	show: {
+		resource: ['AttachmentCommandService'],
+		operation: ['AttachmentDownload'],
+	},
+};
+
+export const attachmentDownloadProperties = updateDisplayOptions(displayOptions, properties);

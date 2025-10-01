@@ -1,42 +1,69 @@
-import { OlvidClient } from "../../../../client/OlvidClient";
-import * as datatypes from "../../../../protobuf/olvid/daemon/datatypes/v1/datatypes";
-import { ITriggerFunctions } from "n8n-workflow";
+import {
+	type IDisplayOptions,
+	type INodeProperties,
+	updateDisplayOptions,
+} from 'n8n-workflow';
+import {contactIdPicker} from "../../../../common-properties/contactIdPicker";
+import {discussionIdPicker} from "../../../../common-properties/discussionIdPicker";
 
-export function reactionAdded(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: Boolean = false): Function {
-    if (returnMockData) {
-        this.emit([this.helpers.returnJsonArray([{
-            "message": {
-                "id": {
-                    "type": "TYPE_OUTBOUND",
-                    "id": 0
-                },
-                "discussionId": 0,
-                "senderId": 0,
-                "body": "Welcome to Olvid!",
-                "sortIndex": 0,
-                "timestamp": 0,
-                "attachmentsCount": 0,
-                "reactions": [{
-                    "contactId": 0,
-                    "reaction": "👍",
-                    "timestamp": 0
-                }]
-            },
-            "reaction": {
-                "contactId": 0,
-                "reaction": "👍",
-                "timestamp": 0
-            }
-        }])]);
-        onCallback?.();
-        return () => { };
-    }
+const parameters: INodeProperties[] = [
+	// Reaction Filters (for reaction-related triggers)
+	{
+		displayName: 'Reaction filters',
+		name: 'reactionFilters',
+		type: 'collection',
+		default: {},
+		description: 'Advanced filters for reaction-related triggers',
+		options: [
+			{
+				displayName: 'Reaction Emoji',
+				name: 'reaction',
+				type: 'string',
+				default: '👍',
+				description: 'Filter by specific reaction emoji (e.g., 👍, ❤️, 😄)',
+			},
+			{
+				...contactIdPicker,
+				displayName: 'From a Specific Contact',
+				description: 'Filter reactions from a specific contact ID',
+			},
+		],
+	},
+	// Message Filters for Reaction Events
+	{
+		displayName: 'Reacted message filters',
+		name: 'messageFilters',
+		type: 'collection',
+		default: {},
+		description: 'Filter which messages can have reactions that trigger this workflow',
+		options: [
+			{
+				displayName: 'Body Search (Regex)',
+				name: 'bodySearch',
+				type: 'string',
+				default: '',
+				placeholder: 'hello|@.*',
+				hint: 'Filter messages containing this text/regex pattern',
+				description: 'Use regular expressions to filter messages by content (e.g., "hello" or "^@.*" for messages starting with @)',
+			},
+			{
+				...contactIdPicker,
+				displayName: 'By a specific Contact',
+				description: 'Filter messages from a specific contact ID (0 = any contact)',
+			},
+			{
+				...discussionIdPicker,
+				displayName: 'In a specific Discussion',
+				description: 'Filter messages in a specific discussion ID (0 = any discussion)',
+			},
+		],
+	},
+]
 
-    return client.onMessageReactionAdded({
-        callback: (message: datatypes.Message, reaction: datatypes.MessageReaction) => {
-            this.emit([this.helpers.returnJsonArray([{ "message": message, "reaction": reaction}])]);
-            onCallback?.(); // For Manual Testing
-        },
-        endCallback: () => { }
-    });
-}
+const displayOptions: IDisplayOptions = {
+	show: {
+		updates: ['reactionAdded'],
+	},
+};
+
+export const reactionAddedParameters = updateDisplayOptions(displayOptions, parameters);

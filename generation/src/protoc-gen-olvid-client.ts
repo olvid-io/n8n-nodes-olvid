@@ -1,8 +1,7 @@
 import {createEcmaScriptPlugin, runNodeJs, type Schema} from "@bufbuild/protoplugin";
-import { getFieldAsAParameter, getFieldTsType, getMessageTsType } from "./gentools";
-import {olvidClientTemplate, olvidAdminClientTemplate} from "./olvid_client_templates";
-// this import requires @bufbuild/protobuf: ^2.5.1
-import type { DescMethod, DescService } from "@bufbuild/protobuf/dist/esm/descriptors";
+import { getFieldAsAParameter, getFieldTsType, getMessageTsType } from "./client/gentools";
+import {olvidClientTemplate, olvidAdminClientTemplate} from "./client/olvid_client_templates";
+import type { DescMethod, DescService, DescField } from "@bufbuild/protobuf";
 
 function dumpCommandMethod(service: DescService, method: DescMethod): string {
     // is list method (specific case)
@@ -17,10 +16,10 @@ function dumpCommandMethod(service: DescService, method: DescMethod): string {
     const methodName = service.name.endsWith("AdminService") ? `admin${method.name}` : method.name[0].toLowerCase() + method.name.slice(1);
 
     // method parameters
-    let methodParameters = `request: {${method.input.fields.map(f => getFieldAsAParameter(f)).join(", ")}}`;
+    let methodParameters = `request: {${method.input.fields.map((f: DescField) => getFieldAsAParameter(f)).join(", ")}}`;
 
     // if method only have optional fields mark request object as optional
-    if (method.input.fields.length == 0 || method.input.fields.filter(f => !f.proto.proto3Optional).length === 0) {
+    if (method.input.fields.length == 0 || method.input.fields.filter((f: DescField) => !f.proto.proto3Optional).length === 0) {
         methodParameters += " = {}";
     }
 
@@ -68,8 +67,8 @@ function dumpCommandMethod(service: DescService, method: DescMethod): string {
             yield_instruction = `yield response.${method.output.fields[0].localName}`
         }
         else {
-            methodReturnType = `AsyncIterable<[${method.output.fields.map(f => getFieldTsType(f)).join(", ")}}]>`;
-            yield_instruction = `yield (${method.output.fields.map(f => `response.${f.localName}!`).join(", ")})`
+            methodReturnType = `AsyncIterable<[${method.output.fields.map((f: DescField) => getFieldTsType(f)).join(", ")}}]>`;
+            yield_instruction = `yield (${method.output.fields.map((f: DescField) => `response.${f.localName}!`).join(", ")})`
         }
         methodBody = `async function *list(${serviceStubName}: Client<typeof services.${service.name}>): ${methodReturnType} {
             for await (const response of ${serviceStubName}.${methodName}(request)) {
@@ -85,14 +84,14 @@ function dumpCommandMethod(service: DescService, method: DescMethod): string {
             methodBody = `await this.${stubHolder}.${serviceStubName}.${method.localName}(request)`;
         }
         else if (method.output.fields.length == 1) {
-            methodReturnType = `${method.output.fields.map(f => getFieldTsType(f)).join(", ")}`
+            methodReturnType = `${method.output.fields.map((f: DescField) => getFieldTsType(f)).join(", ")}`
             methodBody = `let response: ${getMessageTsType(method.output, true)} = await this.${stubHolder}.${serviceStubName}.${method.localName}(request)
         return response.${method.output.fields[0].localName}!`
         }
         else {
-            methodReturnType = `(${method.output.fields.map(f => getFieldTsType(f)).join(", ")})`
+            methodReturnType = `(${method.output.fields.map((f: DescField) => getFieldTsType(f)).join(", ")})`
             methodBody = `let response: ${getMessageTsType(method.output, true)} = await this.${stubHolder}.${serviceStubName}.${method.localName}(request)
-        return response[${method.output.fields.map(f => `response.${f.localName}!`).join(", ")}]`
+        return response[${method.output.fields.map((f: DescField) => `response.${f.localName}!`).join(", ")}]`
         }
     }
 
@@ -109,14 +108,14 @@ function dumpNotificationMethod(service: DescService, method: DescMethod): strin
     const methodName: string = `on${method.name}`;
 
     // callback and endCallback parameters
-    const callbackParameters: string = method.output.fields.map(f => getFieldAsAParameter(f)).join(", ");
-    const endCallbackParameters: string = method.input.fields.map(f => getFieldAsAParameter(f)).join(", ");
+    const callbackParameters: string = method.output.fields.map((f: DescField) => getFieldAsAParameter(f)).join(", ");
+    const endCallbackParameters: string = method.input.fields.map((f: DescField) => getFieldAsAParameter(f)).join(", ");
 
     // method parameters
     const methodParameters: string = `args: {callback: (${callbackParameters}) => Promise<void> | void, endCallback?: (error ?: Error) => void, ${endCallbackParameters}}`;
 
     // stub parameters
-    const stubParameters: string = method.input.fields.map(f => `${f.localName}: args.${f.localName}`).join(", ");
+    const stubParameters: string = method.input.fields.map((f: DescField) => `${f.localName}: args.${f.localName}`).join(", ");
 
     return `    public ${methodName}(${methodParameters}): Function {
         let cancelFn: Function;
@@ -125,7 +124,7 @@ function dumpNotificationMethod(service: DescService, method: DescMethod): strin
 
         let wrappedCallback = (notification: ${getMessageTsType(method.output, true)}) => {
             Promise.resolve()
-                .then(() => args.callback.call(this, ${method.output.fields.map(f => `notification.${f.localName}!`).join(", ")}))
+                .then(() => args.callback.call(this, ${method.output.fields.map((f: DescField) => `notification.${f.localName}!`).join(", ")}))
                 .catch(e => {
                     console.error("${methodName}", e);
                 });
@@ -146,7 +145,7 @@ function dumpNotificationMethod(service: DescService, method: DescMethod): strin
 }
 
 export function generateOlvidClient(schema: Schema) {
-    // generate fron service files only
+    // generateAction fron service nodes only
     if (schema.files.filter(f => f.name.includes("/services/")).length === 0) {
         return;
     }
@@ -202,7 +201,7 @@ export function generateOlvidClient(schema: Schema) {
 }
 
 export function generateOlvidAdminClient(schema: Schema) {
-    // generate fron service files only
+    // generateAction fron service nodes only
     if (schema.files.filter(f => f.name.includes("/services/")).length === 0) {
         return;
     }

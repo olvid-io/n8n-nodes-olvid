@@ -7,9 +7,6 @@ plugins:
   - local: protoc-gen-es
     opt: target=ts
     out: ../nodes/Olvid/protobuf
-  - local: protoc-gen-connect-es
-    opt: target=ts
-    out: ../nodes/Olvid/protobuf
   - local: [ "tsx", "./src/protoc-gen-barrels.ts" ]
     opt: target=ts
     out: ../nodes/Olvid/protobuf
@@ -17,8 +14,8 @@ plugins:
     opt: target=ts
     out: ../nodes/Olvid/client
   - local: ["tsx", "./src/protoc-gen-advanced-node.ts"]
-    opt: target=ts
+    opt: target=ts,admin=false
     out: ../nodes/Olvid/Advanced/v1/generated
-  - local: ["tsx", "./src/protoc-gen-advanced-admin-node.ts"]
-    opt: target=ts
+  - local: ["tsx", "./src/protoc-gen-advanced-node.ts"]
+    opt: target=ts,admin=true
     out: ../nodes/Olvid/AdvancedAdmin/v1/generated

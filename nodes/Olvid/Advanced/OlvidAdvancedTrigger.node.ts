@@ -1,10 +1,11 @@
 import { INodeTypeBaseDescription, IVersionedNodeType, VersionedNodeType } from 'n8n-workflow';
 import { OlvidAdvancedTriggerV1 } from './v1/OlvidAdvancedTriggerV1.node';
 
+// noinspection JSUnusedGlobalSymbols
 export class OlvidAdvancedTrigger extends VersionedNodeType {
     constructor() {
         const baseDescription: INodeTypeBaseDescription = {
-            displayName: 'OlvidAdvanced Trigger',
+            displayName: 'OlvidAdvancedTrigger',
             name: 'olvidAdvancedTrigger',
             icon: 'file:olvid.svg',
             group: ['trigger'],

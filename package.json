@@ -1,69 +1,69 @@
 {
-  "name": "n8n-nodes-olvid",
-  "version": "1.0.1",
-  "description": "n8n nodes for Olvid",
-  "keywords": [
-    "n8n-community-node-package",
-    "olvid"
-  ],
-  "license": "MIT",
-  "homepage": "",
-  "author": {
-    "name": "bot@olvid.io",
-    "email": "bot@olvid.io"
-  },
-  "repository": {
-    "url": "git+https://github.com/olvid-io/n8n-nodes-olvid.git"
-  },
-  "engines": {
-    "node": ">=18.10",
-    "pnpm": ">=9.1"
-  },
-  "packageManager": "pnpm@9.1.4",
-  "main": "index.js",
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "generate": "(cd generation && npm run generate) && echo Generated nodes",
-    "build": "npx tsc && gulp build:icons",
-    "dev": "npx nodemon -w nodes -w credentials --ext ts --exec \"npm run build && n8n\"",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
-    "distTar": "tar -czf compiled_node.tar.gz -C ./dist .",
-    "push": "npm run build && npm run lint && npm publish"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/OlvidApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/Olvid/Basic/Olvid.node.js",
-      "dist/nodes/Olvid/Basic/OlvidTrigger.node.js",
-      "dist/nodes/Olvid/Advanced/OlvidAdvanced.node.js",
-      "dist/nodes/Olvid/Advanced/OlvidAdvancedTrigger.node.js",
-      "dist/nodes/Olvid/AdvancedAdmin/OlvidAdvancedAdmin.node.js"
-    ]
-  },
-  "devDependencies": {
-    "@bufbuild/protobuf": "^1.10.1",
-    "@connectrpc/connect": "^1.6.1",
-    "@connectrpc/connect-node": "^1.6.1",
-    "@types/node": "^22.9.0",
-    "@typescript-eslint/parser": "^7.15.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-n8n-nodes-base": "^1.16.1",
-    "gulp": "^4.0.2",
-    "n8n-workflow": "^1.70.0",
-    "nodemon": "^3.1.9",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
-  },
-  "peerDependencies": {
-    "n8n-workflow": "*"
-  }
+	"name": "n8n-nodes-olvid",
+	"version": "1.0.1",
+	"description": "n8n nodes for Olvid",
+	"keywords": [
+		"n8n-community-node-package",
+		"olvid"
+	],
+	"license": "MIT",
+	"homepage": "",
+	"author": {
+		"name": "bot@olvid.io",
+		"email": "bot@olvid.io"
+	},
+	"repository": {
+		"url": "git+https://github.com/olvid-io/n8n-nodes-olvid.git"
+	},
+	"engines": {
+		"node": ">=18.10",
+		"pnpm": ">=9.1"
+	},
+	"packageManager": "pnpm@9.1.4",
+	"main": "index.js",
+	"scripts": {
+		"preinstall": "npx only-allow pnpm",
+		"generate": "(cd generation && npm run generate) && echo Generated nodes",
+		"build": "npx tsc && gulp build:icons",
+		"dev": "npx nodemon -w nodes -w credentials --ext ts --exec \"npm run build && n8n\"",
+		"format": "prettier nodes credentials --write",
+		"lint": "eslint nodes credentials package.json",
+		"lintfix": "eslint nodes credentials package.json --fix",
+		"prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json",
+		"distTar": "tar -czf compiled_node.tar.gz -C ./dist .",
+		"push": "npm run build && npm run lint && npm publish"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/OlvidApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/Olvid/Basic/Olvid.node.js",
+			"dist/nodes/Olvid/Basic/OlvidTrigger.node.js",
+			"dist/nodes/Olvid/Advanced/OlvidAdvanced.node.js",
+			"dist/nodes/Olvid/Advanced/OlvidAdvancedTrigger.node.js",
+			"dist/nodes/Olvid/AdvancedAdmin/OlvidAdvancedAdmin.node.js"
+		]
+	},
+	"devDependencies": {
+		"@bufbuild/protobuf": "^2.8.0",
+		"@connectrpc/connect": "^2.1.0",
+		"@connectrpc/connect-node": "^2.1.0",
+		"@types/node": "^22.18.4",
+		"@typescript-eslint/parser": "^7.18.0",
+		"eslint": "^8.57.1",
+		"eslint-plugin-n8n-nodes-base": "^1.16.3",
+		"gulp": "^4.0.2",
+		"n8n-workflow": "^1.82.0",
+		"nodemon": "^3.1.10",
+		"prettier": "^3.6.2",
+		"typescript": "^5.9.2"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
 }

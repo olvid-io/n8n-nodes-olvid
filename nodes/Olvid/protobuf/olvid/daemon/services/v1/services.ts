@@ -1,3 +1,3 @@
-export * from "./admin_service_connect";
-export * from "./command_service_connect";
-export * from "./notification_service_connect";
+export * from "./admin_service_pb";
+export * from "./command_service_pb";
+export * from "./notification_service_pb";

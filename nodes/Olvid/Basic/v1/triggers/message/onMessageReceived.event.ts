@@ -1,49 +1,72 @@
-import { OlvidClient } from "../../../../client/OlvidClient";
-import * as datatypes from "../../../../protobuf/olvid/daemon/datatypes/v1/datatypes"
-import { IBinaryData, ITriggerFunctions } from "n8n-workflow";
-import { downloadAttachment } from "../attachment/onAttachmentReceived.event";
+/* eslint-disable n8n-nodes-base/node-param-default-wrong-for-options,n8n-nodes-base/node-param-collection-type-unsorted-items */
+import * as datatypes from '../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
+import { type IDisplayOptions, type INodeProperties, updateDisplayOptions} from 'n8n-workflow';
+import {contactIdPicker} from "../../../../common-properties/contactIdPicker";
+import {discussionIdPicker} from "../../../../common-properties/discussionIdPicker";
 
-export function messageReceived(this: ITriggerFunctions, client: OlvidClient, onCallback?: Function, returnMockData: Boolean = false): Function {
-		const downloadAttachments = this.getNodeParameter('downloadAttachments') as boolean ?? false;
-		const bodySearchRegexp: string = this.getNodeParameter('bodyRegexpFilter') as string ?? "";
-    if (returnMockData) {
-        this.emit([this.helpers.returnJsonArray([{
-            "body": "Welcome to Olvid!",
-            "id": {
-                "type": "TYPE_INBOUND",
-                "id": 0
-            },
-            "discussionId": 0,
-            "senderId": 0,
-            "sortIndex": 0,
-            "timestamp": 0,
-            "attachmentsCount": 0,
-            "reactions": [],
-        }])]);
-        onCallback?.();
-        return () => { };
-    }
+const parameters: INodeProperties[] = [
+	{
+		displayName: 'Message filters',
+		name: 'messageFilters',
+		type: 'collection',
+		default: {},
+		description: 'Advanced filters to specify which messages should trigger the workflow',
+		options: [
+			{
+				displayName: 'Body Search (Regex)',
+				name: 'bodySearch',
+				type: 'string',
+				default: '',
+				placeholder: 'hello|@.*',
+				hint: 'Filter messages containing this text/regex pattern',
+				description:
+					'Use regular expressions to filter messages by content (e.g., "hello" or "^@.*" for messages starting with @)',
+			},
+			{
+				...contactIdPicker,
+				displayName: 'By a specific Contact',
+				description: 'Filter messages from a specific contact ID (0 = any contact)'
+			},
+			{
+				...discussionIdPicker,
+				displayName: 'In a specific Discussion',
+				description: 'Filter messages from a specific discussion ID (0 = any discussion)',
+			},
+			{
+				displayName: 'Has Attachments',
+				name: 'hasAttachments',
+				type: 'options',
+				options: [
+					{ name: 'Any', value: datatypes.MessageFilter_Attachment.UNSPECIFIED.valueOf() },
+					{ name: 'Has attachments', value: datatypes.MessageFilter_Attachment.HAVE.valueOf() },
+					{ name: 'No attachments', value: datatypes.MessageFilter_Attachment.HAVE_NOT.valueOf() },
+				],
+				default: datatypes.MessageFilter_Attachment.UNSPECIFIED.valueOf(),
+				description: 'Filter by presence of attachments',
+			},
+			{
+				displayName: 'Has Location',
+				name: 'hasLocation',
+				type: 'options',
+				options: [
+					{ name: 'Any', value: datatypes.MessageFilter_Location.UNSPECIFIED.valueOf() },
+					{ name: 'Has location', value: datatypes.MessageFilter_Location.HAVE.valueOf() },
+					{ name: 'Is location send', value: datatypes.MessageFilter_Location.IS_SEND.valueOf() },
+					{ name: 'Is sharing location', value: datatypes.MessageFilter_Location.IS_SHARING.valueOf() },
+					{ name: 'Location sharing finished', value: datatypes.MessageFilter_Location.IS_SHARING_FINISHED.valueOf() },
+					{ name: 'No location', value: datatypes.MessageFilter_Location.HAVE_NOT.valueOf() },
+				],
+				default: datatypes.MessageFilter_Location.UNSPECIFIED.valueOf(),
+				description: 'Filter by location information',
+			},
+		],
+	},
+]
 
-    return client.onMessageReceived({
-        callback: async (message: datatypes.Message) => {
-            let attachmentsData: IBinaryData[] = [];
-						let attachments: datatypes.Attachment[] = [];
-						for await (const attachment of client.attachmentList({ filter: new datatypes.AttachmentFilter({ messageId: message.id }) })) {
-								attachments.push(attachment);
-								attachmentsData.push(await downloadAttachment(client, attachment));
-						}
-            this.emit([[{
-                json: { "message": message, "attachments": attachments }, ...(downloadAttachments && attachmentsData.length > 0 ? {
-                    binary: Object.fromEntries(
-                        attachmentsData.map((attachment, index) => [`data${index}`, attachment])
-                    ),
-                } : null)
-            }]]);
-            onCallback?.(); // For Manual Testing
-        },
-        endCallback: () => {
-            onCallback?.();
-        },
-				filter: new datatypes.MessageFilter({bodySearch: bodySearchRegexp})
-    });
-}
+const displayOptions: IDisplayOptions = {
+	show: {
+		updates: ['messageReceived'],
+	},
+};
+
+export const messageReceivedParameters = updateDisplayOptions(displayOptions, parameters);
