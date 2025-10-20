@@ -1,13 +1,13 @@
 {
 	"name": "n8n-nodes-olvid",
-	"version": "1.0.1",
+	"version": "2.0.0-alpha.0",
 	"description": "n8n nodes for Olvid",
 	"keywords": [
 		"n8n-community-node-package",
 		"olvid"
 	],
 	"license": "MIT",
-	"homepage": "",
+	"homepage": "https://doc.bot.olvid.io",
 	"author": {
 		"name": "bot@olvid.io",
 		"email": "bot@olvid.io"
