@@ -21,23 +21,6 @@ export const discussionEmptyProperties: INodeProperties[] = [
         ]
       }
     }
-  },
-  {
-    displayName: 'DeleteEverywhere',
-    name: 'deleteEverywhere',
-    type: 'boolean',
-    default: false,
-    required: false,
-    displayOptions: {
-      show: {
-        resource: [
-          'DiscussionCommandService'
-        ],
-        operation: [
-          'DiscussionEmpty'
-        ]
-      }
-    }
   }
 ];
 

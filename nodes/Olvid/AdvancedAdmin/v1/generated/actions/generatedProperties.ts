@@ -16,6 +16,13 @@ import { identityAdminDownloadPhotoProperties } from "./IdentityAdminService/ide
 import { identityDeleteProperties } from "./IdentityAdminService/identityDelete.operation"
 import { identityNewProperties } from "./IdentityAdminService/identityNew.operation"
 import { identityKeycloakNewProperties } from "./IdentityAdminService/identityKeycloakNew.operation"
+import { backupKeyGetProperties } from "./BackupAdminService/backupKeyGet.operation"
+import { backupKeyRenewProperties } from "./BackupAdminService/backupKeyRenew.operation"
+import { backupGetProperties } from "./BackupAdminService/backupGet.operation"
+import { backupNowProperties } from "./BackupAdminService/backupNow.operation"
+import { backupRestoreDaemonProperties } from "./BackupAdminService/backupRestoreDaemon.operation"
+import { backupRestoreAdminBackupProperties } from "./BackupAdminService/backupRestoreAdminBackup.operation"
+import { backupRestoreProfileSnapshotProperties } from "./BackupAdminService/backupRestoreProfileSnapshot.operation"
 
 // list of properties (INodeProperties) representing different aspect of our node
 // - list all the possible actions ordered by resources (grpc service) and operation (grpc method)
@@ -35,6 +42,10 @@ export const generatedProperties: INodeProperties[] = [
       {
         "name": "IdentityAdminService",
         "value": "IdentityAdminService"
+      },
+      {
+        "name": "BackupAdminService",
+        "value": "BackupAdminService"
       }
     ],
     "default": "ClientKeyAdminService"
@@ -132,6 +143,58 @@ export const generatedProperties: INodeProperties[] = [
       }
     ],
     "default": "IdentityList"
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "description": "BackupAdminService",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "BackupAdminService"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "BackupKeyGet",
+        "value": "BackupKeyGet",
+        "action": "Backup key get"
+      },
+      {
+        "name": "BackupKeyRenew",
+        "value": "BackupKeyRenew",
+        "action": "Backup key renew"
+      },
+      {
+        "name": "BackupGet",
+        "value": "BackupGet",
+        "action": "Backup get"
+      },
+      {
+        "name": "BackupNow",
+        "value": "BackupNow",
+        "action": "Backup now"
+      },
+      {
+        "name": "BackupRestoreDaemon",
+        "value": "BackupRestoreDaemon",
+        "action": "Backup restore daemon"
+      },
+      {
+        "name": "BackupRestoreAdminBackup",
+        "value": "BackupRestoreAdminBackup",
+        "action": "Backup restore admin backup"
+      },
+      {
+        "name": "BackupRestoreProfileSnapshot",
+        "value": "BackupRestoreProfileSnapshot",
+        "action": "Backup restore profile snapshot"
+      }
+    ],
+    "default": "BackupKeyGet"
   }
 ];
 
@@ -148,6 +211,13 @@ generatedProperties.push(
   ...identityAdminDownloadPhotoProperties,
   ...identityDeleteProperties,
   ...identityNewProperties,
-  ...identityKeycloakNewProperties
+  ...identityKeycloakNewProperties,
+  ...backupKeyGetProperties,
+  ...backupKeyRenewProperties,
+  ...backupGetProperties,
+  ...backupNowProperties,
+  ...backupRestoreDaemonProperties,
+  ...backupRestoreAdminBackupProperties,
+  ...backupRestoreProfileSnapshotProperties
 );
 

@@ -12,6 +12,7 @@ export class OlvidAdminClient extends OlvidClient {
     public readonly adminStubs: {
         clientKeyAdminStub: Client<typeof services.ClientKeyAdminService>;
         identityAdminStub: Client<typeof services.IdentityAdminService>;
+        backupAdminStub: Client<typeof services.BackupAdminService>;
 
     };
 
@@ -20,6 +21,7 @@ export class OlvidAdminClient extends OlvidClient {
         this.adminStubs = {
             clientKeyAdminStub: createClient(services.ClientKeyAdminService, this.transport),
             identityAdminStub: createClient(services.IdentityAdminService, this.transport),
+            backupAdminStub: createClient(services.BackupAdminService, this.transport),
 
         };
     }
@@ -97,11 +99,11 @@ export class OlvidAdminClient extends OlvidClient {
         return response.photo!
     }
 
-   async adminIdentityDelete(request: {identityId: bigint}): Promise<void> {
+   async adminIdentityDelete(request: {identityId: bigint, deleteEverywhere?: boolean}): Promise<void> {
         await this.adminStubs.identityAdminStub.identityDelete(request)
     }
 
-   async adminIdentityNew(request: {identityDetails: datatypes.IdentityDetails, serverUrl?: string, apiKey?: string}): Promise<datatypes.Identity> {
+   async adminIdentityNew(request: {identityDetails: datatypes.IdentityDetails, serverUrl?: string}): Promise<datatypes.Identity> {
         let response: admin.IdentityNewResponse = await this.adminStubs.identityAdminStub.identityNew(request)
         return response.identity!
     }
@@ -109,6 +111,41 @@ export class OlvidAdminClient extends OlvidClient {
    async adminIdentityKeycloakNew(request: {configurationLink: string}): Promise<datatypes.Identity> {
         let response: admin.IdentityKeycloakNewResponse = await this.adminStubs.identityAdminStub.identityKeycloakNew(request)
         return response.identity!
+    }
+
+    /*
+    ** BackupAdminService
+    */
+   async adminBackupKeyGet(request: {} = {}): Promise<string> {
+        let response: admin.BackupKeyGetResponse = await this.adminStubs.backupAdminStub.backupKeyGet(request)
+        return response.backupKey!
+    }
+
+   async adminBackupKeyRenew(request: {} = {}): Promise<string> {
+        let response: admin.BackupKeyRenewResponse = await this.adminStubs.backupAdminStub.backupKeyRenew(request)
+        return response.backupKey!
+    }
+
+   async adminBackupGet(request: {backupKey: string}): Promise<datatypes.Backup> {
+        let response: admin.BackupGetResponse = await this.adminStubs.backupAdminStub.backupGet(request)
+        return response.backup!
+    }
+
+   async adminBackupNow(request: {} = {}): Promise<void> {
+        await this.adminStubs.backupAdminStub.backupNow(request)
+    }
+
+   async adminBackupRestoreDaemon(request: {backupKey: string, newDeviceName?: string}): Promise<admin.BackupRestoreDaemonResponse> {
+        return await this.adminStubs.backupAdminStub.backupRestoreDaemon(request)
+    }
+
+   async adminBackupRestoreAdminBackup(request: {backupKey: string}): Promise<datatypes.ClientKey[]> {
+        let response: admin.BackupRestoreAdminBackupResponse = await this.adminStubs.backupAdminStub.backupRestoreAdminBackup(request)
+        return response.restoredAdminClientKeys!
+    }
+
+   async adminBackupRestoreProfileSnapshot(request: {backupKey: string, id: string, newDeviceName?: string}): Promise<admin.BackupRestoreProfileSnapshotResponse> {
+        return await this.adminStubs.backupAdminStub.backupRestoreProfileSnapshot(request)
     }
 
 

@@ -59,10 +59,6 @@ export const invitationReceivedProperties: INodeProperties[] = [
           {
             name: 'STATUS_GROUP_INVITATION_WAIT_YOU_TO_ACCEPT',
             value: 11
-          },
-          {
-            name: 'STATUS_GROUP_INVITATION_FROZEN',
-            value: 12
           }
         ],
         default: 0

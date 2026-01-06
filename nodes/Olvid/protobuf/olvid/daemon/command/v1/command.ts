@@ -7,4 +7,6 @@ export * from "./identity_commands_pb";
 export * from "./invitation_commands_pb";
 export * from "./keycloak_commands_pb";
 export * from "./message_commands_pb";
+export * from "./settings_commands_pb";
 export * from "./storage_commands_pb";
+export * from "./tool_commands_pb";

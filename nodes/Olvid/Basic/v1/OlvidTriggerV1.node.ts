@@ -8,7 +8,7 @@ import {
 	INodeTypeDescription,
 	ITriggerFunctions,
 	ITriggerResponse,
-	NodeConnectionType,
+	NodeConnectionTypes
 } from 'n8n-workflow';
 
 import { testOlvidCredentials } from '../../common-properties/testOlvidCredentials';
@@ -39,7 +39,7 @@ export class OlvidTriggerV1 implements INodeType {
 						name: 'Olvid Trigger',
 					},
 					inputs: [],
-					outputs: [NodeConnectionType.Main],
+					outputs: [NodeConnectionTypes.Main],
 					credentials: [{name: 'olvidApi', required: true, testedBy: 'testOlvidDaemon' }],
 					triggerPanel: {
 						header: 'Pull in events from Olvid',

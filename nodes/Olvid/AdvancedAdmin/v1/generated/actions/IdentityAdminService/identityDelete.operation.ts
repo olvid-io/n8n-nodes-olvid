@@ -21,6 +21,23 @@ export const identityDeleteProperties: INodeProperties[] = [
         ]
       }
     }
+  },
+  {
+    displayName: 'DeleteEverywhere',
+    name: 'deleteEverywhere',
+    type: 'boolean',
+    default: false,
+    required: false,
+    displayOptions: {
+      show: {
+        resource: [
+          'IdentityAdminService'
+        ],
+        operation: [
+          'IdentityDelete'
+        ]
+      }
+    }
   }
 ];
 

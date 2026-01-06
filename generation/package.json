@@ -3,9 +3,9 @@
     "generate": "npx buf generate --verbose"
   },
   "devDependencies": {
-    "@bufbuild/buf": "^1.57.0",
-    "@bufbuild/protoc-gen-es": "^2.8.0",
-    "@bufbuild/protoplugin": "^2.8.0",
+    "@bufbuild/buf": "^1.57.2",
+    "@bufbuild/protoc-gen-es": "^2.9.0",
+    "@bufbuild/protoplugin": "^2.9.0",
     "@types/node": "^22.18.4",
     "tsx": "^4.20.5"
   }

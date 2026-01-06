@@ -4,23 +4,5 @@
 import { type INodeProperties } from 'n8n-workflow';
 
 
-export const messageSendVoipProperties: INodeProperties[] = [
-  {
-    displayName: 'DiscussionId',
-    name: 'discussionId',
-    type: 'number',
-    default: 0,
-    required: true,
-    displayOptions: {
-      show: {
-        resource: [
-          'MessageCommandService'
-        ],
-        operation: [
-          'MessageSendVoip'
-        ]
-      }
-    }
-  }
-];
+export const backupKeyGetProperties: INodeProperties[] = [];
 

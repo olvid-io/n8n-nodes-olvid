@@ -4,10 +4,10 @@
 import { type INodeProperties } from 'n8n-workflow';
 
 
-export const discussionSettingsSetProperties: INodeProperties[] = [
+export const settingsDiscussionSetProperties: INodeProperties[] = [
   {
-    displayName: 'Settings',
-    name: 'settings',
+    displayName: 'DiscussionSettings',
+    name: 'discussionSettings',
     type: 'collection',
     default: {
       discussionId: 0,
@@ -45,10 +45,10 @@ export const discussionSettingsSetProperties: INodeProperties[] = [
     displayOptions: {
       show: {
         resource: [
-          'DiscussionCommandService'
+          'SettingsCommandService'
         ],
         operation: [
-          'DiscussionSettingsSet'
+          'SettingsDiscussionSet'
         ]
       }
     }

@@ -58,7 +58,7 @@ export const messageReactProperties: INodeProperties[] = [
     name: 'reaction',
     type: 'string',
     default: '',
-    required: true,
+    required: false,
     displayOptions: {
       show: {
         resource: [

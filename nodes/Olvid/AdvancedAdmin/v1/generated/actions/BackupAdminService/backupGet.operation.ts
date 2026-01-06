@@ -4,20 +4,20 @@
 import { type INodeProperties } from 'n8n-workflow';
 
 
-export const identityKeycloakBindProperties: INodeProperties[] = [
+export const backupGetProperties: INodeProperties[] = [
   {
-    displayName: 'ConfigurationLink',
-    name: 'configurationLink',
+    displayName: 'BackupKey',
+    name: 'backupKey',
     type: 'string',
     default: '',
     required: true,
     displayOptions: {
       show: {
         resource: [
-          'IdentityCommandService'
+          'BackupAdminService'
         ],
         operation: [
-          'IdentityKeycloakBind'
+          'BackupGet'
         ]
       }
     }

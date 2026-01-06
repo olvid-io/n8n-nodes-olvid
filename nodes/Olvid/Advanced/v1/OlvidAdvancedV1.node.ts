@@ -11,7 +11,7 @@ import {
   INodeType,
   INodeTypeBaseDescription,
   INodeTypeDescription,
-  NodeConnectionType,
+  NodeConnectionTypes,
   NodeOperationError,
 } from 'n8n-workflow';
 
@@ -43,8 +43,8 @@ export class OlvidAdvancedV1 implements INodeType {
 					defaults: {
 						name: 'OlvidAdvanced',
 					},
-					inputs: [NodeConnectionType.Main],
-					outputs: [NodeConnectionType.Main],
+					inputs: [NodeConnectionTypes.Main],
+					outputs: [NodeConnectionTypes.Main],
 					credentials: [
 						{
 							name: 'olvidApi',

@@ -4,6 +4,10 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 // import operation properties
+import { pingProperties } from "./ToolCommandService/ping.operation"
+import { daemonVersionProperties } from "./ToolCommandService/daemonVersion.operation"
+import { authenticationTestProperties } from "./ToolCommandService/authenticationTest.operation"
+import { authenticationAdminTestProperties } from "./ToolCommandService/authenticationAdminTest.operation"
 import { identityGetProperties } from "./IdentityCommandService/identityGet.operation"
 import { identityGetBytesIdentifierProperties } from "./IdentityCommandService/identityGetBytesIdentifier.operation"
 import { identityGetInvitationLinkProperties } from "./IdentityCommandService/identityGetInvitationLink.operation"
@@ -11,8 +15,7 @@ import { identityUpdateDetailsProperties } from "./IdentityCommandService/identi
 import { identityRemovePhotoProperties } from "./IdentityCommandService/identityRemovePhoto.operation"
 import { identitySetPhotoProperties } from "./IdentityCommandService/identitySetPhoto.operation"
 import { identityDownloadPhotoProperties } from "./IdentityCommandService/identityDownloadPhoto.operation"
-import { identityKeycloakBindProperties } from "./IdentityCommandService/identityKeycloakBind.operation"
-import { identityKeycloakUnbindProperties } from "./IdentityCommandService/identityKeycloakUnbind.operation"
+import { identityGetApiKeyStatusProperties } from "./IdentityCommandService/identityGetApiKeyStatus.operation"
 import { identitySetApiKeyProperties } from "./IdentityCommandService/identitySetApiKey.operation"
 import { identitySetConfigurationLinkProperties } from "./IdentityCommandService/identitySetConfigurationLink.operation"
 import { invitationListProperties } from "./InvitationCommandService/invitationList.operation"
@@ -32,8 +35,11 @@ import { contactDownloadPhotoProperties } from "./ContactCommandService/contactD
 import { contactRecreateChannelsProperties } from "./ContactCommandService/contactRecreateChannels.operation"
 import { contactInviteToOneToOneDiscussionProperties } from "./ContactCommandService/contactInviteToOneToOneDiscussion.operation"
 import { contactDowngradeOneToOneDiscussionProperties } from "./ContactCommandService/contactDowngradeOneToOneDiscussion.operation"
+import { keycloakBindIdentityProperties } from "./KeycloakCommandService/keycloakBindIdentity.operation"
+import { keycloakUnbindIdentityProperties } from "./KeycloakCommandService/keycloakUnbindIdentity.operation"
 import { keycloakUserListProperties } from "./KeycloakCommandService/keycloakUserList.operation"
 import { keycloakAddUserAsContactProperties } from "./KeycloakCommandService/keycloakAddUserAsContact.operation"
+import { keycloakGetApiCredentialsProperties } from "./KeycloakCommandService/keycloakGetApiCredentials.operation"
 import { groupListProperties } from "./GroupCommandService/groupList.operation"
 import { groupGetProperties } from "./GroupCommandService/groupGet.operation"
 import { groupGetBytesIdentifierProperties } from "./GroupCommandService/groupGetBytesIdentifier.operation"
@@ -53,8 +59,7 @@ import { discussionGetBytesIdentifierProperties } from "./DiscussionCommandServi
 import { discussionGetByContactProperties } from "./DiscussionCommandService/discussionGetByContact.operation"
 import { discussionGetByGroupProperties } from "./DiscussionCommandService/discussionGetByGroup.operation"
 import { discussionEmptyProperties } from "./DiscussionCommandService/discussionEmpty.operation"
-import { discussionSettingsGetProperties } from "./DiscussionCommandService/discussionSettingsGet.operation"
-import { discussionSettingsSetProperties } from "./DiscussionCommandService/discussionSettingsSet.operation"
+import { discussionDownloadPhotoProperties } from "./DiscussionCommandService/discussionDownloadPhoto.operation"
 import { discussionLockedListProperties } from "./DiscussionCommandService/discussionLockedList.operation"
 import { discussionLockedDeleteProperties } from "./DiscussionCommandService/discussionLockedDelete.operation"
 import { messageListProperties } from "./MessageCommandService/messageList.operation"
@@ -69,7 +74,6 @@ import { messageUpdateLocationSharingProperties } from "./MessageCommandService/
 import { messageEndLocationSharingProperties } from "./MessageCommandService/messageEndLocationSharing.operation"
 import { messageReactProperties } from "./MessageCommandService/messageReact.operation"
 import { messageUpdateBodyProperties } from "./MessageCommandService/messageUpdateBody.operation"
-import { messageSendVoipProperties } from "./MessageCommandService/messageSendVoip.operation"
 import { attachmentListProperties } from "./AttachmentCommandService/attachmentList.operation"
 import { attachmentGetProperties } from "./AttachmentCommandService/attachmentGet.operation"
 import { attachmentDeleteProperties } from "./AttachmentCommandService/attachmentDelete.operation"
@@ -84,6 +88,10 @@ import { discussionStorageSetProperties } from "./DiscussionStorageCommandServic
 import { discussionStorageUnsetProperties } from "./DiscussionStorageCommandService/discussionStorageUnset.operation"
 import { callStartDiscussionCallProperties } from "./CallCommandService/callStartDiscussionCall.operation"
 import { callStartCustomCallProperties } from "./CallCommandService/callStartCustomCall.operation"
+import { settingsIdentityGetProperties } from "./SettingsCommandService/settingsIdentityGet.operation"
+import { settingsIdentitySetProperties } from "./SettingsCommandService/settingsIdentitySet.operation"
+import { settingsDiscussionGetProperties } from "./SettingsCommandService/settingsDiscussionGet.operation"
+import { settingsDiscussionSetProperties } from "./SettingsCommandService/settingsDiscussionSet.operation"
 
 // list of properties (INodeProperties) representing different aspect of our node
 // - list all the possible actions ordered by resources (grpc service) and operation (grpc method)
@@ -96,6 +104,10 @@ export const generatedProperties: INodeProperties[] = [
     "type": "options",
     "noDataExpression": true,
     "options": [
+      {
+        "name": "ToolCommandService",
+        "value": "ToolCommandService"
+      },
       {
         "name": "IdentityCommandService",
         "value": "IdentityCommandService"
@@ -139,9 +151,50 @@ export const generatedProperties: INodeProperties[] = [
       {
         "name": "CallCommandService",
         "value": "CallCommandService"
+      },
+      {
+        "name": "SettingsCommandService",
+        "value": "SettingsCommandService"
       }
     ],
     "default": "IdentityCommandService"
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "description": "ToolCommandService",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "ToolCommandService"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "Ping",
+        "value": "Ping",
+        "action": "Ping"
+      },
+      {
+        "name": "DaemonVersion",
+        "value": "DaemonVersion",
+        "action": "Daemon version"
+      },
+      {
+        "name": "AuthenticationTest",
+        "value": "AuthenticationTest",
+        "action": "Authentication test"
+      },
+      {
+        "name": "AuthenticationAdminTest",
+        "value": "AuthenticationAdminTest",
+        "action": "Authentication admin test"
+      }
+    ],
+    "default": "Ping"
   },
   {
     "displayName": "Operation",
@@ -193,14 +246,9 @@ export const generatedProperties: INodeProperties[] = [
         "action": "Identity download photo"
       },
       {
-        "name": "IdentityKeycloakBind",
-        "value": "IdentityKeycloakBind",
-        "action": "Identity keycloak bind"
-      },
-      {
-        "name": "IdentityKeycloakUnbind",
-        "value": "IdentityKeycloakUnbind",
-        "action": "Identity keycloak unbind"
+        "name": "IdentityGetApiKeyStatus",
+        "value": "IdentityGetApiKeyStatus",
+        "action": "Identity get api key status"
       },
       {
         "name": "IdentitySetApiKey",
@@ -349,6 +397,16 @@ export const generatedProperties: INodeProperties[] = [
     },
     "options": [
       {
+        "name": "KeycloakBindIdentity",
+        "value": "KeycloakBindIdentity",
+        "action": "Keycloak bind identity"
+      },
+      {
+        "name": "KeycloakUnbindIdentity",
+        "value": "KeycloakUnbindIdentity",
+        "action": "Keycloak unbind identity"
+      },
+      {
         "name": "KeycloakUserList",
         "value": "KeycloakUserList",
         "action": "Keycloak user list"
@@ -357,9 +415,14 @@ export const generatedProperties: INodeProperties[] = [
         "name": "KeycloakAddUserAsContact",
         "value": "KeycloakAddUserAsContact",
         "action": "Keycloak add user as contact"
+      },
+      {
+        "name": "KeycloakGetApiCredentials",
+        "value": "KeycloakGetApiCredentials",
+        "action": "Keycloak get api credentials"
       }
     ],
-    "default": "KeycloakUserList"
+    "default": "KeycloakBindIdentity"
   },
   {
     "displayName": "Operation",
@@ -488,14 +551,9 @@ export const generatedProperties: INodeProperties[] = [
         "action": "Discussion empty"
       },
       {
-        "name": "DiscussionSettingsGet",
-        "value": "DiscussionSettingsGet",
-        "action": "Discussion settings get"
-      },
-      {
-        "name": "DiscussionSettingsSet",
-        "value": "DiscussionSettingsSet",
-        "action": "Discussion settings set"
+        "name": "DiscussionDownloadPhoto",
+        "value": "DiscussionDownloadPhoto",
+        "action": "Discussion download photo"
       },
       {
         "name": "DiscussionLockedList",
@@ -583,11 +641,6 @@ export const generatedProperties: INodeProperties[] = [
         "name": "MessageUpdateBody",
         "value": "MessageUpdateBody",
         "action": "Message update body"
-      },
-      {
-        "name": "MessageSendVoip",
-        "value": "MessageSendVoip",
-        "action": "Message send voip"
       }
     ],
     "default": "MessageList"
@@ -729,11 +782,52 @@ export const generatedProperties: INodeProperties[] = [
       }
     ],
     "default": "CallStartDiscussionCall"
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "description": "SettingsCommandService",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "SettingsCommandService"
+        ]
+      }
+    },
+    "options": [
+      {
+        "name": "SettingsIdentityGet",
+        "value": "SettingsIdentityGet",
+        "action": "Settings identity get"
+      },
+      {
+        "name": "SettingsIdentitySet",
+        "value": "SettingsIdentitySet",
+        "action": "Settings identity set"
+      },
+      {
+        "name": "SettingsDiscussionGet",
+        "value": "SettingsDiscussionGet",
+        "action": "Settings discussion get"
+      },
+      {
+        "name": "SettingsDiscussionSet",
+        "value": "SettingsDiscussionSet",
+        "action": "Settings discussion set"
+      }
+    ],
+    "default": "SettingsIdentityGet"
   }
 ];
 
 // include action properties (containing action parameters)
 generatedProperties.push(
+  ...pingProperties,
+  ...daemonVersionProperties,
+  ...authenticationTestProperties,
+  ...authenticationAdminTestProperties,
   ...identityGetProperties,
   ...identityGetBytesIdentifierProperties,
   ...identityGetInvitationLinkProperties,
@@ -741,8 +835,7 @@ generatedProperties.push(
   ...identityRemovePhotoProperties,
   ...identitySetPhotoProperties,
   ...identityDownloadPhotoProperties,
-  ...identityKeycloakBindProperties,
-  ...identityKeycloakUnbindProperties,
+  ...identityGetApiKeyStatusProperties,
   ...identitySetApiKeyProperties,
   ...identitySetConfigurationLinkProperties,
   ...invitationListProperties,
@@ -762,8 +855,11 @@ generatedProperties.push(
   ...contactRecreateChannelsProperties,
   ...contactInviteToOneToOneDiscussionProperties,
   ...contactDowngradeOneToOneDiscussionProperties,
+  ...keycloakBindIdentityProperties,
+  ...keycloakUnbindIdentityProperties,
   ...keycloakUserListProperties,
   ...keycloakAddUserAsContactProperties,
+  ...keycloakGetApiCredentialsProperties,
   ...groupListProperties,
   ...groupGetProperties,
   ...groupGetBytesIdentifierProperties,
@@ -783,8 +879,7 @@ generatedProperties.push(
   ...discussionGetByContactProperties,
   ...discussionGetByGroupProperties,
   ...discussionEmptyProperties,
-  ...discussionSettingsGetProperties,
-  ...discussionSettingsSetProperties,
+  ...discussionDownloadPhotoProperties,
   ...discussionLockedListProperties,
   ...discussionLockedDeleteProperties,
   ...messageListProperties,
@@ -799,7 +894,6 @@ generatedProperties.push(
   ...messageEndLocationSharingProperties,
   ...messageReactProperties,
   ...messageUpdateBodyProperties,
-  ...messageSendVoipProperties,
   ...attachmentListProperties,
   ...attachmentGetProperties,
   ...attachmentDeleteProperties,
@@ -813,6 +907,10 @@ generatedProperties.push(
   ...discussionStorageSetProperties,
   ...discussionStorageUnsetProperties,
   ...callStartDiscussionCallProperties,
-  ...callStartCustomCallProperties
+  ...callStartCustomCallProperties,
+  ...settingsIdentityGetProperties,
+  ...settingsIdentitySetProperties,
+  ...settingsDiscussionGetProperties,
+  ...settingsDiscussionSetProperties
 );
 

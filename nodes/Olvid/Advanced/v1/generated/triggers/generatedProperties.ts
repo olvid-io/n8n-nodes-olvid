@@ -23,8 +23,6 @@ import { groupMemberJoinedProperties } from "./GroupNotificationService/onGroupM
 import { groupMemberLeftProperties } from "./GroupNotificationService/onGroupMemberLeft.event"
 import { groupOwnPermissionsUpdatedProperties } from "./GroupNotificationService/onGroupOwnPermissionsUpdated.event"
 import { groupMemberPermissionsUpdatedProperties } from "./GroupNotificationService/onGroupMemberPermissionsUpdated.event"
-import { groupUpdateInProgressProperties } from "./GroupNotificationService/onGroupUpdateInProgress.event"
-import { groupUpdateFinishedProperties } from "./GroupNotificationService/onGroupUpdateFinished.event"
 import { discussionNewProperties } from "./DiscussionNotificationService/onDiscussionNew.event"
 import { discussionLockedProperties } from "./DiscussionNotificationService/onDiscussionLocked.event"
 import { discussionTitleUpdatedProperties } from "./DiscussionNotificationService/onDiscussionTitleUpdated.event"
@@ -139,14 +137,6 @@ export const generatedProperties: INodeProperties[] = [
       {
         "name": "GroupMemberPermissionsUpdated",
         "value": "GroupMemberPermissionsUpdated"
-      },
-      {
-        "name": "GroupUpdateInProgress",
-        "value": "GroupUpdateInProgress"
-      },
-      {
-        "name": "GroupUpdateFinished",
-        "value": "GroupUpdateFinished"
       },
       {
         "name": "DiscussionNew",
@@ -282,8 +272,6 @@ generatedProperties.push(
   ...groupMemberLeftProperties,
   ...groupOwnPermissionsUpdatedProperties,
   ...groupMemberPermissionsUpdatedProperties,
-  ...groupUpdateInProgressProperties,
-  ...groupUpdateFinishedProperties,
   ...discussionNewProperties,
   ...discussionLockedProperties,
   ...discussionTitleUpdatedProperties,

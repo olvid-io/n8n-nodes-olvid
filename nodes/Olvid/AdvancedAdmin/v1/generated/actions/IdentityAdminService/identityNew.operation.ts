@@ -69,23 +69,6 @@ export const identityNewProperties: INodeProperties[] = [
         ]
       }
     }
-  },
-  {
-    displayName: 'ApiKey',
-    name: 'apiKey',
-    type: 'string',
-    default: '',
-    required: false,
-    displayOptions: {
-      show: {
-        resource: [
-          'IdentityAdminService'
-        ],
-        operation: [
-          'IdentityNew'
-        ]
-      }
-    }
   }
 ];
 

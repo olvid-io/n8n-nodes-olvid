@@ -4,5 +4,5 @@
 import { type INodeProperties } from 'n8n-workflow';
 
 
-export const identityKeycloakUnbindProperties: INodeProperties[] = [];
+export const backupKeyRenewProperties: INodeProperties[] = [];
 

@@ -17,6 +17,14 @@ import type { INodeProperties } from 'n8n-workflow';\n`
 ${services.flatMap(s => s.methods).map(m => `import { ${getActionPropertiesName(m)} } from "./${getActionImportFilePath(m)}"`).join("\n")}
 `
 
+	// hardcode default resource (this is important that default resource does not change for retro-compatibility)
+	// for advanced node: IdentityCommandService, for admin node: ClientKeyAdminService
+	// commands case
+	let defaultServices: DescService[] = services.filter((s) => {
+		return s.name === "IdentityCommandService" || s.name == "ClientKeyAdminService"
+	});
+	let defaultService = defaultServices.length > 0 ? defaultServices[0] : services[0];
+
 	const generatedProperties: INodeProperties[] = [
 		// resources (group of operations corresponding to grpc services)
 		{
@@ -29,7 +37,7 @@ ${services.flatMap(s => s.methods).map(m => `import { ${getActionPropertiesName(
 					return {name: getActionResourceName(s), value: getActionResourceName(s)}
 				})
 			],
-			default: getActionResourceName(services[0])
+			default: getActionResourceName(defaultService)
 		},
 		// operations properties: one operation property for each resource, containing every method (ex: resource: MessageCommandService, Operation: MessageSend, MessageList, ...)
 		...services.map(s => {

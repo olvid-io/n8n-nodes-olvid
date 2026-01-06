@@ -6,7 +6,7 @@ import {
 	INodeTypeDescription,
 	ITriggerFunctions,
 	ITriggerResponse,
-	NodeConnectionType,
+	NodeConnectionTypes,
 	NodeOperationError,
 } from 'n8n-workflow';
 
@@ -43,7 +43,7 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 				name: 'OlvidAdvanced Trigger',
 			},
 			inputs: [],
-			outputs: [NodeConnectionType.Main],
+			outputs: [NodeConnectionTypes.Main],
 			credentials: [
 				{
 					name: 'olvidApi',

@@ -6,7 +6,7 @@ import {
 	INodeExecutionData,
 	INodeType,
 	INodeTypeBaseDescription,
-	INodeTypeDescription, NodeConnectionType, NodeOperationError,
+	INodeTypeDescription, NodeConnectionTypes, NodeOperationError,
 } from 'n8n-workflow';
 
 import { testOlvidCredentials } from '../../common-properties/testOlvidCredentials';
@@ -31,8 +31,8 @@ export class OlvidAdvancedAdminV1 implements INodeType {
 					defaults: {
 						name: 'OlvidAdvancedAdmin',
 					},
-					inputs: [NodeConnectionType.Main],
-					outputs: [NodeConnectionType.Main],
+					inputs: [NodeConnectionTypes.Main],
+					outputs: [NodeConnectionTypes.Main],
 					credentials: [
 						{
 							name: 'olvidAdminApi',

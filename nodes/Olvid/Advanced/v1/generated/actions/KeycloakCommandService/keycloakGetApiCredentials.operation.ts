@@ -4,23 +4,5 @@
 import { type INodeProperties } from 'n8n-workflow';
 
 
-export const discussionSettingsGetProperties: INodeProperties[] = [
-  {
-    displayName: 'DiscussionId',
-    name: 'discussionId',
-    type: 'number',
-    default: 0,
-    required: true,
-    displayOptions: {
-      show: {
-        resource: [
-          'DiscussionCommandService'
-        ],
-        operation: [
-          'DiscussionSettingsGet'
-        ]
-      }
-    }
-  }
-];
+export const keycloakGetApiCredentialsProperties: INodeProperties[] = [];
 

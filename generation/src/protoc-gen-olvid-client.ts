@@ -89,9 +89,8 @@ function dumpCommandMethod(service: DescService, method: DescMethod): string {
         return response.${method.output.fields[0].localName}!`
         }
         else {
-            methodReturnType = `(${method.output.fields.map((f: DescField) => getFieldTsType(f)).join(", ")})`
-            methodBody = `let response: ${getMessageTsType(method.output, true)} = await this.${stubHolder}.${serviceStubName}.${method.localName}(request)
-        return response[${method.output.fields.map((f: DescField) => `response.${f.localName}!`).join(", ")}]`
+            methodReturnType = getMessageTsType(method.output, true)
+            methodBody = `return await this.${stubHolder}.${serviceStubName}.${method.localName}(request)`
         }
     }
 
