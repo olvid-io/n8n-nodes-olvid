@@ -21,6 +21,6 @@ export class OlvidAdminApi implements ICredentialType {
 			hint: 'The endpoint of the Olvid daemon (e.g. http://localhost:50051)',
 			placeholder: 'http://localhost:50051',
 			required: true,
-		}
+		},
 	];
 }

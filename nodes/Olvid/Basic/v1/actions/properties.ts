@@ -1,7 +1,7 @@
 import { INodeProperties, SEND_AND_WAIT_OPERATION } from 'n8n-workflow';
-import {downloadParameters} from "./attachment/download.operation";
-import {sendAndWaitParameters} from "./message/sendAndWait.operation";
-import {sendParameters} from "./message/send.operation";
+import { downloadParameters } from './attachment/download.operation';
+import { sendAndWaitParameters } from './message/sendAndWait.operation';
+import { sendParameters } from './message/send.operation';
 
 export const properties: INodeProperties[] = [
 	/*
@@ -25,7 +25,7 @@ export const properties: INodeProperties[] = [
 		default: 'message',
 	},
 	/*
-	** define each resource operations, the available "commands" in ode
+	 ** define each resource operations, the available "commands" in ode
 	 */
 	{
 		displayName: 'Operation',
@@ -72,14 +72,14 @@ export const properties: INodeProperties[] = [
 			},
 		],
 		default: 'download',
-	}
+	},
 ];
 
 /*
-** add each operation parameters
+ ** add each operation parameters
  */
 properties.push(
 	...downloadParameters,
 	...sendParameters,
-	...sendAndWaitParameters
-)
+	...sendAndWaitParameters,
+);

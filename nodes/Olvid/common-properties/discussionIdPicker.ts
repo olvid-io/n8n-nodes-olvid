@@ -1,4 +1,8 @@
-import { ILoadOptionsFunctions, INodeListSearchResult, INodeProperties } from 'n8n-workflow';
+import {
+	ILoadOptionsFunctions,
+	INodeListSearchResult,
+	INodeProperties,
+} from 'n8n-workflow';
 import { OlvidClientSingleton } from '../utils/OlvidClientSingleton';
 import * as datatypes from '../protobuf/olvid/daemon/datatypes/v1/datatypes';
 
@@ -11,7 +15,8 @@ export async function discussionSearch(
 	};
 	const client = OlvidClientSingleton.getInstance(credentials);
 	const discussions: datatypes.Discussion[] = [];
-	for await (const discussion of client.discussionList()) discussions.push(discussion);
+	for await (const discussion of client.discussionList())
+		discussions.push(discussion);
 
 	return {
 		results: discussions.map((discussion) => ({

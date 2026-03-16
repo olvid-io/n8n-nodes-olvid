@@ -1,8 +1,14 @@
-import { ILoadOptionsFunctions, INodeListSearchResult, INodeProperties } from 'n8n-workflow';
+import {
+	ILoadOptionsFunctions,
+	INodeListSearchResult,
+	INodeProperties,
+} from 'n8n-workflow';
 import { OlvidClientSingleton } from '../utils/OlvidClientSingleton';
 import * as datatypes from '../protobuf/olvid/daemon/datatypes/v1/datatypes';
 
-export async function contactSearch(this: ILoadOptionsFunctions): Promise<INodeListSearchResult> {
+export async function contactSearch(
+	this: ILoadOptionsFunctions,
+): Promise<INodeListSearchResult> {
 	const credentials = (await this.getCredentials('olvidApi')) as {
 		clientKey: string;
 		daemonEndpoint: string;

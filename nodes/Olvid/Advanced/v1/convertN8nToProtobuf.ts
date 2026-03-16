@@ -1,16 +1,26 @@
 import { NodeParameterValueType } from 'n8n-workflow';
 
-export function convertN8nParametersToAValidRequestBuilder(parameters: any, resolveParameterFunction: (parameterName: string) => NodeParameterValueType|object) {
+export function convertN8nParametersToAValidRequestBuilder(
+	parameters: any,
+	resolveParameterFunction: (
+		parameterName: string,
+	) => NodeParameterValueType | object,
+) {
 	resolveParametersValue(parameters, resolveParameterFunction);
 	collectionsToList(parameters);
 	convertOneOfFields(parameters);
 }
 
-function resolveParametersValue(obj: any, resolveParameterFunction: (parameterName: string) => NodeParameterValueType|object) {
+function resolveParametersValue(
+	obj: any,
+	resolveParameterFunction: (
+		parameterName: string,
+	) => NodeParameterValueType | object,
+) {
 	for (const key in obj) {
 		// for objects retrieve parameter item and recursively resolve values
-		if (typeof obj[key] === "object") {
-			const parameters = resolveParameterFunction(key)
+		if (typeof obj[key] === 'object') {
+			const parameters = resolveParameterFunction(key);
 			recursivelyResolveAndFormatParameters(obj[key], parameters);
 		}
 		// directly resolve non object parameters
@@ -20,7 +30,10 @@ function resolveParametersValue(obj: any, resolveParameterFunction: (parameterNa
 	}
 }
 
-function recursivelyResolveAndFormatParameters(obj: any, parameters: object|NodeParameterValueType) {
+function recursivelyResolveAndFormatParameters(
+	obj: any,
+	parameters: object | NodeParameterValueType,
+) {
 	for (const key in obj) {
 		// then resolve parameters
 		if (typeof obj[key] === 'object') {
@@ -29,8 +42,7 @@ function recursivelyResolveAndFormatParameters(obj: any, parameters: object|Node
 			}
 			// @ts-ignore
 			recursivelyResolveAndFormatParameters(obj[key], parameters[key]);
-		}
-		else {
+		} else {
 			// @ts-ignore
 			obj[key] = parameters[key];
 		}
@@ -43,15 +55,21 @@ function recursivelyResolveAndFormatParameters(obj: any, parameters: object|Node
 function collectionsToList(obj: any) {
 	for (const key in obj) {
 		// an object with a single collection attribute: this is what we are looking for
-		if (obj[key] && typeof obj[key] === "object" && Object.keys(obj[key]).length === 1 && Object.keys(obj[key])[0] === "collection" && Array.isArray(obj[key]["collection"])) {
+		if (
+			obj[key] &&
+			typeof obj[key] === 'object' &&
+			Object.keys(obj[key]).length === 1 &&
+			Object.keys(obj[key])[0] === 'collection' &&
+			Array.isArray(obj[key]['collection'])
+		) {
 			const list = [];
-			for (const element of obj[key]["collection"]) {
+			for (const element of obj[key]['collection']) {
 				list.push(typeof element === 'object' ? element[key] : element);
 			}
 			obj[key] = list;
 		}
 		// recursive call for nested objects
-		else if (obj[key] !== null && typeof obj[key] === "object") {
+		else if (obj[key] !== null && typeof obj[key] === 'object') {
 			collectionsToList(obj[key]);
 		}
 	}
@@ -62,17 +80,17 @@ function collectionsToList(obj: any) {
 function convertOneOfFields(obj: any) {
 	for (const key in obj) {
 		// an object with a single collection attribute: this is what we are looking for
-		if (typeof obj[key] === "string" && key.endsWith("Select")) {
-			const oneofName: string = key.replace("Select", "");
+		if (typeof obj[key] === 'string' && key.endsWith('Select')) {
+			const oneofName: string = key.replace('Select', '');
 			const oneOfCase = obj[key];
 			// set proper attribute
-			obj[oneofName] = {case: oneOfCase, value: obj[oneOfCase]};
+			obj[oneofName] = { case: oneOfCase, value: obj[oneOfCase] };
 			// remove previous selector
 			delete obj[key];
-			delete obj[oneOfCase]
+			delete obj[oneOfCase];
 		}
 		// recursive call for nested objects
-		else if (obj[key] !== null && typeof obj[key] === "object") {
+		else if (obj[key] !== null && typeof obj[key] === 'object') {
 			convertOneOfFields(obj[key]);
 		}
 	}

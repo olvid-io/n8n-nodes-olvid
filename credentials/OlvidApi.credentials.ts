@@ -21,7 +21,7 @@ export class OlvidApi implements ICredentialType {
 			hint: 'The endpoint of the Olvid daemon (e.g. http://localhost:50051)',
 			placeholder: 'http://localhost:50051',
 			required: true,
-		}
+		},
 	];
 	// Currently cannot test connection because gRPC server only handle HTTP2 requests and n8n cannot parse the error message returned by server.
 	// test: ICredentialTestRequest = {

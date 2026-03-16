@@ -1,7 +1,4 @@
-import {
-	updateDisplayOptions,
-	INodeProperties
-} from 'n8n-workflow';
+import { updateDisplayOptions, INodeProperties } from 'n8n-workflow';
 
 const properties: INodeProperties[] = [
 	{
@@ -42,4 +39,7 @@ const displayOptions = {
 	},
 };
 
-export const downloadParameters: INodeProperties[] = updateDisplayOptions(displayOptions, properties);
+export const downloadParameters: INodeProperties[] = updateDisplayOptions(
+	displayOptions,
+	properties,
+);

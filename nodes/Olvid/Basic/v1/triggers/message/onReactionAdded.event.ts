@@ -3,8 +3,8 @@ import {
 	type INodeProperties,
 	updateDisplayOptions,
 } from 'n8n-workflow';
-import {contactIdPicker} from "../../../../common-properties/contactIdPicker";
-import {discussionIdPicker} from "../../../../common-properties/discussionIdPicker";
+import { contactIdPicker } from '../../../../common-properties/contactIdPicker';
+import { discussionIdPicker } from '../../../../common-properties/discussionIdPicker';
 
 const parameters: INodeProperties[] = [
 	// Reaction Filters (for reaction-related triggers)
@@ -35,7 +35,8 @@ const parameters: INodeProperties[] = [
 		name: 'messageFilters',
 		type: 'collection',
 		default: {},
-		description: 'Filter which messages can have reactions that trigger this workflow',
+		description:
+			'Filter which messages can have reactions that trigger this workflow',
 		options: [
 			{
 				displayName: 'Body Search (Regex)',
@@ -44,21 +45,24 @@ const parameters: INodeProperties[] = [
 				default: '',
 				placeholder: 'hello|@.*',
 				hint: 'Filter messages containing this text/regex pattern',
-				description: 'Use regular expressions to filter messages by content (e.g., "hello" or "^@.*" for messages starting with @)',
+				description:
+					'Use regular expressions to filter messages by content (e.g., "hello" or "^@.*" for messages starting with @)',
 			},
 			{
 				...contactIdPicker,
 				displayName: 'By a specific Contact',
-				description: 'Filter messages from a specific contact ID (0 = any contact)',
+				description:
+					'Filter messages from a specific contact ID (0 = any contact)',
 			},
 			{
 				...discussionIdPicker,
 				displayName: 'In a specific Discussion',
-				description: 'Filter messages in a specific discussion ID (0 = any discussion)',
+				description:
+					'Filter messages in a specific discussion ID (0 = any discussion)',
 			},
 		],
 	},
-]
+];
 
 const displayOptions: IDisplayOptions = {
 	show: {
@@ -66,4 +70,7 @@ const displayOptions: IDisplayOptions = {
 	},
 };
 
-export const reactionAddedParameters = updateDisplayOptions(displayOptions, parameters);
+export const reactionAddedParameters = updateDisplayOptions(
+	displayOptions,
+	parameters,
+);

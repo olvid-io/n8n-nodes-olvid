@@ -5,7 +5,7 @@ import {
 	type INodeProperties,
 	updateDisplayOptions,
 } from 'n8n-workflow';
-import {discussionIdPicker} from "../../../../common-properties/discussionIdPicker";
+import { discussionIdPicker } from '../../../../common-properties/discussionIdPicker';
 
 const parameters: INodeProperties[] = [
 	{
@@ -36,13 +36,35 @@ const parameters: INodeProperties[] = [
 				name: 'fileType',
 				type: 'options',
 				options: [
-					{ name: 'Any', value: datatypes.AttachmentFilter_FileType.UNSPECIFIED.valueOf() },
-					{ name: 'Audio', value: datatypes.AttachmentFilter_FileType.AUDIO.valueOf() },
-					{ name: 'Images', value: datatypes.AttachmentFilter_FileType.IMAGE.valueOf() },
-					{ name: 'Images & Videos', value: datatypes.AttachmentFilter_FileType.IMAGE_VIDEO.valueOf() },
-					{ name: 'Link preview', value: datatypes.AttachmentFilter_FileType.LINK_PREVIEW.valueOf() },
-					{ name: 'Not link preview', value: datatypes.AttachmentFilter_FileType.NOT_LINK_PREVIEW.valueOf() },
-					{ name: 'Videos', value: datatypes.AttachmentFilter_FileType.VIDEO.valueOf() },
+					{
+						name: 'Any',
+						value: datatypes.AttachmentFilter_FileType.UNSPECIFIED.valueOf(),
+					},
+					{
+						name: 'Audio',
+						value: datatypes.AttachmentFilter_FileType.AUDIO.valueOf(),
+					},
+					{
+						name: 'Images',
+						value: datatypes.AttachmentFilter_FileType.IMAGE.valueOf(),
+					},
+					{
+						name: 'Images & Videos',
+						value: datatypes.AttachmentFilter_FileType.IMAGE_VIDEO.valueOf(),
+					},
+					{
+						name: 'Link preview',
+						value: datatypes.AttachmentFilter_FileType.LINK_PREVIEW.valueOf(),
+					},
+					{
+						name: 'Not link preview',
+						value:
+							datatypes.AttachmentFilter_FileType.NOT_LINK_PREVIEW.valueOf(),
+					},
+					{
+						name: 'Videos',
+						value: datatypes.AttachmentFilter_FileType.VIDEO.valueOf(),
+					},
 				],
 				default: datatypes.AttachmentFilter_FileType.UNSPECIFIED.valueOf(),
 				description: 'Filter by attachment file type',
@@ -50,7 +72,8 @@ const parameters: INodeProperties[] = [
 			{
 				...discussionIdPicker,
 				displayName: 'In a specific Discussion',
-				description: 'Filter attachments from a specific discussion ID (0 = any discussion)',
+				description:
+					'Filter attachments from a specific discussion ID (0 = any discussion)',
 			},
 			{
 				displayName: 'Maximum Size (bytes)',
@@ -76,7 +99,7 @@ const parameters: INodeProperties[] = [
 			},
 		],
 	},
-]
+];
 
 const displayOptions: IDisplayOptions = {
 	show: {
@@ -84,4 +107,7 @@ const displayOptions: IDisplayOptions = {
 	},
 };
 
-export const attachmentReceivedParameters = updateDisplayOptions(displayOptions, parameters);
+export const attachmentReceivedParameters = updateDisplayOptions(
+	displayOptions,
+	parameters,
+);

@@ -17,15 +17,15 @@ import { ConnectError } from '@connectrpc/connect';
 import { convertN8nParametersToAValidRequestBuilder } from './convertN8nToProtobuf';
 import { buildResponseMessage } from './convertProtobufToN8n';
 import { Message } from '@bufbuild/protobuf';
-import * as notifications from "../../protobuf/olvid/daemon/notification/v1/notification";
-import {buildDryRunMessage} from "./buildDryRunMessage";
-import {OlvidClientSingleton} from "../../utils/OlvidClientSingleton";
+import * as notifications from '../../protobuf/olvid/daemon/notification/v1/notification';
+import { buildDryRunMessage } from './buildDryRunMessage';
+import { OlvidClientSingleton } from '../../utils/OlvidClientSingleton';
 
 /*
-** Code entrypoint for our trigger node with it's json description and trigger method.
-* Description is manually written in this file and import generated trigger descriptions.
-* Trigger method will start an olvid notification listener converting passed parameters to a protobuf valid object
-* then it emit an event on every received notification.z
+ ** Code entrypoint for our trigger node with it's json description and trigger method.
+ * Description is manually written in this file and import generated trigger descriptions.
+ * Trigger method will start an olvid notification listener converting passed parameters to a protobuf valid object
+ * then it emit an event on every received notification.z
  */
 export class OlvidAdvancedTriggerV1 implements INodeType {
 	description: INodeTypeDescription;
@@ -57,18 +57,20 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 				...generatedProperties,
 				// hardcoded properties common to every operation
 				{
-					displayName: "Enable dry-run to see an example of expected output data.",
-					name: "notice",
-					type: "notice",
-					default: ""
+					displayName:
+						'Enable dry-run to see an example of expected output data.',
+					name: 'notice',
+					type: 'notice',
+					default: '',
 				},
 				{
-					displayName: "Dry-run",
-					name: "dry-run",
-					type: "boolean",
+					displayName: 'Dry-run',
+					name: 'dry-run',
+					type: 'boolean',
 					default: false,
-					description: "Use mock data when testing this node to check it's output format",
-				}
+					description:
+						"Use mock data when testing this node to check it's output format",
+				},
 			],
 		};
 	}
@@ -91,7 +93,10 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 		// @ts-ignore
 		const stubFunction = client.stubs[stubName][stubMethodName];
 		if (stubFunction === undefined) {
-			throw new NodeOperationError(this.getNode(), `Invalid trigger update type for stub method: ${triggerName} (${stubName} | ${stubMethodName})`);
+			throw new NodeOperationError(
+				this.getNode(),
+				`Invalid trigger update type for stub method: ${triggerName} (${stubName} | ${stubMethodName})`,
+			);
 		}
 
 		// determine the response protobuf schema
@@ -99,47 +104,76 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 		// @ts-ignore
 		const notificationSchema = notifications[notificationSchemaName];
 		if (notificationSchema === undefined) {
-			throw new NodeOperationError(this.getNode(), `Invalid trigger update type: ${triggerName}`);
+			throw new NodeOperationError(
+				this.getNode(),
+				`Invalid trigger update type: ${triggerName}`,
+			);
 		}
 
 		// dry mode: build an example notification by filling all fields with data and return it (we do not want to use connection to daemon or parse parameters)
-		if (this.getMode() === "manual" && this.getNodeParameter("dry-run") as boolean) {
-			return {closeFunction: async () => {}, manualTriggerFunction: async () => {
-					this.emit([buildDryRunMessage(notificationSchema, this.helpers.returnJsonArray)]);
-				}};
+		if (
+			this.getMode() === 'manual' &&
+			(this.getNodeParameter('dry-run') as boolean)
+		) {
+			return {
+				closeFunction: async () => {},
+				manualTriggerFunction: async () => {
+					this.emit([
+						buildDryRunMessage(
+							notificationSchema,
+							this.helpers.returnJsonArray,
+						),
+					]);
+				},
+			};
 		}
 
 		// prepare request: we convert n8n parameters to an object to use as protobuf request message
 		const requestShape = this.getNode().parameters;
-		convertN8nParametersToAValidRequestBuilder(requestShape, (parameterName) => { return this.getNodeParameter(parameterName) });
+		convertN8nParametersToAValidRequestBuilder(
+			requestShape,
+			(parameterName) => {
+				return this.getNodeParameter(parameterName);
+			},
+		);
 
 		// called when a grpc notification message arrive
 		const notificationCallback = (notificationMessage: Message) => {
-			this.emit([buildResponseMessage(notificationMessage, notificationSchema, this.helpers.returnJsonArray)])
-		}
+			this.emit([
+				buildResponseMessage(
+					notificationMessage,
+					notificationSchema,
+					this.helpers.returnJsonArray,
+				),
+			]);
+		};
 
 		// called on grpc stub closure
-		const stubCloseCallback = (error: ConnectError|undefined) => {
+		const stubCloseCallback = (error: ConnectError | undefined) => {
 			if (error) {
 				console.error(`${triggerName}: ConnectionError`, error);
 				this.emitError(error);
 			}
-		}
+		};
 
 		// in manual mode (when user manually execute workflow): add count parameter set to 1 to automatically end listener after first notif
-		if (this.getMode() === "manual") {
+		if (this.getMode() === 'manual') {
 			requestShape.count = 1;
 		}
 
 		// start listening for notifications
-		let cancelFn = stubFunction(requestShape, notificationCallback, stubCloseCallback)
+		let cancelFn = stubFunction(
+			requestShape,
+			notificationCallback,
+			stubCloseCallback,
+		);
 
 		// return close function
 		return {
 			closeFunction: async () => {
-				cancelFn()
-			}
-		}
+				cancelFn();
+			},
+		};
 	}
 }
 
@@ -149,7 +183,8 @@ function getStubName(triggerName: string): string {
 		throw new ApplicationError('Invalid trigger update type for stub method');
 	}
 	const datatypeName: string = splitOnCapitalLetters[0];
-	const decapitalizedName = datatypeName.charAt(0).toLowerCase() + datatypeName.slice(1);
+	const decapitalizedName =
+		datatypeName.charAt(0).toLowerCase() + datatypeName.slice(1);
 	return `${decapitalizedName}NotificationStub`;
 }
 

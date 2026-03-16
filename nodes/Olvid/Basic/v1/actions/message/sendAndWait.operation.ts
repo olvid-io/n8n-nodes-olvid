@@ -1,17 +1,16 @@
 /* eslint-disable n8n-nodes-base/node-param-display-name-miscased-id,n8n-nodes-base/node-param-description-miscased-id */
 import { INodeProperties, updateDisplayOptions } from 'n8n-workflow';
-import {discussionIdPicker} from "../../../../common-properties/discussionIdPicker";
+import { discussionIdPicker } from '../../../../common-properties/discussionIdPicker';
 import { WAIT_INDEFINITELY } from 'n8n-workflow';
 import {
 	type IExecuteFunctions,
 	type IDataObject,
 	type INodeExecutionData,
-	SEND_AND_WAIT_OPERATION
+	SEND_AND_WAIT_OPERATION,
 } from 'n8n-workflow';
 import { OlvidClient } from '../../../../client/OlvidClient';
 import * as datatypes from '../../../../protobuf/olvid/daemon/datatypes/v1/datatypes';
 import { create } from '@bufbuild/protobuf';
-
 
 const properties: INodeProperties[] = [
 	// # Discussion id
@@ -247,7 +246,8 @@ const properties: INodeProperties[] = [
 				name: 'onlyReplies',
 				type: 'boolean',
 				default: false,
-				description: 'Only accept messages that are replies to the sent message',
+				description:
+					'Only accept messages that are replies to the sent message',
 			},
 			{
 				displayName: 'Limit Wait Time',
@@ -256,7 +256,11 @@ const properties: INodeProperties[] = [
 				description:
 					'Whether the workflow will automatically resume execution after the specified limit',
 				default: {
-					values: { limitType: 'afterTimeInterval', resumeAmount: 45, resumeUnit: 'minutes' },
+					values: {
+						limitType: 'afterTimeInterval',
+						resumeAmount: 45,
+						resumeUnit: 'minutes',
+					},
 				},
 				options: [
 					{
@@ -331,7 +335,8 @@ const properties: INodeProperties[] = [
 									},
 								},
 								default: '',
-								description: 'Continue execution after the specified date and time',
+								description:
+									'Continue execution after the specified date and time',
 							},
 						],
 					},
@@ -342,7 +347,8 @@ const properties: INodeProperties[] = [
 				name: 'sendConfirmation',
 				type: 'boolean',
 				default: false,
-				description: 'Whether to add a reaction to the user response to confirm receipt',
+				description:
+					'Whether to add a reaction to the user response to confirm receipt',
 			},
 		],
 	},
@@ -355,7 +361,10 @@ const displayOptions = {
 	},
 };
 
-export const sendAndWaitParameters = updateDisplayOptions(displayOptions, properties);
+export const sendAndWaitParameters = updateDisplayOptions(
+	displayOptions,
+	properties,
+);
 
 // Send and wait configuration for Olvid
 export type OlvidSendAndWaitConfig = {
@@ -376,15 +385,31 @@ export type OlvidSendAndWaitConfig = {
 };
 
 // Create Olvid message
-export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions, index: number): Promise<{
+export async function createOlvidSendAndWaitMessage(
+	context: IExecuteFunctions,
+	index: number,
+): Promise<{
 	messageContent?: string;
 	config: OlvidSendAndWaitConfig;
 }> {
-	const discussionPicker = context.getNodeParameter('discussionPicker', index) as IDataObject;
-	const discussionId: number = discussionPicker ? discussionPicker["value"] as number : 0;
+	const discussionPicker = context.getNodeParameter(
+		'discussionPicker',
+		index,
+	) as IDataObject;
+	const discussionId: number = discussionPicker
+		? (discussionPicker['value'] as number)
+		: 0;
 
-	const messageMode = context.getNodeParameter('messageMode', 0, 'sendMessage') as 'sendMessage' | 'useMessageId' | 'noMessage';
-	const responseType = context.getNodeParameter('responseType', 0, 'messageApproval') as 'messageApproval' | 'reactionApproval' | 'freeText' | 'both';
+	const messageMode = context.getNodeParameter(
+		'messageMode',
+		0,
+		'sendMessage',
+	) as 'sendMessage' | 'useMessageId' | 'noMessage';
+	const responseType = context.getNodeParameter(
+		'responseType',
+		0,
+		'messageApproval',
+	) as 'messageApproval' | 'reactionApproval' | 'freeText' | 'both';
 	const options = context.getNodeParameter('options', 0, {}) as IDataObject;
 
 	const config: OlvidSendAndWaitConfig = {
@@ -405,9 +430,11 @@ export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions, 
 
 	// Handle message-based responses
 	if (responseType === 'messageApproval' || responseType === 'both') {
-		const approvalType = context.getNodeParameter('approvalType', 0, 'double') as
-			| 'single'
-			| 'double';
+		const approvalType = context.getNodeParameter(
+			'approvalType',
+			0,
+			'double',
+		) as 'single' | 'double';
 		config.approvalType = approvalType;
 		config.approveRegex = context.getNodeParameter(
 			'approveRegex',
@@ -426,14 +453,24 @@ export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions, 
 
 	// Handle reaction-based responses
 	if (responseType === 'reactionApproval' || responseType === 'both') {
-		const reactionType = context.getNodeParameter('reactionType', 0, 'double') as
-			| 'single'
-			| 'double';
+		const reactionType = context.getNodeParameter(
+			'reactionType',
+			0,
+			'double',
+		) as 'single' | 'double';
 		config.reactionType = reactionType;
-		config.approveReaction = context.getNodeParameter('approveReaction', 0, '👍') as string;
+		config.approveReaction = context.getNodeParameter(
+			'approveReaction',
+			0,
+			'👍',
+		) as string;
 
 		if (reactionType === 'double') {
-			config.disapproveReaction = context.getNodeParameter('disapproveReaction', 0, '👎') as string;
+			config.disapproveReaction = context.getNodeParameter(
+				'disapproveReaction',
+				0,
+				'👎',
+			) as string;
 		}
 	}
 
@@ -443,7 +480,9 @@ export async function createOlvidSendAndWaitMessage(context: IExecuteFunctions, 
 // Configure wait time from parameters
 export function configureOlvidWaitTillDate(context: IExecuteFunctions) {
 	const options = context.getNodeParameter('options', 0, {}) as IDataObject;
-	const limitOptions = options.limitWaitTime as { values?: IDataObject } | undefined;
+	const limitOptions = options.limitWaitTime as
+		| { values?: IDataObject }
+		| undefined;
 
 	if (!limitOptions?.values) {
 		return WAIT_INDEFINITELY;
@@ -479,16 +518,21 @@ export async function executeSendAndWait(
 	index: number,
 	client: OlvidClient,
 ): Promise<INodeExecutionData[]> {
-	const { messageContent, config } = await createOlvidSendAndWaitMessage(node, index);
+	const { messageContent, config } = await createOlvidSendAndWaitMessage(
+		node,
+		index,
+	);
 	const waitTill = configureOlvidWaitTillDate(node);
 
-	let sentMessageId: datatypes.MessageId|undefined = undefined;
+	let sentMessageId: datatypes.MessageId | undefined = undefined;
 
 	// Handle different message modes
 	if (config.messageMode === 'sendMessage') {
 		// Send a new message
 		if (!messageContent) {
-			throw new Error('Message content is required when using "Send Message" mode');
+			throw new Error(
+				'Message content is required when using "Send Message" mode',
+			);
 		}
 
 		const messageResult = await client.messageSend({
@@ -500,16 +544,22 @@ export async function executeSendAndWait(
 	} else if (config.messageMode === 'useMessageId') {
 		// Use existing message ID
 		if (!config.messageId) {
-			throw new Error('Message ID is required when using "Use Message ID" mode');
+			throw new Error(
+				'Message ID is required when using "Use Message ID" mode',
+			);
 		}
 
-		sentMessageId = create(datatypes.MessageIdSchema, {type: datatypes.MessageId_Type.OUTBOUND, id: BigInt(config.messageId)});
+		sentMessageId = create(datatypes.MessageIdSchema, {
+			type: datatypes.MessageId_Type.OUTBOUND,
+			id: BigInt(config.messageId),
+		});
 	}
 	// For 'noMessage' mode, sentMessageId remains undefined
 
 	// Validate reaction-based responses require a message ID
 	if (
-		(config.responseType === 'reactionApproval' || config.responseType === 'both') &&
+		(config.responseType === 'reactionApproval' ||
+			config.responseType === 'both') &&
 		!sentMessageId
 	) {
 		throw new Error(
@@ -587,7 +637,10 @@ export async function executeSendAndWait(
 			approvalCancelFn = client.onMessageReceived({
 				filter: create(datatypes.MessageFilterSchema, {
 					...baseFilter,
-					bodySearch: config.responseType === 'freeText' ? undefined : config.approveRegex,
+					bodySearch:
+						config.responseType === 'freeText'
+							? undefined
+							: config.approveRegex,
 				}),
 				callback: async (message: datatypes.Message) => {
 					if (isResolved) return;
@@ -624,7 +677,10 @@ export async function executeSendAndWait(
 				count: BigInt(1),
 			});
 
-			if (config.responseType !== 'freeText' && config.approvalType === 'double') {
+			if (
+				config.responseType !== 'freeText' &&
+				config.approvalType === 'double'
+			) {
 				disapprovalCancelFn = client.onMessageReceived({
 					filter: create(datatypes.MessageFilterSchema, {
 						...baseFilter,
@@ -667,15 +723,23 @@ export async function executeSendAndWait(
 		}
 
 		// Setup reaction listener for reaction-based responses
-		if (config.responseType === 'reactionApproval' || config.responseType === 'both') {
+		if (
+			config.responseType === 'reactionApproval' ||
+			config.responseType === 'both'
+		) {
 			if (!sentMessageId) {
-				reject(new Error('Message ID must be provided for reaction-based responses'));
+				reject(
+					new Error('Message ID must be provided for reaction-based responses'),
+				);
 				return;
 			}
 
 			const baseReactionFilter = create(datatypes.ReactionFilterSchema, {
 				reactedBy: config.specificContact
-					? { value: BigInt(config.specificContact), case: 'reactedByContactId' }
+					? {
+							value: BigInt(config.specificContact),
+							case: 'reactedByContactId',
+						}
 					: undefined,
 			});
 
@@ -685,7 +749,10 @@ export async function executeSendAndWait(
 					...baseReactionFilter,
 					reaction: config.approveReaction || '👍',
 				}),
-				callback: async (message: datatypes.Message, reaction: datatypes.MessageReaction) => {
+				callback: async (
+					message: datatypes.Message,
+					reaction: datatypes.MessageReaction,
+				) => {
 					if (isResolved) return;
 
 					if (config.sendConfirmation && message.id?.id) {
@@ -727,7 +794,10 @@ export async function executeSendAndWait(
 						...baseReactionFilter,
 						reaction: config.disapproveReaction || '👎',
 					}),
-					callback: async (message: datatypes.Message, reaction: datatypes.MessageReaction) => {
+					callback: async (
+						message: datatypes.Message,
+						reaction: datatypes.MessageReaction,
+					) => {
 						if (isResolved) return;
 
 						if (config.sendConfirmation && message.id?.id) {
