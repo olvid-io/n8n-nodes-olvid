@@ -376,11 +376,6 @@ export class OlvidClient {
         await this.stubs.keycloakCommandStub.keycloakAddUserAsContact(request)
     }
 
-   async keycloakGetApiCredentials(request: {} = {}): Promise<datatypes.KeycloakApiCredentials> {
-        let response: command.KeycloakGetApiCredentialsResponse = await this.stubs.keycloakCommandStub.keycloakGetApiCredentials(request)
-        return response.credentials!
-    }
-
     /*
     ** GroupCommandService
     */

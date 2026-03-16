@@ -60,7 +60,8 @@ export const settingsIdentitySetProperties: INodeProperties[] = [
           existenceDuration: 0,
           discussionCount: 0,
           globalCount: 0,
-          cleanLockedDiscussions: false
+          cleanLockedDiscussions: false,
+          preserveIsSharingLocationMessages: false
         },
         options: [
           {
@@ -84,6 +85,12 @@ export const settingsIdentitySetProperties: INodeProperties[] = [
           {
             displayName: 'CleanLockedDiscussions',
             name: 'cleanLockedDiscussions',
+            type: 'boolean',
+            default: false
+          },
+          {
+            displayName: 'PreserveIsSharingLocationMessages',
+            name: 'preserveIsSharingLocationMessages',
             type: 'boolean',
             default: false
           }

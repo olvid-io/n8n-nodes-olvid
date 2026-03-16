@@ -5,7 +5,7 @@
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
 import { file_olvid_daemon_datatypes_v1_identity } from "../../datatypes/v1/identity_pb";
-import type { KeycloakApiCredentials, KeycloakUser, KeycloakUserFilter } from "../../datatypes/v1/keycloak_pb";
+import type { KeycloakUser, KeycloakUserFilter } from "../../datatypes/v1/keycloak_pb";
 import { file_olvid_daemon_datatypes_v1_keycloak } from "../../datatypes/v1/keycloak_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -13,7 +13,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/command/v1/keycloak_commands.proto.
  */
 export const file_olvid_daemon_command_v1_keycloak_commands: GenFile = /*@__PURE__*/
-  fileDesc("Ci9vbHZpZC9kYWVtb24vY29tbWFuZC92MS9rZXljbG9ha19jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiOQobS2V5Y2xvYWtCaW5kSWRlbnRpdHlSZXF1ZXN0EhoKEmNvbmZpZ3VyYXRpb25fbGluaxgBIAEoCSIeChxLZXljbG9ha0JpbmRJZGVudGl0eVJlc3BvbnNlIh8KHUtleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXF1ZXN0IiAKHktleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXNwb25zZSKiAQoXS2V5Y2xvYWtVc2VyTGlzdFJlcXVlc3QSQgoGZmlsdGVyGAEgASgLMi0ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5LZXljbG9ha1VzZXJGaWx0ZXJIAIgBARIgChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgESAGIAQFCCQoHX2ZpbHRlckIWChRfbGFzdF9saXN0X3RpbWVzdGFtcCJvChhLZXljbG9ha1VzZXJMaXN0UmVzcG9uc2USNgoFdXNlcnMYASADKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLktleWNsb2FrVXNlchIbChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgEIjYKH0tleWNsb2FrQWRkVXNlckFzQ29udGFjdFJlcXVlc3QSEwoLa2V5Y2xvYWtfaWQYASABKAkiIgogS2V5Y2xvYWtBZGRVc2VyQXNDb250YWN0UmVzcG9uc2UiIgogS2V5Y2xvYWtHZXRBcGlDcmVkZW50aWFsc1JlcXVlc3QiawohS2V5Y2xvYWtHZXRBcGlDcmVkZW50aWFsc1Jlc3BvbnNlEkYKC2NyZWRlbnRpYWxzGAEgASgLMjEub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5LZXljbG9ha0FwaUNyZWRlbnRpYWxzQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUAFaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_identity, file_olvid_daemon_datatypes_v1_keycloak]);
+  fileDesc("Ci9vbHZpZC9kYWVtb24vY29tbWFuZC92MS9rZXljbG9ha19jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiOQobS2V5Y2xvYWtCaW5kSWRlbnRpdHlSZXF1ZXN0EhoKEmNvbmZpZ3VyYXRpb25fbGluaxgBIAEoCSIeChxLZXljbG9ha0JpbmRJZGVudGl0eVJlc3BvbnNlIh8KHUtleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXF1ZXN0IiAKHktleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXNwb25zZSKiAQoXS2V5Y2xvYWtVc2VyTGlzdFJlcXVlc3QSQgoGZmlsdGVyGAEgASgLMi0ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5LZXljbG9ha1VzZXJGaWx0ZXJIAIgBARIgChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgESAGIAQFCCQoHX2ZpbHRlckIWChRfbGFzdF9saXN0X3RpbWVzdGFtcCJvChhLZXljbG9ha1VzZXJMaXN0UmVzcG9uc2USNgoFdXNlcnMYASADKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLktleWNsb2FrVXNlchIbChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgEIjYKH0tleWNsb2FrQWRkVXNlckFzQ29udGFjdFJlcXVlc3QSEwoLa2V5Y2xvYWtfaWQYASABKAkiIgogS2V5Y2xvYWtBZGRVc2VyQXNDb250YWN0UmVzcG9uc2VCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAVoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_identity, file_olvid_daemon_datatypes_v1_keycloak]);
 
 /**
  *
@@ -156,37 +156,4 @@ export type KeycloakAddUserAsContactResponse = Message<"olvid.daemon.command.v1.
  */
 export const KeycloakAddUserAsContactResponseSchema: GenMessage<KeycloakAddUserAsContactResponse> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_keycloak_commands, 7);
-
-/**
- *
- * * KeycloakGetApiCredentials
- *
- * @generated from message olvid.daemon.command.v1.KeycloakGetApiCredentialsRequest
- */
-export type KeycloakGetApiCredentialsRequest = Message<"olvid.daemon.command.v1.KeycloakGetApiCredentialsRequest"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.KeycloakGetApiCredentialsRequest.
- * Use `create(KeycloakGetApiCredentialsRequestSchema)` to create a new message.
- */
-export const KeycloakGetApiCredentialsRequestSchema: GenMessage<KeycloakGetApiCredentialsRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_keycloak_commands, 8);
-
-/**
- * @generated from message olvid.daemon.command.v1.KeycloakGetApiCredentialsResponse
- */
-export type KeycloakGetApiCredentialsResponse = Message<"olvid.daemon.command.v1.KeycloakGetApiCredentialsResponse"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.KeycloakApiCredentials credentials = 1;
-   */
-  credentials?: KeycloakApiCredentials;
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.KeycloakGetApiCredentialsResponse.
- * Use `create(KeycloakGetApiCredentialsResponseSchema)` to create a new message.
- */
-export const KeycloakGetApiCredentialsResponseSchema: GenMessage<KeycloakGetApiCredentialsResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_keycloak_commands, 9);
 

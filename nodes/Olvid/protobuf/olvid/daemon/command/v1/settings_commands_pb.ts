@@ -50,6 +50,8 @@ export const SettingsIdentityGetResponseSchema: GenMessage<SettingsIdentityGetRe
 /**
  *
  * * SettingsIdentitySet
+ * * WARN: this entrypoint erase WHOLE settings. To update identity settings use SettingsIdentityGet to get current config
+ * * and only edit fields you want to update.
  *
  * @generated from message olvid.daemon.command.v1.SettingsIdentitySetRequest
  */

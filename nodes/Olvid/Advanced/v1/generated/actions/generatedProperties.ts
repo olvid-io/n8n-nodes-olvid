@@ -39,7 +39,6 @@ import { keycloakBindIdentityProperties } from "./KeycloakCommandService/keycloa
 import { keycloakUnbindIdentityProperties } from "./KeycloakCommandService/keycloakUnbindIdentity.operation"
 import { keycloakUserListProperties } from "./KeycloakCommandService/keycloakUserList.operation"
 import { keycloakAddUserAsContactProperties } from "./KeycloakCommandService/keycloakAddUserAsContact.operation"
-import { keycloakGetApiCredentialsProperties } from "./KeycloakCommandService/keycloakGetApiCredentials.operation"
 import { groupListProperties } from "./GroupCommandService/groupList.operation"
 import { groupGetProperties } from "./GroupCommandService/groupGet.operation"
 import { groupGetBytesIdentifierProperties } from "./GroupCommandService/groupGetBytesIdentifier.operation"
@@ -415,11 +414,6 @@ export const generatedProperties: INodeProperties[] = [
         "name": "KeycloakAddUserAsContact",
         "value": "KeycloakAddUserAsContact",
         "action": "Keycloak add user as contact"
-      },
-      {
-        "name": "KeycloakGetApiCredentials",
-        "value": "KeycloakGetApiCredentials",
-        "action": "Keycloak get api credentials"
       }
     ],
     "default": "KeycloakBindIdentity"
@@ -859,7 +853,6 @@ generatedProperties.push(
   ...keycloakUnbindIdentityProperties,
   ...keycloakUserListProperties,
   ...keycloakAddUserAsContactProperties,
-  ...keycloakGetApiCredentialsProperties,
   ...groupListProperties,
   ...groupGetProperties,
   ...groupGetBytesIdentifierProperties,
