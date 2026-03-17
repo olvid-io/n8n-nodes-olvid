@@ -10,7 +10,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 
-import { testOlvidCredentials } from '../../common-properties/testOlvidCredentials';
+import { testOlvidClientKey } from '../../common-properties/testOlvidCredentials';
 
 import { generatedProperties } from './generated/triggers/generatedProperties';
 import { ConnectError } from '@connectrpc/connect';
@@ -46,7 +46,8 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 			outputs: [NodeConnectionTypes.Main],
 			credentials: [
 				{
-					name: 'olvidApi',
+					// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+					name: 'olvidClientKey',
 					required: true,
 					testedBy: 'testOlvidDaemon',
 				},
@@ -75,12 +76,12 @@ export class OlvidAdvancedTriggerV1 implements INodeType {
 		};
 	}
 
-	methods = { credentialTest: { testOlvidDaemon: testOlvidCredentials } };
+	methods = { credentialTest: { testOlvidDaemon: testOlvidClientKey } };
 
 	async trigger(this: ITriggerFunctions): Promise<ITriggerResponse> {
-		const credentials = (await this.getCredentials('olvidApi')) as {
+		const credentials = (await this.getCredentials('olvidClientKey')) as {
 			clientKey: string;
-			daemonEndpoint: string;
+			daemonUrl: string;
 		};
 		const client = OlvidClientSingleton.getInstance(credentials);
 

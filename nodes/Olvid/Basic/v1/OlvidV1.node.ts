@@ -14,7 +14,7 @@ import {
 	NodeConnectionTypes,
 } from 'n8n-workflow';
 
-import { testOlvidCredentials } from '../../common-properties/testOlvidCredentials';
+import { testOlvidClientKey } from '../../common-properties/testOlvidCredentials';
 import { properties } from './actions/properties';
 import { OlvidClientSingleton } from '../../utils/OlvidClientSingleton';
 import * as commands from '../../protobuf/olvid/daemon/command/v1/command';
@@ -50,7 +50,8 @@ export class OlvidV1 implements INodeType {
 			outputs: [NodeConnectionTypes.Main],
 			credentials: [
 				{
-					name: 'olvidApi',
+					// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+					name: 'olvidClientKey',
 					required: true,
 					testedBy: 'testOlvidDaemon',
 				},
@@ -61,7 +62,7 @@ export class OlvidV1 implements INodeType {
 
 	methods = {
 		listSearch: { discussionSearch, contactSearch },
-		credentialTest: { testOlvidDaemon: testOlvidCredentials },
+		credentialTest: { testOlvidDaemon: testOlvidClientKey },
 	};
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
@@ -69,9 +70,9 @@ export class OlvidV1 implements INodeType {
 		const operationResult: INodeExecutionData[] = [];
 
 		// create client
-		const credentials = (await this.getCredentials('olvidApi')) as {
+		const credentials = (await this.getCredentials('olvidClientKey')) as {
 			clientKey: string;
-			daemonEndpoint: string;
+			daemonUrl: string;
 		};
 		const client = OlvidClientSingleton.getInstance(credentials);
 

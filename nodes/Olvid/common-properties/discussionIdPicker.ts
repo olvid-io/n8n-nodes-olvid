@@ -9,9 +9,9 @@ import * as datatypes from '../protobuf/olvid/daemon/datatypes/v1/datatypes';
 export async function discussionSearch(
 	this: ILoadOptionsFunctions,
 ): Promise<INodeListSearchResult> {
-	const credentials = (await this.getCredentials('olvidApi')) as {
+	const credentials = (await this.getCredentials('olvidClientKey')) as {
 		clientKey: string;
-		daemonEndpoint: string;
+		daemonUrl: string;
 	};
 	const client = OlvidClientSingleton.getInstance(credentials);
 	const discussions: datatypes.Discussion[] = [];

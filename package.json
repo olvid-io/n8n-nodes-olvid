@@ -1,13 +1,18 @@
 {
 	"name": "n8n-nodes-olvid",
-	"version": "2.0.0-alpha.5",
+	"version": "2.0.0-alpha.6",
 	"description": "n8n nodes for Olvid",
 	"keywords": [
 		"n8n-community-node-package",
-		"olvid"
+		"olvid",
+		"n8n"
 	],
 	"license": "MIT",
-	"homepage": "https://doc.bot.olvid.io",
+	"homepage": "https://doc.bot.olvid.io/n8n",
+	"bugs": {
+		"url": "https://github.com/olvid-io/n8n-nodes-olvid/issues",
+		"email": "bot.olvid.io"
+	},
 	"author": {
 		"name": "bot@olvid.io",
 		"email": "bot@olvid.io"
@@ -39,7 +44,8 @@
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"credentials": [
-			"dist/credentials/OlvidApi.credentials.js"
+			"dist/credentials/OlvidClientKey.credentials.js",
+			"dist/credentials/OlvidAdminClientKey.credentials.js"
 		],
 		"nodes": [
 			"dist/nodes/Olvid/Basic/Olvid.node.js",
@@ -50,20 +56,20 @@
 		]
 	},
 	"dependencies": {
-		"@bufbuild/protobuf": "^2.10.0",
-		"@connectrpc/connect-node": "^2.1.0",
-		"@types/node": "^22.19.0",
-		"tsx": "^4.20.6"
+		"@bufbuild/protobuf": "^2.11.0",
+		"@connectrpc/connect-node": "^2.1.1",
+		"@types/node": "^22.19.15",
+		"tsx": "^4.21.0"
 	},
 	"devDependencies": {
-		"@connectrpc/connect": "^2.1.0",
+		"@connectrpc/connect": "^2.1.1",
 		"@typescript-eslint/parser": "^7.18.0",
 		"eslint": "^8.57.1",
-		"eslint-plugin-n8n-nodes-base": "^1.16.4",
+		"eslint-plugin-n8n-nodes-base": "^1.16.6",
 		"gulp": "^4.0.2",
-		"n8n-workflow": "^1.116.0",
-		"nodemon": "^3.1.10",
-		"prettier": "^3.6.2",
+		"n8n-workflow": "^2.13.0",
+		"nodemon": "^3.1.14",
+		"prettier": "^3.8.1",
 		"typescript": "^5.9.3"
 	},
 	"peerDependencies": {

@@ -13,17 +13,17 @@ export class OlvidClientSingleton {
 
 	static getInstance(credentials: {
 		clientKey: string;
-		daemonEndpoint: string;
+		daemonUrl: string;
 	}): OlvidClient {
-		if (!this.clientMap[credentials.daemonEndpoint]) {
-			this.clientMap[credentials.daemonEndpoint] = {};
+		if (!this.clientMap[credentials.daemonUrl]) {
+			this.clientMap[credentials.daemonUrl] = {};
 		}
 		if (credentials.clientKey) {
-			if (!this.clientMap[credentials.daemonEndpoint][credentials.clientKey]) {
-				this.clientMap[credentials.daemonEndpoint][credentials.clientKey] =
-					new OlvidClient(credentials.daemonEndpoint, credentials.clientKey);
+			if (!this.clientMap[credentials.daemonUrl][credentials.clientKey]) {
+				this.clientMap[credentials.daemonUrl][credentials.clientKey] =
+					new OlvidClient(credentials.daemonUrl, credentials.clientKey);
 			}
-			return this.clientMap[credentials.daemonEndpoint][credentials.clientKey];
+			return this.clientMap[credentials.daemonUrl][credentials.clientKey];
 		}
 		throw new Error(
 			`OlvidClientSingleton.: invalid credentials passed: ${credentials}`,
@@ -32,25 +32,19 @@ export class OlvidClientSingleton {
 
 	static getAdminInstance(credentials: {
 		adminClientKey: string;
-		daemonEndpoint: string;
+		daemonUrl: string;
 	}): OlvidAdminClient {
-		if (!this.adminClientMap[credentials.daemonEndpoint]) {
-			this.adminClientMap[credentials.daemonEndpoint] = {};
+		if (!this.adminClientMap[credentials.daemonUrl]) {
+			this.adminClientMap[credentials.daemonUrl] = {};
 		}
 		if (credentials.adminClientKey) {
-			if (
-				!this.adminClientMap[credentials.daemonEndpoint][
-					credentials.adminClientKey
-				]
-			) {
-				this.adminClientMap[credentials.daemonEndpoint][
-					credentials.adminClientKey
-				] = new OlvidAdminClient(
-					credentials.daemonEndpoint,
-					credentials.adminClientKey,
-				);
+			if (!this.adminClientMap[credentials.daemonUrl][credentials.adminClientKey]) {
+				this.adminClientMap[credentials.daemonUrl][credentials.adminClientKey] = new OlvidAdminClient(
+						credentials.daemonUrl,
+						credentials.adminClientKey,
+					);
 			}
-			return this.adminClientMap[credentials.daemonEndpoint][
+			return this.adminClientMap[credentials.daemonUrl][
 				credentials.adminClientKey
 			];
 		}

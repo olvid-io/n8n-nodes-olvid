@@ -11,7 +11,7 @@ import {
 	NodeOperationError,
 } from 'n8n-workflow';
 
-import { testOlvidCredentials } from '../../common-properties/testOlvidCredentials';
+import { testOlvidAdminClientKey } from '../../common-properties/testOlvidCredentials';
 import { generatedProperties } from './generated/actions/generatedProperties';
 import * as admins from '../../protobuf/olvid/daemon/admin/v1/admin';
 import { convertN8nParametersToAValidRequestBuilder } from '../../Advanced/v1/convertN8nToProtobuf';
@@ -40,7 +40,8 @@ export class OlvidAdvancedAdminV1 implements INodeType {
 			outputs: [NodeConnectionTypes.Main],
 			credentials: [
 				{
-					name: 'olvidAdminApi',
+					// eslint-disable-next-line n8n-nodes-base/node-class-description-credentials-name-unsuffixed
+					name: 'olvidAdminClientKey',
 					required: true,
 					testedBy: 'testOlvidDaemon',
 				},
@@ -52,16 +53,16 @@ export class OlvidAdvancedAdminV1 implements INodeType {
 		};
 	}
 
-	methods = { credentialTest: { testOlvidDaemon: testOlvidCredentials } };
+	methods = { credentialTest: { testOlvidDaemon: testOlvidAdminClientKey } };
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		const items = this.getInputData();
 		const operationResult: INodeExecutionData[] = [];
 
 		// create client
-		const credentials = (await this.getCredentials('olvidAdminApi')) as {
+		const credentials = (await this.getCredentials('olvidAdminClientKey')) as {
 			adminClientKey: string;
-			daemonEndpoint: string;
+			daemonUrl: string;
 		};
 		const client = OlvidClientSingleton.getAdminInstance(credentials);
 

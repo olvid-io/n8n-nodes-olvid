@@ -5,22 +5,34 @@ import {
 } from 'n8n-workflow';
 import { OlvidClientSingleton } from '../utils/OlvidClientSingleton';
 
-//! See https://github.com/n8n-io/n8n/issues/8188
-
-export async function testOlvidCredentials(
+export async function testOlvidClientKey(
 	this: ICredentialTestFunctions,
 	credential: ICredentialsDecrypted,
 ): Promise<INodeCredentialTestResult> {
-	const credentials: { clientKey: string; daemonEndpoint: string } =
+	const credentials: { clientKey: string; daemonUrl: string } =
 		credential.data as any;
 	try {
 		const client = OlvidClientSingleton.getInstance(credentials);
-		// TODO use ping entrypoint
-		await client.identityGet({});
+		await client.ping();
+		await client.authenticationTest();
 	} catch (error) {
 		return { status: 'Error', message: error.message };
 	}
 	return { status: 'OK', message: 'Successfully connected to Olvid Daemon.' };
 }
 
-// TODO implements for admin credentials
+export async function testOlvidAdminClientKey(
+	this: ICredentialTestFunctions,
+	credential: ICredentialsDecrypted,
+): Promise<INodeCredentialTestResult> {
+	const credentials: { adminClientKey: string; daemonUrl: string } =
+		credential.data as any;
+	try {
+		const adminClient = OlvidClientSingleton.getAdminInstance(credentials);
+		await adminClient.ping();
+		await adminClient.authenticationAdminTest();
+	} catch (error) {
+		return { status: 'Error', message: error.message };
+	}
+	return { status: 'OK', message: 'Successfully connected to Olvid Daemon.' };
+}
