@@ -6,12 +6,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": ""
+				"url": "https://doc.bot.olvid.io/n8n"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": ""
+				"url": "https://doc.bot.olvid.io/n8n"
 			}
 		]
 	}
