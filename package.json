@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-olvid",
-	"version": "2.0.0-alpha.7",
+	"version": "2.0.0",
 	"description": "n8n nodes for Olvid",
 	"keywords": [
 		"n8n-community-node-package",
