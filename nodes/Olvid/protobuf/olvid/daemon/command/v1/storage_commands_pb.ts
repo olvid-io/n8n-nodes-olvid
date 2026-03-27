@@ -17,6 +17,16 @@ export const file_olvid_daemon_command_v1_storage_commands: GenFile = /*@__PURE_
 /**
  *
  * * StorageList
+ * * List stored elements in global storage scope, for current client key.
+ * * Pass a filter to select only elements that match specific criteria.
+ * *
+ * * Mind that temporary client keys (specified in daemon environment or as command line arguments) does not have an allocated storage space.
+ * * You must create a client in database to use storage commands.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
+ * * `INVALID_ARGUMENT`: invalid filter
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.StorageListRequest
  */
@@ -54,6 +64,11 @@ export const StorageListResponseSchema: GenMessage<StorageListResponse> = /*@__P
 /**
  *
  * * StorageGet
+ * * Request the value associated to a key in your global storage.
+ * * If the key does not already exist, return an empty string.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
  *
  * @generated from message olvid.daemon.command.v1.StorageGetRequest
  */
@@ -91,6 +106,12 @@ export const StorageGetResponseSchema: GenMessage<StorageGetResponse> = /*@__PUR
 /**
  *
  * * StorageSet
+ * * Set the value for a key in your global storage.
+ * * If the key was already set the value is updated and it returns the *previous_value* in response.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.StorageSetRequest
  */
@@ -118,6 +139,8 @@ export const StorageSetRequestSchema: GenMessage<StorageSetRequest> = /*@__PURE_
  */
 export type StorageSetResponse = Message<"olvid.daemon.command.v1.StorageSetResponse"> & {
   /**
+   * if the key already exists, this contains the erased value.
+   *
    * @generated from field: string previous_value = 1;
    */
   previousValue: string;
@@ -133,6 +156,10 @@ export const StorageSetResponseSchema: GenMessage<StorageSetResponse> = /*@__PUR
 /**
  *
  * * StorageUnset
+ * * Unset a key in your global storage.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
  *
  * @generated from message olvid.daemon.command.v1.StorageUnsetRequest
  */
@@ -155,6 +182,8 @@ export const StorageUnsetRequestSchema: GenMessage<StorageUnsetRequest> = /*@__P
  */
 export type StorageUnsetResponse = Message<"olvid.daemon.command.v1.StorageUnsetResponse"> & {
   /**
+   * the value previously associated to this key
+   *
    * @generated from field: string previous_value = 1;
    */
   previousValue: string;
@@ -170,6 +199,14 @@ export const StorageUnsetResponseSchema: GenMessage<StorageUnsetResponse> = /*@_
 /**
  *
  * * DiscussionStorageList
+ * * List stored elements in a specific discussion storage scope, for current client key.
+ * * Pass a filter to select only elements that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
+ * * `INVALID_ARGUMENT`: discussion storage is not available with an admin client key / invalid filter.
+ * * `NOT_FOUND`: discussion not found.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.DiscussionStorageListRequest
  */
@@ -212,6 +249,13 @@ export const DiscussionStorageListResponseSchema: GenMessage<DiscussionStorageLi
 /**
  *
  * * DiscussionStorageGet
+ * * Request the value associated to a key in the specified discussion storage.
+ * * If the key does not already exist, return an empty string.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
+ * * `INVALID_ARGUMENT`: discussion storage is not available with an admin client key.
+ * * `NOT_FOUND`: discussion not found.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionStorageGetRequest
  */
@@ -254,6 +298,14 @@ export const DiscussionStorageGetResponseSchema: GenMessage<DiscussionStorageGet
 /**
  *
  * * DiscussionStorageSet
+ * * Set the value for a key in the specified discussion storage.
+ * * If the key was already set the value is updated and it returns the *previous_value* in response.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
+ * * `INVALID_ARGUMENT`: discussion storage is not available with an admin client key.
+ * * `NOT_FOUND`: discussion not found.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.DiscussionStorageSetRequest
  */
@@ -301,6 +353,12 @@ export const DiscussionStorageSetResponseSchema: GenMessage<DiscussionStorageSet
 /**
  *
  * * DiscussionStorageUnset
+ * * Unset a key in the specified discussion storage.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid or a temporary client key.
+ * * `INVALID_ARGUMENT`: discussion storage is not available with an admin client key.
+ * * `NOT_FOUND`: discussion not found.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionStorageUnsetRequest
  */

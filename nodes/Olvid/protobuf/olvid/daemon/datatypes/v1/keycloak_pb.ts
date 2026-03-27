@@ -15,25 +15,37 @@ export const file_olvid_daemon_datatypes_v1_keycloak: GenFile = /*@__PURE__*/
   fileDesc("CihvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2tleWNsb2FrLnByb3RvEhlvbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxIp4BCgxLZXljbG9ha1VzZXISEwoLa2V5Y2xvYWtfaWQYASABKAkSFAoMZGlzcGxheV9uYW1lGAIgASgJEjsKB2RldGFpbHMYAyABKAsyKi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5RGV0YWlscxIXCgpjb250YWN0X2lkGAQgASgESACIAQFCDQoLX2NvbnRhY3RfaWQiywIKEktleWNsb2FrVXNlckZpbHRlchJLCgdjb250YWN0GAEgASgOMjUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5LZXljbG9ha1VzZXJGaWx0ZXIuQ29udGFjdEgAiAEBEiAKE2Rpc3BsYXlfbmFtZV9zZWFyY2gYAiABKAlIAYgBARJHCg5kZXRhaWxzX3NlYXJjaBgDIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlEZXRhaWxzSAKIAQEiRgoHQ29udGFjdBIXChNDT05UQUNUX1VOU1BFQ0lGSUVEEAASDgoKQ09OVEFDVF9JUxABEhIKDkNPTlRBQ1RfSVNfTk9UEAJCCgoIX2NvbnRhY3RCFgoUX2Rpc3BsYXlfbmFtZV9zZWFyY2hCEQoPX2RldGFpbHNfc2VhcmNoQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUABaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_identity]);
 
 /**
+ *
+ * * One of your directory user.
+ * *
+ *
  * @generated from message olvid.daemon.datatypes.v1.KeycloakUser
  */
 export type KeycloakUser = Message<"olvid.daemon.datatypes.v1.KeycloakUser"> & {
   /**
+   * unique identifier for directory, to use to add this user as a contact
+   *
    * @generated from field: string keycloak_id = 1;
    */
   keycloakId: string;
 
   /**
+   * name computed from details
+   *
    * @generated from field: string display_name = 2;
    */
   displayName: string;
 
   /**
+   * full identity details
+   *
    * @generated from field: olvid.daemon.datatypes.v1.IdentityDetails details = 3;
    */
   details?: IdentityDetails;
 
   /**
+   * filled if this user is already a contact, else set to 0
+   *
    * @generated from field: optional uint64 contact_id = 4;
    */
   contactId?: bigint;
@@ -47,20 +59,30 @@ export const KeycloakUserSchema: GenMessage<KeycloakUser> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_keycloak, 0);
 
 /**
+ *
+ * * Filter keycloak users by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.KeycloakUserFilter
  */
 export type KeycloakUserFilter = Message<"olvid.daemon.datatypes.v1.KeycloakUserFilter"> & {
   /**
+   * is user a contact or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.KeycloakUserFilter.Contact contact = 1;
    */
   contact?: KeycloakUserFilter_Contact;
 
   /**
+   * regexp filter on *display_name* field
+   *
    * @generated from field: optional string display_name_search = 2;
    */
   displayNameSearch?: string;
 
   /**
+   * a set of regexp filters, one for each field of *details*
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.IdentityDetails details_search = 3;
    */
   detailsSearch?: IdentityDetails;

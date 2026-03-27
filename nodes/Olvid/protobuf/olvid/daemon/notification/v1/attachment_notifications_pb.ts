@@ -19,16 +19,25 @@ export const file_olvid_daemon_notification_v1_attachment_notifications: GenFile
 /**
  *
  * * AttachmentReceived
+ * * Receive a notification every time you receive an attachment in a discussion (one-to-one or group discussion).
+ * * When you receive a message with multiple attachments, you will receive one notification for each attachment.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToAttachmentReceivedNotification
  */
 export type SubscribeToAttachmentReceivedNotification = Message<"olvid.daemon.notification.v1.SubscribeToAttachmentReceivedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about attachments that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.AttachmentFilter filter = 2;
    */
   filter?: AttachmentFilter;
@@ -61,26 +70,41 @@ export const AttachmentReceivedNotificationSchema: GenMessage<AttachmentReceived
 /**
  *
  * * AttachmentUploaded
+ * * Receive a notification every time an attachment you sent has been marked as uploaded.
+ * * A message with attachments is delivered to recipients only when all attachments have been uploaded.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INVALID_ARGUMENT`: cannot subscribe for non-outbound messages.
+ * * `NOT_FOUND`: at least one of the _message_ids_ is incorrect.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToAttachmentUploadedNotification
  */
 export type SubscribeToAttachmentUploadedNotification = Message<"olvid.daemon.notification.v1.SubscribeToAttachmentUploadedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about attachments that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.AttachmentFilter filter = 2;
    */
   filter?: AttachmentFilter;
 
   /**
+   * you will only receive notifications about attachments related to messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 3;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about attachments specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.AttachmentId attachment_ids = 4;
    */
   attachmentIds: AttachmentId[];

@@ -17,6 +17,14 @@ export const file_olvid_daemon_admin_v1_client_key_admin: GenFile = /*@__PURE__*
 /**
  *
  * * ClientKeyList
+ * * List all client keys of this daemon (admin and non admin).
+ * * This does not return temporary client keys passed in environment or as command line arguments.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INVALID_ARGUMENT`: filter is invalid.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.ClientKeyListRequest
  */
@@ -54,6 +62,13 @@ export const ClientKeyListResponseSchema: GenMessage<ClientKeyListResponse> = /*
 /**
  *
  * * ClientKeyGet
+ * * Get a specific client key details, identified by its value.
+ * * This does not return temporary client keys passed in environment or as command line arguments.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: client key not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.ClientKeyGetRequest
  */
@@ -90,7 +105,15 @@ export const ClientKeyGetResponseSchema: GenMessage<ClientKeyGetResponse> = /*@_
 
 /**
  *
- * * ClientKeyNew create a new api key associated with a given identity
+ * * ClientKeyNew
+ * * Create a new client key associated with a given identity.
+ * * Pass 0 as identity id to create an admin client key.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: identity not found.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.ClientKeyNewRequest
  */
@@ -101,8 +124,6 @@ export type ClientKeyNewRequest = Message<"olvid.daemon.admin.v1.ClientKeyNewReq
   name: string;
 
   /**
-   * specify 0 to create an admin api key
-   *
    * @generated from field: uint64 identity_id = 2;
    */
   identityId: bigint;
@@ -135,6 +156,12 @@ export const ClientKeyNewResponseSchema: GenMessage<ClientKeyNewResponse> = /*@_
 /**
  *
  * * ClientKeyDelete
+ * * Delete a specific client key, identified by its value.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: client key not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.ClientKeyDeleteRequest
  */

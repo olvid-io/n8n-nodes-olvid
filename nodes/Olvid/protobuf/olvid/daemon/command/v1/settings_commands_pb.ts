@@ -17,6 +17,10 @@ export const file_olvid_daemon_command_v1_settings_commands: GenFile = /*@__PURE
 /**
  *
  * * SettingsIdentityGet
+ * * Get current settings for your identity.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.SettingsIdentityGetRequest
  */
@@ -50,8 +54,13 @@ export const SettingsIdentityGetResponseSchema: GenMessage<SettingsIdentityGetRe
 /**
  *
  * * SettingsIdentitySet
- * * WARN: this entrypoint erase WHOLE settings. To update identity settings use SettingsIdentityGet to get current config
- * * and only edit fields you want to update.
+ * * Update your identity settings.
+ * * ⚠️ Update erases the WHOLE settings.
+ * * To update current settings use SettingsIdentityGet to get current config, and only edit fields you want to update.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: cannot set keycloak settings if your identity is not keycloak managed.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.SettingsIdentitySetRequest
  */
@@ -89,6 +98,13 @@ export const SettingsIdentitySetResponseSchema: GenMessage<SettingsIdentitySetRe
 /**
  *
  * * SettingsDiscussionGet
+ * * Get a discussion settings.
+ * * Those settings are shared with other members of this discussion.
+ * * For example, a parameter for ephemeral message parameters concerning a discussion would affect all future messages posted in this discussion, from any member.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.SettingsDiscussionGetRequest
  */
@@ -126,6 +142,13 @@ export const SettingsDiscussionGetResponseSchema: GenMessage<SettingsDiscussionG
 /**
  *
  * * SettingsDiscussionSet
+ * * Update a discussion settings.
+ * * ⚠️ Update erases the WHOLE settings.
+ * * To update current settings use SettingsDiscussionGet to get current config, and only edit fields you want to update.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.SettingsDiscussionSetRequest
  */

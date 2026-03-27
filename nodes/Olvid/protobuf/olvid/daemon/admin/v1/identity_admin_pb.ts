@@ -17,6 +17,13 @@ export const file_olvid_daemon_admin_v1_identity_admin: GenFile = /*@__PURE__*/
 /**
  *
  * * IdentityList
+ * * List all identities on this daemon.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INVALID_ARGUMENT`: invalid filter.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityListRequest
  */
@@ -54,6 +61,12 @@ export const IdentityListResponseSchema: GenMessage<IdentityListResponse> = /*@_
 /**
  *
  * * IdentityAdminGet
+ * * Get a specific identity, identified by its id.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityAdminGetRequest
  */
@@ -91,6 +104,12 @@ export const IdentityAdminGetResponseSchema: GenMessage<IdentityAdminGetResponse
 /**
  *
  * * IdentityAdminGetBytesIdentifier
+ * * Get identity long term identifier.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityAdminGetBytesIdentifierRequest
  */
@@ -128,6 +147,13 @@ export const IdentityAdminGetBytesIdentifierResponseSchema: GenMessage<IdentityA
 /**
  *
  * * IdentityAdminGetInvitationLink
+ * * Get identity invitation link.
+ * * This link allows other identities to send invitations.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityAdminGetInvitationLinkRequest
  */
@@ -165,6 +191,13 @@ export const IdentityAdminGetInvitationLinkResponseSchema: GenMessage<IdentityAd
 /**
  *
  * * IdentityAdminDownloadPhoto
+ * * Download profile photo of an identity.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: identity not found.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityAdminDownloadPhotoRequest
  */
@@ -202,6 +235,14 @@ export const IdentityAdminDownloadPhotoResponseSchema: GenMessage<IdentityAdminD
 /**
  *
  * * IdentityNew
+ * * Create a new identity on this daemon.
+ * * You must specify at least a non blank firstname or lastname in identity_details.
+ * * You can specify a server_url to create identity on, by default it uses Olvid main distribution server.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INVALID_ARGUMENT`: one of first name or last name must be non empty.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityNewRequest
  */
@@ -244,6 +285,13 @@ export const IdentityNewResponseSchema: GenMessage<IdentityNewResponse> = /*@__P
 /**
  *
  * * IdentityKeycloakNew
+ * * Create a new keycloak managed identity on this daemon.
+ * * Pass the configuration link you created in the keycloak management console.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityKeycloakNewRequest
  */
@@ -281,7 +329,13 @@ export const IdentityKeycloakNewResponseSchema: GenMessage<IdentityKeycloakNewRe
 /**
  *
  * * IdentityDelete
- * * delete everywhere: delete from every device and notify your contacts for deletion
+ * * Delete an identity on this daemon, identified by its id.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: identity not found.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.IdentityDeleteRequest
  */
@@ -292,6 +346,8 @@ export type IdentityDeleteRequest = Message<"olvid.daemon.admin.v1.IdentityDelet
   identityId: bigint;
 
   /**
+   * delete from every device and notify your contacts for deletion
+   *
    * @generated from field: optional bool delete_everywhere = 2;
    */
   deleteEverywhere?: boolean;

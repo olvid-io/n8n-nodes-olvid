@@ -19,6 +19,13 @@ export const file_olvid_daemon_command_v1_contact_commands: GenFile = /*@__PURE_
 /**
  *
  * * ContactList
+ * * List contacts for current identity.
+ * * Pass a filter to select only contacts that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: invalid filter.
+ * * `UNAUTHENTICATED`: client key is invalid
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.ContactListRequest
  */
@@ -56,6 +63,11 @@ export const ContactListResponseSchema: GenMessage<ContactListResponse> = /*@__P
 /**
  *
  * * ContactGet
+ * * Get a contact by id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.ContactGetRequest
  */
@@ -93,6 +105,12 @@ export const ContactGetResponseSchema: GenMessage<ContactGetResponse> = /*@__PUR
 /**
  *
  * * ContactGetBytesIdentifier
+ * * Get a contact identity as bytes.
+ * * This is useful to have a long term identifier for a contact, backup-proof, and common to any device.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.ContactGetBytesIdentifierRequest
  */
@@ -130,6 +148,11 @@ export const ContactGetBytesIdentifierResponseSchema: GenMessage<ContactGetBytes
 /**
  *
  * * ContactGetInvitationLink
+ * * Get a contact invitation link.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.ContactGetInvitationLinkRequest
  */
@@ -167,6 +190,13 @@ export const ContactGetInvitationLinkResponseSchema: GenMessage<ContactGetInvita
 /**
  *
  * * ContactDelete
+ * * Delete a contact by id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `INVALID_ARGUMENT`: contact is still in a group.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.ContactDeleteRequest
  */
@@ -200,6 +230,14 @@ export const ContactDeleteResponseSchema: GenMessage<ContactDeleteResponse> = /*
 /**
  *
  * * ContactIntroduction
+ * * Introduce two of your contacts together.
+ * * They will both receive an invitation to accept.
+ * * If each of the two accepts, they will be added to each other's contact book and can exchange.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: first or second contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.ContactIntroductionRequest
  */
@@ -238,6 +276,13 @@ export const ContactIntroductionResponseSchema: GenMessage<ContactIntroductionRe
 /**
  *
  * * ContactInviteToOneToOneDiscussion
+ * * Invite a non one-to-one contact to have a one-to-one discussion.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `INVALID_ARGUMENT`: contact already has a one to one discussion.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.ContactInviteToOneToOneDiscussionRequest
  */
@@ -275,6 +320,15 @@ export const ContactInviteToOneToOneDiscussionResponseSchema: GenMessage<Contact
 /**
  *
  * * ContactDowngradeOneToOne
+ * * Downgrade a one-to-one contact to a non one-to-one contact.
+ * * This will lock current discussion with this contact.
+ * * The contact will always be in your contact book and common groups but you will no longer be able to exchange direct message.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `INVALID_ARGUMENT`: contact is not one to one, does not have established channel or does not support one to one downgrade.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.ContactDowngradeOneToOneDiscussionRequest
  */
@@ -308,6 +362,12 @@ export const ContactDowngradeOneToOneDiscussionResponseSchema: GenMessage<Contac
 /**
  *
  * * ContactDownloadPhoto
+ * * Download the contact profile picture as bytes, or the group picture, or the generated image for this discussion.
+ * * Pictures are always jpeg files with a maximum of 1080x1080 resolution.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.ContactDownloadPhotoRequest
  */
@@ -345,7 +405,13 @@ export const ContactDownloadPhotoResponseSchema: GenMessage<ContactDownloadPhoto
 /**
  *
  * * ContactRecreateChannels
+ * * Reset cryptographic channels with a contact.
  * * USE CAREFULLY: this might fix some issues but every non sent / received messages will be lost.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.ContactRecreateChannelsRequest
  */

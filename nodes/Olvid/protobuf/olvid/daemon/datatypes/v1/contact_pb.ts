@@ -15,6 +15,10 @@ export const file_olvid_daemon_datatypes_v1_contact: GenFile = /*@__PURE__*/
   fileDesc("CidvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2NvbnRhY3QucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEi8wEKB0NvbnRhY3QSCgoCaWQYASABKAQSFAoMZGlzcGxheV9uYW1lGAIgASgJEjsKB2RldGFpbHMYAyABKAsyKi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5RGV0YWlscxIhChllc3RhYmxpc2hlZF9jaGFubmVsX2NvdW50GAQgASgNEhQKDGRldmljZV9jb3VudBgFIAEoDRIhChloYXNfb25lX3RvX29uZV9kaXNjdXNzaW9uGAYgASgIEhMKC2hhc19hX3Bob3RvGAcgASgIEhgKEGtleWNsb2FrX21hbmFnZWQYCCABKAgijwUKDUNvbnRhY3RGaWx0ZXISSgoKb25lX3RvX29uZRgBIAEoDjIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQ29udGFjdEZpbHRlci5PbmVUb09uZUgAiAEBEkIKBXBob3RvGAIgASgOMi4ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Db250YWN0RmlsdGVyLlBob3RvSAGIAQESSAoIa2V5Y2xvYWsYAyABKA4yMS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkNvbnRhY3RGaWx0ZXIuS2V5Y2xvYWtIAogBARIgChNkaXNwbGF5X25hbWVfc2VhcmNoGAQgASgJSAOIAQESRwoOZGV0YWlsc19zZWFyY2gYBSABKAsyKi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5RGV0YWlsc0gEiAEBIlAKCE9uZVRvT25lEhoKFk9ORV9UT19PTkVfVU5TUEVDSUZJRUQQABIRCg1PTkVfVE9fT05FX0lTEAESFQoRT05FX1RPX09ORV9JU19OT1QQAiJACgVQaG90bxIVChFQSE9UT19VTlNQRUNJRklFRBAAEg0KCVBIT1RPX0hBUxABEhEKDVBIT1RPX0hBU19OT1QQAiJUCghLZXljbG9haxIYChRLRVlDTE9BS19VTlNQRUNJRklFRBAAEhQKEEtFWUNMT0FLX01BTkFHRUQQARIYChRLRVlDTE9BS19OT1RfTUFOQUdFRBACQg0KC19vbmVfdG9fb25lQggKBl9waG90b0ILCglfa2V5Y2xvYWtCFgoUX2Rpc3BsYXlfbmFtZV9zZWFyY2hCEQoPX2RldGFpbHNfc2VhcmNoQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUABaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_identity]);
 
 /**
+ *
+ * * A contact is another Olvid identity you are in contact with.
+ * * A contact can have an associated discussion if has_one_to_one_discussion is true, else it's probably a collected contact you met in a group discussion.
+ *
  * @generated from message olvid.daemon.datatypes.v1.Contact
  */
 export type Contact = Message<"olvid.daemon.datatypes.v1.Contact"> & {
@@ -24,6 +28,8 @@ export type Contact = Message<"olvid.daemon.datatypes.v1.Contact"> & {
   id: bigint;
 
   /**
+   * computed from *details*
+   *
    * @generated from field: string display_name = 2;
    */
   displayName: string;
@@ -34,6 +40,8 @@ export type Contact = Message<"olvid.daemon.datatypes.v1.Contact"> & {
   details?: IdentityDetails;
 
   /**
+   * shall be equal to device_count to exchange messages
+   *
    * @generated from field: uint32 established_channel_count = 4;
    */
   establishedChannelCount: number;
@@ -54,6 +62,8 @@ export type Contact = Message<"olvid.daemon.datatypes.v1.Contact"> & {
   hasAPhoto: boolean;
 
   /**
+   * contact is registered on the same directory
+   *
    * @generated from field: bool keycloak_managed = 8;
    */
   keycloakManaged: boolean;
@@ -67,30 +77,44 @@ export const ContactSchema: GenMessage<Contact> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_contact, 0);
 
 /**
+ *
+ * * Filter contacts by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.ContactFilter
  */
 export type ContactFilter = Message<"olvid.daemon.datatypes.v1.ContactFilter"> & {
   /**
+   * select only contacts with or without one to one discussions
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter.OneToOne one_to_one = 1;
    */
   oneToOne?: ContactFilter_OneToOne;
 
   /**
+   * select only contacts with or without profile photo
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter.Photo photo = 2;
    */
   photo?: ContactFilter_Photo;
 
   /**
+   * select only contacts registered or not on your keycloak
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter.Keycloak keycloak = 3;
    */
   keycloak?: ContactFilter_Keycloak;
 
   /**
+   * regexp filter on *display_name*
+   *
    * @generated from field: optional string display_name_search = 4;
    */
   displayNameSearch?: string;
 
   /**
+   * a set of regexp filters, one for each field of *details*
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.IdentityDetails details_search = 5;
    */
   detailsSearch?: IdentityDetails;

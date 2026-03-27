@@ -17,6 +17,14 @@ export const file_olvid_daemon_command_v1_discussion_commands: GenFile = /*@__PU
 /**
  *
  * * DiscussionList
+ * * List discussions for current identity.
+ * * Pass a filter to select only discussions that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: invalid filter.
+ * * `NOT_FOUND`: filter contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.DiscussionListRequest
  */
@@ -54,6 +62,11 @@ export const DiscussionListResponseSchema: GenMessage<DiscussionListResponse> = 
 /**
  *
  * * DiscussionGet
+ * * Get discussion by id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionGetRequest
  */
@@ -91,6 +104,12 @@ export const DiscussionGetResponseSchema: GenMessage<DiscussionGetResponse> = /*
 /**
  *
  * * DiscussionGetBytesIdentifier
+ * * Get a discussion identifier as bytes.
+ * * This is useful to have a long term identifier for a discussion, backup-proof, and common to any device.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionGetBytesIdentifierRequest
  */
@@ -128,6 +147,11 @@ export const DiscussionGetBytesIdentifierResponseSchema: GenMessage<DiscussionGe
 /**
  *
  * * DiscussionGetByContact
+ * * Get discussion by contact id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionGetByContactRequest
  */
@@ -165,6 +189,11 @@ export const DiscussionGetByContactResponseSchema: GenMessage<DiscussionGetByCon
 /**
  *
  * * DiscussionGetByGroup
+ * * Get discussion by group id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionGetByGroupRequest
  */
@@ -202,6 +231,11 @@ export const DiscussionGetByGroupResponseSchema: GenMessage<DiscussionGetByGroup
 /**
  *
  * * DiscussionEmpty
+ * * Delete all messages and attachments in a discussion.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionEmptyRequest
  */
@@ -235,6 +269,14 @@ export const DiscussionEmptyResponseSchema: GenMessage<DiscussionEmptyResponse> 
 /**
  *
  * * DiscussionDownloadPhoto
+ * * Download a discussion photo.
+ * * The photo can be the contact photo, the group photo, or a generated image for the discussion if a specific image was not set.
+ * * Photos are always jpeg files with a maximum of 1080x1080 resolution.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.DiscussionDownloadPhotoRequest
  */
@@ -272,6 +314,13 @@ export const DiscussionDownloadPhotoResponseSchema: GenMessage<DiscussionDownloa
 /**
  *
  * * DiscussionLockedList
+ * * List locked discussions.
+ * * Locked discussions are discussions associated to a deleted contact or a group you left.
+ * * Messages in those discussions are still accessible, but you cannot post new messages in those discussions.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.DiscussionLockedListRequest
  */
@@ -305,6 +354,12 @@ export const DiscussionLockedListResponseSchema: GenMessage<DiscussionLockedList
 /**
  *
  * * DiscussionLockedDelete
+ * * Delete a locked discussion by id.
+ * * This will delete discussion and its content, including messages and attached files.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.DiscussionLockedDeleteRequest
  */

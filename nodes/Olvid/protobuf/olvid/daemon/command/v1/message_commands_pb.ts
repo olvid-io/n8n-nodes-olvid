@@ -14,11 +14,20 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/command/v1/message_commands.proto.
  */
 export const file_olvid_daemon_command_v1_message_commands: GenFile = /*@__PURE__*/
-  fileDesc("Ci5vbHZpZC9kYWVtb24vY29tbWFuZC92MS9tZXNzYWdlX2NvbW1hbmRzLnByb3RvEhdvbHZpZC5kYWVtb24uY29tbWFuZC52MSJ+ChJNZXNzYWdlTGlzdFJlcXVlc3QSPQoGZmlsdGVyGAEgASgLMigub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRmlsdGVySACIAQESEwoGdW5yZWFkGAIgASgISAGIAQFCCQoHX2ZpbHRlckIJCgdfdW5yZWFkIksKE01lc3NhZ2VMaXN0UmVzcG9uc2USNAoIbWVzc2FnZXMYASADKAsyIi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2UiTQoRTWVzc2FnZUdldFJlcXVlc3QSOAoKbWVzc2FnZV9pZBgBIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkIkkKEk1lc3NhZ2VHZXRSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlIhcKFU1lc3NhZ2VSZWZyZXNoUmVxdWVzdCIYChZNZXNzYWdlUmVmcmVzaFJlc3BvbnNlIoYBChRNZXNzYWdlRGVsZXRlUmVxdWVzdBI4CgptZXNzYWdlX2lkGAEgASgLMiQub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWQSHgoRZGVsZXRlX2V2ZXJ5d2hlcmUYAiABKAhIAIgBAUIUChJfZGVsZXRlX2V2ZXJ5d2hlcmUiFwoVTWVzc2FnZURlbGV0ZVJlc3BvbnNlIpsCChJNZXNzYWdlU2VuZFJlcXVlc3QSFQoNZGlzY3Vzc2lvbl9pZBgBIAEoBBIMCgRib2R5GAIgASgJEjsKCHJlcGx5X2lkGAMgASgLMiQub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWRIAIgBARJJCgxlcGhlbWVyYWxpdHkYBCABKAsyLi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VFcGhlbWVyYWxpdHlIAYgBARIhChRkaXNhYmxlX2xpbmtfcHJldmlldxgFIAEoCEgCiAEBQgsKCV9yZXBseV9pZEIPCg1fZXBoZW1lcmFsaXR5QhcKFV9kaXNhYmxlX2xpbmtfcHJldmlldyJKChNNZXNzYWdlU2VuZFJlc3BvbnNlEjMKB21lc3NhZ2UYASABKAsyIi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2UiswEKIU1lc3NhZ2VTZW5kV2l0aEF0dGFjaG1lbnRzUmVxdWVzdBJWCghtZXRhZGF0YRgBIAEoCzJCLm9sdmlkLmRhZW1vbi5jb21tYW5kLnYxLk1lc3NhZ2VTZW5kV2l0aEF0dGFjaG1lbnRzUmVxdWVzdE1ldGFkYXRhSAASEQoHcGF5bG9hZBgCIAEoDEgAEhgKDmZpbGVfZGVsaW1pdGVyGAMgASgISABCCQoHcmVxdWVzdCLFAwopTWVzc2FnZVNlbmRXaXRoQXR0YWNobWVudHNSZXF1ZXN0TWV0YWRhdGESFQoNZGlzY3Vzc2lvbl9pZBgBIAEoBBIRCgRib2R5GAIgASgJSACIAQESOwoIcmVwbHlfaWQYAyABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZEgBiAEBEkkKDGVwaGVtZXJhbGl0eRgEIAEoCzIuLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUVwaGVtZXJhbGl0eUgCiAEBEiEKFGRpc2FibGVfbGlua19wcmV2aWV3GAUgASgISAOIAQESVgoFZmlsZXMYCiADKAsyRy5vbHZpZC5kYWVtb24uY29tbWFuZC52MS5NZXNzYWdlU2VuZFdpdGhBdHRhY2htZW50c1JlcXVlc3RNZXRhZGF0YS5GaWxlGisKBEZpbGUSEAoIZmlsZW5hbWUYASABKAkSEQoJZmlsZV9zaXplGAIgASgEQgcKBV9ib2R5QgsKCV9yZXBseV9pZEIPCg1fZXBoZW1lcmFsaXR5QhcKFV9kaXNhYmxlX2xpbmtfcHJldmlldyKVAQoiTWVzc2FnZVNlbmRXaXRoQXR0YWNobWVudHNSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlEjoKC2F0dGFjaG1lbnRzGAIgAygLMiUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50IoYDChpNZXNzYWdlU2VuZExvY2F0aW9uUmVxdWVzdBIVCg1kaXNjdXNzaW9uX2lkGAEgASgEEhAKCGxhdGl0dWRlGAIgASgBEhEKCWxvbmdpdHVkZRgDIAEoARIVCghhbHRpdHVkZRgEIAEoAUgAiAEBEhYKCXByZWNpc2lvbhgFIAEoAkgBiAEBEhQKB2FkZHJlc3MYBiABKAlIAogBARIdChBwcmV2aWV3X2ZpbGVuYW1lGAcgASgJSAOIAQESHAoPcHJldmlld19wYXlsb2FkGAggASgMSASIAQESSQoMZXBoZW1lcmFsaXR5GAkgASgLMi4ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRXBoZW1lcmFsaXR5SAWIAQFCCwoJX2FsdGl0dWRlQgwKCl9wcmVjaXNpb25CCgoIX2FkZHJlc3NCEwoRX3ByZXZpZXdfZmlsZW5hbWVCEgoQX3ByZXZpZXdfcGF5bG9hZEIPCg1fZXBoZW1lcmFsaXR5IlIKG01lc3NhZ2VTZW5kTG9jYXRpb25SZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlIqoBCiJNZXNzYWdlU3RhcnRMb2NhdGlvblNoYXJpbmdSZXF1ZXN0EhUKDWRpc2N1c3Npb25faWQYASABKAQSEAoIbGF0aXR1ZGUYAiABKAESEQoJbG9uZ2l0dWRlGAMgASgBEhUKCGFsdGl0dWRlGAQgASgBSACIAQESFgoJcHJlY2lzaW9uGAUgASgCSAGIAQFCCwoJX2FsdGl0dWRlQgwKCl9wcmVjaXNpb24iWgojTWVzc2FnZVN0YXJ0TG9jYXRpb25TaGFyaW5nUmVzcG9uc2USMwoHbWVzc2FnZRgBIAEoCzIiLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZSLOAQojTWVzc2FnZVVwZGF0ZUxvY2F0aW9uU2hhcmluZ1JlcXVlc3QSOAoKbWVzc2FnZV9pZBgBIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkEhAKCGxhdGl0dWRlGAIgASgBEhEKCWxvbmdpdHVkZRgDIAEoARIVCghhbHRpdHVkZRgEIAEoAUgAiAEBEhYKCXByZWNpc2lvbhgFIAEoAkgBiAEBQgsKCV9hbHRpdHVkZUIMCgpfcHJlY2lzaW9uIlsKJE1lc3NhZ2VVcGRhdGVMb2NhdGlvblNoYXJpbmdSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlIlwKIE1lc3NhZ2VFbmRMb2NhdGlvblNoYXJpbmdSZXF1ZXN0EjgKCm1lc3NhZ2VfaWQYASABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZCJYCiFNZXNzYWdlRW5kTG9jYXRpb25TaGFyaW5nUmVzcG9uc2USMwoHbWVzc2FnZRgBIAEoCzIiLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZSJzChNNZXNzYWdlUmVhY3RSZXF1ZXN0EjgKCm1lc3NhZ2VfaWQYASABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZBIVCghyZWFjdGlvbhgCIAEoCUgAiAEBQgsKCV9yZWFjdGlvbiIWChRNZXNzYWdlUmVhY3RSZXNwb25zZSJqChhNZXNzYWdlVXBkYXRlQm9keVJlcXVlc3QSOAoKbWVzc2FnZV9pZBgBIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkEhQKDHVwZGF0ZWRfYm9keRgCIAEoCSIbChlNZXNzYWdlVXBkYXRlQm9keVJlc3BvbnNlQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUAFaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_attachment, file_olvid_daemon_datatypes_v1_message]);
+  fileDesc("Ci5vbHZpZC9kYWVtb24vY29tbWFuZC92MS9tZXNzYWdlX2NvbW1hbmRzLnByb3RvEhdvbHZpZC5kYWVtb24uY29tbWFuZC52MSJ+ChJNZXNzYWdlTGlzdFJlcXVlc3QSPQoGZmlsdGVyGAEgASgLMigub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRmlsdGVySACIAQESEwoGdW5yZWFkGAIgASgISAGIAQFCCQoHX2ZpbHRlckIJCgdfdW5yZWFkIksKE01lc3NhZ2VMaXN0UmVzcG9uc2USNAoIbWVzc2FnZXMYASADKAsyIi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2UiTQoRTWVzc2FnZUdldFJlcXVlc3QSOAoKbWVzc2FnZV9pZBgBIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkIkkKEk1lc3NhZ2VHZXRSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlIpsCChJNZXNzYWdlU2VuZFJlcXVlc3QSFQoNZGlzY3Vzc2lvbl9pZBgBIAEoBBIMCgRib2R5GAIgASgJEjsKCHJlcGx5X2lkGAMgASgLMiQub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWRIAIgBARJJCgxlcGhlbWVyYWxpdHkYBCABKAsyLi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VFcGhlbWVyYWxpdHlIAYgBARIhChRkaXNhYmxlX2xpbmtfcHJldmlldxgFIAEoCEgCiAEBQgsKCV9yZXBseV9pZEIPCg1fZXBoZW1lcmFsaXR5QhcKFV9kaXNhYmxlX2xpbmtfcHJldmlldyJKChNNZXNzYWdlU2VuZFJlc3BvbnNlEjMKB21lc3NhZ2UYASABKAsyIi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2UiswEKIU1lc3NhZ2VTZW5kV2l0aEF0dGFjaG1lbnRzUmVxdWVzdBJWCghtZXRhZGF0YRgBIAEoCzJCLm9sdmlkLmRhZW1vbi5jb21tYW5kLnYxLk1lc3NhZ2VTZW5kV2l0aEF0dGFjaG1lbnRzUmVxdWVzdE1ldGFkYXRhSAASEQoHcGF5bG9hZBgCIAEoDEgAEhgKDmZpbGVfZGVsaW1pdGVyGAMgASgISABCCQoHcmVxdWVzdCLFAwopTWVzc2FnZVNlbmRXaXRoQXR0YWNobWVudHNSZXF1ZXN0TWV0YWRhdGESFQoNZGlzY3Vzc2lvbl9pZBgBIAEoBBIRCgRib2R5GAIgASgJSACIAQESOwoIcmVwbHlfaWQYAyABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZEgBiAEBEkkKDGVwaGVtZXJhbGl0eRgEIAEoCzIuLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUVwaGVtZXJhbGl0eUgCiAEBEiEKFGRpc2FibGVfbGlua19wcmV2aWV3GAUgASgISAOIAQESVgoFZmlsZXMYCiADKAsyRy5vbHZpZC5kYWVtb24uY29tbWFuZC52MS5NZXNzYWdlU2VuZFdpdGhBdHRhY2htZW50c1JlcXVlc3RNZXRhZGF0YS5GaWxlGisKBEZpbGUSEAoIZmlsZW5hbWUYASABKAkSEQoJZmlsZV9zaXplGAIgASgEQgcKBV9ib2R5QgsKCV9yZXBseV9pZEIPCg1fZXBoZW1lcmFsaXR5QhcKFV9kaXNhYmxlX2xpbmtfcHJldmlldyKVAQoiTWVzc2FnZVNlbmRXaXRoQXR0YWNobWVudHNSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlEjoKC2F0dGFjaG1lbnRzGAIgAygLMiUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50InMKE01lc3NhZ2VSZWFjdFJlcXVlc3QSOAoKbWVzc2FnZV9pZBgBIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkEhUKCHJlYWN0aW9uGAIgASgJSACIAQFCCwoJX3JlYWN0aW9uIhYKFE1lc3NhZ2VSZWFjdFJlc3BvbnNlImoKGE1lc3NhZ2VVcGRhdGVCb2R5UmVxdWVzdBI4CgptZXNzYWdlX2lkGAEgASgLMiQub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWQSFAoMdXBkYXRlZF9ib2R5GAIgASgJIhsKGU1lc3NhZ2VVcGRhdGVCb2R5UmVzcG9uc2UihgEKFE1lc3NhZ2VEZWxldGVSZXF1ZXN0EjgKCm1lc3NhZ2VfaWQYASABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZBIeChFkZWxldGVfZXZlcnl3aGVyZRgCIAEoCEgAiAEBQhQKEl9kZWxldGVfZXZlcnl3aGVyZSIXChVNZXNzYWdlRGVsZXRlUmVzcG9uc2UihgMKGk1lc3NhZ2VTZW5kTG9jYXRpb25SZXF1ZXN0EhUKDWRpc2N1c3Npb25faWQYASABKAQSEAoIbGF0aXR1ZGUYAiABKAESEQoJbG9uZ2l0dWRlGAMgASgBEhUKCGFsdGl0dWRlGAQgASgBSACIAQESFgoJcHJlY2lzaW9uGAUgASgCSAGIAQESFAoHYWRkcmVzcxgGIAEoCUgCiAEBEh0KEHByZXZpZXdfZmlsZW5hbWUYByABKAlIA4gBARIcCg9wcmV2aWV3X3BheWxvYWQYCCABKAxIBIgBARJJCgxlcGhlbWVyYWxpdHkYCSABKAsyLi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VFcGhlbWVyYWxpdHlIBYgBAUILCglfYWx0aXR1ZGVCDAoKX3ByZWNpc2lvbkIKCghfYWRkcmVzc0ITChFfcHJldmlld19maWxlbmFtZUISChBfcHJldmlld19wYXlsb2FkQg8KDV9lcGhlbWVyYWxpdHkiUgobTWVzc2FnZVNlbmRMb2NhdGlvblJlc3BvbnNlEjMKB21lc3NhZ2UYASABKAsyIi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2UiqgEKIk1lc3NhZ2VTdGFydExvY2F0aW9uU2hhcmluZ1JlcXVlc3QSFQoNZGlzY3Vzc2lvbl9pZBgBIAEoBBIQCghsYXRpdHVkZRgCIAEoARIRCglsb25naXR1ZGUYAyABKAESFQoIYWx0aXR1ZGUYBCABKAFIAIgBARIWCglwcmVjaXNpb24YBSABKAJIAYgBAUILCglfYWx0aXR1ZGVCDAoKX3ByZWNpc2lvbiJaCiNNZXNzYWdlU3RhcnRMb2NhdGlvblNoYXJpbmdSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlIs4BCiNNZXNzYWdlVXBkYXRlTG9jYXRpb25TaGFyaW5nUmVxdWVzdBI4CgptZXNzYWdlX2lkGAEgASgLMiQub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWQSEAoIbGF0aXR1ZGUYAiABKAESEQoJbG9uZ2l0dWRlGAMgASgBEhUKCGFsdGl0dWRlGAQgASgBSACIAQESFgoJcHJlY2lzaW9uGAUgASgCSAGIAQFCCwoJX2FsdGl0dWRlQgwKCl9wcmVjaXNpb24iWwokTWVzc2FnZVVwZGF0ZUxvY2F0aW9uU2hhcmluZ1Jlc3BvbnNlEjMKB21lc3NhZ2UYASABKAsyIi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2UiXAogTWVzc2FnZUVuZExvY2F0aW9uU2hhcmluZ1JlcXVlc3QSOAoKbWVzc2FnZV9pZBgBIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkIlgKIU1lc3NhZ2VFbmRMb2NhdGlvblNoYXJpbmdSZXNwb25zZRIzCgdtZXNzYWdlGAEgASgLMiIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlIhcKFU1lc3NhZ2VSZWZyZXNoUmVxdWVzdCIYChZNZXNzYWdlUmVmcmVzaFJlc3BvbnNlQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUAFaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_attachment, file_olvid_daemon_datatypes_v1_message]);
 
 /**
  *
- * * MessageList return all messages for current identity
+ * * MessageList
+ * * List messages for current identity.
+ * * Pass a filter to select only messages that match specific criteria.
+ * * You can list unread only messages with _unread_ parameter. This is useful to list unread messages on start if you want to process messages that arrived when you were down.
+ * * Messages are mark as read when you list them with MessageList or if a MessageReceived notification was sent to any client when it arrived.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INVALID_ARGUMENT`: filter is invalid
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageListRequest
  */
@@ -63,6 +72,11 @@ export const MessageListResponseSchema: GenMessage<MessageListResponse> = /*@__P
 /**
  *
  * * MessageGet
+ * * get a specific message by id.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: message not found.
  *
  * @generated from message olvid.daemon.command.v1.MessageGetRequest
  */
@@ -99,99 +113,50 @@ export const MessageGetResponseSchema: GenMessage<MessageGetResponse> = /*@__PUR
 
 /**
  *
- * * MessageRefresh force download of messages on the server
- *
- * @generated from message olvid.daemon.command.v1.MessageRefreshRequest
- */
-export type MessageRefreshRequest = Message<"olvid.daemon.command.v1.MessageRefreshRequest"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.MessageRefreshRequest.
- * Use `create(MessageRefreshRequestSchema)` to create a new message.
- */
-export const MessageRefreshRequestSchema: GenMessage<MessageRefreshRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 4);
-
-/**
- * @generated from message olvid.daemon.command.v1.MessageRefreshResponse
- */
-export type MessageRefreshResponse = Message<"olvid.daemon.command.v1.MessageRefreshResponse"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.MessageRefreshResponse.
- * Use `create(MessageRefreshResponseSchema)` to create a new message.
- */
-export const MessageRefreshResponseSchema: GenMessage<MessageRefreshResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 5);
-
-/**
- *
- * * MessageDelete
- *
- * @generated from message olvid.daemon.command.v1.MessageDeleteRequest
- */
-export type MessageDeleteRequest = Message<"olvid.daemon.command.v1.MessageDeleteRequest"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.MessageId message_id = 1;
-   */
-  messageId?: MessageId;
-
-  /**
-   * @generated from field: optional bool delete_everywhere = 2;
-   */
-  deleteEverywhere?: boolean;
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.MessageDeleteRequest.
- * Use `create(MessageDeleteRequestSchema)` to create a new message.
- */
-export const MessageDeleteRequestSchema: GenMessage<MessageDeleteRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 6);
-
-/**
- * @generated from message olvid.daemon.command.v1.MessageDeleteResponse
- */
-export type MessageDeleteResponse = Message<"olvid.daemon.command.v1.MessageDeleteResponse"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.MessageDeleteResponse.
- * Use `create(MessageDeleteResponseSchema)` to create a new message.
- */
-export const MessageDeleteResponseSchema: GenMessage<MessageDeleteResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 7);
-
-/**
- *
  * * MessageSend
+ * * Post a text message in a discussion.
+ * * A message must have a non-blank body.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: discussion / replied message not found.
+ * * `INVALID_ARGUMENT`: message body is empty or blank.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageSendRequest
  */
 export type MessageSendRequest = Message<"olvid.daemon.command.v1.MessageSendRequest"> & {
   /**
+   * the discussion to post the message into
+   *
    * @generated from field: uint64 discussion_id = 1;
    */
   discussionId: bigint;
 
   /**
+   * text body for the message
+   *
    * @generated from field: string body = 2;
    */
   body: string;
 
   /**
+   * the id of a message to quote
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageId reply_id = 3;
    */
   replyId?: MessageId;
 
   /**
+   * set an ephemerality for this message
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageEphemerality ephemerality = 4;
    */
   ephemerality?: MessageEphemerality;
 
   /**
+   * do not download link preview if a link is detected in the message body (make send process faster)
+   *
    * @generated from field: optional bool disable_link_preview = 5;
    */
   disableLinkPreview?: boolean;
@@ -202,13 +167,15 @@ export type MessageSendRequest = Message<"olvid.daemon.command.v1.MessageSendReq
  * Use `create(MessageSendRequestSchema)` to create a new message.
  */
 export const MessageSendRequestSchema: GenMessage<MessageSendRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 8);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 4);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageSendResponse
  */
 export type MessageSendResponse = Message<"olvid.daemon.command.v1.MessageSendResponse"> & {
   /**
+   * sent message
+   *
    * @generated from field: olvid.daemon.datatypes.v1.Message message = 1;
    */
   message?: Message$1;
@@ -219,11 +186,24 @@ export type MessageSendResponse = Message<"olvid.daemon.command.v1.MessageSendRe
  * Use `create(MessageSendResponseSchema)` to create a new message.
  */
 export const MessageSendResponseSchema: GenMessage<MessageSendResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 9);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 5);
 
 /**
  *
  * * MessageSendWithAttachments
+ * * Post a message with attachments in a given discussion.
+ * * A message must have a non empty body or at least one attachment.
+ * * To allow sending multiple files with no size limitations this entry point is a client stream.
+ * * First send a MessageSendWithAttachmentsRequest filling metadata field.
+ * * Then send each file separately by chunks of any size.
+ * * Always send an empty MessageSendWithAttachmentsRequest with only file_delimiter set to true at the end of each file upload.
+ * * Once attachments uploaded finished daemon will answer with a {ref}`response <message-MessageSendWithAttachmentsResponse>` and close stream.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: discussion / replied message not found.
+ * * `INVALID_ARGUMENT`: message body is empty or blank with no attached file / attached the same file twice.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageSendWithAttachmentsRequest
  */
@@ -257,40 +237,50 @@ export type MessageSendWithAttachmentsRequest = Message<"olvid.daemon.command.v1
  * Use `create(MessageSendWithAttachmentsRequestSchema)` to create a new message.
  */
 export const MessageSendWithAttachmentsRequestSchema: GenMessage<MessageSendWithAttachmentsRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 10);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 6);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageSendWithAttachmentsRequestMetadata
  */
 export type MessageSendWithAttachmentsRequestMetadata = Message<"olvid.daemon.command.v1.MessageSendWithAttachmentsRequestMetadata"> & {
   /**
-   * message
+   * the discussion to post the message into
    *
    * @generated from field: uint64 discussion_id = 1;
    */
   discussionId: bigint;
 
   /**
+   * text body, mandatory if there are no attached files
+   *
    * @generated from field: optional string body = 2;
    */
   body?: string;
 
   /**
+   * the id of a message to quote
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageId reply_id = 3;
    */
   replyId?: MessageId;
 
   /**
+   * set an ephemerality for message and attachments
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageEphemerality ephemerality = 4;
    */
   ephemerality?: MessageEphemerality;
 
   /**
+   * do not download link preview if a link is detected in the message body (make send process faster)
+   *
    * @generated from field: optional bool disable_link_preview = 5;
    */
   disableLinkPreview?: boolean;
 
   /**
+   * a list of files to attach to the message
+   *
    * @generated from field: repeated olvid.daemon.command.v1.MessageSendWithAttachmentsRequestMetadata.File files = 10;
    */
   files: MessageSendWithAttachmentsRequestMetadata_File[];
@@ -301,10 +291,10 @@ export type MessageSendWithAttachmentsRequestMetadata = Message<"olvid.daemon.co
  * Use `create(MessageSendWithAttachmentsRequestMetadataSchema)` to create a new message.
  */
 export const MessageSendWithAttachmentsRequestMetadataSchema: GenMessage<MessageSendWithAttachmentsRequestMetadata> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 11);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 7);
 
 /**
- * attachments
+ * describe a file you want to attach to a message
  *
  * @generated from message olvid.daemon.command.v1.MessageSendWithAttachmentsRequestMetadata.File
  */
@@ -315,6 +305,8 @@ export type MessageSendWithAttachmentsRequestMetadata_File = Message<"olvid.daem
   filename: string;
 
   /**
+   * file size in bytes
+   *
    * @generated from field: uint64 file_size = 2;
    */
   fileSize: bigint;
@@ -325,18 +317,22 @@ export type MessageSendWithAttachmentsRequestMetadata_File = Message<"olvid.daem
  * Use `create(MessageSendWithAttachmentsRequestMetadata_FileSchema)` to create a new message.
  */
 export const MessageSendWithAttachmentsRequestMetadata_FileSchema: GenMessage<MessageSendWithAttachmentsRequestMetadata_File> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 11, 0);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 7, 0);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageSendWithAttachmentsResponse
  */
 export type MessageSendWithAttachmentsResponse = Message<"olvid.daemon.command.v1.MessageSendWithAttachmentsResponse"> & {
   /**
+   * sent message
+   *
    * @generated from field: olvid.daemon.datatypes.v1.Message message = 1;
    */
   message?: Message$1;
 
   /**
+   * sent attachments
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.Attachment attachments = 2;
    */
   attachments: Attachment[];
@@ -347,11 +343,172 @@ export type MessageSendWithAttachmentsResponse = Message<"olvid.daemon.command.v
  * Use `create(MessageSendWithAttachmentsResponseSchema)` to create a new message.
  */
 export const MessageSendWithAttachmentsResponseSchema: GenMessage<MessageSendWithAttachmentsResponse> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 8);
+
+/**
+ *
+ * * MessageReact
+ * * Add, update or remove a reaction from a message.
+ * * If _reaction_ is set this will add a new reaction or update your previous reaction on this message.
+ * * If _reaction_ is an empty string your previous reaction will be removed if you had one.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: message not found.
+ * * `INTERNAL`
+ *
+ * @generated from message olvid.daemon.command.v1.MessageReactRequest
+ */
+export type MessageReactRequest = Message<"olvid.daemon.command.v1.MessageReactRequest"> & {
+  /**
+   * the message to react
+   *
+   * @generated from field: olvid.daemon.datatypes.v1.MessageId message_id = 1;
+   */
+  messageId?: MessageId;
+
+  /**
+   * an emoji string
+   *
+   * @generated from field: optional string reaction = 2;
+   */
+  reaction?: string;
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.MessageReactRequest.
+ * Use `create(MessageReactRequestSchema)` to create a new message.
+ */
+export const MessageReactRequestSchema: GenMessage<MessageReactRequest> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 9);
+
+/**
+ * @generated from message olvid.daemon.command.v1.MessageReactResponse
+ */
+export type MessageReactResponse = Message<"olvid.daemon.command.v1.MessageReactResponse"> & {
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.MessageReactResponse.
+ * Use `create(MessageReactResponseSchema)` to create a new message.
+ */
+export const MessageReactResponseSchema: GenMessage<MessageReactResponse> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 10);
+
+/**
+ *
+ * * MessageUpdateBody
+ * * Update one of your message body.
+ * * Body cannot be empty or blank.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: message not found.
+ * * `INVALID_ARGUMENT`: you can only edit your own messages / new body cannot be empty or blank.
+ * * `INTERNAL`
+ *
+ * @generated from message olvid.daemon.command.v1.MessageUpdateBodyRequest
+ */
+export type MessageUpdateBodyRequest = Message<"olvid.daemon.command.v1.MessageUpdateBodyRequest"> & {
+  /**
+   * the message to update
+   *
+   * @generated from field: olvid.daemon.datatypes.v1.MessageId message_id = 1;
+   */
+  messageId?: MessageId;
+
+  /**
+   * the new body
+   *
+   * @generated from field: string updated_body = 2;
+   */
+  updatedBody: string;
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.MessageUpdateBodyRequest.
+ * Use `create(MessageUpdateBodyRequestSchema)` to create a new message.
+ */
+export const MessageUpdateBodyRequestSchema: GenMessage<MessageUpdateBodyRequest> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 11);
+
+/**
+ * @generated from message olvid.daemon.command.v1.MessageUpdateBodyResponse
+ */
+export type MessageUpdateBodyResponse = Message<"olvid.daemon.command.v1.MessageUpdateBodyResponse"> & {
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.MessageUpdateBodyResponse.
+ * Use `create(MessageUpdateBodyResponseSchema)` to create a new message.
+ */
+export const MessageUpdateBodyResponseSchema: GenMessage<MessageUpdateBodyResponse> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_message_commands, 12);
 
 /**
  *
+ * * MessageDelete
+ * * Delete a message giving its id.
+ * * If *delete_everywhere* is specified, the message (and associated attachments) will be deleted on every other participant devices.
+ * * *delete_everywhere* is only allowed in certain circumstances.
+ * * For one to one discussions:
+ * *  - inbound message: you cannot remote delete your contact messages
+ * *  - outbound message: you can always remote delete your own messages
+ * * For group discussions:
+ * *  - inbound message: you must have *remote_delete_anything* permission
+ * *  - outbound message: you must have *remote_delete_anything* or *edit_or_remote_delete_own_messages* permission.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: message not found.
+ * * `INVALID_ARGUMENT`: cannot delete everywhere this message
+ * * `INTERNAL`
+ *
+ * @generated from message olvid.daemon.command.v1.MessageDeleteRequest
+ */
+export type MessageDeleteRequest = Message<"olvid.daemon.command.v1.MessageDeleteRequest"> & {
+  /**
+   * @generated from field: olvid.daemon.datatypes.v1.MessageId message_id = 1;
+   */
+  messageId?: MessageId;
+
+  /**
+   * @generated from field: optional bool delete_everywhere = 2;
+   */
+  deleteEverywhere?: boolean;
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.MessageDeleteRequest.
+ * Use `create(MessageDeleteRequestSchema)` to create a new message.
+ */
+export const MessageDeleteRequestSchema: GenMessage<MessageDeleteRequest> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 13);
+
+/**
+ * @generated from message olvid.daemon.command.v1.MessageDeleteResponse
+ */
+export type MessageDeleteResponse = Message<"olvid.daemon.command.v1.MessageDeleteResponse"> & {
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.MessageDeleteResponse.
+ * Use `create(MessageDeleteResponseSchema)` to create a new message.
+ */
+export const MessageDeleteResponseSchema: GenMessage<MessageDeleteResponse> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 14);
+
+/**
+ *
  * * MessageSendLocation
+ * * Post a location message in a discussion.
+ * * A location message represents a specific location, and is different from a location sharing that can be updated later.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: discussion not found.
+ * * `INVALID_ARGUMENT`: latitude and longitude are both equal to zero / preview_filename and preview_payload must be set together.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageSendLocationRequest
  */
@@ -387,18 +544,22 @@ export type MessageSendLocationRequest = Message<"olvid.daemon.command.v1.Messag
   address?: string;
 
   /**
-   * preview filename and payload must be set together. Payload might not exceed protobuf max message size.
+   * attach an option preview as a picture, specify filename to use
    *
    * @generated from field: optional string preview_filename = 7;
    */
   previewFilename?: string;
 
   /**
+   * attach an option preview as a picture, specify payload (must be smaller than grpc max message size)
+   *
    * @generated from field: optional bytes preview_payload = 8;
    */
   previewPayload?: Uint8Array;
 
   /**
+   * make your location message ephemeral
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageEphemerality ephemerality = 9;
    */
   ephemerality?: MessageEphemerality;
@@ -409,7 +570,7 @@ export type MessageSendLocationRequest = Message<"olvid.daemon.command.v1.Messag
  * Use `create(MessageSendLocationRequestSchema)` to create a new message.
  */
 export const MessageSendLocationRequestSchema: GenMessage<MessageSendLocationRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 13);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 15);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageSendLocationResponse
@@ -426,11 +587,18 @@ export type MessageSendLocationResponse = Message<"olvid.daemon.command.v1.Messa
  * Use `create(MessageSendLocationResponseSchema)` to create a new message.
  */
 export const MessageSendLocationResponseSchema: GenMessage<MessageSendLocationResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 14);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 16);
 
 /**
  *
  * * MessageStartLocationSharing
+ * * Start sharing a location in a discussion.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: discussion not found.
+ * * `INVALID_ARGUMENT`: latitude and longitude are both equal to zero.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageStartLocationSharingRequest
  */
@@ -466,7 +634,7 @@ export type MessageStartLocationSharingRequest = Message<"olvid.daemon.command.v
  * Use `create(MessageStartLocationSharingRequestSchema)` to create a new message.
  */
 export const MessageStartLocationSharingRequestSchema: GenMessage<MessageStartLocationSharingRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 15);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 17);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageStartLocationSharingResponse
@@ -483,11 +651,18 @@ export type MessageStartLocationSharingResponse = Message<"olvid.daemon.command.
  * Use `create(MessageStartLocationSharingResponseSchema)` to create a new message.
  */
 export const MessageStartLocationSharingResponseSchema: GenMessage<MessageStartLocationSharingResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 16);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 18);
 
 /**
  *
  * * MessageUpdateLocationSharing
+ * * Update one of your sharing location message with a new location.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: message not found.
+ * * `INVALID_ARGUMENT`: you can only update your location sharing messages / sharing is no longer active.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageUpdateLocationSharingRequest
  */
@@ -523,7 +698,7 @@ export type MessageUpdateLocationSharingRequest = Message<"olvid.daemon.command.
  * Use `create(MessageUpdateLocationSharingRequestSchema)` to create a new message.
  */
 export const MessageUpdateLocationSharingRequestSchema: GenMessage<MessageUpdateLocationSharingRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 17);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 19);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageUpdateLocationSharingResponse
@@ -540,11 +715,17 @@ export type MessageUpdateLocationSharingResponse = Message<"olvid.daemon.command
  * Use `create(MessageUpdateLocationSharingResponseSchema)` to create a new message.
  */
 export const MessageUpdateLocationSharingResponseSchema: GenMessage<MessageUpdateLocationSharingResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 18);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 20);
 
 /**
  *
  * * MessageEndLocationSharing
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `NOT_FOUND`: message not found.
+ * * `INVALID_ARGUMENT`: you can only end your location sharing messages / sharing is no longer active.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.MessageEndLocationSharingRequest
  */
@@ -560,7 +741,7 @@ export type MessageEndLocationSharingRequest = Message<"olvid.daemon.command.v1.
  * Use `create(MessageEndLocationSharingRequestSchema)` to create a new message.
  */
 export const MessageEndLocationSharingRequestSchema: GenMessage<MessageEndLocationSharingRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 19);
+  messageDesc(file_olvid_daemon_command_v1_message_commands, 21);
 
 /**
  * @generated from message olvid.daemon.command.v1.MessageEndLocationSharingResponse
@@ -577,82 +758,38 @@ export type MessageEndLocationSharingResponse = Message<"olvid.daemon.command.v1
  * Use `create(MessageEndLocationSharingResponseSchema)` to create a new message.
  */
 export const MessageEndLocationSharingResponseSchema: GenMessage<MessageEndLocationSharingResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 20);
-
-/**
- *
- * * MessageReact
- * * if reaction is not set delete current reaction if there is one
- *
- * @generated from message olvid.daemon.command.v1.MessageReactRequest
- */
-export type MessageReactRequest = Message<"olvid.daemon.command.v1.MessageReactRequest"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.MessageId message_id = 1;
-   */
-  messageId?: MessageId;
-
-  /**
-   * @generated from field: optional string reaction = 2;
-   */
-  reaction?: string;
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.MessageReactRequest.
- * Use `create(MessageReactRequestSchema)` to create a new message.
- */
-export const MessageReactRequestSchema: GenMessage<MessageReactRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_message_commands, 21);
-
-/**
- * @generated from message olvid.daemon.command.v1.MessageReactResponse
- */
-export type MessageReactResponse = Message<"olvid.daemon.command.v1.MessageReactResponse"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.MessageReactResponse.
- * Use `create(MessageReactResponseSchema)` to create a new message.
- */
-export const MessageReactResponseSchema: GenMessage<MessageReactResponse> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_message_commands, 22);
 
 /**
  *
- * * MessageUpdateBody
+ * * MessageRefresh
+ * * Manually refresh messages available on server.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
- * @generated from message olvid.daemon.command.v1.MessageUpdateBodyRequest
+ * @generated from message olvid.daemon.command.v1.MessageRefreshRequest
  */
-export type MessageUpdateBodyRequest = Message<"olvid.daemon.command.v1.MessageUpdateBodyRequest"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.MessageId message_id = 1;
-   */
-  messageId?: MessageId;
-
-  /**
-   * @generated from field: string updated_body = 2;
-   */
-  updatedBody: string;
+export type MessageRefreshRequest = Message<"olvid.daemon.command.v1.MessageRefreshRequest"> & {
 };
 
 /**
- * Describes the message olvid.daemon.command.v1.MessageUpdateBodyRequest.
- * Use `create(MessageUpdateBodyRequestSchema)` to create a new message.
+ * Describes the message olvid.daemon.command.v1.MessageRefreshRequest.
+ * Use `create(MessageRefreshRequestSchema)` to create a new message.
  */
-export const MessageUpdateBodyRequestSchema: GenMessage<MessageUpdateBodyRequest> = /*@__PURE__*/
+export const MessageRefreshRequestSchema: GenMessage<MessageRefreshRequest> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_message_commands, 23);
 
 /**
- * @generated from message olvid.daemon.command.v1.MessageUpdateBodyResponse
+ * @generated from message olvid.daemon.command.v1.MessageRefreshResponse
  */
-export type MessageUpdateBodyResponse = Message<"olvid.daemon.command.v1.MessageUpdateBodyResponse"> & {
+export type MessageRefreshResponse = Message<"olvid.daemon.command.v1.MessageRefreshResponse"> & {
 };
 
 /**
- * Describes the message olvid.daemon.command.v1.MessageUpdateBodyResponse.
- * Use `create(MessageUpdateBodyResponseSchema)` to create a new message.
+ * Describes the message olvid.daemon.command.v1.MessageRefreshResponse.
+ * Use `create(MessageRefreshResponseSchema)` to create a new message.
  */
-export const MessageUpdateBodyResponseSchema: GenMessage<MessageUpdateBodyResponse> = /*@__PURE__*/
+export const MessageRefreshResponseSchema: GenMessage<MessageRefreshResponse> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_message_commands, 24);
 

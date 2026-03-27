@@ -19,16 +19,27 @@ export const file_olvid_daemon_notification_v1_discussion_notifications: GenFile
 /**
  *
  * * DiscussionNew
+ * * Receive a notification every time a discussion is created or re-used.
+ * * This can happen under different circumstances:
+ * * - a new contact was added
+ * * - you created or joined a group
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: Client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionNewNotification
  */
 export type SubscribeToDiscussionNewNotification = Message<"olvid.daemon.notification.v1.SubscribeToDiscussionNewNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about discussions that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
    */
   filter?: DiscussionFilter;
@@ -61,21 +72,35 @@ export const DiscussionNewNotificationSchema: GenMessage<DiscussionNewNotificati
 /**
  *
  * * DiscussionLocked
+ * * Receive a notification each time a discussion is locked.
+ * * This can happen under different circumstances:
+ * * - the contact associated to this discussion was removed from your contact book
+ * * - you left the associated group or the group was disbanded
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _discussion_ids_ was not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionLockedNotification
  */
 export type SubscribeToDiscussionLockedNotification = Message<"olvid.daemon.notification.v1.SubscribeToDiscussionLockedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about discussions that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
    */
   filter?: DiscussionFilter;
 
   /**
+   * you will only receive notifications about discussions specified in this list.
+   *
    * @generated from field: repeated uint64 discussion_ids = 3;
    */
   discussionIds: bigint[];
@@ -108,21 +133,35 @@ export const DiscussionLockedNotificationSchema: GenMessage<DiscussionLockedNoti
 /**
  *
  * * DiscussionTitleUpdated
+ * * Receive a notification each time a discussion title changed.
+ * * This can happen under different circumstances:
+ * * - the contact associated to this discussion changed it's details
+ * * - the associated group was renamed
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _discussion_ids_ was not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionTitleUpdatedNotification
  */
 export type SubscribeToDiscussionTitleUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToDiscussionTitleUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about discussions that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
    */
   filter?: DiscussionFilter;
 
   /**
+   * you will only receive notifications about discussions specified in this list.
+   *
    * @generated from field: repeated uint64 discussion_ids = 3;
    */
   discussionIds: bigint[];
@@ -160,21 +199,34 @@ export const DiscussionTitleUpdatedNotificationSchema: GenMessage<DiscussionTitl
 /**
  *
  * * DiscussionSettingsUpdated
+ * * Receive a notification each time the discussion shared settings have been updated.
+ * * Any group group member with the _change_settings_ permission can update shared settings.
+ * * By default admin members have this permission.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _discussion_ids_ was not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToDiscussionSettingsUpdatedNotification
  */
 export type SubscribeToDiscussionSettingsUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToDiscussionSettingsUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about discussions that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter filter = 2;
    */
   filter?: DiscussionFilter;
 
   /**
+   * you will only receive notifications about discussions specified in this list.
+   *
    * @generated from field: repeated uint64 discussion_ids = 3;
    */
   discussionIds: bigint[];
@@ -197,11 +249,15 @@ export type DiscussionSettingsUpdatedNotification = Message<"olvid.daemon.notifi
   discussion?: Discussion;
 
   /**
+   * the new current discussion settings
+   *
    * @generated from field: olvid.daemon.datatypes.v1.DiscussionSettings new_settings = 2;
    */
   newSettings?: DiscussionSettings;
 
   /**
+   * settings before this update
+   *
    * @generated from field: olvid.daemon.datatypes.v1.DiscussionSettings previous_settings = 3;
    */
   previousSettings?: DiscussionSettings;

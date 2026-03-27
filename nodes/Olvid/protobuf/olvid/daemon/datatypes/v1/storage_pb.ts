@@ -13,6 +13,11 @@ export const file_olvid_daemon_datatypes_v1_storage: GenFile = /*@__PURE__*/
   fileDesc("CidvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL3N0b3JhZ2UucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEiLAoOU3RvcmFnZUVsZW1lbnQSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgJImoKFFN0b3JhZ2VFbGVtZW50RmlsdGVyEhcKCmtleV9zZWFyY2gYASABKAlIAIgBARIZCgx2YWx1ZV9zZWFyY2gYAiABKAlIAYgBAUINCgtfa2V5X3NlYXJjaEIPCg1fdmFsdWVfc2VhcmNoQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUABaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z");
 
 /**
+ *
+ * * Daemon embed a key-value storage, accessible for clients.
+ * * Each client-key have it's own global storage space, and a dedicated storage space for each discussion (see DiscussionStorageCommandService).
+ * * StorageElement is used for global and discussion storage.
+ *
  * @generated from message olvid.daemon.datatypes.v1.StorageElement
  */
 export type StorageElement = Message<"olvid.daemon.datatypes.v1.StorageElement"> & {
@@ -35,15 +40,23 @@ export const StorageElementSchema: GenMessage<StorageElement> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_storage, 0);
 
 /**
+ *
+ * * Filter storage elements by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.StorageElementFilter
  */
 export type StorageElementFilter = Message<"olvid.daemon.datatypes.v1.StorageElementFilter"> & {
   /**
+   * regexp filter applied on *key_search* field
+   *
    * @generated from field: optional string key_search = 1;
    */
   keySearch?: string;
 
   /**
+   * regexp filter applied on *value_search* field
+   *
    * @generated from field: optional string value_search = 2;
    */
   valueSearch?: string;

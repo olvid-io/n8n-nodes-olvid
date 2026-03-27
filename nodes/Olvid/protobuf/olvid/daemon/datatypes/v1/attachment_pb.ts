@@ -12,57 +12,15 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/datatypes/v1/attachment.proto.
  */
 export const file_olvid_daemon_datatypes_v1_attachment: GenFile = /*@__PURE__*/
-  fileDesc("CipvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2F0dGFjaG1lbnQucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEimQEKDEF0dGFjaG1lbnRJZBI6CgR0eXBlGAEgASgOMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50SWQuVHlwZRIKCgJpZBgCIAEoBCJBCgRUeXBlEhQKEFRZUEVfVU5TUEVDSUZJRUQQABIQCgxUWVBFX0lOQk9VTkQQARIRCg1UWVBFX09VVEJPVU5EEAIixgEKCkF0dGFjaG1lbnQSMwoCaWQYASABKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRJZBIVCg1kaXNjdXNzaW9uX2lkGAIgASgEEjgKCm1lc3NhZ2VfaWQYAyABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZBIRCglmaWxlX25hbWUYBCABKAkSEQoJbWltZV90eXBlGAUgASgJEgwKBHNpemUYBiABKAQioAUKEEF0dGFjaG1lbnRGaWx0ZXISPwoEdHlwZRgBIAEoDjIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQXR0YWNobWVudElkLlR5cGVIAIgBARJMCglmaWxlX3R5cGUYAiABKA4yNC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRGaWx0ZXIuRmlsZVR5cGVIAYgBARIaCg1kaXNjdXNzaW9uX2lkGAMgASgESAKIAQESPQoKbWVzc2FnZV9pZBgFIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkSAOIAQESHAoPZmlsZW5hbWVfc2VhcmNoGAYgASgJSASIAQESHQoQbWltZV90eXBlX3NlYXJjaBgHIAEoCUgFiAEBEhUKCG1pbl9zaXplGAggASgESAaIAQESFQoIbWF4X3NpemUYCSABKARIB4gBASK7AQoIRmlsZVR5cGUSGQoVRklMRV9UWVBFX1VOU1BFQ0lGSUVEEAASEwoPRklMRV9UWVBFX0lNQUdFEAMSEwoPRklMRV9UWVBFX1ZJREVPEAQSGQoVRklMRV9UWVBFX0lNQUdFX1ZJREVPEAUSEwoPRklMRV9UWVBFX0FVRElPEAYSGgoWRklMRV9UWVBFX0xJTktfUFJFVklFVxAHEh4KGkZJTEVfVFlQRV9OT1RfTElOS19QUkVWSUVXEAhCBwoFX3R5cGVCDAoKX2ZpbGVfdHlwZUIQCg5fZGlzY3Vzc2lvbl9pZEINCgtfbWVzc2FnZV9pZEISChBfZmlsZW5hbWVfc2VhcmNoQhMKEV9taW1lX3R5cGVfc2VhcmNoQgsKCV9taW5fc2l6ZUILCglfbWF4X3NpemVCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_message]);
+  fileDesc("CipvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2F0dGFjaG1lbnQucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEixgEKCkF0dGFjaG1lbnQSMwoCaWQYASABKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRJZBIVCg1kaXNjdXNzaW9uX2lkGAIgASgEEjgKCm1lc3NhZ2VfaWQYAyABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZBIRCglmaWxlX25hbWUYBCABKAkSEQoJbWltZV90eXBlGAUgASgJEgwKBHNpemUYBiABKAQimQEKDEF0dGFjaG1lbnRJZBI6CgR0eXBlGAEgASgOMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50SWQuVHlwZRIKCgJpZBgCIAEoBCJBCgRUeXBlEhQKEFRZUEVfVU5TUEVDSUZJRUQQABIQCgxUWVBFX0lOQk9VTkQQARIRCg1UWVBFX09VVEJPVU5EEAIioAUKEEF0dGFjaG1lbnRGaWx0ZXISPwoEdHlwZRgBIAEoDjIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQXR0YWNobWVudElkLlR5cGVIAIgBARJMCglmaWxlX3R5cGUYAiABKA4yNC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRGaWx0ZXIuRmlsZVR5cGVIAYgBARIaCg1kaXNjdXNzaW9uX2lkGAMgASgESAKIAQESPQoKbWVzc2FnZV9pZBgFIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkSAOIAQESHAoPZmlsZW5hbWVfc2VhcmNoGAYgASgJSASIAQESHQoQbWltZV90eXBlX3NlYXJjaBgHIAEoCUgFiAEBEhUKCG1pbl9zaXplGAggASgESAaIAQESFQoIbWF4X3NpemUYCSABKARIB4gBASK7AQoIRmlsZVR5cGUSGQoVRklMRV9UWVBFX1VOU1BFQ0lGSUVEEAASEwoPRklMRV9UWVBFX0lNQUdFEAMSEwoPRklMRV9UWVBFX1ZJREVPEAQSGQoVRklMRV9UWVBFX0lNQUdFX1ZJREVPEAUSEwoPRklMRV9UWVBFX0FVRElPEAYSGgoWRklMRV9UWVBFX0xJTktfUFJFVklFVxAHEh4KGkZJTEVfVFlQRV9OT1RfTElOS19QUkVWSUVXEAhCBwoFX3R5cGVCDAoKX2ZpbGVfdHlwZUIQCg5fZGlzY3Vzc2lvbl9pZEINCgtfbWVzc2FnZV9pZEISChBfZmlsZW5hbWVfc2VhcmNoQhMKEV9taW1lX3R5cGVfc2VhcmNoQgsKCV9taW5fc2l6ZUILCglfbWF4X3NpemVCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_message]);
 
 /**
- * @generated from message olvid.daemon.datatypes.v1.AttachmentId
- */
-export type AttachmentId = Message<"olvid.daemon.datatypes.v1.AttachmentId"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.AttachmentId.Type type = 1;
-   */
-  type: AttachmentId_Type;
-
-  /**
-   * @generated from field: uint64 id = 2;
-   */
-  id: bigint;
-};
-
-/**
- * Describes the message olvid.daemon.datatypes.v1.AttachmentId.
- * Use `create(AttachmentIdSchema)` to create a new message.
- */
-export const AttachmentIdSchema: GenMessage<AttachmentId> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_datatypes_v1_attachment, 0);
-
-/**
- * @generated from enum olvid.daemon.datatypes.v1.AttachmentId.Type
- */
-export enum AttachmentId_Type {
-  /**
-   * @generated from enum value: TYPE_UNSPECIFIED = 0;
-   */
-  UNSPECIFIED = 0,
-
-  /**
-   * @generated from enum value: TYPE_INBOUND = 1;
-   */
-  INBOUND = 1,
-
-  /**
-   * @generated from enum value: TYPE_OUTBOUND = 2;
-   */
-  OUTBOUND = 2,
-}
-
-/**
- * Describes the enum olvid.daemon.datatypes.v1.AttachmentId.Type.
- */
-export const AttachmentId_TypeSchema: GenEnum<AttachmentId_Type> = /*@__PURE__*/
-  enumDesc(file_olvid_daemon_datatypes_v1_attachment, 0, 0);
-
-/**
+ *
+ * * An attachment represents a file attached to a message.
+ * * It is associated to a *message_id* and a *discussion_id*.
+ * *
+ * * Link previews are attachments with specific mime type: *olvid/link-preview*.
+ *
  * @generated from message olvid.daemon.datatypes.v1.Attachment
  */
 export type Attachment = Message<"olvid.daemon.datatypes.v1.Attachment"> & {
@@ -92,6 +50,8 @@ export type Attachment = Message<"olvid.daemon.datatypes.v1.Attachment"> & {
   mimeType: string;
 
   /**
+   * file size in bytes
+   *
    * @generated from field: uint64 size = 6;
    */
   size: bigint;
@@ -102,18 +62,83 @@ export type Attachment = Message<"olvid.daemon.datatypes.v1.Attachment"> & {
  * Use `create(AttachmentSchema)` to create a new message.
  */
 export const AttachmentSchema: GenMessage<Attachment> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_datatypes_v1_attachment, 0);
+
+/**
+ *
+ * * A composite id to uniquely identify an attachment.
+ *
+ * @generated from message olvid.daemon.datatypes.v1.AttachmentId
+ */
+export type AttachmentId = Message<"olvid.daemon.datatypes.v1.AttachmentId"> & {
+  /**
+   * inbound or outbound attachment
+   *
+   * @generated from field: olvid.daemon.datatypes.v1.AttachmentId.Type type = 1;
+   */
+  type: AttachmentId_Type;
+
+  /**
+   * @generated from field: uint64 id = 2;
+   */
+  id: bigint;
+};
+
+/**
+ * Describes the message olvid.daemon.datatypes.v1.AttachmentId.
+ * Use `create(AttachmentIdSchema)` to create a new message.
+ */
+export const AttachmentIdSchema: GenMessage<AttachmentId> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_attachment, 1);
 
 /**
+ * @generated from enum olvid.daemon.datatypes.v1.AttachmentId.Type
+ */
+export enum AttachmentId_Type {
+  /**
+   * @generated from enum value: TYPE_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * received attachments
+   *
+   * @generated from enum value: TYPE_INBOUND = 1;
+   */
+  INBOUND = 1,
+
+  /**
+   * sent attachments
+   *
+   * @generated from enum value: TYPE_OUTBOUND = 2;
+   */
+  OUTBOUND = 2,
+}
+
+/**
+ * Describes the enum olvid.daemon.datatypes.v1.AttachmentId.Type.
+ */
+export const AttachmentId_TypeSchema: GenEnum<AttachmentId_Type> = /*@__PURE__*/
+  enumDesc(file_olvid_daemon_datatypes_v1_attachment, 1, 0);
+
+/**
+ *
+ * * Filter attachments by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.AttachmentFilter
  */
 export type AttachmentFilter = Message<"olvid.daemon.datatypes.v1.AttachmentFilter"> & {
   /**
+   * select only INBOUND or OUTBOUND attachments
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.AttachmentId.Type type = 1;
    */
   type?: AttachmentId_Type;
 
   /**
+   * filter by file type (pre-defined regexp for *mime_type*)
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.AttachmentFilter.FileType file_type = 2;
    */
   fileType?: AttachmentFilter_FileType;
@@ -124,28 +149,36 @@ export type AttachmentFilter = Message<"olvid.daemon.datatypes.v1.AttachmentFilt
   discussionId?: bigint;
 
   /**
-   *  optional uint64 contact_id = 4; not implementable now
+   * optional uint64 contact_id = 4; not implementable now 
    *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageId message_id = 5;
    */
   messageId?: MessageId;
 
   /**
+   * regexp filter on *filename* field
+   *
    * @generated from field: optional string filename_search = 6;
    */
   filenameSearch?: string;
 
   /**
+   * regexp filter on *mime_type* field
+   *
    * @generated from field: optional string mime_type_search = 7;
    */
   mimeTypeSearch?: string;
 
   /**
+   * minimum or equal file size
+   *
    * @generated from field: optional uint64 min_size = 8;
    */
   minSize?: bigint;
 
   /**
+   * maximum or equal file size
+   *
    * @generated from field: optional uint64 max_size = 9;
    */
   maxSize?: bigint;
@@ -159,6 +192,8 @@ export const AttachmentFilterSchema: GenMessage<AttachmentFilter> = /*@__PURE__*
   messageDesc(file_olvid_daemon_datatypes_v1_attachment, 2);
 
 /**
+ * apply pre-defined regexp filters on *mime_type* field.
+ *
  * @generated from enum olvid.daemon.datatypes.v1.AttachmentFilter.FileType
  */
 export enum AttachmentFilter_FileType {
@@ -178,6 +213,8 @@ export enum AttachmentFilter_FileType {
   VIDEO = 4,
 
   /**
+   * image or video
+   *
    * @generated from enum value: FILE_TYPE_IMAGE_VIDEO = 5;
    */
   IMAGE_VIDEO = 5,
@@ -193,6 +230,8 @@ export enum AttachmentFilter_FileType {
   LINK_PREVIEW = 7,
 
   /**
+   * all except link previews
+   *
    * @generated from enum value: FILE_TYPE_NOT_LINK_PREVIEW = 8;
    */
   NOT_LINK_PREVIEW = 8,

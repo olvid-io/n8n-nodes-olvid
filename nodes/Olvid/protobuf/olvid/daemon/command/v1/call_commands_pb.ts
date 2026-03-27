@@ -15,6 +15,15 @@ export const file_olvid_daemon_command_v1_call_commands: GenFile = /*@__PURE__*/
 /**
  *
  * * CallStartDiscussionCall
+ * * Start a call with one discussion member(s).
+ * * This will start a one to one call or a group call depending on discussion type.
+ * * You can use *call_identifier* to filter later call notifications.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion not found.
+ * * `INVALID_ARGUMENT`: cannot start a call in an empty group.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.CallStartDiscussionCallRequest
  */
@@ -52,6 +61,12 @@ export const CallStartDiscussionCallResponseSchema: GenMessage<CallStartDiscussi
 /**
  *
  * * CallStartCustomCall
+ * * Start a call with any contacts, even if they do not belong to the same discussion.
+ * * You can use *call_identifier* to filter later call notifications.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: discussion or contact not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.CallStartCustomCallRequest
  */
@@ -62,6 +77,8 @@ export type CallStartCustomCallRequest = Message<"olvid.daemon.command.v1.CallSt
   contactIds: bigint[];
 
   /**
+   * specify in which discussion other contacts will log call
+   *
    * @generated from field: optional uint64 discussion_id = 2;
    */
   discussionId?: bigint;

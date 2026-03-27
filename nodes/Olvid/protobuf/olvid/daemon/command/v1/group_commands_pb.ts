@@ -12,11 +12,16 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/command/v1/group_commands.proto.
  */
 export const file_olvid_daemon_command_v1_group_commands: GenFile = /*@__PURE__*/
-  fileDesc("CixvbHZpZC9kYWVtb24vY29tbWFuZC92MS9ncm91cF9jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiWgoQR3JvdXBMaXN0UmVxdWVzdBI7CgZmaWx0ZXIYASABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySACIAQFCCQoHX2ZpbHRlciJFChFHcm91cExpc3RSZXNwb25zZRIwCgZncm91cHMYASADKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIiMKD0dyb3VwR2V0UmVxdWVzdBIQCghncm91cF9pZBgBIAEoBCJDChBHcm91cEdldFJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCIyCh5Hcm91cEdldEJ5dGVzSWRlbnRpZmllclJlcXVlc3QSEAoIZ3JvdXBfaWQYASABKAQiNQofR3JvdXBHZXRCeXRlc0lkZW50aWZpZXJSZXNwb25zZRISCgppZGVudGlmaWVyGAEgASgMIn8KHEdyb3VwTmV3U3RhbmRhcmRHcm91cFJlcXVlc3QSEQoEbmFtZRgBIAEoCUgAiAEBEhgKC2Rlc2NyaXB0aW9uGAIgASgJSAGIAQESGQoRYWRtaW5fY29udGFjdF9pZHMYAyADKARCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uIlAKHUdyb3VwTmV3U3RhbmRhcmRHcm91cFJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCKWAQoeR3JvdXBOZXdDb250cm9sbGVkR3JvdXBSZXF1ZXN0EhEKBG5hbWUYASABKAlIAIgBARIYCgtkZXNjcmlwdGlvbhgCIAEoCUgBiAEBEhkKEWFkbWluX2NvbnRhY3RfaWRzGAMgAygEEhMKC2NvbnRhY3RfaWRzGAQgAygEQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbiJSCh9Hcm91cE5ld0NvbnRyb2xsZWRHcm91cFJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCKUAQocR3JvdXBOZXdSZWFkT25seUdyb3VwUmVxdWVzdBIRCgRuYW1lGAEgASgJSACIAQESGAoLZGVzY3JpcHRpb24YAiABKAlIAYgBARIZChFhZG1pbl9jb250YWN0X2lkcxgDIAMoBBITCgtjb250YWN0X2lkcxgEIAMoBEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb24iUAodR3JvdXBOZXdSZWFkT25seUdyb3VwUmVzcG9uc2USLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIpUCChxHcm91cE5ld0FkdmFuY2VkR3JvdXBSZXF1ZXN0EhEKBG5hbWUYASABKAlIAIgBARIYCgtkZXNjcmlwdGlvbhgCIAEoCUgBiAEBElsKFmFkdmFuY2VkX2NvbmZpZ3VyYXRpb24YAyABKAsyNi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwLkFkdmFuY2VkQ29uZmlndXJhdGlvbkgCiAEBEjcKB21lbWJlcnMYBCADKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwTWVtYmVyQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIZChdfYWR2YW5jZWRfY29uZmlndXJhdGlvbiJQCh1Hcm91cE5ld0FkdmFuY2VkR3JvdXBSZXNwb25zZRIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAiJwoTR3JvdXBEaXNiYW5kUmVxdWVzdBIQCghncm91cF9pZBgBIAEoBCJHChRHcm91cERpc2JhbmRSZXNwb25zZRIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAiJQoRR3JvdXBMZWF2ZVJlcXVlc3QSEAoIZ3JvdXBfaWQYASABKAQiRQoSR3JvdXBMZWF2ZVJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCJFChJHcm91cFVwZGF0ZVJlcXVlc3QSLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIkYKE0dyb3VwVXBkYXRlUmVzcG9uc2USLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIioKFkdyb3VwVW5zZXRQaG90b1JlcXVlc3QSEAoIZ3JvdXBfaWQYASABKAQiSgoXR3JvdXBVbnNldFBob3RvUmVzcG9uc2USLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIlUKHEdyb3VwU2V0UGhvdG9SZXF1ZXN0TWV0YWRhdGESEAoIZ3JvdXBfaWQYASABKAQSEAoIZmlsZW5hbWUYAiABKAkSEQoJZmlsZV9zaXplGAMgASgEIn8KFEdyb3VwU2V0UGhvdG9SZXF1ZXN0EkkKCG1ldGFkYXRhGAEgASgLMjUub2x2aWQuZGFlbW9uLmNvbW1hbmQudjEuR3JvdXBTZXRQaG90b1JlcXVlc3RNZXRhZGF0YUgAEhEKB3BheWxvYWQYAiABKAxIAEIJCgdyZXF1ZXN0IkgKFUdyb3VwU2V0UGhvdG9SZXNwb25zZRIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAiLQoZR3JvdXBEb3dubG9hZFBob3RvUmVxdWVzdBIQCghncm91cF9pZBgBIAEoBCIrChpHcm91cERvd25sb2FkUGhvdG9SZXNwb25zZRINCgVwaG90bxgBIAEoDEI1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlABWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw", [file_olvid_daemon_datatypes_v1_group]);
+  fileDesc("CixvbHZpZC9kYWVtb24vY29tbWFuZC92MS9ncm91cF9jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiWgoQR3JvdXBMaXN0UmVxdWVzdBI7CgZmaWx0ZXIYASABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySACIAQFCCQoHX2ZpbHRlciJFChFHcm91cExpc3RSZXNwb25zZRIwCgZncm91cHMYASADKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIiMKD0dyb3VwR2V0UmVxdWVzdBIQCghncm91cF9pZBgBIAEoBCJDChBHcm91cEdldFJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCIyCh5Hcm91cEdldEJ5dGVzSWRlbnRpZmllclJlcXVlc3QSEAoIZ3JvdXBfaWQYASABKAQiNQofR3JvdXBHZXRCeXRlc0lkZW50aWZpZXJSZXNwb25zZRISCgppZGVudGlmaWVyGAEgASgMIn8KHEdyb3VwTmV3U3RhbmRhcmRHcm91cFJlcXVlc3QSEQoEbmFtZRgBIAEoCUgAiAEBEhgKC2Rlc2NyaXB0aW9uGAIgASgJSAGIAQESGQoRYWRtaW5fY29udGFjdF9pZHMYAyADKARCBwoFX25hbWVCDgoMX2Rlc2NyaXB0aW9uIlAKHUdyb3VwTmV3U3RhbmRhcmRHcm91cFJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCKWAQoeR3JvdXBOZXdDb250cm9sbGVkR3JvdXBSZXF1ZXN0EhEKBG5hbWUYASABKAlIAIgBARIYCgtkZXNjcmlwdGlvbhgCIAEoCUgBiAEBEhkKEWFkbWluX2NvbnRhY3RfaWRzGAMgAygEEhMKC2NvbnRhY3RfaWRzGAQgAygEQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbiJSCh9Hcm91cE5ld0NvbnRyb2xsZWRHcm91cFJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCKUAQocR3JvdXBOZXdSZWFkT25seUdyb3VwUmVxdWVzdBIRCgRuYW1lGAEgASgJSACIAQESGAoLZGVzY3JpcHRpb24YAiABKAlIAYgBARIZChFhZG1pbl9jb250YWN0X2lkcxgDIAMoBBITCgtjb250YWN0X2lkcxgEIAMoBEIHCgVfbmFtZUIOCgxfZGVzY3JpcHRpb24iUAodR3JvdXBOZXdSZWFkT25seUdyb3VwUmVzcG9uc2USLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIpUCChxHcm91cE5ld0FkdmFuY2VkR3JvdXBSZXF1ZXN0EhEKBG5hbWUYASABKAlIAIgBARIYCgtkZXNjcmlwdGlvbhgCIAEoCUgBiAEBElsKFmFkdmFuY2VkX2NvbmZpZ3VyYXRpb24YAyABKAsyNi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwLkFkdmFuY2VkQ29uZmlndXJhdGlvbkgCiAEBEjcKB21lbWJlcnMYBCADKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwTWVtYmVyQgcKBV9uYW1lQg4KDF9kZXNjcmlwdGlvbkIZChdfYWR2YW5jZWRfY29uZmlndXJhdGlvbiJQCh1Hcm91cE5ld0FkdmFuY2VkR3JvdXBSZXNwb25zZRIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAiJwoTR3JvdXBEaXNiYW5kUmVxdWVzdBIQCghncm91cF9pZBgBIAEoBCJHChRHcm91cERpc2JhbmRSZXNwb25zZRIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAiJQoRR3JvdXBMZWF2ZVJlcXVlc3QSEAoIZ3JvdXBfaWQYASABKAQiRQoSR3JvdXBMZWF2ZVJlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCJFChJHcm91cFVwZGF0ZVJlcXVlc3QSLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIkYKE0dyb3VwVXBkYXRlUmVzcG9uc2USLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIlUKHEdyb3VwU2V0UGhvdG9SZXF1ZXN0TWV0YWRhdGESEAoIZ3JvdXBfaWQYASABKAQSEAoIZmlsZW5hbWUYAiABKAkSEQoJZmlsZV9zaXplGAMgASgEIn8KFEdyb3VwU2V0UGhvdG9SZXF1ZXN0EkkKCG1ldGFkYXRhGAEgASgLMjUub2x2aWQuZGFlbW9uLmNvbW1hbmQudjEuR3JvdXBTZXRQaG90b1JlcXVlc3RNZXRhZGF0YUgAEhEKB3BheWxvYWQYAiABKAxIAEIJCgdyZXF1ZXN0IkgKFUdyb3VwU2V0UGhvdG9SZXNwb25zZRIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAiLQoZR3JvdXBEb3dubG9hZFBob3RvUmVxdWVzdBIQCghncm91cF9pZBgBIAEoBCIrChpHcm91cERvd25sb2FkUGhvdG9SZXNwb25zZRINCgVwaG90bxgBIAEoDCIqChZHcm91cFVuc2V0UGhvdG9SZXF1ZXN0EhAKCGdyb3VwX2lkGAEgASgEIkoKF0dyb3VwVW5zZXRQaG90b1Jlc3BvbnNlEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEI1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlABWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw", [file_olvid_daemon_datatypes_v1_group]);
 
 /**
  *
- * * GroupList return all groups for current identity
+ * * List groups for current identity.
+ * * Pass a filter to select only groups that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: invalid filter.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.GroupListRequest
  */
@@ -54,6 +59,11 @@ export const GroupListResponseSchema: GenMessage<GroupListResponse> = /*@__PURE_
 /**
  *
  * * GroupGet
+ * * Get group by id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.GroupGetRequest
  */
@@ -91,6 +101,12 @@ export const GroupGetResponseSchema: GenMessage<GroupGetResponse> = /*@__PURE__*
 /**
  *
  * * GroupGetBytesIdentifier
+ * * Get a group identifier as bytes.
+ * * This is useful to have a long term identifier for a group, backup-proof, and common to any device.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.GroupGetBytesIdentifierRequest
  */
@@ -128,6 +144,14 @@ export const GroupGetBytesIdentifierResponseSchema: GenMessage<GroupGetBytesIden
 /**
  *
  * * GroupNewStandardGroup
+ * * Create a new standard group.
+ * * In a standard group all members are administrators, everyone can edit group details and manage group members.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contacts not found.
+ * * `INVALID_ARGUMENT`: at least one contact does not support group v2.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupNewStandardGroupRequest
  */
@@ -175,6 +199,15 @@ export const GroupNewStandardGroupResponseSchema: GenMessage<GroupNewStandardGro
 /**
  *
  * * GroupNewControlledGroup
+ * * Create a new controlled group.
+ * * In a controlled group Administrators are specifically designated and they can edit group details and manage group members.
+ * * Simple members cannot manage the group but they can post messages, attachments and reactions.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contacts not found.
+ * * `INVALID_ARGUMENT`: a contact cannot be in admins and members at the same time / at least one contact does not support group v2.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupNewControlledGroupRequest
  */
@@ -227,6 +260,15 @@ export const GroupNewControlledGroupResponseSchema: GenMessage<GroupNewControlle
 /**
  *
  * * GroupNewReadOnlyGroup
+ * * Create a new read-only group.
+ * * In read only groups only group administrators can manage the group and post messages.
+ * * Other users can only react to messages.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contacts not found.
+ * * `INVALID_ARGUMENT`: a contact cannot be in admins and members at the same time / at least one contact does not support group v2.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupNewReadOnlyGroupRequest
  */
@@ -279,6 +321,14 @@ export const GroupNewReadOnlyGroupResponseSchema: GenMessage<GroupNewReadOnlyGro
 /**
  *
  * * GroupNewAdvancedGroup
+ * * Create a new advanced group.
+ * * An advanced group allows to manually assign permissions to all members.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: contacts not found.
+ * * `INVALID_ARGUMENT`: a contact cannot be in admins and members at the same time / at least one contact does not support group v2.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupNewAdvancedGroupRequest
  */
@@ -331,6 +381,15 @@ export const GroupNewAdvancedGroupResponseSchema: GenMessage<GroupNewAdvancedGro
 /**
  *
  * * GroupDisband
+ * * Close a group, every member will leave the group and the discussion will be locked for everyone.
+ * * Only administrators are allowed to disband a group.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `INVALID_ARGUMENT`: impossible to disband a keycloak group.
+ * * `PERMISSION_DENIED`: you are not admin in this group.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupDisbandRequest
  */
@@ -368,6 +427,14 @@ export const GroupDisbandResponseSchema: GenMessage<GroupDisbandResponse> = /*@_
 /**
  *
  * * GroupLeave
+ * * Leave a group, the discussion will still exists for other group members.
+ * * Any group member can leave a group at any time, except if you are the last administrator in this group (a group must always have an administrator).
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `INVALID_ARGUMENT`: impossible to disband a keycloak group / you cannot leave a group if you are the only group administrator.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupLeaveRequest
  */
@@ -404,7 +471,8 @@ export const GroupLeaveResponseSchema: GenMessage<GroupLeaveResponse> = /*@__PUR
 
 /**
  *
- * * GroupUpdate: update a group by modifying a Group object retrieved from groupList of groupGet.
+ * * GroupUpdate
+ * * Update a group by modifying a Group object retrieved from groupList of groupGet.
  * * Supported modifications:
  * * - Add a member: create a new GroupMember and add it to members field
  * * - Remove a member: remove associated GroupMember from members field
@@ -413,6 +481,13 @@ export const GroupLeaveResponseSchema: GenMessage<GroupLeaveResponse> = /*@__PUR
  * * - Update group name: modify name field
  * * - Update group description: modify description field
  * * Every other modifications will be ignored. You must keep groupId field properly set.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `PERMISSION_DENIED`: you are not admin in this group.
+ * * `INVALID_ARGUMENT`: the new group version has not been updated / new group member not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupUpdateRequest
  */
@@ -449,44 +524,15 @@ export const GroupUpdateResponseSchema: GenMessage<GroupUpdateResponse> = /*@__P
 
 /**
  *
- * * GroupUnsetPhoto
- *
- * @generated from message olvid.daemon.command.v1.GroupUnsetPhotoRequest
- */
-export type GroupUnsetPhotoRequest = Message<"olvid.daemon.command.v1.GroupUnsetPhotoRequest"> & {
-  /**
-   * @generated from field: uint64 group_id = 1;
-   */
-  groupId: bigint;
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.GroupUnsetPhotoRequest.
- * Use `create(GroupUnsetPhotoRequestSchema)` to create a new message.
- */
-export const GroupUnsetPhotoRequestSchema: GenMessage<GroupUnsetPhotoRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_group_commands, 20);
-
-/**
- * @generated from message olvid.daemon.command.v1.GroupUnsetPhotoResponse
- */
-export type GroupUnsetPhotoResponse = Message<"olvid.daemon.command.v1.GroupUnsetPhotoResponse"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.Group group = 1;
-   */
-  group?: Group;
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.GroupUnsetPhotoResponse.
- * Use `create(GroupUnsetPhotoResponseSchema)` to create a new message.
- */
-export const GroupUnsetPhotoResponseSchema: GenMessage<GroupUnsetPhotoResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_group_commands, 21);
-
-/**
- *
  * * GroupSetPhoto
+ * * Set a new photo for a group.
+ * * The photo can be jpeg or png but will be converted to jpeg and resolution will be limited to 1080x1080.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `PERMISSION_DENIED`: you are not admin in this group.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupSetPhotoRequestMetadata
  */
@@ -512,7 +558,7 @@ export type GroupSetPhotoRequestMetadata = Message<"olvid.daemon.command.v1.Grou
  * Use `create(GroupSetPhotoRequestMetadataSchema)` to create a new message.
  */
 export const GroupSetPhotoRequestMetadataSchema: GenMessage<GroupSetPhotoRequestMetadata> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_group_commands, 22);
+  messageDesc(file_olvid_daemon_command_v1_group_commands, 20);
 
 /**
  * @generated from message olvid.daemon.command.v1.GroupSetPhotoRequest
@@ -541,7 +587,7 @@ export type GroupSetPhotoRequest = Message<"olvid.daemon.command.v1.GroupSetPhot
  * Use `create(GroupSetPhotoRequestSchema)` to create a new message.
  */
 export const GroupSetPhotoRequestSchema: GenMessage<GroupSetPhotoRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_group_commands, 23);
+  messageDesc(file_olvid_daemon_command_v1_group_commands, 21);
 
 /**
  * @generated from message olvid.daemon.command.v1.GroupSetPhotoResponse
@@ -558,11 +604,18 @@ export type GroupSetPhotoResponse = Message<"olvid.daemon.command.v1.GroupSetPho
  * Use `create(GroupSetPhotoResponseSchema)` to create a new message.
  */
 export const GroupSetPhotoResponseSchema: GenMessage<GroupSetPhotoResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_group_commands, 24);
+  messageDesc(file_olvid_daemon_command_v1_group_commands, 22);
 
 /**
  *
  * * GroupDownloadPhoto
+ * * Download the group picture as bytes, or the generated image for this group.
+ * * Pictures are always jpeg files with a maximum of 1080x1080 resolution.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.GroupDownloadPhotoRequest
  */
@@ -578,7 +631,7 @@ export type GroupDownloadPhotoRequest = Message<"olvid.daemon.command.v1.GroupDo
  * Use `create(GroupDownloadPhotoRequestSchema)` to create a new message.
  */
 export const GroupDownloadPhotoRequestSchema: GenMessage<GroupDownloadPhotoRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_group_commands, 25);
+  messageDesc(file_olvid_daemon_command_v1_group_commands, 23);
 
 /**
  * @generated from message olvid.daemon.command.v1.GroupDownloadPhotoResponse
@@ -595,5 +648,49 @@ export type GroupDownloadPhotoResponse = Message<"olvid.daemon.command.v1.GroupD
  * Use `create(GroupDownloadPhotoResponseSchema)` to create a new message.
  */
 export const GroupDownloadPhotoResponseSchema: GenMessage<GroupDownloadPhotoResponse> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_group_commands, 24);
+
+/**
+ *
+ * * GroupUnsetPhoto
+ * * Unset the current group picture if there is one.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: group not found.
+ * * `INVALID_ARGUMENT`: group does not have a photo.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
+ *
+ * @generated from message olvid.daemon.command.v1.GroupUnsetPhotoRequest
+ */
+export type GroupUnsetPhotoRequest = Message<"olvid.daemon.command.v1.GroupUnsetPhotoRequest"> & {
+  /**
+   * @generated from field: uint64 group_id = 1;
+   */
+  groupId: bigint;
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.GroupUnsetPhotoRequest.
+ * Use `create(GroupUnsetPhotoRequestSchema)` to create a new message.
+ */
+export const GroupUnsetPhotoRequestSchema: GenMessage<GroupUnsetPhotoRequest> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_group_commands, 25);
+
+/**
+ * @generated from message olvid.daemon.command.v1.GroupUnsetPhotoResponse
+ */
+export type GroupUnsetPhotoResponse = Message<"olvid.daemon.command.v1.GroupUnsetPhotoResponse"> & {
+  /**
+   * @generated from field: olvid.daemon.datatypes.v1.Group group = 1;
+   */
+  group?: Group;
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.GroupUnsetPhotoResponse.
+ * Use `create(GroupUnsetPhotoResponseSchema)` to create a new message.
+ */
+export const GroupUnsetPhotoResponseSchema: GenMessage<GroupUnsetPhotoResponse> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_group_commands, 26);
 

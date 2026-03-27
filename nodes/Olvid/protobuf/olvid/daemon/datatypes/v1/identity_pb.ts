@@ -10,9 +10,110 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/datatypes/v1/identity.proto.
  */
 export const file_olvid_daemon_datatypes_v1_identity: GenFile = /*@__PURE__*/
-  fileDesc("CihvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2lkZW50aXR5LnByb3RvEhlvbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxIqUBCg9JZGVudGl0eURldGFpbHMSFwoKZmlyc3RfbmFtZRgBIAEoCUgAiAEBEhYKCWxhc3RfbmFtZRgCIAEoCUgBiAEBEhQKB2NvbXBhbnkYAyABKAlIAogBARIVCghwb3NpdGlvbhgEIAEoCUgDiAEBQg0KC19maXJzdF9uYW1lQgwKCl9sYXN0X25hbWVCCgoIX2NvbXBhbnlCCwoJX3Bvc2l0aW9uIpcDCghJZGVudGl0eRIKCgJpZBgBIAEoBBIUCgxkaXNwbGF5X25hbWUYAiABKAkSOwoHZGV0YWlscxgDIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlEZXRhaWxzEhoKDmludml0YXRpb25fdXJsGAQgASgJQgIYARIYChBrZXljbG9ha19tYW5hZ2VkGAUgASgIEhMKC2hhc19hX3Bob3RvGAYgASgIEjsKB2FwaV9rZXkYByABKAsyKi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5LkFwaUtleRqjAQoGQXBpS2V5EkkKCnBlcm1pc3Npb24YASABKAsyNS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5LkFwaUtleS5QZXJtaXNzaW9uEhwKFGV4cGlyYXRpb25fdGltZXN0YW1wGAIgASgEGjAKClBlcm1pc3Npb24SDAoEY2FsbBgBIAEoCBIUCgxtdWx0aV9kZXZpY2UYAiABKAgi+AQKDklkZW50aXR5RmlsdGVyEkkKCGtleWNsb2FrGAEgASgOMjIub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eUZpbHRlci5LZXljbG9ha0gAiAEBEkMKBXBob3RvGAIgASgOMi8ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eUZpbHRlci5QaG90b0gBiAEBEkYKB2FwaV9rZXkYAyABKA4yMC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5RmlsdGVyLkFwaUtleUgCiAEBEiAKE2Rpc3BsYXlfbmFtZV9zZWFyY2gYBCABKAlIA4gBARJHCg5kZXRhaWxzX3NlYXJjaBgFIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlEZXRhaWxzSASIAQEiSgoIS2V5Y2xvYWsSGAoUS0VZQ0xPQUtfVU5TUEVDSUZJRUQQABIPCgtLRVlDTE9BS19JUxACEhMKD0tFWUNMT0FLX0lTX05PVBABIkAKBVBob3RvEhUKEVBIT1RPX1VOU1BFQ0lGSUVEEAASDQoJUEhPVE9fSEFTEAISEQoNUEhPVE9fSEFTX05PVBABIkcKBkFwaUtleRIXChNBUElfS0VZX1VOU1BFQ0lGSUVEEAASDwoLQVBJX0tFWV9IQVMQAhITCg9BUElfS0VZX0hBU19OT1QQAUILCglfa2V5Y2xvYWtCCAoGX3Bob3RvQgoKCF9hcGlfa2V5QhYKFF9kaXNwbGF5X25hbWVfc2VhcmNoQhEKD19kZXRhaWxzX3NlYXJjaEI1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlAAWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw");
+  fileDesc("CihvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2lkZW50aXR5LnByb3RvEhlvbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxIvsCCghJZGVudGl0eRIKCgJpZBgBIAEoBBIUCgxkaXNwbGF5X25hbWUYAiABKAkSOwoHZGV0YWlscxgDIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlEZXRhaWxzEhgKEGtleWNsb2FrX21hbmFnZWQYBSABKAgSEwoLaGFzX2FfcGhvdG8YBiABKAgSOwoHYXBpX2tleRgHIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHkuQXBpS2V5GqMBCgZBcGlLZXkSSQoKcGVybWlzc2lvbhgBIAEoCzI1Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHkuQXBpS2V5LlBlcm1pc3Npb24SHAoUZXhwaXJhdGlvbl90aW1lc3RhbXAYAiABKAQaMAoKUGVybWlzc2lvbhIMCgRjYWxsGAEgASgIEhQKDG11bHRpX2RldmljZRgCIAEoCCKlAQoPSWRlbnRpdHlEZXRhaWxzEhcKCmZpcnN0X25hbWUYASABKAlIAIgBARIWCglsYXN0X25hbWUYAiABKAlIAYgBARIUCgdjb21wYW55GAMgASgJSAKIAQESFQoIcG9zaXRpb24YBCABKAlIA4gBAUINCgtfZmlyc3RfbmFtZUIMCgpfbGFzdF9uYW1lQgoKCF9jb21wYW55QgsKCV9wb3NpdGlvbiL4BAoOSWRlbnRpdHlGaWx0ZXISSQoIa2V5Y2xvYWsYASABKA4yMi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5RmlsdGVyLktleWNsb2FrSACIAQESQwoFcGhvdG8YAiABKA4yLy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5RmlsdGVyLlBob3RvSAGIAQESRgoHYXBpX2tleRgDIAEoDjIwLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlGaWx0ZXIuQXBpS2V5SAKIAQESIAoTZGlzcGxheV9uYW1lX3NlYXJjaBgEIAEoCUgDiAEBEkcKDmRldGFpbHNfc2VhcmNoGAUgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eURldGFpbHNIBIgBASJKCghLZXljbG9haxIYChRLRVlDTE9BS19VTlNQRUNJRklFRBAAEg8KC0tFWUNMT0FLX0lTEAISEwoPS0VZQ0xPQUtfSVNfTk9UEAEiQAoFUGhvdG8SFQoRUEhPVE9fVU5TUEVDSUZJRUQQABINCglQSE9UT19IQVMQAhIRCg1QSE9UT19IQVNfTk9UEAEiRwoGQXBpS2V5EhcKE0FQSV9LRVlfVU5TUEVDSUZJRUQQABIPCgtBUElfS0VZX0hBUxACEhMKD0FQSV9LRVlfSEFTX05PVBABQgsKCV9rZXljbG9ha0IICgZfcGhvdG9CCgoIX2FwaV9rZXlCFgoUX2Rpc3BsYXlfbmFtZV9zZWFyY2hCEQoPX2RldGFpbHNfc2VhcmNoQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUABaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z");
 
 /**
+ *
+ * * Your own Olvid identity, stored on this daemon instance.
+ * * A daemon can manage multiple Olvid identities.
+ *
+ * @generated from message olvid.daemon.datatypes.v1.Identity
+ */
+export type Identity = Message<"olvid.daemon.datatypes.v1.Identity"> & {
+  /**
+   * @generated from field: uint64 id = 1;
+   */
+  id: bigint;
+
+  /**
+   * computed from *details*
+   *
+   * @generated from field: string display_name = 2;
+   */
+  displayName: string;
+
+  /**
+   * @generated from field: olvid.daemon.datatypes.v1.IdentityDetails details = 3;
+   */
+  details?: IdentityDetails;
+
+  /**
+   * identity is linked to a keycloak directory
+   *
+   * @generated from field: bool keycloak_managed = 5;
+   */
+  keycloakManaged: boolean;
+
+  /**
+   * @generated from field: bool has_a_photo = 6;
+   */
+  hasAPhoto: boolean;
+
+  /**
+   * Olvid api key to grant permissions
+   *
+   * @generated from field: olvid.daemon.datatypes.v1.Identity.ApiKey api_key = 7;
+   */
+  apiKey?: Identity_ApiKey;
+};
+
+/**
+ * Describes the message olvid.daemon.datatypes.v1.Identity.
+ * Use `create(IdentitySchema)` to create a new message.
+ */
+export const IdentitySchema: GenMessage<Identity> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_datatypes_v1_identity, 0);
+
+/**
+ * @generated from message olvid.daemon.datatypes.v1.Identity.ApiKey
+ */
+export type Identity_ApiKey = Message<"olvid.daemon.datatypes.v1.Identity.ApiKey"> & {
+  /**
+   * @generated from field: olvid.daemon.datatypes.v1.Identity.ApiKey.Permission permission = 1;
+   */
+  permission?: Identity_ApiKey_Permission;
+
+  /**
+   * @generated from field: uint64 expiration_timestamp = 2;
+   */
+  expirationTimestamp: bigint;
+};
+
+/**
+ * Describes the message olvid.daemon.datatypes.v1.Identity.ApiKey.
+ * Use `create(Identity_ApiKeySchema)` to create a new message.
+ */
+export const Identity_ApiKeySchema: GenMessage<Identity_ApiKey> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_datatypes_v1_identity, 0, 0);
+
+/**
+ * @generated from message olvid.daemon.datatypes.v1.Identity.ApiKey.Permission
+ */
+export type Identity_ApiKey_Permission = Message<"olvid.daemon.datatypes.v1.Identity.ApiKey.Permission"> & {
+  /**
+   * @generated from field: bool call = 1;
+   */
+  call: boolean;
+
+  /**
+   * @generated from field: bool multi_device = 2;
+   */
+  multiDevice: boolean;
+};
+
+/**
+ * Describes the message olvid.daemon.datatypes.v1.Identity.ApiKey.Permission.
+ * Use `create(Identity_ApiKey_PermissionSchema)` to create a new message.
+ */
+export const Identity_ApiKey_PermissionSchema: GenMessage<Identity_ApiKey_Permission> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_datatypes_v1_identity, 0, 0, 0);
+
+/**
+ *
+ * * Represents an Olvid identity details.
+ * * Used for any Olvid identity (owned identity or other contact).
+ * * Details are valid only if at least one field is not blank.
+ *
  * @generated from message olvid.daemon.datatypes.v1.IdentityDetails
  */
 export type IdentityDetails = Message<"olvid.daemon.datatypes.v1.IdentityDetails"> & {
@@ -42,129 +143,47 @@ export type IdentityDetails = Message<"olvid.daemon.datatypes.v1.IdentityDetails
  * Use `create(IdentityDetailsSchema)` to create a new message.
  */
 export const IdentityDetailsSchema: GenMessage<IdentityDetails> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_datatypes_v1_identity, 0);
-
-/**
- * id == 0 is equivalent to null identity
- * invitation_url field is deprecated, and will be removed in next major release
- *   use IdentityCommandService.IdentityGetInvitationLink or IdentityAdminService.IdentityAdminGetInvitationLink instead
- *
- * @generated from message olvid.daemon.datatypes.v1.Identity
- */
-export type Identity = Message<"olvid.daemon.datatypes.v1.Identity"> & {
-  /**
-   * @generated from field: uint64 id = 1;
-   */
-  id: bigint;
-
-  /**
-   * @generated from field: string display_name = 2;
-   */
-  displayName: string;
-
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.IdentityDetails details = 3;
-   */
-  details?: IdentityDetails;
-
-  /**
-   * @generated from field: string invitation_url = 4 [deprecated = true];
-   * @deprecated
-   */
-  invitationUrl: string;
-
-  /**
-   * @generated from field: bool keycloak_managed = 5;
-   */
-  keycloakManaged: boolean;
-
-  /**
-   * @generated from field: bool has_a_photo = 6;
-   */
-  hasAPhoto: boolean;
-
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.Identity.ApiKey api_key = 7;
-   */
-  apiKey?: Identity_ApiKey;
-};
-
-/**
- * Describes the message olvid.daemon.datatypes.v1.Identity.
- * Use `create(IdentitySchema)` to create a new message.
- */
-export const IdentitySchema: GenMessage<Identity> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_identity, 1);
 
 /**
- * @generated from message olvid.daemon.datatypes.v1.Identity.ApiKey
- */
-export type Identity_ApiKey = Message<"olvid.daemon.datatypes.v1.Identity.ApiKey"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.Identity.ApiKey.Permission permission = 1;
-   */
-  permission?: Identity_ApiKey_Permission;
-
-  /**
-   * @generated from field: uint64 expiration_timestamp = 2;
-   */
-  expirationTimestamp: bigint;
-};
-
-/**
- * Describes the message olvid.daemon.datatypes.v1.Identity.ApiKey.
- * Use `create(Identity_ApiKeySchema)` to create a new message.
- */
-export const Identity_ApiKeySchema: GenMessage<Identity_ApiKey> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_datatypes_v1_identity, 1, 0);
-
-/**
- * @generated from message olvid.daemon.datatypes.v1.Identity.ApiKey.Permission
- */
-export type Identity_ApiKey_Permission = Message<"olvid.daemon.datatypes.v1.Identity.ApiKey.Permission"> & {
-  /**
-   * @generated from field: bool call = 1;
-   */
-  call: boolean;
-
-  /**
-   * @generated from field: bool multi_device = 2;
-   */
-  multiDevice: boolean;
-};
-
-/**
- * Describes the message olvid.daemon.datatypes.v1.Identity.ApiKey.Permission.
- * Use `create(Identity_ApiKey_PermissionSchema)` to create a new message.
- */
-export const Identity_ApiKey_PermissionSchema: GenMessage<Identity_ApiKey_Permission> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_datatypes_v1_identity, 1, 0, 0);
-
-/**
+ *
+ * * Filter identities by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.IdentityFilter
  */
 export type IdentityFilter = Message<"olvid.daemon.datatypes.v1.IdentityFilter"> & {
   /**
+   * is identity keycloak managed or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.IdentityFilter.Keycloak keycloak = 1;
    */
   keycloak?: IdentityFilter_Keycloak;
 
   /**
+   * does identity have a profile photo or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.IdentityFilter.Photo photo = 2;
    */
   photo?: IdentityFilter_Photo;
 
   /**
+   * does identity have an Olvid api key or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.IdentityFilter.ApiKey api_key = 3;
    */
   apiKey?: IdentityFilter_ApiKey;
 
   /**
+   * regexp filter on *display_name*
+   *
    * @generated from field: optional string display_name_search = 4;
    */
   displayNameSearch?: string;
 
   /**
+   * a set of regexp filters, one for each field of *details*
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.IdentityDetails details_search = 5;
    */
   detailsSearch?: IdentityDetails;

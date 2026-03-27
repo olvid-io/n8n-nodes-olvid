@@ -133,6 +133,8 @@ export const IdentityAdminService: GenService<{
 
 /**
  * Backup
+ * Olvid Backups are accessible using a simple key. They contain data necessary to restore or to transfer an identity from a device (a daemon) to another.
+ * Note: Backups do not contain any messages or attachments; they are only designed to re-create secure channels with your contacts, restore your discussions and your daemon configuration (client keys, settings, ...)
  *
  * @generated from service olvid.daemon.services.v1.BackupAdminService
  */

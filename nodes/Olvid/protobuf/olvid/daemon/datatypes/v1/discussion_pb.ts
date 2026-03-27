@@ -13,6 +13,10 @@ export const file_olvid_daemon_datatypes_v1_discussion: GenFile = /*@__PURE__*/
   fileDesc("CipvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2Rpc2N1c3Npb24ucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEiXwoKRGlzY3Vzc2lvbhIKCgJpZBgBIAEoBBINCgV0aXRsZRgCIAEoCRIUCgpjb250YWN0X2lkGAMgASgESAASEgoIZ3JvdXBfaWQYBCABKARIAEIMCgppZGVudGlmaWVyIoACChBEaXNjdXNzaW9uRmlsdGVyEkMKBHR5cGUYASABKA4yMC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkRpc2N1c3Npb25GaWx0ZXIuVHlwZUgBiAEBEhQKCmNvbnRhY3RfaWQYAiABKARIABISCghncm91cF9pZBgDIAEoBEgAEhkKDHRpdGxlX3NlYXJjaBgEIAEoCUgCiAEBIjoKBFR5cGUSFAoQVFlQRV9VTlNQRUNJRklFRBAAEgwKCFRZUEVfT1RPEAESDgoKVFlQRV9HUk9VUBACQgwKCmlkZW50aWZpZXJCBwoFX3R5cGVCDwoNX3RpdGxlX3NlYXJjaEI1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlAAWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw");
 
 /**
+ *
+ * * A discussion must be associated to a contact or to a group.
+ * * If *contact_id* and *group_id* are both zero, then it is an existing locked discussion.
+ *
  * @generated from message olvid.daemon.datatypes.v1.Discussion
  */
 export type Discussion = Message<"olvid.daemon.datatypes.v1.Discussion"> & {
@@ -22,13 +26,13 @@ export type Discussion = Message<"olvid.daemon.datatypes.v1.Discussion"> & {
   id: bigint;
 
   /**
+   * *contact.display_name* or *group.name*
+   *
    * @generated from field: string title = 2;
    */
   title: string;
 
   /**
-   * if identifier is not set discussion is locked
-   *
    * @generated from oneof olvid.daemon.datatypes.v1.Discussion.identifier
    */
   identifier: {
@@ -54,10 +58,16 @@ export const DiscussionSchema: GenMessage<Discussion> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_discussion, 0);
 
 /**
+ *
+ * * Filter discussions by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.DiscussionFilter
  */
 export type DiscussionFilter = Message<"olvid.daemon.datatypes.v1.DiscussionFilter"> & {
   /**
+   * select group or contact discussions
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.DiscussionFilter.Type type = 1;
    */
   type?: DiscussionFilter_Type;
@@ -80,6 +90,8 @@ export type DiscussionFilter = Message<"olvid.daemon.datatypes.v1.DiscussionFilt
   } | { case: undefined; value?: undefined };
 
   /**
+   * regexp filter on title field
+   *
    * @generated from field: optional string title_search = 4;
    */
   titleSearch?: string;

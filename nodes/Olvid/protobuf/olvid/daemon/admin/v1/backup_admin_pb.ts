@@ -21,7 +21,13 @@ export const file_olvid_daemon_admin_v1_backup_admin: GenFile = /*@__PURE__*/
 /**
  *
  * * BackupKeyGet
- * * get your current backup key (to store in a safe place to restore your identities)
+ * * Get your current backup key.
+ * * ⚠️ Store it in a safe place, this key allows to restore this daemon identities on another device/daemon.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupKeyGetRequest
  */
@@ -55,7 +61,12 @@ export const BackupKeyGetResponseSchema: GenMessage<BackupKeyGetResponse> = /*@_
 /**
  *
  * * BackupKeyRenew
- * * discard previous backup key and create a new one
+ * * Discard previous backup key and create a new one.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupKeyRenewRequest
  */
@@ -89,9 +100,14 @@ export const BackupKeyRenewResponseSchema: GenMessage<BackupKeyRenewResponse> = 
 /**
  *
  * * BackupGet
- * * show backup associated with a backup key.
+ * * Show the backup associated with a backup key.
  * * It contains an admin backup with admin client key and associated storage,
- * * and snapshots for each profile (identity).
+ * * and snapshots for each identity.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: cannot access backup.
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupGetRequest
  */
@@ -129,7 +145,12 @@ export const BackupGetResponseSchema: GenMessage<BackupGetResponse> = /*@__PURE_
 /**
  *
  * * BackupNow
- * * force to backup now
+ * * Force a new backup.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupNowRequest
  */
@@ -159,18 +180,26 @@ export const BackupNowResponseSchema: GenMessage<BackupNowResponse> = /*@__PURE_
 /**
  *
  * * BackupRestoreDaemon
- * * restore a complete daemon instance, only possible on a blank daemon instance
+ * * Restore a complete daemon instance.
+ * * This is only possible on a blank daemon instance.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INVALID_ARGUMENT`: your daemon database is not empty.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupRestoreDaemonRequest
  */
 export type BackupRestoreDaemonRequest = Message<"olvid.daemon.admin.v1.BackupRestoreDaemonRequest"> & {
   /**
+   * key of the backup to restore
+   *
    * @generated from field: string backup_key = 1;
    */
   backupKey: string;
 
   /**
-   * specify a name for this new daemon
+   * specify a name for this new device (*daemon* is set as default)
    *
    * @generated from field: optional string new_device_name = 2;
    */
@@ -214,12 +243,19 @@ export const BackupRestoreDaemonResponseSchema: GenMessage<BackupRestoreDaemonRe
 /**
  *
  * * BackupRestoreAdminBackup
- * * restore a backup admin data (admin client keys and associated storage)
+ * * Restore admin data of a backup (admin client keys and associated storage).
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupRestoreAdminBackupRequest
  */
 export type BackupRestoreAdminBackupRequest = Message<"olvid.daemon.admin.v1.BackupRestoreAdminBackupRequest"> & {
   /**
+   * key of the backup to restore
+   *
    * @generated from field: string backup_key = 1;
    */
   backupKey: string;
@@ -252,23 +288,35 @@ export const BackupRestoreAdminBackupResponseSchema: GenMessage<BackupRestoreAdm
 /**
  *
  * * BackupRestoreProfileSnapshot
- * * restore a specific profile snapshot
+ * * Restore an identity from a backup.
+ * * Pass the identity snapshot id you want to restore.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: an admin client key is necessary.
+ * * `NOT_FOUND`: snapshot not found.
+ * * `INVALID_ARGUMENT`: identity already exists locally.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.admin.v1.BackupRestoreProfileSnapshotRequest
  */
 export type BackupRestoreProfileSnapshotRequest = Message<"olvid.daemon.admin.v1.BackupRestoreProfileSnapshotRequest"> & {
   /**
+   * key of the backup to restore
+   *
    * @generated from field: string backup_key = 1;
    */
   backupKey: string;
 
   /**
+   * id of the snapshot to restore
+   *
    * @generated from field: string id = 2;
    */
   id: string;
 
   /**
-   * specify a name for this new daemon
+   * specify a name for this new device (*daemon* is set as default)
    *
    * @generated from field: optional string new_device_name = 3;
    */

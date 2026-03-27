@@ -52,23 +52,6 @@ export const attachmentDeleteProperties: INodeProperties[] = [
         ]
       }
     }
-  },
-  {
-    displayName: 'DeleteEverywhere',
-    name: 'deleteEverywhere',
-    type: 'boolean',
-    default: false,
-    required: false,
-    displayOptions: {
-      show: {
-        resource: [
-          'AttachmentCommandService'
-        ],
-        operation: [
-          'AttachmentDelete'
-        ]
-      }
-    }
   }
 ];
 

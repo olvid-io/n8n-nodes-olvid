@@ -15,7 +15,8 @@ export const file_olvid_daemon_command_v1_tool_commands: GenFile = /*@__PURE__*/
 /**
  *
  * * Ping
- * * unauthenticated rpc to check daemon is up and accessible
+ * * Unauthenticated method.
+ * * Just check if daemon is reachable.
  *
  * @generated from message olvid.daemon.command.v1.PingRequest
  */
@@ -45,7 +46,8 @@ export const PingResponseSchema: GenMessage<PingResponse> = /*@__PURE__*/
 /**
  *
  * * DaemonVersion
- * * authenticated rpc to get current daemon version
+ * * Authenticated method.
+ * * Ask daemon its version.
  *
  * @generated from message olvid.daemon.command.v1.DaemonVersionRequest
  */
@@ -79,7 +81,11 @@ export const DaemonVersionResponseSchema: GenMessage<DaemonVersionResponse> = /*
 /**
  *
  * * AuthenticationTest
- * * check that sent credentials are valid user credentials, else it returns an error
+ * * Authenticated rpc.
+ * * Check that sent credentials are valid user credentials, else it returns an error.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: invalid client key.
  *
  * @generated from message olvid.daemon.command.v1.AuthenticationTestRequest
  */
@@ -109,7 +115,11 @@ export const AuthenticationTestResponseSchema: GenMessage<AuthenticationTestResp
 /**
  *
  * * AuthenticationAdminTest
- * * check that sent credentials are valid admin credentials, else it returns an error
+ * * Authenticated rpc (admin key only).
+ * * Check that sent credentials are valid admin credentials, else it returns an error.
+ * *
+ * * **Error codes**:
+ * * `PERMISSION_DENIED`: client key is not an admin client key.
  *
  * @generated from message olvid.daemon.command.v1.AuthenticationAdminTestRequest
  */

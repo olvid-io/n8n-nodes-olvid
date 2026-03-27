@@ -16,7 +16,14 @@ export const file_olvid_daemon_command_v1_invitation_commands: GenFile = /*@__PU
 
 /**
  *
- * * InvitationList return all discussions for current identity
+ * * InvitationList
+ * * List invitations for current identity.
+ * * Pass a filter to select only invitations that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INVALID_ARGUMENT`: invalid filter.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.InvitationListRequest
  */
@@ -54,6 +61,11 @@ export const InvitationListResponseSchema: GenMessage<InvitationListResponse> = 
 /**
  *
  * * InvitationGet
+ * * Get invitation by id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: invitation not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.InvitationGetRequest
  */
@@ -91,6 +103,14 @@ export const InvitationGetResponseSchema: GenMessage<InvitationGetResponse> = /*
 /**
  *
  * * InvitationNew
+ * * Send an invitation to another Olvid user using its invitation link.
+ * * Invitation links start with https://invitation.olvid.io#.
+ * * Sending an invitation will initiate an invitation protocol and create a new Invitation.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: you cannot invite yourself / invitation link is invalid.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.InvitationNewRequest
  */
@@ -128,6 +148,18 @@ export const InvitationNewResponseSchema: GenMessage<InvitationNewResponse> = /*
 /**
  *
  * * InvitationAccept
+ * * Accept a pending invitation. This will allow protocol to continue.
+ * * This command is only possible if `invitation.status` is one of the following:
+ * *  - STATUS_INVITATION_WAIT_YOU_TO_ACCEPT
+ * *  - STATUS_INTRODUCTION_WAIT_YOU_TO_ACCEPT
+ * *  - STATUS_ONE_TO_ONE_INVITATION_WAIT_YOU_TO_ACCEPT
+ * *  - STATUS_GROUP_INVITATION_WAIT_YOU_TO_ACCEPT
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: invitation not found.
+ * * `INVALID_ARGUMENT`: cannot accept an invitation with this status.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.InvitationAcceptRequest
  */
@@ -161,6 +193,18 @@ export const InvitationAcceptResponseSchema: GenMessage<InvitationAcceptResponse
 /**
  *
  * * InvitationDecline
+ * * Decline a pending invitation. This will abort protocol.
+ * * For invitation, introduction and one to one invitation the other user is not notified you declined the invitation.
+ * * This command is only possible if `invitation.status` is one of the following:
+ * *  - STATUS_INVITATION_WAIT_YOU_TO_ACCEPT
+ * *  - STATUS_INTRODUCTION_WAIT_YOU_TO_ACCEPT
+ * *  - STATUS_ONE_TO_ONE_INVITATION_WAIT_YOU_TO_ACCEPT
+ * *  - STATUS_GROUP_INVITATION_WAIT_YOU_TO_ACCEPT
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: invitation not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.InvitationDeclineRequest
  */
@@ -194,6 +238,13 @@ export const InvitationDeclineResponseSchema: GenMessage<InvitationDeclineRespon
 /**
  *
  * * InvitationSas
+ * * Only possible if `invitation.status` is equal to STATUS_INVITATION_WAIT_YOU_FOR_SAS_EXCHANGE.
+ * * Set the 4 digit code shown on your partner device.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: invitation not found.
+ * * `INVALID_ARGUMENT`: unexpected invitation status.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.InvitationSasRequest
  */
@@ -204,6 +255,8 @@ export type InvitationSasRequest = Message<"olvid.daemon.command.v1.InvitationSa
   invitationId: bigint;
 
   /**
+   * 4 digit pin code shown on your partner device
+   *
    * @generated from field: string sas = 2;
    */
   sas: string;
@@ -232,6 +285,10 @@ export const InvitationSasResponseSchema: GenMessage<InvitationSasResponse> = /*
 /**
  *
  * * InvitationDelete
+ * * Abort the protocol associated to any invitation and delete this invitation.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.InvitationDeleteRequest
  */

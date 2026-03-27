@@ -12,9 +12,9 @@ import { identityGetProperties } from "./IdentityCommandService/identityGet.oper
 import { identityGetBytesIdentifierProperties } from "./IdentityCommandService/identityGetBytesIdentifier.operation"
 import { identityGetInvitationLinkProperties } from "./IdentityCommandService/identityGetInvitationLink.operation"
 import { identityUpdateDetailsProperties } from "./IdentityCommandService/identityUpdateDetails.operation"
-import { identityRemovePhotoProperties } from "./IdentityCommandService/identityRemovePhoto.operation"
 import { identitySetPhotoProperties } from "./IdentityCommandService/identitySetPhoto.operation"
 import { identityDownloadPhotoProperties } from "./IdentityCommandService/identityDownloadPhoto.operation"
+import { identityRemovePhotoProperties } from "./IdentityCommandService/identityRemovePhoto.operation"
 import { identityGetApiKeyStatusProperties } from "./IdentityCommandService/identityGetApiKeyStatus.operation"
 import { identitySetApiKeyProperties } from "./IdentityCommandService/identitySetApiKey.operation"
 import { identitySetConfigurationLinkProperties } from "./IdentityCommandService/identitySetConfigurationLink.operation"
@@ -49,9 +49,9 @@ import { groupNewAdvancedGroupProperties } from "./GroupCommandService/groupNewA
 import { groupDisbandProperties } from "./GroupCommandService/groupDisband.operation"
 import { groupLeaveProperties } from "./GroupCommandService/groupLeave.operation"
 import { groupUpdateProperties } from "./GroupCommandService/groupUpdate.operation"
-import { groupUnsetPhotoProperties } from "./GroupCommandService/groupUnsetPhoto.operation"
 import { groupSetPhotoProperties } from "./GroupCommandService/groupSetPhoto.operation"
 import { groupDownloadPhotoProperties } from "./GroupCommandService/groupDownloadPhoto.operation"
+import { groupUnsetPhotoProperties } from "./GroupCommandService/groupUnsetPhoto.operation"
 import { discussionListProperties } from "./DiscussionCommandService/discussionList.operation"
 import { discussionGetProperties } from "./DiscussionCommandService/discussionGet.operation"
 import { discussionGetBytesIdentifierProperties } from "./DiscussionCommandService/discussionGetBytesIdentifier.operation"
@@ -63,16 +63,16 @@ import { discussionLockedListProperties } from "./DiscussionCommandService/discu
 import { discussionLockedDeleteProperties } from "./DiscussionCommandService/discussionLockedDelete.operation"
 import { messageListProperties } from "./MessageCommandService/messageList.operation"
 import { messageGetProperties } from "./MessageCommandService/messageGet.operation"
-import { messageRefreshProperties } from "./MessageCommandService/messageRefresh.operation"
-import { messageDeleteProperties } from "./MessageCommandService/messageDelete.operation"
 import { messageSendProperties } from "./MessageCommandService/messageSend.operation"
 import { messageSendWithAttachmentsProperties } from "./MessageCommandService/messageSendWithAttachments.operation"
+import { messageReactProperties } from "./MessageCommandService/messageReact.operation"
+import { messageUpdateBodyProperties } from "./MessageCommandService/messageUpdateBody.operation"
+import { messageDeleteProperties } from "./MessageCommandService/messageDelete.operation"
 import { messageSendLocationProperties } from "./MessageCommandService/messageSendLocation.operation"
 import { messageStartLocationSharingProperties } from "./MessageCommandService/messageStartLocationSharing.operation"
 import { messageUpdateLocationSharingProperties } from "./MessageCommandService/messageUpdateLocationSharing.operation"
 import { messageEndLocationSharingProperties } from "./MessageCommandService/messageEndLocationSharing.operation"
-import { messageReactProperties } from "./MessageCommandService/messageReact.operation"
-import { messageUpdateBodyProperties } from "./MessageCommandService/messageUpdateBody.operation"
+import { messageRefreshProperties } from "./MessageCommandService/messageRefresh.operation"
 import { attachmentListProperties } from "./AttachmentCommandService/attachmentList.operation"
 import { attachmentGetProperties } from "./AttachmentCommandService/attachmentGet.operation"
 import { attachmentDeleteProperties } from "./AttachmentCommandService/attachmentDelete.operation"
@@ -230,11 +230,6 @@ export const generatedProperties: INodeProperties[] = [
         "action": "Identity update details"
       },
       {
-        "name": "IdentityRemovePhoto",
-        "value": "IdentityRemovePhoto",
-        "action": "Identity remove photo"
-      },
-      {
         "name": "IdentitySetPhoto",
         "value": "IdentitySetPhoto",
         "action": "Identity set photo"
@@ -243,6 +238,11 @@ export const generatedProperties: INodeProperties[] = [
         "name": "IdentityDownloadPhoto",
         "value": "IdentityDownloadPhoto",
         "action": "Identity download photo"
+      },
+      {
+        "name": "IdentityRemovePhoto",
+        "value": "IdentityRemovePhoto",
+        "action": "Identity remove photo"
       },
       {
         "name": "IdentityGetApiKeyStatus",
@@ -483,11 +483,6 @@ export const generatedProperties: INodeProperties[] = [
         "action": "Group update"
       },
       {
-        "name": "GroupUnsetPhoto",
-        "value": "GroupUnsetPhoto",
-        "action": "Group unset photo"
-      },
-      {
         "name": "GroupSetPhoto",
         "value": "GroupSetPhoto",
         "action": "Group set photo"
@@ -496,6 +491,11 @@ export const generatedProperties: INodeProperties[] = [
         "name": "GroupDownloadPhoto",
         "value": "GroupDownloadPhoto",
         "action": "Group download photo"
+      },
+      {
+        "name": "GroupUnsetPhoto",
+        "value": "GroupUnsetPhoto",
+        "action": "Group unset photo"
       }
     ],
     "default": "GroupList"
@@ -587,16 +587,6 @@ export const generatedProperties: INodeProperties[] = [
         "action": "Message get"
       },
       {
-        "name": "MessageRefresh",
-        "value": "MessageRefresh",
-        "action": "Message refresh"
-      },
-      {
-        "name": "MessageDelete",
-        "value": "MessageDelete",
-        "action": "Message delete"
-      },
-      {
         "name": "MessageSend",
         "value": "MessageSend",
         "action": "Message send"
@@ -605,6 +595,21 @@ export const generatedProperties: INodeProperties[] = [
         "name": "MessageSendWithAttachments",
         "value": "MessageSendWithAttachments",
         "action": "Message send with attachments"
+      },
+      {
+        "name": "MessageReact",
+        "value": "MessageReact",
+        "action": "Message react"
+      },
+      {
+        "name": "MessageUpdateBody",
+        "value": "MessageUpdateBody",
+        "action": "Message update body"
+      },
+      {
+        "name": "MessageDelete",
+        "value": "MessageDelete",
+        "action": "Message delete"
       },
       {
         "name": "MessageSendLocation",
@@ -627,14 +632,9 @@ export const generatedProperties: INodeProperties[] = [
         "action": "Message end location sharing"
       },
       {
-        "name": "MessageReact",
-        "value": "MessageReact",
-        "action": "Message react"
-      },
-      {
-        "name": "MessageUpdateBody",
-        "value": "MessageUpdateBody",
-        "action": "Message update body"
+        "name": "MessageRefresh",
+        "value": "MessageRefresh",
+        "action": "Message refresh"
       }
     ],
     "default": "MessageList"
@@ -826,9 +826,9 @@ generatedProperties.push(
   ...identityGetBytesIdentifierProperties,
   ...identityGetInvitationLinkProperties,
   ...identityUpdateDetailsProperties,
-  ...identityRemovePhotoProperties,
   ...identitySetPhotoProperties,
   ...identityDownloadPhotoProperties,
+  ...identityRemovePhotoProperties,
   ...identityGetApiKeyStatusProperties,
   ...identitySetApiKeyProperties,
   ...identitySetConfigurationLinkProperties,
@@ -863,9 +863,9 @@ generatedProperties.push(
   ...groupDisbandProperties,
   ...groupLeaveProperties,
   ...groupUpdateProperties,
-  ...groupUnsetPhotoProperties,
   ...groupSetPhotoProperties,
   ...groupDownloadPhotoProperties,
+  ...groupUnsetPhotoProperties,
   ...discussionListProperties,
   ...discussionGetProperties,
   ...discussionGetBytesIdentifierProperties,
@@ -877,16 +877,16 @@ generatedProperties.push(
   ...discussionLockedDeleteProperties,
   ...messageListProperties,
   ...messageGetProperties,
-  ...messageRefreshProperties,
-  ...messageDeleteProperties,
   ...messageSendProperties,
   ...messageSendWithAttachmentsProperties,
+  ...messageReactProperties,
+  ...messageUpdateBodyProperties,
+  ...messageDeleteProperties,
   ...messageSendLocationProperties,
   ...messageStartLocationSharingProperties,
   ...messageUpdateLocationSharingProperties,
   ...messageEndLocationSharingProperties,
-  ...messageReactProperties,
-  ...messageUpdateBodyProperties,
+  ...messageRefreshProperties,
   ...attachmentListProperties,
   ...attachmentGetProperties,
   ...attachmentDeleteProperties,

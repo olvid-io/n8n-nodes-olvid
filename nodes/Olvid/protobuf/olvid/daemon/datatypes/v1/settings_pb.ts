@@ -13,6 +13,12 @@ export const file_olvid_daemon_datatypes_v1_settings: GenFile = /*@__PURE__*/
   fileDesc("CihvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL3NldHRpbmdzLnByb3RvEhlvbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxIv4EChBJZGVudGl0eVNldHRpbmdzElQKCmludml0YXRpb24YASABKAsyQC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5U2V0dGluZ3MuQXV0b0FjY2VwdEludml0YXRpb24SVwoRbWVzc2FnZV9yZXRlbnRpb24YAiABKAsyPC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5U2V0dGluZ3MuTWVzc2FnZVJldGVudGlvbhJGCghrZXljbG9haxgDIAEoCzI0Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlTZXR0aW5ncy5LZXljbG9haxqTAQoUQXV0b0FjY2VwdEludml0YXRpb24SIAoYYXV0b19hY2NlcHRfaW50cm9kdWN0aW9uGAEgASgIEhkKEWF1dG9fYWNjZXB0X2dyb3VwGAIgASgIEh4KFmF1dG9fYWNjZXB0X29uZV90b19vbmUYAyABKAgSHgoWYXV0b19hY2NlcHRfaW52aXRhdGlvbhgEIAEoCBqvAQoQTWVzc2FnZVJldGVudGlvbhIaChJleGlzdGVuY2VfZHVyYXRpb24YASABKAQSGAoQZGlzY3Vzc2lvbl9jb3VudBgCIAEoBBIUCgxnbG9iYWxfY291bnQYAyABKAQSIAoYY2xlYW5fbG9ja2VkX2Rpc2N1c3Npb25zGAQgASgIEi0KJXByZXNlcnZlX2lzX3NoYXJpbmdfbG9jYXRpb25fbWVzc2FnZXMYBSABKAgaKwoIS2V5Y2xvYWsSHwoXYXV0b19pbnZpdGVfbmV3X21lbWJlcnMYASABKAgidwoSRGlzY3Vzc2lvblNldHRpbmdzEhUKDWRpc2N1c3Npb25faWQYASABKAQSEQoJcmVhZF9vbmNlGAIgASgIEhoKEmV4aXN0ZW5jZV9kdXJhdGlvbhgDIAEoBBIbChN2aXNpYmlsaXR5X2R1cmF0aW9uGAQgASgEQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUABaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z");
 
 /**
+ *
+ * * Settings for an Identity managed by a daemon.
+ * * - AutoAcceptInvitation: when enabled the daemon will automatically accept incoming and existing invitations from specified protocol.
+ * * - MessageRetention: when at least one element is set daemon will regularly check if some message can be deleted, matching filled criteria. This allows to save space and save performances by keeping database as small as possible.
+ * * - Keycloak: directory related settings
+ *
  * @generated from message olvid.daemon.datatypes.v1.IdentitySettings
  */
 export type IdentitySettings = Message<"olvid.daemon.datatypes.v1.IdentitySettings"> & {
@@ -44,21 +50,29 @@ export const IdentitySettingsSchema: GenMessage<IdentitySettings> = /*@__PURE__*
  */
 export type IdentitySettings_AutoAcceptInvitation = Message<"olvid.daemon.datatypes.v1.IdentitySettings.AutoAcceptInvitation"> & {
   /**
+   * auto accept introductions (a trusted contact pushed a new contact)
+   *
    * @generated from field: bool auto_accept_introduction = 1;
    */
   autoAcceptIntroduction: boolean;
 
   /**
+   * auto accept invitations to a group
+   *
    * @generated from field: bool auto_accept_group = 2;
    */
   autoAcceptGroup: boolean;
 
   /**
+   * auto accept contact invitations to one to one discussions
+   *
    * @generated from field: bool auto_accept_one_to_one = 3;
    */
   autoAcceptOneToOne: boolean;
 
   /**
+   * auto accept olvid invitations (mind this will only accept invitation and not exchange sas code for you)
+   *
    * @generated from field: bool auto_accept_invitation = 4;
    */
   autoAcceptInvitation: boolean;
@@ -76,32 +90,39 @@ export const IdentitySettings_AutoAcceptInvitationSchema: GenMessage<IdentitySet
  */
 export type IdentitySettings_MessageRetention = Message<"olvid.daemon.datatypes.v1.IdentitySettings.MessageRetention"> & {
   /**
-   * 0 -> disabled (seconds)
+   * if set, message older than *existence_duration* seconds will be deleted
+   * set to 0 to disable
    *
    * @generated from field: uint64 existence_duration = 1;
    */
   existenceDuration: bigint;
 
   /**
-   * 0 -> disabled
+   * if set, if a discussion has more than *discussion_count* messages, older messages will be deleted.
+   * set to 0 to disable
    *
    * @generated from field: uint64 discussion_count = 2;
    */
   discussionCount: bigint;
 
   /**
-   * 0 -> disabled
+   * if set, if identity has more than *global_count* messages, older messages will be deleted.
+   * set to 0 to disable
    *
    * @generated from field: uint64 global_count = 3;
    */
   globalCount: bigint;
 
   /**
+   * if true, messages in locked discussions will be deleted.
+   *
    * @generated from field: bool clean_locked_discussions = 4;
    */
   cleanLockedDiscussions: boolean;
 
   /**
+   * if true, live sharing location messages will never be deleted.
+   *
    * @generated from field: bool preserve_is_sharing_location_messages = 5;
    */
   preserveIsSharingLocationMessages: boolean;
@@ -119,6 +140,8 @@ export const IdentitySettings_MessageRetentionSchema: GenMessage<IdentitySetting
  */
 export type IdentitySettings_Keycloak = Message<"olvid.daemon.datatypes.v1.IdentitySettings.Keycloak"> & {
   /**
+   * if true, directory will regularly be scanned to add new members as contacts.
+   *
    * @generated from field: bool auto_invite_new_members = 1;
    */
   autoInviteNewMembers: boolean;
@@ -132,6 +155,9 @@ export const IdentitySettings_KeycloakSchema: GenMessage<IdentitySettings_Keyclo
   messageDesc(file_olvid_daemon_datatypes_v1_settings, 0, 2);
 
 /**
+ *
+ * * Settings for a discussion. Those settings are shared with other contacts in this discussion.
+ *
  * @generated from message olvid.daemon.datatypes.v1.DiscussionSettings
  */
 export type DiscussionSettings = Message<"olvid.daemon.datatypes.v1.DiscussionSettings"> & {
@@ -141,21 +167,21 @@ export type DiscussionSettings = Message<"olvid.daemon.datatypes.v1.DiscussionSe
   discussionId: bigint;
 
   /**
-   * message ephemerality settings (does not use a proper message for legacy reasons)
+   * are message read once
    *
    * @generated from field: bool read_once = 2;
    */
   readOnce: boolean;
 
   /**
-   * 0 -> disabled (seconds)
+   * if set, messages are destroyed after *existence_duration* seconds, 0 to disable
    *
    * @generated from field: uint64 existence_duration = 3;
    */
   existenceDuration: bigint;
 
   /**
-   * 0 -> disabled (seconds)
+   * if set, messages are only visible for *visibility_duration* seconds, 0 to disable
    *
    * @generated from field: uint64 visibility_duration = 4;
    */

@@ -10,43 +10,63 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/datatypes/v1/invitation.proto.
  */
 export const file_olvid_daemon_datatypes_v1_invitation: GenFile = /*@__PURE__*/
-  fileDesc("CipvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2ludml0YXRpb24ucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEisgUKCkludml0YXRpb24SCgoCaWQYASABKAQSPAoGc3RhdHVzGAIgASgOMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JbnZpdGF0aW9uLlN0YXR1cxIUCgxkaXNwbGF5X25hbWUYAyABKAkSEQoJdGltZXN0YW1wGAQgASgEEhAKA3NhcxgFIAEoCUgAiAEBEhcKCm1lZGlhdG9ySWQYBiABKARIAYgBASLuAwoGU3RhdHVzEhYKElNUQVRVU19VTlNQRUNJRklFRBAAEigKJFNUQVRVU19JTlZJVEFUSU9OX1dBSVRfWU9VX1RPX0FDQ0VQVBABEicKI1NUQVRVU19JTlZJVEFUSU9OX1dBSVRfSVRfVE9fQUNDRVBUEAISKAokU1RBVFVTX0lOVklUQVRJT05fU1RBVFVTX0lOX1BST0dSRVNTEAMSLworU1RBVFVTX0lOVklUQVRJT05fV0FJVF9ZT1VfRk9SX1NBU19FWENIQU5HRRAEEi4KKlNUQVRVU19JTlZJVEFUSU9OX1dBSVRfSVRfRk9SX1NBU19FWENIQU5HRRAFEikKJVNUQVRVU19JTlRST0RVQ1RJT05fV0FJVF9JVF9UT19BQ0NFUFQQBxIqCiZTVEFUVVNfSU5UUk9EVUNUSU9OX1dBSVRfWU9VX1RPX0FDQ0VQVBAIEjIKLlNUQVRVU19PTkVfVE9fT05FX0lOVklUQVRJT05fV0FJVF9JVF9UT19BQ0NFUFQQCRIzCi9TVEFUVVNfT05FX1RPX09ORV9JTlZJVEFUSU9OX1dBSVRfWU9VX1RPX0FDQ0VQVBAKEi4KKlNUQVRVU19HUk9VUF9JTlZJVEFUSU9OX1dBSVRfWU9VX1RPX0FDQ0VQVBALQgYKBF9zYXNCDQoLX21lZGlhdG9ySWQiswMKEEludml0YXRpb25GaWx0ZXISQQoGc3RhdHVzGAEgASgOMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JbnZpdGF0aW9uLlN0YXR1c0gAiAEBEkMKBHR5cGUYAiABKA4yMC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkludml0YXRpb25GaWx0ZXIuVHlwZUgBiAEBEiAKE2Rpc3BsYXlfbmFtZV9zZWFyY2gYAyABKAlIAogBARIaCg1taW5fdGltZXN0YW1wGAQgASgESAOIAQESGgoNbWF4X3RpbWVzdGFtcBgFIAEoBEgEiAEBIm0KBFR5cGUSFAoQVFlQRV9VTlNQRUNJRklFRBAAEhMKD1RZUEVfSU5WSVRBVElPThABEhUKEVRZUEVfSU5UUk9EVUNUSU9OEAISDgoKVFlQRV9HUk9VUBADEhMKD1RZUEVfT05FX1RPX09ORRAEQgkKB19zdGF0dXNCBwoFX3R5cGVCFgoUX2Rpc3BsYXlfbmFtZV9zZWFyY2hCEAoOX21pbl90aW1lc3RhbXBCEAoOX21heF90aW1lc3RhbXBCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM");
+  fileDesc("CipvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2ludml0YXRpb24ucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEitAUKCkludml0YXRpb24SCgoCaWQYASABKAQSPAoGc3RhdHVzGAIgASgOMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JbnZpdGF0aW9uLlN0YXR1cxIUCgxkaXNwbGF5X25hbWUYAyABKAkSEQoJdGltZXN0YW1wGAQgASgEEhAKA3NhcxgFIAEoCUgAiAEBEhgKC21lZGlhdG9yX2lkGAYgASgESAGIAQEi7gMKBlN0YXR1cxIWChJTVEFUVVNfVU5TUEVDSUZJRUQQABIoCiRTVEFUVVNfSU5WSVRBVElPTl9XQUlUX1lPVV9UT19BQ0NFUFQQARInCiNTVEFUVVNfSU5WSVRBVElPTl9XQUlUX0lUX1RPX0FDQ0VQVBACEigKJFNUQVRVU19JTlZJVEFUSU9OX1NUQVRVU19JTl9QUk9HUkVTUxADEi8KK1NUQVRVU19JTlZJVEFUSU9OX1dBSVRfWU9VX0ZPUl9TQVNfRVhDSEFOR0UQBBIuCipTVEFUVVNfSU5WSVRBVElPTl9XQUlUX0lUX0ZPUl9TQVNfRVhDSEFOR0UQBRIpCiVTVEFUVVNfSU5UUk9EVUNUSU9OX1dBSVRfSVRfVE9fQUNDRVBUEAcSKgomU1RBVFVTX0lOVFJPRFVDVElPTl9XQUlUX1lPVV9UT19BQ0NFUFQQCBIyCi5TVEFUVVNfT05FX1RPX09ORV9JTlZJVEFUSU9OX1dBSVRfSVRfVE9fQUNDRVBUEAkSMwovU1RBVFVTX09ORV9UT19PTkVfSU5WSVRBVElPTl9XQUlUX1lPVV9UT19BQ0NFUFQQChIuCipTVEFUVVNfR1JPVVBfSU5WSVRBVElPTl9XQUlUX1lPVV9UT19BQ0NFUFQQC0IGCgRfc2FzQg4KDF9tZWRpYXRvcl9pZCKzAwoQSW52aXRhdGlvbkZpbHRlchJBCgZzdGF0dXMYASABKA4yLC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkludml0YXRpb24uU3RhdHVzSACIAQESQwoEdHlwZRgCIAEoDjIwLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSW52aXRhdGlvbkZpbHRlci5UeXBlSAGIAQESIAoTZGlzcGxheV9uYW1lX3NlYXJjaBgDIAEoCUgCiAEBEhoKDW1pbl90aW1lc3RhbXAYBCABKARIA4gBARIaCg1tYXhfdGltZXN0YW1wGAUgASgESASIAQEibQoEVHlwZRIUChBUWVBFX1VOU1BFQ0lGSUVEEAASEwoPVFlQRV9JTlZJVEFUSU9OEAESFQoRVFlQRV9JTlRST0RVQ1RJT04QAhIOCgpUWVBFX0dST1VQEAMSEwoPVFlQRV9PTkVfVE9fT05FEARCCQoHX3N0YXR1c0IHCgVfdHlwZUIWChRfZGlzcGxheV9uYW1lX3NlYXJjaEIQCg5fbWluX3RpbWVzdGFtcEIQCg5fbWF4X3RpbWVzdGFtcEI1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlAAWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw");
 
 /**
+ *
+ * * An invitation represents an instance of a protocol among several possibilities.
+ * * Protocols can be:
+ * * - Invitation: the classic Olvid invitation protocol to add someone else to your contact book. Protocol implies multiple manual steps, with invitation acceptation and four digit code exchange.
+ * * - Introduction: a third party identity presents two of its contacts to each other.
+ * * - One to one invitation: One of your contact asked you to create a one to one discussion.
+ * * - Group invitation: Someone invited you to join a group.
+ * *
+ * * Each invitation have a status representing the protocol, and it's current step.
+ *
  * @generated from message olvid.daemon.datatypes.v1.Invitation
  */
 export type Invitation = Message<"olvid.daemon.datatypes.v1.Invitation"> & {
   /**
+   * invitation unique identifier
+   *
    * @generated from field: uint64 id = 1;
    */
   id: bigint;
 
   /**
+   * current protocol step
+   *
    * @generated from field: olvid.daemon.datatypes.v1.Invitation.Status status = 2;
    */
   status: Invitation_Status;
 
   /**
+   * display name of the other identity or the group name
+   *
    * @generated from field: string display_name = 3;
    */
   displayName: string;
 
   /**
+   * latest status update timestamp
+   *
    * @generated from field: uint64 timestamp = 4;
    */
   timestamp: bigint;
 
   /**
-   * for STATUS_INVITATION_WAIT_YOU_FOR_SAS_EXCHANGE and STATUS_INVITATION_WAIT_IT_FOR_SAS_EXCHANGE, set to pin code to exchange
+   * only set for STATUS_INVITATION_WAIT_YOU_FOR_SAS_EXCHANGE and STATUS_INVITATION_WAIT_IT_FOR_SAS_EXCHANGE
+   * four digit code to give to the other in an invitation protocol
    *
    * @generated from field: optional string sas = 5;
    */
   sas?: string;
 
   /**
-   * For introductions only: the contact id of the person who initiated introduction protocol
+   * introductions protocol only
+   * the contact id of the person who initiated introduction protocol
    *
-   * @generated from field: optional uint64 mediatorId = 6;
+   * @generated from field: optional uint64 mediator_id = 6;
    */
   mediatorId?: bigint;
 };
@@ -68,51 +88,71 @@ export enum Invitation_Status {
   UNSPECIFIED = 0,
 
   /**
+   * you received an invitation, accept or decline it
+   *
    * @generated from enum value: STATUS_INVITATION_WAIT_YOU_TO_ACCEPT = 1;
    */
   INVITATION_WAIT_YOU_TO_ACCEPT = 1,
 
   /**
+   * you sent an invitation, recipient must accept it to continue
+   *
    * @generated from enum value: STATUS_INVITATION_WAIT_IT_TO_ACCEPT = 2;
    */
   INVITATION_WAIT_IT_TO_ACCEPT = 2,
 
   /**
+   * invitation process is in progress and will continue after automatic protocol message exchange between protagonist
+   *
    * @generated from enum value: STATUS_INVITATION_STATUS_IN_PROGRESS = 3;
    */
   INVITATION_STATUS_IN_PROGRESS = 3,
 
   /**
+   * you must set other sas code
+   *
    * @generated from enum value: STATUS_INVITATION_WAIT_YOU_FOR_SAS_EXCHANGE = 4;
    */
   INVITATION_WAIT_YOU_FOR_SAS_EXCHANGE = 4,
 
   /**
+   * you set other sas code, give your sas code to other
+   *
    * @generated from enum value: STATUS_INVITATION_WAIT_IT_FOR_SAS_EXCHANGE = 5;
    */
   INVITATION_WAIT_IT_FOR_SAS_EXCHANGE = 5,
 
   /**
+   * you accepted an introduction, wait for the other to accept too
+   *
    * @generated from enum value: STATUS_INTRODUCTION_WAIT_IT_TO_ACCEPT = 7;
    */
   INTRODUCTION_WAIT_IT_TO_ACCEPT = 7,
 
   /**
+   * you received an introduction
+   *
    * @generated from enum value: STATUS_INTRODUCTION_WAIT_YOU_TO_ACCEPT = 8;
    */
   INTRODUCTION_WAIT_YOU_TO_ACCEPT = 8,
 
   /**
+   * you sent a one to one invitation, wait for the other to accept
+   *
    * @generated from enum value: STATUS_ONE_TO_ONE_INVITATION_WAIT_IT_TO_ACCEPT = 9;
    */
   ONE_TO_ONE_INVITATION_WAIT_IT_TO_ACCEPT = 9,
 
   /**
+   * you received a one to one invitation, accept or decline it
+   *
    * @generated from enum value: STATUS_ONE_TO_ONE_INVITATION_WAIT_YOU_TO_ACCEPT = 10;
    */
   ONE_TO_ONE_INVITATION_WAIT_YOU_TO_ACCEPT = 10,
 
   /**
+   * you received a group invitation, accept or decline it
+   *
    * @generated from enum value: STATUS_GROUP_INVITATION_WAIT_YOU_TO_ACCEPT = 11;
    */
   GROUP_INVITATION_WAIT_YOU_TO_ACCEPT = 11,
@@ -125,30 +165,44 @@ export const Invitation_StatusSchema: GenEnum<Invitation_Status> = /*@__PURE__*/
   enumDesc(file_olvid_daemon_datatypes_v1_invitation, 0, 0);
 
 /**
+ *
+ * * Filter invitation by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.InvitationFilter
  */
 export type InvitationFilter = Message<"olvid.daemon.datatypes.v1.InvitationFilter"> & {
   /**
+   * does invitation have a specific status
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.Invitation.Status status = 1;
    */
   status?: Invitation_Status;
 
   /**
+   * does invitation belongs to a specific protocol
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter.Type type = 2;
    */
   type?: InvitationFilter_Type;
 
   /**
+   * regexp filter on *display_name* field
+   *
    * @generated from field: optional string display_name_search = 3;
    */
   displayNameSearch?: string;
 
   /**
+   * is timestamp less or equal than *min_timestamp*
+   *
    * @generated from field: optional uint64 min_timestamp = 4;
    */
   minTimestamp?: bigint;
 
   /**
+   * is timestamp more or equal than *max_timestamp*
+   *
    * @generated from field: optional uint64 max_timestamp = 5;
    */
   maxTimestamp?: bigint;
@@ -171,21 +225,39 @@ export enum InvitationFilter_Type {
   UNSPECIFIED = 0,
 
   /**
+   * is status one of :
+   * - STATUS_INVITATION_WAIT_YOU_TO_ACCEPT
+   * - STATUS_INVITATION_WAIT_IT_TO_ACCEPT
+   * - STATUS_INVITATION_STATUS_IN_PROGRESS
+   * - STATUS_INVITATION_WAIT_YOU_FOR_SAS_EXCHANGE
+   * - STATUS_INVITATION_WAIT_IT_FOR_SAS_EXCHANGE
+   *
    * @generated from enum value: TYPE_INVITATION = 1;
    */
   INVITATION = 1,
 
   /**
+   * is status one of :
+   * - STATUS_INTRODUCTION_WAIT_IT_TO_ACCEPT
+   * - STATUS_INTRODUCTION_WAIT_YOU_TO_ACCEPT
+   *
    * @generated from enum value: TYPE_INTRODUCTION = 2;
    */
   INTRODUCTION = 2,
 
   /**
+   * is status equals to:
+   * - STATUS_GROUP_INVITATION_WAIT_YOU_TO_ACCEPT
+   *
    * @generated from enum value: TYPE_GROUP = 3;
    */
   GROUP = 3,
 
   /**
+   * is status one of :
+   * - STATUS_ONE_TO_ONE_INVITATION_WAIT_IT_TO_ACCEPT
+   * - STATUS_ONE_TO_ONE_INVITATION_WAIT_YOU_TO_ACCEPT
+   *
    * @generated from enum value: TYPE_ONE_TO_ONE = 4;
    */
   ONE_TO_ONE = 4,

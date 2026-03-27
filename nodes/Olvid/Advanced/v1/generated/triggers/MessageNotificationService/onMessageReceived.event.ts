@@ -134,8 +134,8 @@ export const messageReceivedProperties: INodeProperties[] = [
         default: 0
       },
       {
-        displayName: 'ReactionsFilter',
-        name: 'reactionsFilter',
+        displayName: 'ReactionFilters',
+        name: 'reactionFilters',
         type: 'fixedCollection',
         typeOptions: {
           multipleValues: true
@@ -147,8 +147,8 @@ export const messageReceivedProperties: INodeProperties[] = [
             displayName: 'Collection',
             values: [
               {
-                displayName: 'ReactionsFilter',
-                name: 'reactionsFilter',
+                displayName: 'ReactionFilters',
+                name: 'reactionFilters',
                 type: 'collection',
                 default: {
                   reactedBySelect: 'undefined',

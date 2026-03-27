@@ -15,6 +15,15 @@ export const file_olvid_daemon_datatypes_v1_backup: GenFile = /*@__PURE__*/
   fileDesc("CiZvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2JhY2t1cC5wcm90bxIZb2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MSKRBQoGQmFja3VwEkMKDGFkbWluX2JhY2t1cBgBIAEoCzItLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQmFja3VwLkFkbWluQmFja3VwEkgKD3Byb2ZpbGVfYmFja3VwcxgCIAMoCzIvLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQmFja3VwLlByb2ZpbGVCYWNrdXAaTQoLQWRtaW5CYWNrdXASHgoWYWRtaW5fY2xpZW50X2tleV9jb3VudBgBIAEoBBIeChZzdG9yYWdlX2VsZW1lbnRzX2NvdW50GAIgASgEGqgDCg1Qcm9maWxlQmFja3VwEhwKFHByb2ZpbGVfZGlzcGxheV9uYW1lGAEgASgJEh4KFmFscmVhZHlfZXhpc3RzX2xvY2FsbHkYAiABKAgSGAoQa2V5Y2xvYWtfbWFuYWdlZBgDIAEoCBJLCglzbmFwc2hvdHMYBCADKAsyOC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkJhY2t1cC5Qcm9maWxlQmFja3VwLlNuYXBzaG90GvEBCghTbmFwc2hvdBIKCgJpZBgBIAEoCRIRCgl0aW1lc3RhbXAYAiABKAQSGAoQZnJvbV9kZXZpY2VfbmFtZRgDIAEoCRIVCg1jb250YWN0X2NvdW50GAQgASgEEhMKC2dyb3VwX2NvdW50GAUgASgEEhgKEGNsaWVudF9rZXlfY291bnQYBiABKAQSHgoWc3RvcmFnZV9lbGVtZW50c19jb3VudBgHIAEoBBJGChFpZGVudGl0eV9zZXR0aW5ncxgIIAEoCzIrLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuSWRlbnRpdHlTZXR0aW5nc0I1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlAAWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw", [file_olvid_daemon_datatypes_v1_settings]);
 
 /**
+ *
+ * * Describe a full backup obtained with a backup key.
+ * * A backup contains multiple parts.
+ * * The AdminBackup contains the admin client keys and the elements contained in the global daemon storage.
+ * * A backup may contain multiple profile backups (one per identity), and each may contain one or more snapshots.
+ * * A profile snapshot contains an identity, its discussions, contacts, groups, client keys, and discussion storage.
+ * *
+ * * Note: a backup does not contain any messages or attachments.
+ *
  * @generated from message olvid.daemon.datatypes.v1.Backup
  */
 export type Backup = Message<"olvid.daemon.datatypes.v1.Backup"> & {
@@ -95,6 +104,8 @@ export const Backup_ProfileBackupSchema: GenMessage<Backup_ProfileBackup> = /*@_
  */
 export type Backup_ProfileBackup_Snapshot = Message<"olvid.daemon.datatypes.v1.Backup.ProfileBackup.Snapshot"> & {
   /**
+   * id to specify to restore an identity backup
+   *
    * @generated from field: string id = 1;
    */
   id: string;

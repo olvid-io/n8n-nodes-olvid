@@ -12,11 +12,17 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/command/v1/attachment_commands.proto.
  */
 export const file_olvid_daemon_command_v1_attachment_commands: GenFile = /*@__PURE__*/
-  fileDesc("CjFvbHZpZC9kYWVtb24vY29tbWFuZC92MS9hdHRhY2htZW50X2NvbW1hbmRzLnByb3RvEhdvbHZpZC5kYWVtb24uY29tbWFuZC52MSJkChVBdHRhY2htZW50TGlzdFJlcXVlc3QSQAoGZmlsdGVyGAEgASgLMisub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50RmlsdGVySACIAQFCCQoHX2ZpbHRlciJUChZBdHRhY2htZW50TGlzdFJlc3BvbnNlEjoKC2F0dGFjaG1lbnRzGAEgAygLMiUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50IlYKFEF0dGFjaG1lbnRHZXRSZXF1ZXN0Ej4KDWF0dGFjaG1lbnRfaWQYASABKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRJZCJSChVBdHRhY2htZW50R2V0UmVzcG9uc2USOQoKYXR0YWNobWVudBgBIAEoCzIlLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQXR0YWNobWVudCKPAQoXQXR0YWNobWVudERlbGV0ZVJlcXVlc3QSPgoNYXR0YWNobWVudF9pZBgBIAEoCzInLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQXR0YWNobWVudElkEh4KEWRlbGV0ZV9ldmVyeXdoZXJlGAIgASgISACIAQFCFAoSX2RlbGV0ZV9ldmVyeXdoZXJlIhoKGEF0dGFjaG1lbnREZWxldGVSZXNwb25zZSJbChlBdHRhY2htZW50RG93bmxvYWRSZXF1ZXN0Ej4KDWF0dGFjaG1lbnRfaWQYASABKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRJZCIrChpBdHRhY2htZW50RG93bmxvYWRSZXNwb25zZRINCgVjaHVuaxgBIAEoDEI1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlABWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw", [file_olvid_daemon_datatypes_v1_attachment]);
+  fileDesc("CjFvbHZpZC9kYWVtb24vY29tbWFuZC92MS9hdHRhY2htZW50X2NvbW1hbmRzLnByb3RvEhdvbHZpZC5kYWVtb24uY29tbWFuZC52MSJkChVBdHRhY2htZW50TGlzdFJlcXVlc3QSQAoGZmlsdGVyGAEgASgLMisub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50RmlsdGVySACIAQFCCQoHX2ZpbHRlciJUChZBdHRhY2htZW50TGlzdFJlc3BvbnNlEjoKC2F0dGFjaG1lbnRzGAEgAygLMiUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50IlYKFEF0dGFjaG1lbnRHZXRSZXF1ZXN0Ej4KDWF0dGFjaG1lbnRfaWQYASABKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkF0dGFjaG1lbnRJZCJSChVBdHRhY2htZW50R2V0UmVzcG9uc2USOQoKYXR0YWNobWVudBgBIAEoCzIlLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQXR0YWNobWVudCJZChdBdHRhY2htZW50RGVsZXRlUmVxdWVzdBI+Cg1hdHRhY2htZW50X2lkGAEgASgLMicub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5BdHRhY2htZW50SWQiGgoYQXR0YWNobWVudERlbGV0ZVJlc3BvbnNlIlsKGUF0dGFjaG1lbnREb3dubG9hZFJlcXVlc3QSPgoNYXR0YWNobWVudF9pZBgBIAEoCzInLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuQXR0YWNobWVudElkIisKGkF0dGFjaG1lbnREb3dubG9hZFJlc3BvbnNlEg0KBWNodW5rGAEgASgMQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUAFaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_attachment]);
 
 /**
  *
- * * AttachmentList return all attachments for current identity
+ * * AttachmentList
+ * * List attachments for current identity.
+ * * Pass a filter to select only attachments that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND` ("Message not found"): filter.messageId does not belong to an identity message.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.AttachmentListRequest
  */
@@ -54,6 +60,11 @@ export const AttachmentListResponseSchema: GenMessage<AttachmentListResponse> = 
 /**
  *
  * * AttachmentGet
+ * * Get an attachment by id.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND` (*Attachment not found*): attachment_id does not belong to an identity attachment.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.AttachmentGetRequest
  */
@@ -91,6 +102,13 @@ export const AttachmentGetResponseSchema: GenMessage<AttachmentGetResponse> = /*
 /**
  *
  * * AttachmentDelete
+ * * Delete an attachment by id.
+ * * Use this to delete attachment and associated file locally to save space.
+ * * Else message deletion implies associated attachments deletion.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND` (*Attachment not found*): attachment_id does not belong to an identity attachment.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.AttachmentDeleteRequest
  */
@@ -99,11 +117,6 @@ export type AttachmentDeleteRequest = Message<"olvid.daemon.command.v1.Attachmen
    * @generated from field: olvid.daemon.datatypes.v1.AttachmentId attachment_id = 1;
    */
   attachmentId?: AttachmentId;
-
-  /**
-   * @generated from field: optional bool delete_everywhere = 2;
-   */
-  deleteEverywhere?: boolean;
 };
 
 /**
@@ -129,6 +142,13 @@ export const AttachmentDeleteResponseSchema: GenMessage<AttachmentDeleteResponse
 /**
  *
  * * AttachmentDownload
+ * * Download the file associated to an attachment.
+ * * This returns one or more chunks of bytes.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND` (*Attachment not found*): attachment_id does not belong to an identity attachment.
+ * * `INTERNAL`
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.AttachmentDownloadRequest
  */

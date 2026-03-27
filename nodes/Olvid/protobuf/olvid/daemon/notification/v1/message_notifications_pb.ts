@@ -17,16 +17,24 @@ export const file_olvid_daemon_notification_v1_message_notifications: GenFile = 
 /**
  *
  * * MessageReceived
+ * * Receive a notification each time you receive a new message.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageReceivedNotification
  */
 export type SubscribeToMessageReceivedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageReceivedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 2;
    */
   filter?: MessageFilter;
@@ -59,16 +67,24 @@ export const MessageReceivedNotificationSchema: GenMessage<MessageReceivedNotifi
 /**
  *
  * * MessageSent
+ * * Receive a notification each time an you sent a new message.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageSentNotification
  */
 export type SubscribeToMessageSentNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageSentNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 2;
    */
   filter?: MessageFilter;
@@ -101,21 +117,35 @@ export const MessageSentNotificationSchema: GenMessage<MessageSentNotification> 
 /**
  *
  * * MessageDeleted
+ * * Receive a notification each time a message has been deleted.
+ * * This can happen under different circumstances:
+ * * - you deleted a message locally
+ * * - someone else deleted it's own message for everyone in the discussion
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageDeletedNotification
  */
 export type SubscribeToMessageDeletedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageDeletedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -148,21 +178,33 @@ export const MessageDeletedNotificationSchema: GenMessage<MessageDeletedNotifica
 /**
  *
  * * MessageBodyUpdated
+ * * Receive a notification each time a message text body have been updated.
+ * * Only the message sender can edit its own messages.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageBodyUpdatedNotification
  */
 export type SubscribeToMessageBodyUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageBodyUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -200,21 +242,34 @@ export const MessageBodyUpdatedNotificationSchema: GenMessage<MessageBodyUpdated
 /**
  *
  * * MessageUploaded
+ * * Receive a notification each time an outbound message have been uploaded on server.
+ * * Note: You cannot guarantee this notification will arrive when working with ephemeral message
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: at least one of _message_ids_ is not an outbound message.
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageUploadedNotification
  */
 export type SubscribeToMessageUploadedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageUploadedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -247,21 +302,34 @@ export const MessageUploadedNotificationSchema: GenMessage<MessageUploadedNotifi
 /**
  *
  * * MessageDelivered
+ * * Receive a notification each time an outbound message have been delivered on at least one recipient's device.
+ * * Note: You cannot guarantee this notification will arrive when working with ephemeral message
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: at least one of _message_ids_ is not an outbound message.
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageDeliveredNotification
  */
 export type SubscribeToMessageDeliveredNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageDeliveredNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -294,21 +362,34 @@ export const MessageDeliveredNotificationSchema: GenMessage<MessageDeliveredNoti
 /**
  *
  * * MessageRead
+ * * Receive a notification each time an outbound message have been read by at least one recipient.
+ * * Note: You cannot guarantee this notification will arrive when working with ephemeral message
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: at least one of _message_ids_ is not an outbound message.
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageReadNotification
  */
 export type SubscribeToMessageReadNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageReadNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -341,17 +422,26 @@ export const MessageReadNotificationSchema: GenMessage<MessageReadNotification> 
 /**
  *
  * * MessageLocationReceived
- * * triggered by inbound messages
+ * * Receive a notification each time you received a location message.
+ * * Location messages are different from location sharing messages as they contains one static position.
+ * * A received location message also triggers the MessageReceived notification.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageLocationReceivedNotification
  */
 export type SubscribeToMessageLocationReceivedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageLocationReceivedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 2;
    */
   filter?: MessageFilter;
@@ -384,17 +474,26 @@ export const MessageLocationReceivedNotificationSchema: GenMessage<MessageLocati
 /**
  *
  * * MessageLocationSent
- * * triggered by outbound messages
+ * * Receive a notification each time you sent a location message.
+ * * Location messages are different from location sharing messages as they contains one static position.
+ * * A sent location message also triggers the MessageSent notification.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageLocationSentNotification
  */
 export type SubscribeToMessageLocationSentNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageLocationSentNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 2;
    */
   filter?: MessageFilter;
@@ -427,17 +526,26 @@ export const MessageLocationSentNotificationSchema: GenMessage<MessageLocationSe
 /**
  *
  * * MessageLocationSharingStart
- * * triggered by inbound AND outbound messages
+ * * Receive a notification each time you sent or you received a new location sharing message.
+ * * Location sharing messages are supposed to be updated for a given while.
+ * * A new location sharing message also triggers the MessageReceived or MessageSent notification.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageLocationSharingStartNotification
  */
 export type SubscribeToMessageLocationSharingStartNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageLocationSharingStartNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 2;
    */
   filter?: MessageFilter;
@@ -470,22 +578,34 @@ export const MessageLocationSharingStartNotificationSchema: GenMessage<MessageLo
 /**
  *
  * * MessageLocationSharingUpdate
- * * triggered by inbound AND outbound messages
+ * * Receive a notification each time a location sharing message have been updated with a new location.
+ * * This might concern inbound or outbound messages.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `INVALID_ARGUMENT`: one of _message_ids_ is not a live location sharing.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageLocationSharingUpdateNotification
  */
 export type SubscribeToMessageLocationSharingUpdateNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageLocationSharingUpdateNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -523,22 +643,34 @@ export const MessageLocationSharingUpdateNotificationSchema: GenMessage<MessageL
 /**
  *
  * * MessageLocationSharingEnd
- * * triggered by inbound AND outbound messages
+ * * Receive a notification each time a location sharing message have been stopped or automatically finished.
+ * * This might concern inbound or outbound messages.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `INVALID_ARGUMENT`: one of _message_ids_ is not a live location sharing.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageLocationSharingEndNotification
  */
 export type SubscribeToMessageLocationSharingEndNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageLocationSharingEndNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
@@ -571,26 +703,40 @@ export const MessageLocationSharingEndNotificationSchema: GenMessage<MessageLoca
 /**
  *
  * * MessageReactionAdded
+ * * Receive a notification each time a reaction was added to a message.
+ * * It can concern your reactions or any contact reactions.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageReactionAddedNotification
  */
 export type SubscribeToMessageReactionAddedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageReactionAddedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
 
   /**
+   * you will only receive notifications about reactions that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ReactionFilter reaction_filter = 4;
    */
   reactionFilter?: ReactionFilter;
@@ -628,31 +774,47 @@ export const MessageReactionAddedNotificationSchema: GenMessage<MessageReactionA
 /**
  *
  * * MessageReactionUpdated
+ * * Receive a notification each time a reaction on a message was updated.
+ * * It can concern your reactions or any contact reactions.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageReactionUpdatedNotification
  */
 export type SubscribeToMessageReactionUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageReactionUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter message_filter = 3;
    */
   messageFilter?: MessageFilter;
 
   /**
+   * you will only receive notifications about reactions that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ReactionFilter reaction_filter = 4;
    */
   reactionFilter?: ReactionFilter;
 
   /**
+   * you will only receive notifications about reactions that match this filter, before update.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ReactionFilter previous_reaction_filter = 5;
    */
   previousReactionFilter?: ReactionFilter;
@@ -695,26 +857,40 @@ export const MessageReactionUpdatedNotificationSchema: GenMessage<MessageReactio
 /**
  *
  * * MessageReactionRemoved
+ * * Receive a notification each time a reaction on a message was removed.
+ * * It can concern your reactions or any contact reactions.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _message_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToMessageReactionRemovedNotification
  */
 export type SubscribeToMessageReactionRemovedNotification = Message<"olvid.daemon.notification.v1.SubscribeToMessageReactionRemovedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about messages specified in this list.
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.MessageId message_ids = 2;
    */
   messageIds: MessageId[];
 
   /**
+   * you will only receive notifications about messages that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter filter = 3;
    */
   filter?: MessageFilter;
 
   /**
+   * you will only receive notifications about reactions that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ReactionFilter reaction_filter = 4;
    */
   reactionFilter?: ReactionFilter;

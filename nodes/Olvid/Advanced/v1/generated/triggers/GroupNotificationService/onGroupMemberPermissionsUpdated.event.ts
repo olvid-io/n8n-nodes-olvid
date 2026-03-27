@@ -730,118 +730,104 @@ export const groupMemberPermissionsUpdatedProperties: INodeProperties[] = [
     default: {},
     options: [
       {
-        displayName: 'ContactId',
-        name: 'contactId',
-        type: 'number',
+        displayName: 'Admin',
+        name: 'admin',
+        type: 'options',
+        options: [
+          {
+            name: 'ADMIN_UNSPECIFIED',
+            value: 0
+          },
+          {
+            name: 'ADMIN_IS',
+            value: 1
+          },
+          {
+            name: 'ADMIN_IS_NOT',
+            value: 2
+          }
+        ],
         default: 0
       },
       {
-        displayName: 'Permissions',
-        name: 'permissions',
-        type: 'collection',
-        default: {},
+        displayName: 'SendMessage',
+        name: 'sendMessage',
+        type: 'options',
         options: [
           {
-            displayName: 'Admin',
-            name: 'admin',
-            type: 'options',
-            options: [
-              {
-                name: 'ADMIN_UNSPECIFIED',
-                value: 0
-              },
-              {
-                name: 'ADMIN_IS',
-                value: 1
-              },
-              {
-                name: 'ADMIN_IS_NOT',
-                value: 2
-              }
-            ],
-            default: 0
+            name: 'SEND_MESSAGE_UNSPECIFIED',
+            value: 0
           },
           {
-            displayName: 'SendMessage',
-            name: 'sendMessage',
-            type: 'options',
-            options: [
-              {
-                name: 'SEND_MESSAGE_UNSPECIFIED',
-                value: 0
-              },
-              {
-                name: 'SEND_MESSAGE_CAN',
-                value: 1
-              },
-              {
-                name: 'SEND_MESSAGE_CANNOT',
-                value: 2
-              }
-            ],
-            default: 0
+            name: 'SEND_MESSAGE_CAN',
+            value: 1
           },
           {
-            displayName: 'RemoteDeleteAnything',
-            name: 'remoteDeleteAnything',
-            type: 'options',
-            options: [
-              {
-                name: 'REMOTE_DELETE_ANYTHING_UNSPECIFIED',
-                value: 0
-              },
-              {
-                name: 'REMOTE_DELETE_ANYTHING_CAN',
-                value: 1
-              },
-              {
-                name: 'REMOTE_DELETE_ANYTHING_CANNOT',
-                value: 2
-              }
-            ],
-            default: 0
-          },
-          {
-            displayName: 'EditOrRemoteDeleteOwnMessages',
-            name: 'editOrRemoteDeleteOwnMessages',
-            type: 'options',
-            options: [
-              {
-                name: 'EDIT_OR_REMOTE_DELETE_OWN_MESSAGE_UNSPECIFIED',
-                value: 0
-              },
-              {
-                name: 'EDIT_OR_REMOTE_DELETE_OWN_MESSAGE_CAN',
-                value: 1
-              },
-              {
-                name: 'EDIT_OR_REMOTE_DELETE_OWN_MESSAGE_CANNOT',
-                value: 2
-              }
-            ],
-            default: 0
-          },
-          {
-            displayName: 'ChangeSettings',
-            name: 'changeSettings',
-            type: 'options',
-            options: [
-              {
-                name: 'CHANGE_SETTINGS_UNSPECIFIED',
-                value: 0
-              },
-              {
-                name: 'CHANGE_SETTINGS_CAN',
-                value: 1
-              },
-              {
-                name: 'CHANGE_SETTINGS_CANNOT',
-                value: 2
-              }
-            ],
-            default: 0
+            name: 'SEND_MESSAGE_CANNOT',
+            value: 2
           }
-        ]
+        ],
+        default: 0
+      },
+      {
+        displayName: 'RemoteDeleteAnything',
+        name: 'remoteDeleteAnything',
+        type: 'options',
+        options: [
+          {
+            name: 'REMOTE_DELETE_ANYTHING_UNSPECIFIED',
+            value: 0
+          },
+          {
+            name: 'REMOTE_DELETE_ANYTHING_CAN',
+            value: 1
+          },
+          {
+            name: 'REMOTE_DELETE_ANYTHING_CANNOT',
+            value: 2
+          }
+        ],
+        default: 0
+      },
+      {
+        displayName: 'EditOrRemoteDeleteOwnMessages',
+        name: 'editOrRemoteDeleteOwnMessages',
+        type: 'options',
+        options: [
+          {
+            name: 'EDIT_OR_REMOTE_DELETE_OWN_MESSAGE_UNSPECIFIED',
+            value: 0
+          },
+          {
+            name: 'EDIT_OR_REMOTE_DELETE_OWN_MESSAGE_CAN',
+            value: 1
+          },
+          {
+            name: 'EDIT_OR_REMOTE_DELETE_OWN_MESSAGE_CANNOT',
+            value: 2
+          }
+        ],
+        default: 0
+      },
+      {
+        displayName: 'ChangeSettings',
+        name: 'changeSettings',
+        type: 'options',
+        options: [
+          {
+            name: 'CHANGE_SETTINGS_UNSPECIFIED',
+            value: 0
+          },
+          {
+            name: 'CHANGE_SETTINGS_CAN',
+            value: 1
+          },
+          {
+            name: 'CHANGE_SETTINGS_CANNOT',
+            value: 2
+          }
+        ],
+        default: 0
       }
     ],
     required: false,

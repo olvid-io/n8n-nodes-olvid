@@ -10,13 +10,119 @@ import type { Message as Message$1 } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/datatypes/v1/message.proto.
  */
 export const file_olvid_daemon_datatypes_v1_message: GenFile = /*@__PURE__*/
-  fileDesc("CidvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL21lc3NhZ2UucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEikwEKCU1lc3NhZ2VJZBI3CgR0eXBlGAEgASgOMikub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWQuVHlwZRIKCgJpZBgCIAEoBCJBCgRUeXBlEhQKEFRZUEVfVU5TUEVDSUZJRUQQABIQCgxUWVBFX0lOQk9VTkQQARIRCg1UWVBFX09VVEJPVU5EEAIi2gMKB01lc3NhZ2USMAoCaWQYASABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZBIVCg1kaXNjdXNzaW9uX2lkGAIgASgEEhEKCXNlbmRlcl9pZBgDIAEoBBIMCgRib2R5GAQgASgJEhIKCnNvcnRfaW5kZXgYBSABKAESEQoJdGltZXN0YW1wGAYgASgEEhkKEWF0dGFjaG1lbnRzX2NvdW50GAcgASgEEkUKEnJlcGxpZWRfbWVzc2FnZV9pZBgIIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkSACIAQESSQoQbWVzc2FnZV9sb2NhdGlvbhgKIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUxvY2F0aW9uSAGIAQESPQoJcmVhY3Rpb25zGAsgAygLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlUmVhY3Rpb24SEQoJZm9yd2FyZGVkGAwgASgIEhMKC2VkaXRlZF9ib2R5GA0gASgIQhUKE19yZXBsaWVkX21lc3NhZ2VfaWRCEwoRX21lc3NhZ2VfbG9jYXRpb24iYQoTTWVzc2FnZUVwaGVtZXJhbGl0eRIRCglyZWFkX29uY2UYASABKAgSGgoSZXhpc3RlbmNlX2R1cmF0aW9uGAIgASgEEhsKE3Zpc2liaWxpdHlfZHVyYXRpb24YAyABKAQiSgoPTWVzc2FnZVJlYWN0aW9uEhIKCmNvbnRhY3RfaWQYASABKAQSEAoIcmVhY3Rpb24YAiABKAkSEQoJdGltZXN0YW1wGAMgASgEIoMDCg9NZXNzYWdlTG9jYXRpb24SRQoEdHlwZRgBIAEoDjI3Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUxvY2F0aW9uLkxvY2F0aW9uVHlwZRIRCgl0aW1lc3RhbXAYAiABKAQSEAoIbGF0aXR1ZGUYAyABKAESEQoJbG9uZ2l0dWRlGAQgASgBEhUKCGFsdGl0dWRlGAUgASgBSACIAQESFgoJcHJlY2lzaW9uGAYgASgCSAGIAQESFAoHYWRkcmVzcxgHIAEoCUgCiAEBIoQBCgxMb2NhdGlvblR5cGUSHQoZTE9DQVRJT05fVFlQRV9VTlNQRUNJRklFRBAAEhYKEkxPQ0FUSU9OX1RZUEVfU0VORBABEhkKFUxPQ0FUSU9OX1RZUEVfU0hBUklORxACEiIKHkxPQ0FUSU9OX1RZUEVfU0hBUklOR19GSU5JU0hFRBADQgsKCV9hbHRpdHVkZUIMCgpfcHJlY2lzaW9uQgoKCF9hZGRyZXNzIvAICg1NZXNzYWdlRmlsdGVyEjwKBHR5cGUYASABKA4yKS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZC5UeXBlSAGIAQESGgoNZGlzY3Vzc2lvbl9pZBgCIAEoBEgCiAEBEh4KEXNlbmRlcl9jb250YWN0X2lkGAMgASgESAOIAQESGAoLYm9keV9zZWFyY2gYBSABKAlIBIgBARJMCgphdHRhY2htZW50GAYgASgOMjMub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRmlsdGVyLkF0dGFjaG1lbnRIBYgBARJICghsb2NhdGlvbhgHIAEoDjIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUZpbHRlci5Mb2NhdGlvbkgGiAEBEhoKDW1pbl90aW1lc3RhbXAYCCABKARIB4gBARIaCg1tYXhfdGltZXN0YW1wGAkgASgESAiIAQESTAoMaGFzX3JlYWN0aW9uGAogASgOMjEub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRmlsdGVyLlJlYWN0aW9uSAmIAQESQwoQcmVhY3Rpb25zX2ZpbHRlchgLIAMoCzIpLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUmVhY3Rpb25GaWx0ZXISHAoScmVwbHlfdG9fYV9tZXNzYWdlGA0gASgISAASIwoZZG9fbm90X3JlcGx5X3RvX2FfbWVzc2FnZRgOIAEoCEgAEkIKEnJlcGxpZWRfbWVzc2FnZV9pZBgPIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkSAAiVgoKQXR0YWNobWVudBIaChZBVFRBQ0hNRU5UX1VOU1BFQ0lGSUVEEAASEwoPQVRUQUNITUVOVF9IQVZFEAESFwoTQVRUQUNITUVOVF9IQVZFX05PVBACIp8BCghMb2NhdGlvbhIYChRMT0NBVElPTl9VTlNQRUNJRklFRBAAEhEKDUxPQ0FUSU9OX0hBVkUQARIVChFMT0NBVElPTl9IQVZFX05PVBACEhQKEExPQ0FUSU9OX0lTX1NFTkQQAxIXChNMT0NBVElPTl9JU19TSEFSSU5HEAUSIAocTE9DQVRJT05fSVNfU0hBUklOR19GSU5JU0hFRBAGIkwKCFJlYWN0aW9uEhgKFFJFQUNUSU9OX1VOU1BFQ0lGSUVEEAASEAoMUkVBQ1RJT05fSEFTEAESFAoQUkVBQ1RJT05fSEFTX05PVBACQgcKBXJlcGx5QgcKBV90eXBlQhAKDl9kaXNjdXNzaW9uX2lkQhQKEl9zZW5kZXJfY29udGFjdF9pZEIOCgxfYm9keV9zZWFyY2hCDQoLX2F0dGFjaG1lbnRCCwoJX2xvY2F0aW9uQhAKDl9taW5fdGltZXN0YW1wQhAKDl9tYXhfdGltZXN0YW1wQg8KDV9oYXNfcmVhY3Rpb24ifAoOUmVhY3Rpb25GaWx0ZXISFwoNcmVhY3RlZF9ieV9tZRgKIAEoCEgAEh8KFXJlYWN0ZWRfYnlfY29udGFjdF9pZBgLIAEoBEgAEhUKCHJlYWN0aW9uGAwgASgJSAGIAQFCDAoKcmVhY3RlZF9ieUILCglfcmVhY3Rpb25CNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM");
+  fileDesc("CidvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL21lc3NhZ2UucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEi2gMKB01lc3NhZ2USMAoCaWQYASABKAsyJC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZBIVCg1kaXNjdXNzaW9uX2lkGAIgASgEEhEKCXNlbmRlcl9pZBgDIAEoBBIMCgRib2R5GAQgASgJEhIKCnNvcnRfaW5kZXgYBSABKAESEQoJdGltZXN0YW1wGAYgASgEEhkKEWF0dGFjaG1lbnRzX2NvdW50GAcgASgEEkUKEnJlcGxpZWRfbWVzc2FnZV9pZBgIIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkSACIAQESSQoQbWVzc2FnZV9sb2NhdGlvbhgKIAEoCzIqLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUxvY2F0aW9uSAGIAQESPQoJcmVhY3Rpb25zGAsgAygLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlUmVhY3Rpb24SEQoJZm9yd2FyZGVkGAwgASgIEhMKC2VkaXRlZF9ib2R5GA0gASgIQhUKE19yZXBsaWVkX21lc3NhZ2VfaWRCEwoRX21lc3NhZ2VfbG9jYXRpb24ikwEKCU1lc3NhZ2VJZBI3CgR0eXBlGAEgASgOMikub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlSWQuVHlwZRIKCgJpZBgCIAEoBCJBCgRUeXBlEhQKEFRZUEVfVU5TUEVDSUZJRUQQABIQCgxUWVBFX0lOQk9VTkQQARIRCg1UWVBFX09VVEJPVU5EEAIiYQoTTWVzc2FnZUVwaGVtZXJhbGl0eRIRCglyZWFkX29uY2UYASABKAgSGgoSZXhpc3RlbmNlX2R1cmF0aW9uGAIgASgEEhsKE3Zpc2liaWxpdHlfZHVyYXRpb24YAyABKAQiSgoPTWVzc2FnZVJlYWN0aW9uEhIKCmNvbnRhY3RfaWQYASABKAQSEAoIcmVhY3Rpb24YAiABKAkSEQoJdGltZXN0YW1wGAMgASgEIoMDCg9NZXNzYWdlTG9jYXRpb24SRQoEdHlwZRgBIAEoDjI3Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUxvY2F0aW9uLkxvY2F0aW9uVHlwZRIRCgl0aW1lc3RhbXAYAiABKAQSEAoIbGF0aXR1ZGUYAyABKAESEQoJbG9uZ2l0dWRlGAQgASgBEhUKCGFsdGl0dWRlGAUgASgBSACIAQESFgoJcHJlY2lzaW9uGAYgASgCSAGIAQESFAoHYWRkcmVzcxgHIAEoCUgCiAEBIoQBCgxMb2NhdGlvblR5cGUSHQoZTE9DQVRJT05fVFlQRV9VTlNQRUNJRklFRBAAEhYKEkxPQ0FUSU9OX1RZUEVfU0VORBABEhkKFUxPQ0FUSU9OX1RZUEVfU0hBUklORxACEiIKHkxPQ0FUSU9OX1RZUEVfU0hBUklOR19GSU5JU0hFRBADQgsKCV9hbHRpdHVkZUIMCgpfcHJlY2lzaW9uQgoKCF9hZGRyZXNzIvAICg1NZXNzYWdlRmlsdGVyEjwKBHR5cGUYASABKA4yKS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLk1lc3NhZ2VJZC5UeXBlSAGIAQESGgoNZGlzY3Vzc2lvbl9pZBgCIAEoBEgCiAEBEh4KEXNlbmRlcl9jb250YWN0X2lkGAMgASgESAOIAQESGAoLYm9keV9zZWFyY2gYBSABKAlIBIgBARJMCgphdHRhY2htZW50GAYgASgOMjMub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRmlsdGVyLkF0dGFjaG1lbnRIBYgBARJICghsb2NhdGlvbhgHIAEoDjIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUZpbHRlci5Mb2NhdGlvbkgGiAEBEhoKDW1pbl90aW1lc3RhbXAYCCABKARIB4gBARIaCg1tYXhfdGltZXN0YW1wGAkgASgESAiIAQESTAoMaGFzX3JlYWN0aW9uGAogASgOMjEub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5NZXNzYWdlRmlsdGVyLlJlYWN0aW9uSAmIAQESQwoQcmVhY3Rpb25fZmlsdGVycxgLIAMoCzIpLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUmVhY3Rpb25GaWx0ZXISHAoScmVwbHlfdG9fYV9tZXNzYWdlGA0gASgISAASIwoZZG9fbm90X3JlcGx5X3RvX2FfbWVzc2FnZRgOIAEoCEgAEkIKEnJlcGxpZWRfbWVzc2FnZV9pZBgPIAEoCzIkLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuTWVzc2FnZUlkSAAiVgoKQXR0YWNobWVudBIaChZBVFRBQ0hNRU5UX1VOU1BFQ0lGSUVEEAASEwoPQVRUQUNITUVOVF9IQVZFEAESFwoTQVRUQUNITUVOVF9IQVZFX05PVBACIp8BCghMb2NhdGlvbhIYChRMT0NBVElPTl9VTlNQRUNJRklFRBAAEhEKDUxPQ0FUSU9OX0hBVkUQARIVChFMT0NBVElPTl9IQVZFX05PVBACEhQKEExPQ0FUSU9OX0lTX1NFTkQQAxIXChNMT0NBVElPTl9JU19TSEFSSU5HEAUSIAocTE9DQVRJT05fSVNfU0hBUklOR19GSU5JU0hFRBAGIkwKCFJlYWN0aW9uEhgKFFJFQUNUSU9OX1VOU1BFQ0lGSUVEEAASEAoMUkVBQ1RJT05fSEFTEAESFAoQUkVBQ1RJT05fSEFTX05PVBACQgcKBXJlcGx5QgcKBV90eXBlQhAKDl9kaXNjdXNzaW9uX2lkQhQKEl9zZW5kZXJfY29udGFjdF9pZEIOCgxfYm9keV9zZWFyY2hCDQoLX2F0dGFjaG1lbnRCCwoJX2xvY2F0aW9uQhAKDl9taW5fdGltZXN0YW1wQhAKDl9tYXhfdGltZXN0YW1wQg8KDV9oYXNfcmVhY3Rpb24ifAoOUmVhY3Rpb25GaWx0ZXISFwoNcmVhY3RlZF9ieV9tZRgKIAEoCEgAEh8KFXJlYWN0ZWRfYnlfY29udGFjdF9pZBgLIAEoBEgAEhUKCHJlYWN0aW9uGAwgASgJSAGIAQFCDAoKcmVhY3RlZF9ieUILCglfcmVhY3Rpb25CNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM");
 
 /**
+ *
+ * * An Olvid message posted in a discussion.
+ * * Sent messages are Outbound, received messages are Inbound.
+ * * Messages must have a body and/or one or more attachments.
+ *
+ * @generated from message olvid.daemon.datatypes.v1.Message
+ */
+export type Message = Message$1<"olvid.daemon.datatypes.v1.Message"> & {
+  /**
+   * the message unique identifier
+   *
+   * @generated from field: olvid.daemon.datatypes.v1.MessageId id = 1;
+   */
+  id?: MessageId;
+
+  /**
+   * the discussion the message belongs to
+   *
+   * @generated from field: uint64 discussion_id = 2;
+   */
+  discussionId: bigint;
+
+  /**
+   * set to 0 if you sent the message, or to the contact id referencing the sender
+   *
+   * @generated from field: uint64 sender_id = 3;
+   */
+  senderId: bigint;
+
+  /**
+   * text body
+   *
+   * @generated from field: string body = 4;
+   */
+  body: string;
+
+  /**
+   * index used to sort messages in a discussion
+   *
+   * @generated from field: double sort_index = 5;
+   */
+  sortIndex: number;
+
+  /**
+   * the timestamp on which the message was received
+   *
+   * @generated from field: uint64 timestamp = 6;
+   */
+  timestamp: bigint;
+
+  /**
+   * number of attachments for this message
+   *
+   * @generated from field: uint64 attachments_count = 7;
+   */
+  attachmentsCount: bigint;
+
+  /**
+   * set if this message is a reply to another message in this discussion
+   *
+   * @generated from field: optional olvid.daemon.datatypes.v1.MessageId replied_message_id = 8;
+   */
+  repliedMessageId?: MessageId;
+
+  /**
+   * set if this message is a location message
+   *
+   * @generated from field: optional olvid.daemon.datatypes.v1.MessageLocation message_location = 10;
+   */
+  messageLocation?: MessageLocation;
+
+  /**
+   * list of the reactions added on this message
+   *
+   * @generated from field: repeated olvid.daemon.datatypes.v1.MessageReaction reactions = 11;
+   */
+  reactions: MessageReaction[];
+
+  /**
+   * does this message have been forwarded from another discussion by sender
+   *
+   * @generated from field: bool forwarded = 12;
+   */
+  forwarded: boolean;
+
+  /**
+   * does this message body have been edited
+   *
+   * @generated from field: bool edited_body = 13;
+   */
+  editedBody: boolean;
+};
+
+/**
+ * Describes the message olvid.daemon.datatypes.v1.Message.
+ * Use `create(MessageSchema)` to create a new message.
+ */
+export const MessageSchema: GenMessage<Message> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_datatypes_v1_message, 0);
+
+/**
+ *
+ * * A composite id to uniquely identify a message.
+ *
  * @generated from message olvid.daemon.datatypes.v1.MessageId
  */
 export type MessageId = Message$1<"olvid.daemon.datatypes.v1.MessageId"> & {
   /**
+   * inbound or outbound message
+   *
    * @generated from field: olvid.daemon.datatypes.v1.MessageId.Type type = 1;
    */
   type: MessageId_Type;
@@ -32,7 +138,7 @@ export type MessageId = Message$1<"olvid.daemon.datatypes.v1.MessageId"> & {
  * Use `create(MessageIdSchema)` to create a new message.
  */
 export const MessageIdSchema: GenMessage<MessageId> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_datatypes_v1_message, 0);
+  messageDesc(file_olvid_daemon_datatypes_v1_message, 1);
 
 /**
  * @generated from enum olvid.daemon.datatypes.v1.MessageId.Type
@@ -44,11 +150,15 @@ export enum MessageId_Type {
   UNSPECIFIED = 0,
 
   /**
+   * received message
+   *
    * @generated from enum value: TYPE_INBOUND = 1;
    */
   INBOUND = 1,
 
   /**
+   * sent message
+   *
    * @generated from enum value: TYPE_OUTBOUND = 2;
    */
   OUTBOUND = 2,
@@ -58,99 +168,32 @@ export enum MessageId_Type {
  * Describes the enum olvid.daemon.datatypes.v1.MessageId.Type.
  */
 export const MessageId_TypeSchema: GenEnum<MessageId_Type> = /*@__PURE__*/
-  enumDesc(file_olvid_daemon_datatypes_v1_message, 0, 0);
+  enumDesc(file_olvid_daemon_datatypes_v1_message, 1, 0);
 
 /**
- * @generated from message olvid.daemon.datatypes.v1.Message
- */
-export type Message = Message$1<"olvid.daemon.datatypes.v1.Message"> & {
-  /**
-   * @generated from field: olvid.daemon.datatypes.v1.MessageId id = 1;
-   */
-  id?: MessageId;
-
-  /**
-   * @generated from field: uint64 discussion_id = 2;
-   */
-  discussionId: bigint;
-
-  /**
-   * 0 if you sent the message
-   *
-   * @generated from field: uint64 sender_id = 3;
-   */
-  senderId: bigint;
-
-  /**
-   * @generated from field: string body = 4;
-   */
-  body: string;
-
-  /**
-   * @generated from field: double sort_index = 5;
-   */
-  sortIndex: number;
-
-  /**
-   * @generated from field: uint64 timestamp = 6;
-   */
-  timestamp: bigint;
-
-  /**
-   * @generated from field: uint64 attachments_count = 7;
-   */
-  attachmentsCount: bigint;
-
-  /**
-   * @generated from field: optional olvid.daemon.datatypes.v1.MessageId replied_message_id = 8;
-   */
-  repliedMessageId?: MessageId;
-
-  /**
-   * @generated from field: optional olvid.daemon.datatypes.v1.MessageLocation message_location = 10;
-   */
-  messageLocation?: MessageLocation;
-
-  /**
-   * @generated from field: repeated olvid.daemon.datatypes.v1.MessageReaction reactions = 11;
-   */
-  reactions: MessageReaction[];
-
-  /**
-   * @generated from field: bool forwarded = 12;
-   */
-  forwarded: boolean;
-
-  /**
-   * @generated from field: bool edited_body = 13;
-   */
-  editedBody: boolean;
-};
-
-/**
- * Describes the message olvid.daemon.datatypes.v1.Message.
- * Use `create(MessageSchema)` to create a new message.
- */
-export const MessageSchema: GenMessage<Message> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_datatypes_v1_message, 1);
-
-/**
+ *
+ * * Describe message ephemerality.
+ *
  * @generated from message olvid.daemon.datatypes.v1.MessageEphemerality
  */
 export type MessageEphemerality = Message$1<"olvid.daemon.datatypes.v1.MessageEphemerality"> & {
   /**
+   * message can only be read once (destroyed when discussion is closed)
+   *
    * @generated from field: bool read_once = 1;
    */
   readOnce: boolean;
 
   /**
-   * seconds
+   * message is destroyed after this duration, in seconds
    *
    * @generated from field: uint64 existence_duration = 2;
    */
   existenceDuration: bigint;
 
   /**
+   * message is only visible for this duration, in seconds
+   *
    * seconds
    *
    * @generated from field: uint64 visibility_duration = 3;
@@ -166,22 +209,29 @@ export const MessageEphemeralitySchema: GenMessage<MessageEphemerality> = /*@__P
   messageDesc(file_olvid_daemon_datatypes_v1_message, 2);
 
 /**
+ *
+ * * Describe a reaction to a message, by a contact or yourself.
+ *
  * @generated from message olvid.daemon.datatypes.v1.MessageReaction
  */
 export type MessageReaction = Message$1<"olvid.daemon.datatypes.v1.MessageReaction"> & {
   /**
-   * id == 0 if own reaction
+   * set to 0 for owned reactions
    *
    * @generated from field: uint64 contact_id = 1;
    */
   contactId: bigint;
 
   /**
+   * reaction emoji
+   *
    * @generated from field: string reaction = 2;
    */
   reaction: string;
 
   /**
+   * the timestamp at which the reaction was added.
+   *
    * @generated from field: uint64 timestamp = 3;
    */
   timestamp: bigint;
@@ -195,6 +245,12 @@ export const MessageReactionSchema: GenMessage<MessageReaction> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_message, 3);
 
 /**
+ *
+ * * A location message content.
+ * * There are two location message families:
+ * * - location sending: send a specific location.
+ * * - location sharing: share someone's location for a given duration.
+ *
  * @generated from message olvid.daemon.datatypes.v1.MessageLocation
  */
 export type MessageLocation = Message$1<"olvid.daemon.datatypes.v1.MessageLocation"> & {
@@ -204,6 +260,9 @@ export type MessageLocation = Message$1<"olvid.daemon.datatypes.v1.MessageLocati
   type: MessageLocation_LocationType;
 
   /**
+   * sending: when location was sent
+   * sharing: the last location update timestamp
+   *
    * @generated from field: uint64 timestamp = 2;
    */
   timestamp: bigint;
@@ -224,11 +283,15 @@ export type MessageLocation = Message$1<"olvid.daemon.datatypes.v1.MessageLocati
   altitude?: number;
 
   /**
+   * the accuracy this location was recorded with.
+   *
    * @generated from field: optional float precision = 6;
    */
   precision?: number;
 
   /**
+   * optionally set for sending, a human readable address for this location
+   *
    * @generated from field: optional string address = 7;
    */
   address?: string;
@@ -251,16 +314,22 @@ export enum MessageLocation_LocationType {
   UNSPECIFIED = 0,
 
   /**
+   * a one shot location sending
+   *
    * @generated from enum value: LOCATION_TYPE_SEND = 1;
    */
   SEND = 1,
 
   /**
+   * a live location sharing
+   *
    * @generated from enum value: LOCATION_TYPE_SHARING = 2;
    */
   SHARING = 2,
 
   /**
+   * a completed location sharing
+   *
    * @generated from enum value: LOCATION_TYPE_SHARING_FINISHED = 3;
    */
   SHARING_FINISHED = 3,
@@ -273,84 +342,106 @@ export const MessageLocation_LocationTypeSchema: GenEnum<MessageLocation_Locatio
   enumDesc(file_olvid_daemon_datatypes_v1_message, 4, 0);
 
 /**
+ *
+ * * Filter messages by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.MessageFilter
  */
 export type MessageFilter = Message$1<"olvid.daemon.datatypes.v1.MessageFilter"> & {
   /**
-   * sender and recipient
+   * is message inbound or outbound
    *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageId.Type type = 1;
    */
   type?: MessageId_Type;
 
   /**
+   * does message belongs to a specific discussion
+   *
    * @generated from field: optional uint64 discussion_id = 2;
    */
   discussionId?: bigint;
 
   /**
+   * is message sent by a specific contact
+   *
    * @generated from field: optional uint64 sender_contact_id = 3;
    */
   senderContactId?: bigint;
 
   /**
-   * content
+   * regexp filter on *body* field
    *
    * @generated from field: optional string body_search = 5;
    */
   bodySearch?: string;
 
   /**
+   * does message have attachments or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter.Attachment attachment = 6;
    */
   attachment?: MessageFilter_Attachment;
 
   /**
+   * is message a location message
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter.Location location = 7;
    */
   location?: MessageFilter_Location;
 
   /**
+   * is timestamp less or equal than *min_timestamp*
+   *
    * @generated from field: optional uint64 min_timestamp = 8;
    */
   minTimestamp?: bigint;
 
   /**
+   * is timestamp more or equal than *max_timestamp*
+   *
    * @generated from field: optional uint64 max_timestamp = 9;
    */
   maxTimestamp?: bigint;
 
   /**
-   * reactions
+   * does message have reactions or not
    *
    * @generated from field: optional olvid.daemon.datatypes.v1.MessageFilter.Reaction has_reaction = 10;
    */
   hasReaction?: MessageFilter_Reaction;
 
   /**
-   * @generated from field: repeated olvid.daemon.datatypes.v1.ReactionFilter reactions_filter = 11;
+   * message must have at least one matching reaction for each *reactions_filter*
+   *
+   * @generated from field: repeated olvid.daemon.datatypes.v1.ReactionFilter reaction_filters = 11;
    */
-  reactionsFilter: ReactionFilter[];
+  reactionFilters: ReactionFilter[];
 
   /**
-   * message reply
-   *
    * @generated from oneof olvid.daemon.datatypes.v1.MessageFilter.reply
    */
   reply: {
     /**
+     * is message a reply to another message
+     *
      * @generated from field: bool reply_to_a_message = 13;
      */
     value: boolean;
     case: "replyToAMessage";
   } | {
     /**
+     * is message not a reply to a message
+     *
      * @generated from field: bool do_not_reply_to_a_message = 14;
      */
     value: boolean;
     case: "doNotReplyToAMessage";
   } | {
     /**
+     * is message a reply to a specific message id
+     *
      * @generated from field: olvid.daemon.datatypes.v1.MessageId replied_message_id = 15;
      */
     value: MessageId;
@@ -380,12 +471,6 @@ export enum MessageFilter_Attachment {
   HAVE = 1,
 
   /**
-   * currently not implementable
-   *    ATTACHMENT_HAVE_IMAGE = 3;
-   *    ATTACHMENT_HAVE_VIDEO = 4;
-   *    ATTACHMENT_HAVE_IMAGE_VIDEO = 5;
-   *    ATTACHMENT_HAVE_AUDIO = 6;
-   *
    * @generated from enum value: ATTACHMENT_HAVE_NOT = 2;
    */
   HAVE_NOT = 2,
@@ -473,12 +558,16 @@ export type ReactionFilter = Message$1<"olvid.daemon.datatypes.v1.ReactionFilter
    */
   reactedBy: {
     /**
+     * is the reaction from yourself
+     *
      * @generated from field: bool reacted_by_me = 10;
      */
     value: boolean;
     case: "reactedByMe";
   } | {
     /**
+     * is the reaction from a specific contact
+     *
      * @generated from field: uint64 reacted_by_contact_id = 11;
      */
     value: bigint;
@@ -486,7 +575,7 @@ export type ReactionFilter = Message$1<"olvid.daemon.datatypes.v1.ReactionFilter
   } | { case: undefined; value?: undefined };
 
   /**
-   * contains this reaction emoji (combined with reacted_by parameter)
+   * is *reaction* equal to the *reaction* field
    *
    * @generated from field: optional string reaction = 12;
    */

@@ -13,6 +13,11 @@ export const file_olvid_daemon_datatypes_v1_group: GenFile = /*@__PURE__*/
   fileDesc("CiVvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2dyb3VwLnByb3RvEhlvbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxIvAGCgVHcm91cBIKCgJpZBgBIAEoBBIzCgR0eXBlGAIgASgOMiUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cC5UeXBlElsKFmFkdmFuY2VkX2NvbmZpZ3VyYXRpb24YAyABKAsyNi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwLkFkdmFuY2VkQ29uZmlndXJhdGlvbkgAiAEBEkoKD293bl9wZXJtaXNzaW9ucxgEIAEoCzIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJQZXJtaXNzaW9ucxI3CgdtZW1iZXJzGAUgAygLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlchJGCg9wZW5kaW5nX21lbWJlcnMYBiADKAsyLS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLlBlbmRpbmdHcm91cE1lbWJlchIaChJ1cGRhdGVfaW5fcHJvZ3Jlc3MYByABKAgSGAoQa2V5Y2xvYWtfbWFuYWdlZBgIIAEoCBIMCgRuYW1lGAkgASgJEhMKC2Rlc2NyaXB0aW9uGAogASgJEhMKC2hhc19hX3Bob3RvGAsgASgIGoUCChVBZHZhbmNlZENvbmZpZ3VyYXRpb24SEQoJcmVhZF9vbmx5GAEgASgIEloKDXJlbW90ZV9kZWxldGUYAiABKA4yQy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwLkFkdmFuY2VkQ29uZmlndXJhdGlvbi5SZW1vdGVEZWxldGUifQoMUmVtb3RlRGVsZXRlEh0KGVJFTU9URV9ERUxFVEVfVU5TUEVDSUZJRUQQABIYChRSRU1PVEVfREVMRVRFX05PQk9EWRABEhgKFFJFTU9URV9ERUxFVEVfQURNSU5TEAISGgoWUkVNT1RFX0RFTEVURV9FVkVSWU9ORRADImsKBFR5cGUSFAoQVFlQRV9VTlNQRUNJRklFRBAAEhEKDVRZUEVfU1RBTkRBUkQQARITCg9UWVBFX0NPTlRST0xMRUQQAhISCg5UWVBFX1JFQURfT05MWRADEhEKDVRZUEVfQURWQU5DRUQQBEIZChdfYWR2YW5jZWRfY29uZmlndXJhdGlvbiJpCgtHcm91cE1lbWJlchISCgpjb250YWN0X2lkGAEgASgEEkYKC3Blcm1pc3Npb25zGAIgASgLMjEub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlclBlcm1pc3Npb25zIrMBChJQZW5kaW5nR3JvdXBNZW1iZXISGQoRcGVuZGluZ19tZW1iZXJfaWQYASABKAQSEgoKY29udGFjdF9pZBgCIAEoBBIUCgxkaXNwbGF5X25hbWUYAyABKAkSEAoIZGVjbGluZWQYBCABKAgSRgoLcGVybWlzc2lvbnMYBSABKAsyMS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwTWVtYmVyUGVybWlzc2lvbnMiogEKFkdyb3VwTWVtYmVyUGVybWlzc2lvbnMSDQoFYWRtaW4YASABKAgSHgoWcmVtb3RlX2RlbGV0ZV9hbnl0aGluZxgCIAEoCBIqCiJlZGl0X29yX3JlbW90ZV9kZWxldGVfb3duX21lc3NhZ2VzGAMgASgIEhcKD2NoYW5nZV9zZXR0aW5ncxgEIAEoCBIUCgxzZW5kX21lc3NhZ2UYBSABKAgi+gYKC0dyb3VwRmlsdGVyEjgKBHR5cGUYASABKA4yJS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwLlR5cGVIAIgBARJACgVlbXB0eRgCIAEoDjIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXIuRW1wdHlIAYgBARJACgVwaG90bxgDIAEoDjIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXIuUGhvdG9IAogBARJGCghrZXljbG9haxgEIAEoDjIvLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXIuS2V5Y2xvYWtIA4gBARJVChZvd25fcGVybWlzc2lvbnNfZmlsdGVyGAUgASgLMjAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXJIBIgBARIYCgtuYW1lX3NlYXJjaBgGIAEoCUgFiAEBEh8KEmRlc2NyaXB0aW9uX3NlYXJjaBgHIAEoCUgGiAEBEkQKDm1lbWJlcl9maWx0ZXJzGAggAygLMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlckZpbHRlchJTChZwZW5kaW5nX21lbWJlcl9maWx0ZXJzGAkgAygLMjMub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5QZW5kaW5nR3JvdXBNZW1iZXJGaWx0ZXIiPgoFRW1wdHkSFQoRRU1QVFlfVU5TUEVDSUZJRUQQABIMCghFTVBUWV9JUxACEhAKDEVNUFRZX0lTX05PVBABIkoKCEtleWNsb2FrEhgKFEtFWUNMT0FLX1VOU1BFQ0lGSUVEEAASDwoLS0VZQ0xPQUtfSVMQAhITCg9LRVlDTE9BS19JU19OT1QQASJACgVQaG90bxIVChFQSE9UT19VTlNQRUNJRklFRBAAEg0KCVBIT1RPX0hBUxACEhEKDVBIT1RPX0hBU19OT1QQAUIHCgVfdHlwZUIICgZfZW1wdHlCCAoGX3Bob3RvQgsKCV9rZXljbG9ha0IZChdfb3duX3Blcm1pc3Npb25zX2ZpbHRlckIOCgxfbmFtZV9zZWFyY2hCFQoTX2Rlc2NyaXB0aW9uX3NlYXJjaCKXAQoRR3JvdXBNZW1iZXJGaWx0ZXISFwoKY29udGFjdF9pZBgBIAEoBEgAiAEBEkoKC3Blcm1pc3Npb25zGAUgASgLMjAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXJIAYgBAUINCgtfY29udGFjdF9pZEIOCgxfcGVybWlzc2lvbnMivQQKGFBlbmRpbmdHcm91cE1lbWJlckZpbHRlchJUCgppc19jb250YWN0GAEgASgOMjsub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5QZW5kaW5nR3JvdXBNZW1iZXJGaWx0ZXIuQ29udGFjdEgAiAEBElcKDGhhc19kZWNsaW5lZBgCIAEoDjI8Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUGVuZGluZ0dyb3VwTWVtYmVyRmlsdGVyLkRlY2xpbmVkSAGIAQESFwoKY29udGFjdF9pZBgDIAEoBEgCiAEBEiAKE2Rpc3BsYXlfbmFtZV9zZWFyY2gYBCABKAlIA4gBARJKCgtwZXJtaXNzaW9ucxgFIAEoCzIwLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBQZXJtaXNzaW9uRmlsdGVySASIAQEiRgoHQ29udGFjdBIXChNDT05UQUNUX1VOU1BFQ0lGSUVEEAASDgoKQ09OVEFDVF9JUxABEhIKDkNPTlRBQ1RfSVNfTk9UEAIiTAoIRGVjbGluZWQSGAoUREVDTElORURfVU5TUEVDSUZJRUQQABIQCgxERUNMSU5FRF9IQVMQARIUChBERUNMSU5FRF9IQVNfTk9UEAJCDQoLX2lzX2NvbnRhY3RCDwoNX2hhc19kZWNsaW5lZEINCgtfY29udGFjdF9pZEIWChRfZGlzcGxheV9uYW1lX3NlYXJjaEIOCgxfcGVybWlzc2lvbnMirQkKFUdyb3VwUGVybWlzc2lvbkZpbHRlchJKCgVhZG1pbhgBIAEoDjI2Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBQZXJtaXNzaW9uRmlsdGVyLkFkbWluSACIAQESVwoMc2VuZF9tZXNzYWdlGAIgASgOMjwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXIuU2VuZE1lc3NhZ2VIAYgBARJqChZyZW1vdGVfZGVsZXRlX2FueXRoaW5nGAMgASgOMkUub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXIuUmVtb3RlRGVsZXRlQW55dGhpbmdIAogBARJ+CiJlZGl0X29yX3JlbW90ZV9kZWxldGVfb3duX21lc3NhZ2VzGAQgASgOMk0ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXIuRWRpdE9yUmVtb3RlRGVsZXRlT3duTWVzc2FnZUgDiAEBEl0KD2NoYW5nZV9zZXR0aW5ncxgFIAEoDjI/Lm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBQZXJtaXNzaW9uRmlsdGVyLkNoYW5nZVNldHRpbmdzSASIAQEiPgoFQWRtaW4SFQoRQURNSU5fVU5TUEVDSUZJRUQQABIMCghBRE1JTl9JUxABEhAKDEFETUlOX0lTX05PVBACIloKC1NlbmRNZXNzYWdlEhwKGFNFTkRfTUVTU0FHRV9VTlNQRUNJRklFRBAAEhQKEFNFTkRfTUVTU0FHRV9DQU4QARIXChNTRU5EX01FU1NBR0VfQ0FOTk9UEAIigQEKFFJlbW90ZURlbGV0ZUFueXRoaW5nEiYKIlJFTU9URV9ERUxFVEVfQU5ZVEhJTkdfVU5TUEVDSUZJRUQQABIeChpSRU1PVEVfREVMRVRFX0FOWVRISU5HX0NBThABEiEKHVJFTU9URV9ERUxFVEVfQU5ZVEhJTkdfQ0FOTk9UEAIiqgEKHEVkaXRPclJlbW90ZURlbGV0ZU93bk1lc3NhZ2USMQotRURJVF9PUl9SRU1PVEVfREVMRVRFX09XTl9NRVNTQUdFX1VOU1BFQ0lGSUVEEAASKQolRURJVF9PUl9SRU1PVEVfREVMRVRFX09XTl9NRVNTQUdFX0NBThABEiwKKEVESVRfT1JfUkVNT1RFX0RFTEVURV9PV05fTUVTU0FHRV9DQU5OT1QQAiJmCg5DaGFuZ2VTZXR0aW5ncxIfChtDSEFOR0VfU0VUVElOR1NfVU5TUEVDSUZJRUQQABIXChNDSEFOR0VfU0VUVElOR1NfQ0FOEAESGgoWQ0hBTkdFX1NFVFRJTkdTX0NBTk5PVBACQggKBl9hZG1pbkIPCg1fc2VuZF9tZXNzYWdlQhkKF19yZW1vdGVfZGVsZXRlX2FueXRoaW5nQiUKI19lZGl0X29yX3JlbW90ZV9kZWxldGVfb3duX21lc3NhZ2VzQhIKEF9jaGFuZ2Vfc2V0dGluZ3NCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM");
 
 /**
+ *
+ * * An Olvid group is a discussion with you and other Olvid identities.
+ * * Other identities in a group are automatically added to your contact book if they were not before as collected contacts (you do not have a one to one discussion with them).
+ * * *keycloak_managed* groups are not editable, and you cannot leave them. Group is managed from the keycloak admin console.
+ *
  * @generated from message olvid.daemon.datatypes.v1.Group
  */
 export type Group = Message<"olvid.daemon.datatypes.v1.Group"> & {
@@ -22,6 +27,8 @@ export type Group = Message<"olvid.daemon.datatypes.v1.Group"> & {
   id: bigint;
 
   /**
+   * specify a pre-set of permissions given to group members.
+   *
    * @generated from field: olvid.daemon.datatypes.v1.Group.Type type = 2;
    */
   type: Group_Type;
@@ -41,28 +48,34 @@ export type Group = Message<"olvid.daemon.datatypes.v1.Group"> & {
   ownPermissions?: GroupMemberPermissions;
 
   /**
+   * members that accepted invitation
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.GroupMember members = 5;
    */
   members: GroupMember[];
 
   /**
+   * members invited to join group
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.PendingGroupMember pending_members = 6;
    */
   pendingMembers: PendingGroupMember[];
 
   /**
+   * group is locked, edition will be delayed
+   *
    * @generated from field: bool update_in_progress = 7;
    */
   updateInProgress: boolean;
 
   /**
+   * group automatically pushed by keycloak
+   *
    * @generated from field: bool keycloak_managed = 8;
    */
   keycloakManaged: boolean;
 
   /**
-   * group details
-   *
    * @generated from field: string name = 9;
    */
   name: string;
@@ -90,11 +103,15 @@ export const GroupSchema: GenMessage<Group> = /*@__PURE__*/
  */
 export type Group_AdvancedConfiguration = Message<"olvid.daemon.datatypes.v1.Group.AdvancedConfiguration"> & {
   /**
+   * is group read only
+   *
    * @generated from field: bool read_only = 1;
    */
   readOnly: boolean;
 
   /**
+   * who has permission to delete message for everyone
+   *
    * @generated from field: olvid.daemon.datatypes.v1.Group.AdvancedConfiguration.RemoteDelete remote_delete = 2;
    */
   remoteDelete: Group_AdvancedConfiguration_RemoteDelete;
@@ -148,21 +165,29 @@ export enum Group_Type {
   UNSPECIFIED = 0,
 
   /**
+   * all members are admin
+   *
    * @generated from enum value: TYPE_STANDARD = 1;
    */
   STANDARD = 1,
 
   /**
+   * non admin members cannot manage the group
+   *
    * @generated from enum value: TYPE_CONTROLLED = 2;
    */
   CONTROLLED = 2,
 
   /**
+   * only admin members can post messages
+   *
    * @generated from enum value: TYPE_READ_ONLY = 3;
    */
   READ_ONLY = 3,
 
   /**
+   * specify an advanced configuration field
+   *
    * @generated from enum value: TYPE_ADVANCED = 4;
    */
   ADVANCED = 4,
@@ -175,6 +200,9 @@ export const Group_TypeSchema: GenEnum<Group_Type> = /*@__PURE__*/
   enumDesc(file_olvid_daemon_datatypes_v1_group, 0, 0);
 
 /**
+ *
+ * * Associate a contact, member of a group, with its permissions in this group.
+ *
  * @generated from message olvid.daemon.datatypes.v1.GroupMember
  */
 export type GroupMember = Message<"olvid.daemon.datatypes.v1.GroupMember"> & {
@@ -197,32 +225,43 @@ export const GroupMemberSchema: GenMessage<GroupMember> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_group, 1);
 
 /**
+ *
+ * * Member of a group who has not yet accepted the invitation to join the group.
+ *
  * @generated from message olvid.daemon.datatypes.v1.PendingGroupMember
  */
 export type PendingGroupMember = Message<"olvid.daemon.datatypes.v1.PendingGroupMember"> & {
   /**
+   * unique identifier
+   *
    * @generated from field: uint64 pending_member_id = 1;
    */
   pendingMemberId: bigint;
 
   /**
-   * set to 0 if not in your contacts
+   * set to 0 if this identity is not a contact yet
    *
    * @generated from field: uint64 contact_id = 2;
    */
   contactId: bigint;
 
   /**
+   * computed display name from their identity details.
+   *
    * @generated from field: string display_name = 3;
    */
   displayName: string;
 
   /**
+   * does pending member declined invitation
+   *
    * @generated from field: bool declined = 4;
    */
   declined: boolean;
 
   /**
+   * permissions given to this member
+   *
    * @generated from field: olvid.daemon.datatypes.v1.GroupMemberPermissions permissions = 5;
    */
   permissions?: GroupMemberPermissions;
@@ -236,30 +275,43 @@ export const PendingGroupMemberSchema: GenMessage<PendingGroupMember> = /*@__PUR
   messageDesc(file_olvid_daemon_datatypes_v1_group, 2);
 
 /**
+ *
+ * * Describe permission set associated to any group member.
+ *
  * @generated from message olvid.daemon.datatypes.v1.GroupMemberPermissions
  */
 export type GroupMemberPermissions = Message<"olvid.daemon.datatypes.v1.GroupMemberPermissions"> & {
   /**
+   * can edit the group (change name or description, and manage group members)
+   *
    * @generated from field: bool admin = 1;
    */
   admin: boolean;
 
   /**
+   * can delete everywhere someone else's message
+   *
    * @generated from field: bool remote_delete_anything = 2;
    */
   remoteDeleteAnything: boolean;
 
   /**
+   * can edit or delete everywhere own messages
+   *
    * @generated from field: bool edit_or_remote_delete_own_messages = 3;
    */
   editOrRemoteDeleteOwnMessages: boolean;
 
   /**
+   * can change discussion shared settings (message ephemerality)
+   *
    * @generated from field: bool change_settings = 4;
    */
   changeSettings: boolean;
 
   /**
+   * can post message in the group discussion
+   *
    * @generated from field: bool send_message = 5;
    */
   sendMessage: boolean;
@@ -273,6 +325,10 @@ export const GroupMemberPermissionsSchema: GenMessage<GroupMemberPermissions> = 
   messageDesc(file_olvid_daemon_datatypes_v1_group, 3);
 
 /**
+ *
+ * * Filter groups by attributes.
+ * * To pass a filter an element must match all specified conditions.
+ *
  * @generated from message olvid.daemon.datatypes.v1.GroupFilter
  */
 export type GroupFilter = Message<"olvid.daemon.datatypes.v1.GroupFilter"> & {
@@ -282,43 +338,57 @@ export type GroupFilter = Message<"olvid.daemon.datatypes.v1.GroupFilter"> & {
   type?: Group_Type;
 
   /**
+   * does group have members or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter.Empty empty = 2;
    */
   empty?: GroupFilter_Empty;
 
   /**
+   * does group have a photo or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter.Photo photo = 3;
    */
   photo?: GroupFilter_Photo;
 
   /**
+   * is group keycloak managed or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter.Keycloak keycloak = 4;
    */
   keycloak?: GroupFilter_Keycloak;
 
   /**
-   * your permission
+   * filter on your own permissions in the group
    *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter own_permissions_filter = 5;
    */
   ownPermissionsFilter?: GroupPermissionFilter;
 
   /**
+   * regexp filter on *name_search* field
+   *
    * @generated from field: optional string name_search = 6;
    */
   nameSearch?: string;
 
   /**
+   * regexp filter on *description_search* field
+   *
    * @generated from field: optional string description_search = 7;
    */
   descriptionSearch?: string;
 
   /**
+   * group must have at least one matching member for each *member_filters*
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.GroupMemberFilter member_filters = 8;
    */
   memberFilters: GroupMemberFilter[];
 
   /**
+   * group must have at least one pending member matching each *pending_member_filters*
+   *
    * @generated from field: repeated olvid.daemon.datatypes.v1.PendingGroupMemberFilter pending_member_filters = 9;
    */
   pendingMemberFilters: PendingGroupMemberFilter[];
@@ -414,11 +484,15 @@ export const GroupFilter_PhotoSchema: GenEnum<GroupFilter_Photo> = /*@__PURE__*/
  */
 export type GroupMemberFilter = Message<"olvid.daemon.datatypes.v1.GroupMemberFilter"> & {
   /**
+   * is member a specific contact
+   *
    * @generated from field: optional uint64 contact_id = 1;
    */
   contactId?: bigint;
 
   /**
+   * does member's permissions match this permission filter
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter permissions = 5;
    */
   permissions?: GroupPermissionFilter;
@@ -436,26 +510,36 @@ export const GroupMemberFilterSchema: GenMessage<GroupMemberFilter> = /*@__PURE_
  */
 export type PendingGroupMemberFilter = Message<"olvid.daemon.datatypes.v1.PendingGroupMemberFilter"> & {
   /**
+   * is pending member a contact or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.PendingGroupMemberFilter.Contact is_contact = 1;
    */
   isContact?: PendingGroupMemberFilter_Contact;
 
   /**
+   * does pending member declined invitation or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.PendingGroupMemberFilter.Declined has_declined = 2;
    */
   hasDeclined?: PendingGroupMemberFilter_Declined;
 
   /**
+   * is pending member a specific known contact
+   *
    * @generated from field: optional uint64 contact_id = 3;
    */
   contactId?: bigint;
 
   /**
+   * regexp filter applied on *display_name* field
+   *
    * @generated from field: optional string display_name_search = 4;
    */
   displayNameSearch?: string;
 
   /**
+   * pending member's permissions match this permission filter
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter permissions = 5;
    */
   permissions?: GroupPermissionFilter;
@@ -525,26 +609,36 @@ export const PendingGroupMemberFilter_DeclinedSchema: GenEnum<PendingGroupMember
  */
 export type GroupPermissionFilter = Message<"olvid.daemon.datatypes.v1.GroupPermissionFilter"> & {
   /**
+   * is user a group admin or not
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter.Admin admin = 1;
    */
   admin?: GroupPermissionFilter_Admin;
 
   /**
+   * can the user post a message in the discussion
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter.SendMessage send_message = 2;
    */
   sendMessage?: GroupPermissionFilter_SendMessage;
 
   /**
+   * can the user remote-delete any message, even other members' messages
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter.RemoteDeleteAnything remote_delete_anything = 3;
    */
   remoteDeleteAnything?: GroupPermissionFilter_RemoteDeleteAnything;
 
   /**
+   * can the user edit or remote-delete their own messages
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter.EditOrRemoteDeleteOwnMessage edit_or_remote_delete_own_messages = 4;
    */
   editOrRemoteDeleteOwnMessages?: GroupPermissionFilter_EditOrRemoteDeleteOwnMessage;
 
   /**
+   * can the user change group settings
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter.ChangeSettings change_settings = 5;
    */
   changeSettings?: GroupPermissionFilter_ChangeSettings;

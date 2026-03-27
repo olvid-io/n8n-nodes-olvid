@@ -12,21 +12,33 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/notification/v1/group_notifications.proto.
  */
 export const file_olvid_daemon_notification_v1_group_notifications: GenFile = /*@__PURE__*/
-  fileDesc("CjZvbHZpZC9kYWVtb24vbm90aWZpY2F0aW9uL3YxL2dyb3VwX25vdGlmaWNhdGlvbnMucHJvdG8SHG9sdmlkLmRhZW1vbi5ub3RpZmljYXRpb24udjEikwEKH1N1YnNjcmliZVRvR3JvdXBOZXdOb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARJBCgxncm91cF9maWx0ZXIYAiABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXIiRwoUR3JvdXBOZXdOb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIqoBCiNTdWJzY3JpYmVUb0dyb3VwRGVsZXRlZE5vdGlmaWNhdGlvbhISCgVjb3VudBgBIAEoBEgAiAEBEhEKCWdyb3VwX2lkcxgCIAMoBBJBCgxncm91cF9maWx0ZXIYAyABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXIiSwoYR3JvdXBEZWxldGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCLqAQonU3Vic2NyaWJlVG9Hcm91cE5hbWVVcGRhdGVkTm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBARIhChRwcmV2aW91c19uYW1lX3NlYXJjaBgEIAEoCUgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQhcKFV9wcmV2aW91c19uYW1lX3NlYXJjaCJmChxHcm91cE5hbWVVcGRhdGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBIVCg1wcmV2aW91c19uYW1lGAIgASgJIq8BCihTdWJzY3JpYmVUb0dyb3VwUGhvdG9VcGRhdGVkTm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlciJQCh1Hcm91cFBob3RvVXBkYXRlZE5vdGlmaWNhdGlvbhIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAi/wEKLlN1YnNjcmliZVRvR3JvdXBEZXNjcmlwdGlvblVwZGF0ZWROb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARIRCglncm91cF9pZHMYAiADKAQSQQoMZ3JvdXBfZmlsdGVyGAMgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEZpbHRlckgBiAEBEigKG3ByZXZpb3VzX2Rlc2NyaXB0aW9uX3NlYXJjaBgEIAEoCUgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQh4KHF9wcmV2aW91c19kZXNjcmlwdGlvbl9zZWFyY2gidAojR3JvdXBEZXNjcmlwdGlvblVwZGF0ZWROb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwEhwKFHByZXZpb3VzX2Rlc2NyaXB0aW9uGAIgASgJIqgCCi5TdWJzY3JpYmVUb0dyb3VwUGVuZGluZ01lbWJlckFkZGVkTm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBARJXChVwZW5kaW5nX21lbWJlcl9maWx0ZXIYBCABKAsyMy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLlBlbmRpbmdHcm91cE1lbWJlckZpbHRlckgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQhgKFl9wZW5kaW5nX21lbWJlcl9maWx0ZXIinQEKI0dyb3VwUGVuZGluZ01lbWJlckFkZGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBJFCg5wZW5kaW5nX21lbWJlchgCIAEoCzItLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUGVuZGluZ0dyb3VwTWVtYmVyIqoCCjBTdWJzY3JpYmVUb0dyb3VwUGVuZGluZ01lbWJlclJlbW92ZWROb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARIRCglncm91cF9pZHMYAiADKAQSQQoMZ3JvdXBfZmlsdGVyGAMgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEZpbHRlckgBiAEBElcKFXBlbmRpbmdfbWVtYmVyX2ZpbHRlchgEIAEoCzIzLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUGVuZGluZ0dyb3VwTWVtYmVyRmlsdGVySAKIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXJCGAoWX3BlbmRpbmdfbWVtYmVyX2ZpbHRlciKfAQolR3JvdXBQZW5kaW5nTWVtYmVyUmVtb3ZlZE5vdGlmaWNhdGlvbhIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXASRQoOcGVuZGluZ19tZW1iZXIYAiABKAsyLS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLlBlbmRpbmdHcm91cE1lbWJlciKLAgooU3Vic2NyaWJlVG9Hcm91cE1lbWJlckpvaW5lZE5vdGlmaWNhdGlvbhISCgVjb3VudBgBIAEoBEgAiAEBEhEKCWdyb3VwX2lkcxgCIAMoBBJBCgxncm91cF9maWx0ZXIYAyABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQESSAoNbWVtYmVyX2ZpbHRlchgEIAEoCzIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJGaWx0ZXJIAogBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlckIQCg5fbWVtYmVyX2ZpbHRlciKIAQodR3JvdXBNZW1iZXJKb2luZWROb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwEjYKBm1lbWJlchgCIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXIiiQIKJlN1YnNjcmliZVRvR3JvdXBNZW1iZXJMZWZ0Tm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBARJICg1tZW1iZXJfZmlsdGVyGAQgASgLMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlckZpbHRlckgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQhAKDl9tZW1iZXJfZmlsdGVyIoYBChtHcm91cE1lbWJlckxlZnROb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwEjYKBm1lbWJlchgCIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXIingMKMVN1YnNjcmliZVRvR3JvdXBPd25QZXJtaXNzaW9uc1VwZGF0ZWROb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARIRCglncm91cF9pZHMYAiADKAQSQQoMZ3JvdXBfZmlsdGVyGAMgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEZpbHRlckgBiAEBElEKEnBlcm1pc3Npb25zX2ZpbHRlchgEIAEoCzIwLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBQZXJtaXNzaW9uRmlsdGVySAKIAQESWgobcHJldmlvdXNfcGVybWlzc2lvbnNfZmlsdGVyGAUgASgLMjAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXJIA4gBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlckIVChNfcGVybWlzc2lvbnNfZmlsdGVyQh4KHF9wcmV2aW91c19wZXJtaXNzaW9uc19maWx0ZXIi8gEKJkdyb3VwT3duUGVybWlzc2lvbnNVcGRhdGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBJGCgtwZXJtaXNzaW9ucxgCIAEoCzIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJQZXJtaXNzaW9ucxJPChRwcmV2aW91c19wZXJtaXNzaW9ucxgDIAEoCzIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJQZXJtaXNzaW9ucyKNAwo0U3Vic2NyaWJlVG9Hcm91cE1lbWJlclBlcm1pc3Npb25zVXBkYXRlZE5vdGlmaWNhdGlvbhISCgVjb3VudBgBIAEoBEgAiAEBEhEKCWdyb3VwX2lkcxgCIAMoBBJBCgxncm91cF9maWx0ZXIYAyABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQESSAoNbWVtYmVyX2ZpbHRlchgEIAEoCzIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJGaWx0ZXJIAogBARJVChpwcmV2aW91c19wZXJtaXNzaW9uX2ZpbHRlchgFIAEoCzIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJGaWx0ZXJIA4gBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlckIQCg5fbWVtYmVyX2ZpbHRlckIdChtfcHJldmlvdXNfcGVybWlzc2lvbl9maWx0ZXIi5QEKKUdyb3VwTWVtYmVyUGVybWlzc2lvbnNVcGRhdGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBI2CgZtZW1iZXIYAiABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwTWVtYmVyEk8KFHByZXZpb3VzX3Blcm1pc3Npb25zGAMgASgLMjEub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlclBlcm1pc3Npb25zQjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUAFaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z", [file_olvid_daemon_datatypes_v1_group]);
+  fileDesc("CjZvbHZpZC9kYWVtb24vbm90aWZpY2F0aW9uL3YxL2dyb3VwX25vdGlmaWNhdGlvbnMucHJvdG8SHG9sdmlkLmRhZW1vbi5ub3RpZmljYXRpb24udjEikwEKH1N1YnNjcmliZVRvR3JvdXBOZXdOb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARJBCgxncm91cF9maWx0ZXIYAiABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXIiRwoUR3JvdXBOZXdOb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwIqoBCiNTdWJzY3JpYmVUb0dyb3VwRGVsZXRlZE5vdGlmaWNhdGlvbhISCgVjb3VudBgBIAEoBEgAiAEBEhEKCWdyb3VwX2lkcxgCIAMoBBJBCgxncm91cF9maWx0ZXIYAyABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXIiSwoYR3JvdXBEZWxldGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cCLqAQonU3Vic2NyaWJlVG9Hcm91cE5hbWVVcGRhdGVkTm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBARIhChRwcmV2aW91c19uYW1lX3NlYXJjaBgEIAEoCUgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQhcKFV9wcmV2aW91c19uYW1lX3NlYXJjaCJmChxHcm91cE5hbWVVcGRhdGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBIVCg1wcmV2aW91c19uYW1lGAIgASgJIq8BCihTdWJzY3JpYmVUb0dyb3VwUGhvdG9VcGRhdGVkTm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlciJQCh1Hcm91cFBob3RvVXBkYXRlZE5vdGlmaWNhdGlvbhIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXAi/wEKLlN1YnNjcmliZVRvR3JvdXBEZXNjcmlwdGlvblVwZGF0ZWROb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARIRCglncm91cF9pZHMYAiADKAQSQQoMZ3JvdXBfZmlsdGVyGAMgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEZpbHRlckgBiAEBEigKG3ByZXZpb3VzX2Rlc2NyaXB0aW9uX3NlYXJjaBgEIAEoCUgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQh4KHF9wcmV2aW91c19kZXNjcmlwdGlvbl9zZWFyY2gidAojR3JvdXBEZXNjcmlwdGlvblVwZGF0ZWROb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwEhwKFHByZXZpb3VzX2Rlc2NyaXB0aW9uGAIgASgJIqgCCi5TdWJzY3JpYmVUb0dyb3VwUGVuZGluZ01lbWJlckFkZGVkTm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBARJXChVwZW5kaW5nX21lbWJlcl9maWx0ZXIYBCABKAsyMy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLlBlbmRpbmdHcm91cE1lbWJlckZpbHRlckgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQhgKFl9wZW5kaW5nX21lbWJlcl9maWx0ZXIinQEKI0dyb3VwUGVuZGluZ01lbWJlckFkZGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBJFCg5wZW5kaW5nX21lbWJlchgCIAEoCzItLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUGVuZGluZ0dyb3VwTWVtYmVyIqoCCjBTdWJzY3JpYmVUb0dyb3VwUGVuZGluZ01lbWJlclJlbW92ZWROb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARIRCglncm91cF9pZHMYAiADKAQSQQoMZ3JvdXBfZmlsdGVyGAMgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEZpbHRlckgBiAEBElcKFXBlbmRpbmdfbWVtYmVyX2ZpbHRlchgEIAEoCzIzLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuUGVuZGluZ0dyb3VwTWVtYmVyRmlsdGVySAKIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXJCGAoWX3BlbmRpbmdfbWVtYmVyX2ZpbHRlciKfAQolR3JvdXBQZW5kaW5nTWVtYmVyUmVtb3ZlZE5vdGlmaWNhdGlvbhIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXASRQoOcGVuZGluZ19tZW1iZXIYAiABKAsyLS5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLlBlbmRpbmdHcm91cE1lbWJlciKLAgooU3Vic2NyaWJlVG9Hcm91cE1lbWJlckpvaW5lZE5vdGlmaWNhdGlvbhISCgVjb3VudBgBIAEoBEgAiAEBEhEKCWdyb3VwX2lkcxgCIAMoBBJBCgxncm91cF9maWx0ZXIYAyABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQESSAoNbWVtYmVyX2ZpbHRlchgEIAEoCzIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJGaWx0ZXJIAogBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlckIQCg5fbWVtYmVyX2ZpbHRlciKIAQodR3JvdXBNZW1iZXJKb2luZWROb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwEjYKBm1lbWJlchgCIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXIiiQIKJlN1YnNjcmliZVRvR3JvdXBNZW1iZXJMZWZ0Tm90aWZpY2F0aW9uEhIKBWNvdW50GAEgASgESACIAQESEQoJZ3JvdXBfaWRzGAIgAygEEkEKDGdyb3VwX2ZpbHRlchgDIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBGaWx0ZXJIAYgBARJICg1tZW1iZXJfZmlsdGVyGAQgASgLMiwub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlckZpbHRlckgCiAEBQggKBl9jb3VudEIPCg1fZ3JvdXBfZmlsdGVyQhAKDl9tZW1iZXJfZmlsdGVyIoYBChtHcm91cE1lbWJlckxlZnROb3RpZmljYXRpb24SLwoFZ3JvdXAYASABKAsyIC5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwEjYKBm1lbWJlchgCIAEoCzImLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXIingMKMVN1YnNjcmliZVRvR3JvdXBPd25QZXJtaXNzaW9uc1VwZGF0ZWROb3RpZmljYXRpb24SEgoFY291bnQYASABKARIAIgBARIRCglncm91cF9pZHMYAiADKAQSQQoMZ3JvdXBfZmlsdGVyGAMgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cEZpbHRlckgBiAEBElEKEnBlcm1pc3Npb25zX2ZpbHRlchgEIAEoCzIwLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBQZXJtaXNzaW9uRmlsdGVySAKIAQESWgobcHJldmlvdXNfcGVybWlzc2lvbnNfZmlsdGVyGAUgASgLMjAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cFBlcm1pc3Npb25GaWx0ZXJIA4gBAUIICgZfY291bnRCDwoNX2dyb3VwX2ZpbHRlckIVChNfcGVybWlzc2lvbnNfZmlsdGVyQh4KHF9wcmV2aW91c19wZXJtaXNzaW9uc19maWx0ZXIi8gEKJkdyb3VwT3duUGVybWlzc2lvbnNVcGRhdGVkTm90aWZpY2F0aW9uEi8KBWdyb3VwGAEgASgLMiAub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cBJGCgtwZXJtaXNzaW9ucxgCIAEoCzIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJQZXJtaXNzaW9ucxJPChRwcmV2aW91c19wZXJtaXNzaW9ucxgDIAEoCzIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJQZXJtaXNzaW9ucyKRAwo0U3Vic2NyaWJlVG9Hcm91cE1lbWJlclBlcm1pc3Npb25zVXBkYXRlZE5vdGlmaWNhdGlvbhISCgVjb3VudBgBIAEoBEgAiAEBEhEKCWdyb3VwX2lkcxgCIAMoBBJBCgxncm91cF9maWx0ZXIYAyABKAsyJi5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLkdyb3VwRmlsdGVySAGIAQESSAoNbWVtYmVyX2ZpbHRlchgEIAEoCzIsLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJGaWx0ZXJIAogBARJZChpwcmV2aW91c19wZXJtaXNzaW9uX2ZpbHRlchgFIAEoCzIwLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBQZXJtaXNzaW9uRmlsdGVySAOIAQFCCAoGX2NvdW50Qg8KDV9ncm91cF9maWx0ZXJCEAoOX21lbWJlcl9maWx0ZXJCHQobX3ByZXZpb3VzX3Blcm1pc3Npb25fZmlsdGVyIuUBCilHcm91cE1lbWJlclBlcm1pc3Npb25zVXBkYXRlZE5vdGlmaWNhdGlvbhIvCgVncm91cBgBIAEoCzIgLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXASNgoGbWVtYmVyGAIgASgLMiYub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5Hcm91cE1lbWJlchJPChRwcmV2aW91c19wZXJtaXNzaW9ucxgDIAEoCzIxLm9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEuR3JvdXBNZW1iZXJQZXJtaXNzaW9uc0I1CiBpby5vbHZpZC5kZXNrdG9wLmRhZW1vbi5wcm90b2J1ZlABWg9vbHZpZC5pby9kYWVtb25iBnByb3RvMw", [file_olvid_daemon_datatypes_v1_group]);
 
 /**
  *
  * * GroupNew
+ * * Receive a notification each time you join a new group.
+ * * This can happen under different circumstances:
+ * * - you created a group
+ * * - you accepted a group invitation
+ * * - for keycloak managed group: the directory created a group or added you to an existing group
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupNewNotification
  */
 export type SubscribeToGroupNewNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupNewNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 2;
    */
   groupFilter?: GroupFilter;
@@ -59,21 +71,38 @@ export const GroupNewNotificationSchema: GenMessage<GroupNewNotification> = /*@_
 /**
  *
  * * GroupDeleted
+ * * Receive a notification each time you leave a group.
+ * * This can happen under different circumstances:
+ * * - you chose to leave a group
+ * * - you disbanded a group (you must be admin of this group)
+ * * - a group admin disbanded the group
+ * * - a group admin removed you from the group
+ * * - for keycloak managed group: the keycloak directory removed you from the group or disbanded the group
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exist.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupDeletedNotification
  */
 export type SubscribeToGroupDeletedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupDeletedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
@@ -106,26 +135,43 @@ export const GroupDeletedNotificationSchema: GenMessage<GroupDeletedNotification
 /**
  *
  * * GroupNameUpdated
+ * * Receive a notification each time a group name have been updated.
+ * * This can happen under different circumstances:
+ * * - you updated the group name (you must be admin of this group)
+ * * - an admin updated the group name
+ * * - for keycloak managed groups: the group name were changed by the keycloak directory
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupNameUpdatedNotification
  */
 export type SubscribeToGroupNameUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupNameUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * regexp filter on *group.name* field, before update
+   *
    * @generated from field: optional string previous_name_search = 4;
    */
   previousNameSearch?: string;
@@ -148,6 +194,8 @@ export type GroupNameUpdatedNotification = Message<"olvid.daemon.notification.v1
   group?: Group;
 
   /**
+   * the group name before update
+   *
    * @generated from field: string previous_name = 2;
    */
   previousName: string;
@@ -163,21 +211,36 @@ export const GroupNameUpdatedNotificationSchema: GenMessage<GroupNameUpdatedNoti
 /**
  *
  * * GroupPhotoUpdated
+ * * Receive a notification when a group picture have been updated.
+ * * This can happen under different circumstances:
+ * * - you updated the group picture (you must be admin of this group)
+ * * - an admin updated the group picture
+ * * - for keycloak managed groups: the group picture were changed by the keycloak directory
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupPhotoUpdatedNotification
  */
 export type SubscribeToGroupPhotoUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupPhotoUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
@@ -210,26 +273,43 @@ export const GroupPhotoUpdatedNotificationSchema: GenMessage<GroupPhotoUpdatedNo
 /**
  *
  * * GroupDescriptionUpdated
+ * * Receive a notification when a group description have been updated.
+ * * This can happen under different circumstances:
+ * * - you updated the group description (you must be admin of this group)
+ * * - an admin updated the group description
+ * * - for keycloak managed groups: the group description were changed by the keycloak directory
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupDescriptionUpdatedNotification
  */
 export type SubscribeToGroupDescriptionUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupDescriptionUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * regexp filter on previous *group.description* field, before update
+   *
    * @generated from field: optional string previous_description_search = 4;
    */
   previousDescriptionSearch?: string;
@@ -267,26 +347,42 @@ export const GroupDescriptionUpdatedNotificationSchema: GenMessage<GroupDescript
 /**
  *
  * * GroupPendingMemberAdded
+ * * Receive a notification when a pending member was added from a group.
+ * * This can happen under different circumstances:
+ * * - an admin added a new member to the group
+ * * - you joined a group and all group members are all considered as pending until each one acknowledge you joined this group
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupPendingMemberAddedNotification
  */
 export type SubscribeToGroupPendingMemberAddedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupPendingMemberAddedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * you will only receive notifications about groups with a pending member that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.PendingGroupMemberFilter pending_member_filter = 4;
    */
   pendingMemberFilter?: PendingGroupMemberFilter;
@@ -324,26 +420,42 @@ export const GroupPendingMemberAddedNotificationSchema: GenMessage<GroupPendingM
 /**
  *
  * * GroupPendingMemberRemoved
+ * * Receive a notification when a pending member was removed from a group.
+ * * This can happen under different circumstances:
+ * * - a pending group member accepted or declined the group invitation
+ * * - you joined a group and a member acknowledged you joined this group
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupPendingMemberRemovedNotification
  */
 export type SubscribeToGroupPendingMemberRemovedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupPendingMemberRemovedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * you will only receive notifications about groups with a pending member that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.PendingGroupMemberFilter pending_member_filter = 4;
    */
   pendingMemberFilter?: PendingGroupMemberFilter;
@@ -381,26 +493,42 @@ export const GroupPendingMemberRemovedNotificationSchema: GenMessage<GroupPendin
 /**
  *
  * * GroupMemberJoined
+ * * Receive a notification when a new member joined a group.
+ * * This can happen under different circumstances:
+ * * - a pending group member accepted the group invitation
+ * * - for keycloak managed groups: directory added a new group member / a user registered on directory and was automatically added to existing groups
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupMemberJoinedNotification
  */
 export type SubscribeToGroupMemberJoinedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupMemberJoinedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * you will only receive notifications about groups with a member that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter member_filter = 4;
    */
   memberFilter?: GroupMemberFilter;
@@ -438,26 +566,43 @@ export const GroupMemberJoinedNotificationSchema: GenMessage<GroupMemberJoinedNo
 /**
  *
  * * GroupMemberLeft
+ * * Receive a notification when a group member was removed from a group.
+ * * This can happen under different circumstances:
+ * * - you removed a group member (you must be a group admin)
+ * * - a group member was removed by an admin
+ * * - for keycloak managed groups: directory removed a group member / a user unregistered from directory and was automatically removed from groups
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupMemberLeftNotification
  */
 export type SubscribeToGroupMemberLeftNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupMemberLeftNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * you will only receive notifications about groups with a member that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter member_filter = 4;
    */
   memberFilter?: GroupMemberFilter;
@@ -495,32 +640,46 @@ export const GroupMemberLeftNotificationSchema: GenMessage<GroupMemberLeftNotifi
 /**
  *
  * * GroupOwnPermissionsUpdated
- * * triggered when your permissions are updated
+ * * Receive a notification when your permissions have been updated in a group.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupOwnPermissionsUpdatedNotification
  */
 export type SubscribeToGroupOwnPermissionsUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupOwnPermissionsUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * you will only receive notifications about groups where your permissions match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter permissions_filter = 4;
    */
   permissionsFilter?: GroupPermissionFilter;
 
   /**
+   * you will only receive notifications when your previous permissions match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter previous_permissions_filter = 5;
    */
   previousPermissionsFilter?: GroupPermissionFilter;
@@ -543,11 +702,15 @@ export type GroupOwnPermissionsUpdatedNotification = Message<"olvid.daemon.notif
   group?: Group;
 
   /**
+   * your new permissions
+   *
    * @generated from field: olvid.daemon.datatypes.v1.GroupMemberPermissions permissions = 2;
    */
   permissions?: GroupMemberPermissions;
 
   /**
+   * your permissions before update
+   *
    * @generated from field: olvid.daemon.datatypes.v1.GroupMemberPermissions previous_permissions = 3;
    */
   previousPermissions?: GroupMemberPermissions;
@@ -563,35 +726,49 @@ export const GroupOwnPermissionsUpdatedNotificationSchema: GenMessage<GroupOwnPe
 /**
  *
  * * GroupMemberPermissionsUpdated
- * * triggered when permissions of a group member are updated
+ * * Receive a notification when a group member permissions have been updated.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _group_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToGroupMemberPermissionsUpdatedNotification
  */
 export type SubscribeToGroupMemberPermissionsUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToGroupMemberPermissionsUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about groups specified in this list.
+   *
    * @generated from field: repeated uint64 group_ids = 2;
    */
   groupIds: bigint[];
 
   /**
+   * you will only receive notifications about groups that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupFilter group_filter = 3;
    */
   groupFilter?: GroupFilter;
 
   /**
+   * you will only receive notifications about group members that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter member_filter = 4;
    */
   memberFilter?: GroupMemberFilter;
 
   /**
-   * @generated from field: optional olvid.daemon.datatypes.v1.GroupMemberFilter previous_permission_filter = 5;
+   * you will only receive notifications when previous permissions match this filter.
+   *
+   * @generated from field: optional olvid.daemon.datatypes.v1.GroupPermissionFilter previous_permission_filter = 5;
    */
-  previousPermissionFilter?: GroupMemberFilter;
+  previousPermissionFilter?: GroupPermissionFilter;
 };
 
 /**
@@ -611,11 +788,15 @@ export type GroupMemberPermissionsUpdatedNotification = Message<"olvid.daemon.no
   group?: Group;
 
   /**
+   * the group member permissions have been updated for
+   *
    * @generated from field: olvid.daemon.datatypes.v1.GroupMember member = 2;
    */
   member?: GroupMember;
 
   /**
+   * the member permissions before update
+   *
    * @generated from field: olvid.daemon.datatypes.v1.GroupMemberPermissions previous_permissions = 3;
    */
   previousPermissions?: GroupMemberPermissions;

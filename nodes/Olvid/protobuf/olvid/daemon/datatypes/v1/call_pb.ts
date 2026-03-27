@@ -13,6 +13,9 @@ export const file_olvid_daemon_datatypes_v1_call: GenFile = /*@__PURE__*/
   fileDesc("CiRvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2NhbGwucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEiSQoRQ2FsbFBhcnRpY2lwYW50SWQSFAoKY29udGFjdF9pZBgBIAEoBEgAEhgKDnBhcnRpY2lwYW50X2lkGAIgASgJSABCBAoCaWRCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAFoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM");
 
 /**
+ *
+ * * Identify a call participant by its contact id, or a random identifier if it is not a contact.
+ *
  * @generated from message olvid.daemon.datatypes.v1.CallParticipantId
  */
 export type CallParticipantId = Message<"olvid.daemon.datatypes.v1.CallParticipantId"> & {

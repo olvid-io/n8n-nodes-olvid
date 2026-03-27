@@ -17,16 +17,25 @@ export const file_olvid_daemon_notification_v1_invitation_notifications: GenFile
 /**
  *
  * * InvitationReceived
+ * * Receive a notification each time you receive a new invitation.
+ * * A new invitation marks the first step of an invitation protocol.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: Client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationReceivedNotification
  */
 export type SubscribeToInvitationReceivedNotification = Message<"olvid.daemon.notification.v1.SubscribeToInvitationReceivedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about invitations that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
    */
   filter?: InvitationFilter;
@@ -59,16 +68,25 @@ export const InvitationReceivedNotificationSchema: GenMessage<InvitationReceived
 /**
  *
  * * InvitationSent
+ * * Receive a notification each time you send a new invitation.
+ * * A new invitation is the first step of an invitation protocol.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationSentNotification
  */
 export type SubscribeToInvitationSentNotification = Message<"olvid.daemon.notification.v1.SubscribeToInvitationSentNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about invitations that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
    */
   filter?: InvitationFilter;
@@ -101,21 +119,36 @@ export const InvitationSentNotificationSchema: GenMessage<InvitationSentNotifica
 /**
  *
  * * InvitationDeleted
+ * * Receive a notification each time an invitation is deleted.
+ * * This can happen under different circumstances:
+ * * - an invitation protocol ended and invitation was automatically removed
+ * * - you aborted a protocol
+ * * - you deleted an invitation
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _invitation_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationDeletedNotification
  */
 export type SubscribeToInvitationDeletedNotification = Message<"olvid.daemon.notification.v1.SubscribeToInvitationDeletedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about invitations that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
    */
   filter?: InvitationFilter;
 
   /**
+   * you will only receive notifications about invitations specified in this list.
+   *
    * @generated from field: repeated uint64 invitation_ids = 3;
    */
   invitationIds: bigint[];
@@ -148,21 +181,33 @@ export const InvitationDeletedNotificationSchema: GenMessage<InvitationDeletedNo
 /**
  *
  * * InvitationUpdated
+ * * Receive a notification each time an invitation status have been updated.
+ * * Invitation status are updated when a new protocol step is passed.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _invitation_ids_ does not exists.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToInvitationUpdatedNotification
  */
 export type SubscribeToInvitationUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToInvitationUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about invitations that match this filter.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.InvitationFilter filter = 2;
    */
   filter?: InvitationFilter;
 
   /**
+   * you will only receive notifications about invitations specified in this list.
+   *
    * @generated from field: repeated uint64 invitation_ids = 3;
    */
   invitationIds: bigint[];
@@ -185,6 +230,8 @@ export type InvitationUpdatedNotification = Message<"olvid.daemon.notification.v
   invitation?: Invitation;
 
   /**
+   * _invitation.status_ before update
+   *
    * @generated from field: olvid.daemon.datatypes.v1.Invitation.Status previous_invitation_status = 2;
    */
   previousInvitationStatus: Invitation_Status;

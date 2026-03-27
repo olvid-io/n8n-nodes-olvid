@@ -13,10 +13,17 @@ export const file_olvid_daemon_datatypes_v1_client_key: GenFile = /*@__PURE__*/
   fileDesc("CipvbHZpZC9kYWVtb24vZGF0YXR5cGVzL3YxL2NsaWVudF9rZXkucHJvdG8SGW9sdmlkLmRhZW1vbi5kYXRhdHlwZXMudjEiOwoJQ2xpZW50S2V5EgwKBG5hbWUYASABKAkSCwoDa2V5GAIgASgJEhMKC2lkZW50aXR5X2lkGAMgASgEIo0BCg9DbGllbnRLZXlGaWx0ZXISEwoJYWRtaW5fa2V5GAEgASgISAASFQoLaWRlbnRpdHlfaWQYAiABKARIABIYCgtuYW1lX3NlYXJjaBgDIAEoCUgBiAEBEhAKA2tleRgEIAEoCUgCiAEBQgoKCGlkZW50aXR5Qg4KDF9uYW1lX3NlYXJjaEIGCgRfa2V5QjUKIGlvLm9sdmlkLmRlc2t0b3AuZGFlbW9uLnByb3RvYnVmUABaD29sdmlkLmlvL2RhZW1vbmIGcHJvdG8z");
 
 /**
+ *
+ * * A client key can be used to authenticate on the daemon.
+ * * It can be associated to a daemon identity if identity_id is specified, if not (identity_id is equal to zero) it is an admin client.
+ * * An admin client key can use admin command services and impersonate any daemon identity.
+ *
  * @generated from message olvid.daemon.datatypes.v1.ClientKey
  */
 export type ClientKey = Message<"olvid.daemon.datatypes.v1.ClientKey"> & {
   /**
+   * user defined name
+   *
    * @generated from field: string name = 1;
    */
   name: string;
@@ -27,7 +34,7 @@ export type ClientKey = Message<"olvid.daemon.datatypes.v1.ClientKey"> & {
   key: string;
 
   /**
-   * 0 if an admin key
+   * 0 if an admin client key
    *
    * @generated from field: uint64 identity_id = 3;
    */
@@ -42,6 +49,9 @@ export const ClientKeySchema: GenMessage<ClientKey> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_datatypes_v1_client_key, 0);
 
 /**
+ *
+ * * Filter client keys by attributes.
+ *
  * @generated from message olvid.daemon.datatypes.v1.ClientKeyFilter
  */
 export type ClientKeyFilter = Message<"olvid.daemon.datatypes.v1.ClientKeyFilter"> & {
@@ -50,12 +60,16 @@ export type ClientKeyFilter = Message<"olvid.daemon.datatypes.v1.ClientKeyFilter
    */
   identity: {
     /**
+     * filter admin client keys
+     *
      * @generated from field: bool admin_key = 1;
      */
     value: boolean;
     case: "adminKey";
   } | {
     /**
+     * filter keys associated to an identity id
+     *
      * @generated from field: uint64 identity_id = 2;
      */
     value: bigint;
@@ -63,11 +77,15 @@ export type ClientKeyFilter = Message<"olvid.daemon.datatypes.v1.ClientKeyFilter
   } | { case: undefined; value?: undefined };
 
   /**
+   * regexp filter on *name*
+   *
    * @generated from field: optional string name_search = 3;
    */
   nameSearch?: string;
 
   /**
+   * key value
+   *
    * @generated from field: optional string key = 4;
    */
   key?: string;

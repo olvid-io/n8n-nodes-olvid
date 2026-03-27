@@ -16,12 +16,20 @@ export const file_olvid_daemon_notification_v1_call_notifications: GenFile = /*@
 
 /**
  *
- * * CallIncomingCall (Inbound call)
+ * * CallIncomingCall
+ * * Receive a notification when someone tries to call you.
+ * * Daemon will automatically answer with a busy message to notify that you won't be able to answer.
+ * * Call details are available in notification content.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToCallIncomingCallNotification
  */
 export type SubscribeToCallIncomingCallNotification = Message<"olvid.daemon.notification.v1.SubscribeToCallIncomingCallNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
@@ -77,12 +85,19 @@ export const CallIncomingCallNotificationSchema: GenMessage<CallIncomingCallNoti
 
 /**
  *
- * * CallRinging (Outbound call)
+ * * CallRinging
+ * * When you initiated a call, receive a notification when a participant phone starts to ring.
+ * * Under some network circumstances a participant phone might never start ringing.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToCallRingingNotification
  */
 export type SubscribeToCallRingingNotification = Message<"olvid.daemon.notification.v1.SubscribeToCallRingingNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
@@ -119,12 +134,19 @@ export const CallRingingNotificationSchema: GenMessage<CallRingingNotification> 
 
 /**
  *
- * * CallAccepted (Outbound call)
+ * * CallAccepted
+ * * When you initiated a call, receive a notification if a participant accepted the call.
+ * * Daemon will automatically hang up when a participant accept the call because we currently cannot manage the call.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToCallAcceptedNotification
  */
 export type SubscribeToCallAcceptedNotification = Message<"olvid.daemon.notification.v1.SubscribeToCallAcceptedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
@@ -161,12 +183,18 @@ export const CallAcceptedNotificationSchema: GenMessage<CallAcceptedNotification
 
 /**
  *
- * * CallDeclined (Outbound call)
+ * * CallDeclined
+ * * When you initiated a call, receive a notification if a participant declined the call.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToCallDeclinedNotification
  */
 export type SubscribeToCallDeclinedNotification = Message<"olvid.daemon.notification.v1.SubscribeToCallDeclinedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
@@ -204,11 +232,17 @@ export const CallDeclinedNotificationSchema: GenMessage<CallDeclinedNotification
 /**
  *
  * * CallBusy (Outbound call)
+ * * When you initiated a call, receive a notification if a participant accepted the call.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToCallBusyNotification
  */
 export type SubscribeToCallBusyNotification = Message<"olvid.daemon.notification.v1.SubscribeToCallBusyNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
@@ -245,12 +279,18 @@ export const CallBusyNotificationSchema: GenMessage<CallBusyNotification> = /*@_
 
 /**
  *
- * * CallEnded: everyone declined or left call
+ * * CallEnded:
+ * * For inbound or outbound call, receive a notification when every call participant left a call or declined it.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToCallEndedNotification
  */
 export type SubscribeToCallEndedNotification = Message<"olvid.daemon.notification.v1.SubscribeToCallEndedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;

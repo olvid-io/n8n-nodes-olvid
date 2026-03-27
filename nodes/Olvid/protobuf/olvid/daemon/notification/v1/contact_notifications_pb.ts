@@ -19,16 +19,24 @@ export const file_olvid_daemon_notification_v1_contact_notifications: GenFile = 
 /**
  *
  * * ContactNew
+ * * Receive a notification each time a contact is added to your contact book.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactNewNotification
  */
 export type SubscribeToContactNewNotification = Message<"olvid.daemon.notification.v1.SubscribeToContactNewNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about contacts that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
    */
   filter?: ContactFilter;
@@ -61,21 +69,36 @@ export const ContactNewNotificationSchema: GenMessage<ContactNewNotification> = 
 /**
  *
  * * ContactDeleted
+ * * Receive a notification each time a contact is removed from your contact book.
+ * * This can happen under different circumstances:
+ * * - you deleted the contact
+ * * - he contact deleted you
+ * * - the contact deleted his identity and chose to notify his contacts
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _contact_ids_ was not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactDeletedNotification
  */
 export type SubscribeToContactDeletedNotification = Message<"olvid.daemon.notification.v1.SubscribeToContactDeletedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about contacts that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
    */
   filter?: ContactFilter;
 
   /**
+   * you will only receive notifications about contacts specified in this list.
+   *
    * @generated from field: repeated uint64 contact_ids = 3;
    */
   contactIds: bigint[];
@@ -108,21 +131,36 @@ export const ContactDeletedNotificationSchema: GenMessage<ContactDeletedNotifica
 /**
  *
  * * ContactDetailsUpdated
+ * * Receive a notification each time a contact update it's identity details.
+ * * This implies that this contact display name changed.
+ * * This can happen under different circumstances:
+ * * - the contact updated his details
+ * * - for _keycloak_managed_ contacts the directory updated it's details
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _contact_ids_ was not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactDetailsUpdatedNotification
  */
 export type SubscribeToContactDetailsUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToContactDetailsUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about contacts that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
    */
   filter?: ContactFilter;
 
   /**
+   * you will only receive notifications about contacts specified in this list.
+   *
    * @generated from field: repeated uint64 contact_ids = 3;
    */
   contactIds: bigint[];
@@ -160,21 +198,32 @@ export const ContactDetailsUpdatedNotificationSchema: GenMessage<ContactDetailsU
 /**
  *
  * * ContactPhotoUpdated
+ * * Receive a notification each time a contact profile picture has been updated.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: at least one of the _contact_ids_ was not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.notification.v1.SubscribeToContactPhotoUpdatedNotification
  */
 export type SubscribeToContactPhotoUpdatedNotification = Message<"olvid.daemon.notification.v1.SubscribeToContactPhotoUpdatedNotification"> & {
   /**
+   * limit the number of notifications you will receive , set to 0 to disable
+   *
    * @generated from field: optional uint64 count = 1;
    */
   count?: bigint;
 
   /**
+   * you will only receive notifications about contacts that match all the filter params.
+   *
    * @generated from field: optional olvid.daemon.datatypes.v1.ContactFilter filter = 2;
    */
   filter?: ContactFilter;
 
   /**
+   * you will only receive notifications about contacts specified in this list.
+   *
    * @generated from field: repeated uint64 contact_ids = 3;
    */
   contactIds: bigint[];

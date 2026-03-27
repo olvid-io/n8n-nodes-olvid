@@ -4,7 +4,6 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv2";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv2";
-import { file_olvid_daemon_datatypes_v1_identity } from "../../datatypes/v1/identity_pb";
 import type { KeycloakUser, KeycloakUserFilter } from "../../datatypes/v1/keycloak_pb";
 import { file_olvid_daemon_datatypes_v1_keycloak } from "../../datatypes/v1/keycloak_pb";
 import type { Message } from "@bufbuild/protobuf";
@@ -13,11 +12,20 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/command/v1/keycloak_commands.proto.
  */
 export const file_olvid_daemon_command_v1_keycloak_commands: GenFile = /*@__PURE__*/
-  fileDesc("Ci9vbHZpZC9kYWVtb24vY29tbWFuZC92MS9rZXljbG9ha19jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiOQobS2V5Y2xvYWtCaW5kSWRlbnRpdHlSZXF1ZXN0EhoKEmNvbmZpZ3VyYXRpb25fbGluaxgBIAEoCSIeChxLZXljbG9ha0JpbmRJZGVudGl0eVJlc3BvbnNlIh8KHUtleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXF1ZXN0IiAKHktleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXNwb25zZSKiAQoXS2V5Y2xvYWtVc2VyTGlzdFJlcXVlc3QSQgoGZmlsdGVyGAEgASgLMi0ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5LZXljbG9ha1VzZXJGaWx0ZXJIAIgBARIgChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgESAGIAQFCCQoHX2ZpbHRlckIWChRfbGFzdF9saXN0X3RpbWVzdGFtcCJvChhLZXljbG9ha1VzZXJMaXN0UmVzcG9uc2USNgoFdXNlcnMYASADKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLktleWNsb2FrVXNlchIbChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgEIjYKH0tleWNsb2FrQWRkVXNlckFzQ29udGFjdFJlcXVlc3QSEwoLa2V5Y2xvYWtfaWQYASABKAkiIgogS2V5Y2xvYWtBZGRVc2VyQXNDb250YWN0UmVzcG9uc2VCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAVoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_identity, file_olvid_daemon_datatypes_v1_keycloak]);
+  fileDesc("Ci9vbHZpZC9kYWVtb24vY29tbWFuZC92MS9rZXljbG9ha19jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiOQobS2V5Y2xvYWtCaW5kSWRlbnRpdHlSZXF1ZXN0EhoKEmNvbmZpZ3VyYXRpb25fbGluaxgBIAEoCSIeChxLZXljbG9ha0JpbmRJZGVudGl0eVJlc3BvbnNlIh8KHUtleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXF1ZXN0IiAKHktleWNsb2FrVW5iaW5kSWRlbnRpdHlSZXNwb25zZSKiAQoXS2V5Y2xvYWtVc2VyTGlzdFJlcXVlc3QSQgoGZmlsdGVyGAEgASgLMi0ub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5LZXljbG9ha1VzZXJGaWx0ZXJIAIgBARIgChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgESAGIAQFCCQoHX2ZpbHRlckIWChRfbGFzdF9saXN0X3RpbWVzdGFtcCJvChhLZXljbG9ha1VzZXJMaXN0UmVzcG9uc2USNgoFdXNlcnMYASADKAsyJy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLktleWNsb2FrVXNlchIbChNsYXN0X2xpc3RfdGltZXN0YW1wGAIgASgEIjYKH0tleWNsb2FrQWRkVXNlckFzQ29udGFjdFJlcXVlc3QSEwoLa2V5Y2xvYWtfaWQYASABKAkiIgogS2V5Y2xvYWtBZGRVc2VyQXNDb250YWN0UmVzcG9uc2VCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAVoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_keycloak]);
 
 /**
  *
  * * KeycloakBindIdentity
+ * * Register your identity in a keycloak directory.
+ * * Your identity should not already be registered in a keycloak directory (`identity.keycloak_managed`).
+ * * When registered your directory might add you to some managed groups, and you will be granted access to other directory users.
+ * * Other directory users can be added as contacts with no further confirmation (see *KeycloakUserList* and *KeycloakAddUserAsContact*).
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: identity is already keycloak managed.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.KeycloakBindIdentityRequest
  */
@@ -51,6 +59,14 @@ export const KeycloakBindIdentityResponseSchema: GenMessage<KeycloakBindIdentity
 /**
  *
  * * KeycloakUnbindIdentity
+ * * Unregister from a keycloak directory.
+ * * Your identity should already be keycloak managed.
+ * * You will lose access to keycloak user directory and you will leave keycloak managed groups.
+ * * Your keycloak managed contacts will remain contacts but won't be keycloak managed anymore.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: identity is not keycloak managed.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.KeycloakUnbindIdentityRequest
  */
@@ -80,6 +96,13 @@ export const KeycloakUnbindIdentityResponseSchema: GenMessage<KeycloakUnbindIden
 /**
  *
  * * KeycloakUserList
+ * * List other users registered on your keycloak directory.
+ * * Pass a filter to select only users that match specific criteria.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: identity is not keycloak managed / invalid filter.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.KeycloakUserListRequest
  */
@@ -90,6 +113,8 @@ export type KeycloakUserListRequest = Message<"olvid.daemon.command.v1.KeycloakU
   filter?: KeycloakUserFilter;
 
   /**
+   * only users that registered on keycloak since this timestamp, set to 0 to list all users.
+   *
    * @generated from field: optional uint64 last_list_timestamp = 2;
    */
   lastListTimestamp?: bigint;
@@ -112,6 +137,8 @@ export type KeycloakUserListResponse = Message<"olvid.daemon.command.v1.Keycloak
   users: KeycloakUser[];
 
   /**
+   * set this timestamp in request.last_list_timestamp if you want to list only new users.
+   *
    * @generated from field: uint64 last_list_timestamp = 2;
    */
   lastListTimestamp: bigint;
@@ -127,6 +154,15 @@ export const KeycloakUserListResponseSchema: GenMessage<KeycloakUserListResponse
 /**
  *
  * * KeycloakAddUserAsContact
+ * * Add a user from keycloak directory as a contact.
+ * * This will not trigger any invitation protocol.
+ * * Directory is considered as a trusted third party so no further confirmation is required.
+ * * Contact and discussion will be created as soon as one of the other user's device is online and automatically answer "invitation".
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: identity is not keycloak managed.
+ * * `NOT_FOUND`: keycloak user not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.KeycloakAddUserAsContactRequest
  */

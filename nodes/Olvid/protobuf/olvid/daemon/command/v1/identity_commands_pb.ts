@@ -12,11 +12,16 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file olvid/daemon/command/v1/identity_commands.proto.
  */
 export const file_olvid_daemon_command_v1_identity_commands: GenFile = /*@__PURE__*/
-  fileDesc("Ci9vbHZpZC9kYWVtb24vY29tbWFuZC92MS9pZGVudGl0eV9jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiFAoSSWRlbnRpdHlHZXRSZXF1ZXN0IkwKE0lkZW50aXR5R2V0UmVzcG9uc2USNQoIaWRlbnRpdHkYASABKAsyIy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5IiMKIUlkZW50aXR5R2V0Qnl0ZXNJZGVudGlmaWVyUmVxdWVzdCI4CiJJZGVudGl0eUdldEJ5dGVzSWRlbnRpZmllclJlc3BvbnNlEhIKCmlkZW50aWZpZXIYASABKAwiIgogSWRlbnRpdHlHZXRJbnZpdGF0aW9uTGlua1JlcXVlc3QiPAohSWRlbnRpdHlHZXRJbnZpdGF0aW9uTGlua1Jlc3BvbnNlEhcKD2ludml0YXRpb25fbGluaxgBIAEoCSJfChxJZGVudGl0eVVwZGF0ZURldGFpbHNSZXF1ZXN0Ej8KC25ld19kZXRhaWxzGAIgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eURldGFpbHMiHwodSWRlbnRpdHlVcGRhdGVEZXRhaWxzUmVzcG9uc2UiHAoaSWRlbnRpdHlSZW1vdmVQaG90b1JlcXVlc3QiHQobSWRlbnRpdHlSZW1vdmVQaG90b1Jlc3BvbnNlIkYKH0lkZW50aXR5U2V0UGhvdG9SZXF1ZXN0TWV0YWRhdGESEAoIZmlsZW5hbWUYASABKAkSEQoJZmlsZV9zaXplGAIgASgEIoUBChdJZGVudGl0eVNldFBob3RvUmVxdWVzdBJMCghtZXRhZGF0YRgBIAEoCzI4Lm9sdmlkLmRhZW1vbi5jb21tYW5kLnYxLklkZW50aXR5U2V0UGhvdG9SZXF1ZXN0TWV0YWRhdGFIABIRCgdwYXlsb2FkGAIgASgMSABCCQoHcmVxdWVzdCIaChhJZGVudGl0eVNldFBob3RvUmVzcG9uc2UiHgocSWRlbnRpdHlEb3dubG9hZFBob3RvUmVxdWVzdCIuCh1JZGVudGl0eURvd25sb2FkUGhvdG9SZXNwb25zZRINCgVwaG90bxgBIAEoDCIgCh5JZGVudGl0eUdldEFwaUtleVN0YXR1c1JlcXVlc3QiXgofSWRlbnRpdHlHZXRBcGlLZXlTdGF0dXNSZXNwb25zZRI7CgdhcGlfa2V5GAEgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eS5BcGlLZXkiKwoYSWRlbnRpdHlTZXRBcGlLZXlSZXF1ZXN0Eg8KB2FwaV9rZXkYASABKAkiWAoZSWRlbnRpdHlTZXRBcGlLZXlSZXNwb25zZRI7CgdhcGlfa2V5GAEgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eS5BcGlLZXkiQQojSWRlbnRpdHlTZXRDb25maWd1cmF0aW9uTGlua1JlcXVlc3QSGgoSY29uZmlndXJhdGlvbl9saW5rGAEgASgJImMKJElkZW50aXR5U2V0Q29uZmlndXJhdGlvbkxpbmtSZXNwb25zZRI7CgdhcGlfa2V5GAEgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eS5BcGlLZXlCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAVoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_identity]);
+  fileDesc("Ci9vbHZpZC9kYWVtb24vY29tbWFuZC92MS9pZGVudGl0eV9jb21tYW5kcy5wcm90bxIXb2x2aWQuZGFlbW9uLmNvbW1hbmQudjEiFAoSSWRlbnRpdHlHZXRSZXF1ZXN0IkwKE0lkZW50aXR5R2V0UmVzcG9uc2USNQoIaWRlbnRpdHkYASABKAsyIy5vbHZpZC5kYWVtb24uZGF0YXR5cGVzLnYxLklkZW50aXR5IiMKIUlkZW50aXR5R2V0Qnl0ZXNJZGVudGlmaWVyUmVxdWVzdCI4CiJJZGVudGl0eUdldEJ5dGVzSWRlbnRpZmllclJlc3BvbnNlEhIKCmlkZW50aWZpZXIYASABKAwiIgogSWRlbnRpdHlHZXRJbnZpdGF0aW9uTGlua1JlcXVlc3QiPAohSWRlbnRpdHlHZXRJbnZpdGF0aW9uTGlua1Jlc3BvbnNlEhcKD2ludml0YXRpb25fbGluaxgBIAEoCSJfChxJZGVudGl0eVVwZGF0ZURldGFpbHNSZXF1ZXN0Ej8KC25ld19kZXRhaWxzGAIgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eURldGFpbHMiHwodSWRlbnRpdHlVcGRhdGVEZXRhaWxzUmVzcG9uc2UiRgofSWRlbnRpdHlTZXRQaG90b1JlcXVlc3RNZXRhZGF0YRIQCghmaWxlbmFtZRgBIAEoCRIRCglmaWxlX3NpemUYAiABKAQihQEKF0lkZW50aXR5U2V0UGhvdG9SZXF1ZXN0EkwKCG1ldGFkYXRhGAEgASgLMjgub2x2aWQuZGFlbW9uLmNvbW1hbmQudjEuSWRlbnRpdHlTZXRQaG90b1JlcXVlc3RNZXRhZGF0YUgAEhEKB3BheWxvYWQYAiABKAxIAEIJCgdyZXF1ZXN0IhoKGElkZW50aXR5U2V0UGhvdG9SZXNwb25zZSIeChxJZGVudGl0eURvd25sb2FkUGhvdG9SZXF1ZXN0Ii4KHUlkZW50aXR5RG93bmxvYWRQaG90b1Jlc3BvbnNlEg0KBXBob3RvGAEgASgMIhwKGklkZW50aXR5UmVtb3ZlUGhvdG9SZXF1ZXN0Ih0KG0lkZW50aXR5UmVtb3ZlUGhvdG9SZXNwb25zZSIgCh5JZGVudGl0eUdldEFwaUtleVN0YXR1c1JlcXVlc3QiXgofSWRlbnRpdHlHZXRBcGlLZXlTdGF0dXNSZXNwb25zZRI7CgdhcGlfa2V5GAEgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eS5BcGlLZXkiKwoYSWRlbnRpdHlTZXRBcGlLZXlSZXF1ZXN0Eg8KB2FwaV9rZXkYASABKAkiWAoZSWRlbnRpdHlTZXRBcGlLZXlSZXNwb25zZRI7CgdhcGlfa2V5GAEgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eS5BcGlLZXkiQQojSWRlbnRpdHlTZXRDb25maWd1cmF0aW9uTGlua1JlcXVlc3QSGgoSY29uZmlndXJhdGlvbl9saW5rGAEgASgJImMKJElkZW50aXR5U2V0Q29uZmlndXJhdGlvbkxpbmtSZXNwb25zZRI7CgdhcGlfa2V5GAEgASgLMioub2x2aWQuZGFlbW9uLmRhdGF0eXBlcy52MS5JZGVudGl0eS5BcGlLZXlCNQogaW8ub2x2aWQuZGVza3RvcC5kYWVtb24ucHJvdG9idWZQAVoPb2x2aWQuaW8vZGFlbW9uYgZwcm90bzM", [file_olvid_daemon_datatypes_v1_identity]);
 
 /**
  *
  * * IdentityGet
+ * * Get your identity details.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.IdentityGetRequest
  */
@@ -50,6 +55,13 @@ export const IdentityGetResponseSchema: GenMessage<IdentityGetResponse> = /*@__P
 /**
  *
  * * IdentityGetBytesIdentifier
+ * * Get your Olvid identity as bytes.
+ * * This is useful to have a long term identifier for an identity, backup-proof, and common to any device.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.IdentityGetBytesIdentifierRequest
  */
@@ -83,6 +95,13 @@ export const IdentityGetBytesIdentifierResponseSchema: GenMessage<IdentityGetByt
 /**
  *
  * * IdentityGetInvitationLink
+ * * Get your invitation link. This link can be sent to other Olvid users to let them send you an invitation.
+ * * Invitation links can be opened with any Olvid application or opened in a web browser to show a QR code to scan.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.IdentityGetInvitationLinkRequest
  */
@@ -116,11 +135,22 @@ export const IdentityGetInvitationLinkResponseSchema: GenMessage<IdentityGetInvi
 /**
  *
  * * IdentityUpdateDetails
+ * * Update your Olvid identity details (first name, last name, company and position).
+ * * At least one field in first and last name must be non empty.
+ * * Your details will be visible by your contacts, and your display name is computed from these details.
+ * * Details for a keycloak managed identity cannot be updated.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: identity not found.
+ * * `INVALID_ARGUMENT`: at least one of first name and last name must be non empty / cannot update a keycloak managed identity.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.IdentityUpdateDetailsRequest
  */
 export type IdentityUpdateDetailsRequest = Message<"olvid.daemon.command.v1.IdentityUpdateDetailsRequest"> & {
   /**
+   * your new identity details
+   *
    * @generated from field: olvid.daemon.datatypes.v1.IdentityDetails new_details = 2;
    */
   newDetails?: IdentityDetails;
@@ -148,36 +178,15 @@ export const IdentityUpdateDetailsResponseSchema: GenMessage<IdentityUpdateDetai
 
 /**
  *
- * * IdentityRemovePhoto
- *
- * @generated from message olvid.daemon.command.v1.IdentityRemovePhotoRequest
- */
-export type IdentityRemovePhotoRequest = Message<"olvid.daemon.command.v1.IdentityRemovePhotoRequest"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.IdentityRemovePhotoRequest.
- * Use `create(IdentityRemovePhotoRequestSchema)` to create a new message.
- */
-export const IdentityRemovePhotoRequestSchema: GenMessage<IdentityRemovePhotoRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_identity_commands, 8);
-
-/**
- * @generated from message olvid.daemon.command.v1.IdentityRemovePhotoResponse
- */
-export type IdentityRemovePhotoResponse = Message<"olvid.daemon.command.v1.IdentityRemovePhotoResponse"> & {
-};
-
-/**
- * Describes the message olvid.daemon.command.v1.IdentityRemovePhotoResponse.
- * Use `create(IdentityRemovePhotoResponseSchema)` to create a new message.
- */
-export const IdentityRemovePhotoResponseSchema: GenMessage<IdentityRemovePhotoResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_identity_commands, 9);
-
-/**
- *
  * * IdentitySetPhoto
+ * * Set a profile picture for your identity.
+ * * This picture will be visible by your contacts.
+ * * The photo can be jpeg or png but will be converted to jpeg and resolution will be limited to 1080x1080.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.IdentitySetPhotoRequestMetadata
  */
@@ -198,7 +207,7 @@ export type IdentitySetPhotoRequestMetadata = Message<"olvid.daemon.command.v1.I
  * Use `create(IdentitySetPhotoRequestMetadataSchema)` to create a new message.
  */
 export const IdentitySetPhotoRequestMetadataSchema: GenMessage<IdentitySetPhotoRequestMetadata> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_identity_commands, 10);
+  messageDesc(file_olvid_daemon_command_v1_identity_commands, 8);
 
 /**
  * @generated from message olvid.daemon.command.v1.IdentitySetPhotoRequest
@@ -227,7 +236,7 @@ export type IdentitySetPhotoRequest = Message<"olvid.daemon.command.v1.IdentityS
  * Use `create(IdentitySetPhotoRequestSchema)` to create a new message.
  */
 export const IdentitySetPhotoRequestSchema: GenMessage<IdentitySetPhotoRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_identity_commands, 11);
+  messageDesc(file_olvid_daemon_command_v1_identity_commands, 9);
 
 /**
  * @generated from message olvid.daemon.command.v1.IdentitySetPhotoResponse
@@ -240,11 +249,18 @@ export type IdentitySetPhotoResponse = Message<"olvid.daemon.command.v1.Identity
  * Use `create(IdentitySetPhotoResponseSchema)` to create a new message.
  */
 export const IdentitySetPhotoResponseSchema: GenMessage<IdentitySetPhotoResponse> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_identity_commands, 12);
+  messageDesc(file_olvid_daemon_command_v1_identity_commands, 10);
 
 /**
  *
  * * IdentityDownloadPhoto
+ * * Download your current identity picture.
+ * * Pictures are always jpeg files with a maximum of 1080x1080 resolution.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
  *
  * @generated from message olvid.daemon.command.v1.IdentityDownloadPhotoRequest
  */
@@ -256,7 +272,7 @@ export type IdentityDownloadPhotoRequest = Message<"olvid.daemon.command.v1.Iden
  * Use `create(IdentityDownloadPhotoRequestSchema)` to create a new message.
  */
 export const IdentityDownloadPhotoRequestSchema: GenMessage<IdentityDownloadPhotoRequest> = /*@__PURE__*/
-  messageDesc(file_olvid_daemon_command_v1_identity_commands, 13);
+  messageDesc(file_olvid_daemon_command_v1_identity_commands, 11);
 
 /**
  * @generated from message olvid.daemon.command.v1.IdentityDownloadPhotoResponse
@@ -273,11 +289,52 @@ export type IdentityDownloadPhotoResponse = Message<"olvid.daemon.command.v1.Ide
  * Use `create(IdentityDownloadPhotoResponseSchema)` to create a new message.
  */
 export const IdentityDownloadPhotoResponseSchema: GenMessage<IdentityDownloadPhotoResponse> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_identity_commands, 12);
+
+/**
+ *
+ * * IdentityRemovePhoto
+ * * Remove your current identity picture.
+ * * The automatically generated identity image will be used instead.
+ * *
+ * * **Error codes**:
+ * * `NOT_FOUND`: identity not found.
+ * * `UNAUTHENTICATED`: client key is invalid.
+ * * `INTERNAL`
+ *
+ * @generated from message olvid.daemon.command.v1.IdentityRemovePhotoRequest
+ */
+export type IdentityRemovePhotoRequest = Message<"olvid.daemon.command.v1.IdentityRemovePhotoRequest"> & {
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.IdentityRemovePhotoRequest.
+ * Use `create(IdentityRemovePhotoRequestSchema)` to create a new message.
+ */
+export const IdentityRemovePhotoRequestSchema: GenMessage<IdentityRemovePhotoRequest> = /*@__PURE__*/
+  messageDesc(file_olvid_daemon_command_v1_identity_commands, 13);
+
+/**
+ * @generated from message olvid.daemon.command.v1.IdentityRemovePhotoResponse
+ */
+export type IdentityRemovePhotoResponse = Message<"olvid.daemon.command.v1.IdentityRemovePhotoResponse"> & {
+};
+
+/**
+ * Describes the message olvid.daemon.command.v1.IdentityRemovePhotoResponse.
+ * Use `create(IdentityRemovePhotoResponseSchema)` to create a new message.
+ */
+export const IdentityRemovePhotoResponseSchema: GenMessage<IdentityRemovePhotoResponse> = /*@__PURE__*/
   messageDesc(file_olvid_daemon_command_v1_identity_commands, 14);
 
 /**
  *
  * * IdentityGetApiKeyStatus
+ * * Check your current Olvid API key status.
+ * * API keys allow an identity to initiate calls or to use multi device.
+ * *
+ * * **Error codes**:
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.IdentityGetApiKeyStatusRequest
  */
@@ -311,6 +368,12 @@ export const IdentityGetApiKeyStatusResponseSchema: GenMessage<IdentityGetApiKey
 /**
  *
  * * IdentitySetApiKey
+ * * Manually set an Olvid api key.
+ * * Olvid api keys are standard uuids.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: api key format is not valid.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.IdentitySetApiKeyRequest
  */
@@ -348,6 +411,11 @@ export const IdentitySetApiKeyResponseSchema: GenMessage<IdentitySetApiKeyRespon
 /**
  *
  * * IdentitySetConfigurationLink
+ * * Set an Olvid configuration link with an api key.
+ * *
+ * * **Error codes**:
+ * * `INVALID_ARGUMENT`: configuration link is invalid / configuration link is for another server.
+ * * `UNAUTHENTICATED`: client key is invalid.
  *
  * @generated from message olvid.daemon.command.v1.IdentitySetConfigurationLinkRequest
  */
